@@ -101,9 +101,9 @@ export default function DesignSystemPage() {
             </div>
 
             {/* Logo Display Container */}
-            <div className="bg-white p-6 border-2 border-brand-navy shadow-cargo max-w-sm rounded-xs flex flex-col items-center">
+            <div className="bg-brand-paper p-6 border-2 border-brand-navy shadow-cargo max-w-sm rounded-xs flex flex-col items-center">
               <span className="font-mono text-[0.625rem] font-bold tracking-widest text-brand-navy/60 uppercase mb-3 self-start">
-                BRAND ASSET: public/brand/logo.svg
+                BRAND ASSET: public/brand/logo.svg (Transparent)
               </span>
               <div className="relative w-64 h-56">
                 <Image

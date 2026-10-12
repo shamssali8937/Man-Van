@@ -25,15 +25,15 @@ export function Footer() {
             <div className="space-y-4">
               <Link
                 href="/"
-                className="inline-block bg-white p-3 rounded-xs border-2 border-white/40 shadow-sm"
+                className="inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-paper"
                 aria-label="AB Removals – Return to homepage"
               >
                 <div className="relative w-40 h-14">
                   <Image
-                    src="/brand/logo.svg"
+                    src="/brand/logo-light.svg"
                     alt="AB Removals – Man and Van"
                     fill
-                    className="object-contain"
+                    className="object-contain object-left"
                   />
                 </div>
               </Link>
