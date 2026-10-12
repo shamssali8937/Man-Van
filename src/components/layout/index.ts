@@ -1,2 +1,3 @@
-// Placeholder for layout components (navbar, footer, header)
-export {};
+export * from "./footer";
+export * from "./header";
+export * from "./mobile-action-bar";
