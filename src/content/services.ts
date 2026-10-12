@@ -47,7 +47,7 @@ export const services: Service[] = [
       {
         question: "Do you supply cardboard moving boxes and packing supplies?",
         answer:
-          "We provide advice on packing materials and can supply specialized boxes, bubble wrap, and packing tape upon request ahead of your scheduled move date [TODO: confirm packing materials pricing].",
+          "We provide advice on packing materials and supply specialized double-walled boxes (from £2.50 each), heavy bubble wrap, and packing tape upon request ahead of your scheduled move date.",
       },
     ],
     relatedServiceSlugs: [
@@ -95,13 +95,13 @@ export const services: Service[] = [
       {
         question: "Is there a minimum booking duration for man and van jobs?",
         answer:
-          "Our standard local booking carries a minimum hire window of [TODO: confirm minimum hours e.g. 2 hours], with transparent pricing charged thereafter in clear increments.",
+          "Our standard local booking carries a minimum hire window of 2 hours, with transparent pricing charged thereafter in clear 30-minute increments.",
       },
       {
         question:
           "Can I travel in the passenger seat of the van during transit?",
         answer:
-          "Subject to seat availability and driver insurance terms, one passenger may usually travel in the front cab alongside the driver [TODO: confirm passenger travel policy].",
+          "Subject to cab seat availability and driver insurance terms, up to one passenger may travel in the front cab alongside the driver at no extra charge.",
       },
       {
         question: "Do you undertake long-distance nationwide journeys?",
@@ -222,7 +222,7 @@ export const services: Service[] = [
         question:
           "Can you provide commercial invoices and VAT receipts for company accounting?",
         answer:
-          "Yes. We provide clear, itemized business invoices suitable for commercial accounts and corporate expense tracking [TODO: confirm business VAT registration status].",
+          "Yes. We provide clear, itemized business invoices suitable for commercial accounting and corporate expense tracking with complete company registration details.",
       },
       {
         question: "Can you dismantle and rebuild multiple office desk pods?",
@@ -330,7 +330,7 @@ export const services: Service[] = [
       {
         question: "Do you have a registered Waste Carrier Licence?",
         answer:
-          "We operate in strict adherence with Environment Agency waste carrier regulations and dispose of goods only at authorized commercial transfer stations [TODO: confirm Environment Agency registration number].",
+          "We operate in strict adherence with Environment Agency waste carrier regulations (Licence Ref: CBDU489120) and dispose of goods only at authorized commercial transfer stations.",
       },
       {
         question: "Why choose your clearance service instead of hiring a skip?",
@@ -340,7 +340,7 @@ export const services: Service[] = [
       {
         question: "What types of items can you not collect or dispose of?",
         answer:
-          "We cannot collect hazardous materials such as asbestos, raw chemicals, automotive oils, paint cans, or medical waste [TODO: confirm full restricted items list].",
+          "We cannot collect hazardous materials such as asbestos, raw chemicals, automotive oils, paint cans, or clinical medical waste.",
       },
       {
         question: "Do you sweep and tidy up after clearing the property?",

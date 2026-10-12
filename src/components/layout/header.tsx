@@ -352,7 +352,7 @@ export function Header() {
               </a>
 
               <p className="text-[0.6875rem] font-mono text-center text-brand-navy/60">
-                {"UK LOGISTICS CORRIDOR /// 7 DAYS A WEEK"}
+                {"UK LOGISTICS CORRIDOR — 7 DAYS A WEEK"}
               </p>
             </div>
           </div>

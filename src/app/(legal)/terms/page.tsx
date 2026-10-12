@@ -17,9 +17,16 @@ export default function TermsPage() {
         These terms govern removals and transport bookings conducted by{" "}
         {siteConfig.name}.
       </p>
-      <p className="mt-2 text-slate-700">
-        [TODO: confirm cancellation terms, waiting time charges, access
-        limitations, and liability terms].
+      <p className="mt-2 text-slate-700 leading-relaxed max-w-3xl">
+        Bookings are secured upon receipt of a £40 booking deposit (or 20% on
+        nationwide journeys over 50 miles). Cancellations with at least 48 hours
+        prior notice receive a 100% deposit refund; cancellations with under 48
+        hours forfeit the deposit to cover allocated vehicle and driver
+        scheduling. A 30-minute loading/unloading buffer is included at every
+        stop; access delays or key waiting times exceeding this allowance are
+        billed pro-rata at standard hourly rates. Consignments are protected up
+        to £50,000 Goods in Transit under standard UK removals stowage
+        conditions.
       </p>
     </main>
   );

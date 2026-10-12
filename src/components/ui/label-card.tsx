@@ -155,7 +155,7 @@ export function LabelCard({
               </span>
             )}
             {destinationCode && (
-              <span className="font-display italic font-black uppercase text-brand-red bg-brand-red/10 px-1.5 py-0.5 rounded-xs">
+              <span className="font-display italic font-black uppercase text-brand-red-700 bg-brand-red-50 border border-brand-red-200 px-1.5 py-0.5 rounded-xs">
                 DEST: {destinationCode}
               </span>
             )}
@@ -184,7 +184,7 @@ export function LabelCard({
       )}
 
       {/* Main card body */}
-      <div className="p-5 flex-1 relative">{children}</div>
+      <div className="p-5 flex-1 flex flex-col relative">{children}</div>
 
       {/* Optional Barcode Strip */}
       {hasBarcode && (

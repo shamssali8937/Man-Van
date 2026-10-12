@@ -46,14 +46,14 @@ export function Footer() {
 
               <div className="pt-2 flex items-center gap-3">
                 <Stamp
-                  variant="red"
+                  variant="paper"
                   size="sm"
                   rotation="-2"
                   subtext="ALL LOADS"
                 >
                   INSURED TRANSIT
                 </Stamp>
-                <Stamp variant="kraft" size="sm" rotation="3">
+                <Stamp variant="paper" size="sm" rotation="3">
                   NO HIDDEN FEES
                 </Stamp>
               </div>
@@ -186,7 +186,7 @@ export function Footer() {
             </div>
 
             <div className="text-center md:text-right text-[0.6875rem] text-brand-paper-rule">
-              <span>{"CONCEPT: THE ROUTE /// LIVE UK TRACKED CARGO"}</span>
+              <span>{"CONCEPT: THE ROUTE — LIVE UK TRACKED CARGO"}</span>
             </div>
           </div>
         </Container>

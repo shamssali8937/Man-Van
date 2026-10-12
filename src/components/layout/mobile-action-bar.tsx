@@ -12,7 +12,6 @@ export function MobileActionBar() {
         <a
           href={siteConfig.telHref}
           className="flex flex-col items-center justify-center py-2 px-1 bg-brand-navy text-white rounded-xs border-2 border-brand-navy-950 shadow-xs hover:bg-brand-navy-800 active:translate-y-0.5 transition-transform"
-          aria-label={`Call ${siteConfig.telephone}`}
         >
           <svg
             className="w-4 h-4 text-brand-red mb-0.5"
@@ -36,7 +35,6 @@ export function MobileActionBar() {
           target="_blank"
           rel="noopener noreferrer"
           className="flex flex-col items-center justify-center py-2 px-1 bg-[#25D366] text-white rounded-xs border-2 border-[#1EBE5D] shadow-xs hover:bg-[#1EBE5D] active:translate-y-0.5 transition-transform"
-          aria-label="Chat on WhatsApp"
         >
           <svg
             className="w-4 h-4 text-white mb-0.5"
@@ -58,7 +56,6 @@ export function MobileActionBar() {
         <Link
           href="/quote"
           className="flex flex-col items-center justify-center py-2 px-1 bg-brand-red text-white rounded-xs border-2 border-brand-red-700 shadow-xs hover:bg-brand-red-700 active:translate-y-0.5 transition-transform"
-          aria-label="Request an instant removals quote"
         >
           <svg
             className="w-4 h-4 text-white mb-0.5"

@@ -19,7 +19,7 @@ export type StampRotation =
 
 export interface StampProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
-  variant?: "red" | "navy" | "kraft" | "muted";
+  variant?: "red" | "navy" | "kraft" | "paper" | "muted";
   size?: "sm" | "md" | "lg";
   rotation?: StampRotation;
   subtext?: string;
@@ -61,6 +61,8 @@ export function Stamp({
     navy: "border-brand-navy text-brand-navy bg-brand-navy/5 [text-shadow:0_0_1px_rgba(3,35,76,0.3)]",
     kraft:
       "border-brand-tan-800 text-brand-tan-800 bg-brand-tan/10 [text-shadow:0_0_1px_rgba(142,88,36,0.3)]",
+    paper:
+      "border-brand-paper text-brand-paper bg-white/10 [text-shadow:0_0_1px_rgba(255,255,255,0.4)]",
     muted: "border-brand-navy/40 text-brand-navy/60 bg-brand-navy/5",
   }[variant];
 
