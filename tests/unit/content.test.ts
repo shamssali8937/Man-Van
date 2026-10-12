@@ -1,0 +1,109 @@
+import { describe, expect, it } from "vitest";
+import {
+  getAllAreas,
+  getAllServices,
+  getAreaBySlug,
+  getGeneralFaqs,
+  getReviews,
+  getServiceBySlug,
+} from "@/content";
+import { AreaSchema, FAQSchema, ServiceSchema } from "@/types";
+
+describe("Content Layer Integrity", () => {
+  describe("Services", () => {
+    it("has exactly 6 services", () => {
+      const services = getAllServices();
+      expect(services).toHaveLength(6);
+    });
+
+    it("every service validates against ServiceSchema", () => {
+      const services = getAllServices();
+      for (const service of services) {
+        const result = ServiceSchema.safeParse(service);
+        expect(result.success).toBe(true);
+      }
+    });
+
+    it("every service description has 200+ words", () => {
+      const services = getAllServices();
+      for (const service of services) {
+        const wordCount = service.description.trim().split(/\s+/).length;
+        expect(wordCount).toBeGreaterThanOrEqual(200);
+      }
+    });
+
+    it("every service has between 5 and 7 benefits and 4 FAQs", () => {
+      const services = getAllServices();
+      for (const service of services) {
+        expect(service.benefits.length).toBeGreaterThanOrEqual(5);
+        expect(service.benefits.length).toBeLessThanOrEqual(7);
+        expect(service.faqs).toHaveLength(4);
+      }
+    });
+
+    it("getServiceBySlug returns the service or undefined if not found", () => {
+      const valid = getServiceBySlug("house-removals");
+      expect(valid).toBeDefined();
+      expect(valid?.name).toBe("House Removals");
+
+      const invalid = getServiceBySlug("non-existent-service");
+      expect(invalid).toBeUndefined();
+    });
+  });
+
+  describe("Areas", () => {
+    it("has exactly 30 UK cities and towns", () => {
+      const areas = getAllAreas();
+      expect(areas).toHaveLength(30);
+    });
+
+    it("every area validates against AreaSchema", () => {
+      const areas = getAllAreas();
+      for (const area of areas) {
+        const result = AreaSchema.safeParse(area);
+        expect(result.success).toBe(true);
+      }
+    });
+
+    it("every area has 3 local notes and 3 FAQs", () => {
+      const areas = getAllAreas();
+      for (const area of areas) {
+        expect(area.localNotes.parking).toBeTruthy();
+        expect(area.localNotes.access).toBeTruthy();
+        expect(area.localNotes.typicalRoutes).toBeTruthy();
+        expect(area.faqs).toHaveLength(3);
+      }
+    });
+
+    it("getAreaBySlug returns the area or undefined if not found", () => {
+      const valid = getAreaBySlug("london");
+      expect(valid).toBeDefined();
+      expect(valid?.name).toBe("London");
+
+      const invalid = getAreaBySlug("atlantis");
+      expect(invalid).toBeUndefined();
+    });
+  });
+
+  describe("FAQs", () => {
+    it("has exactly 12 general FAQs", () => {
+      const faqs = getGeneralFaqs();
+      expect(faqs).toHaveLength(12);
+    });
+
+    it("every FAQ validates against FAQSchema", () => {
+      const faqs = getGeneralFaqs();
+      for (const faq of faqs) {
+        const result = FAQSchema.safeParse(faq);
+        expect(result.success).toBe(true);
+      }
+    });
+  });
+
+  describe("Reviews", () => {
+    it("reviews array is empty and contains zero synthetic reviews", () => {
+      const reviews = getReviews();
+      expect(reviews).toEqual([]);
+    });
+  });
+});

@@ -6,41 +6,85 @@ export const faqs: FAQ[] = [
     category: "booking",
     question: "How far in advance should I book my move?",
     answer:
-      "We recommend booking as soon as your moving date is confirmed. However, we also cater to short-notice and same-day enquiries subject to van and driver availability.",
+      "We recommend booking 1 to 2 weeks in advance to secure your preferred date and time, especially for peak weekend slots. However, we also cater to same-day and urgent bookings subject to van and crew schedule.",
   },
   {
-    id: "quote-pricing",
-    category: "pricing",
-    question: "How is the quote calculated?",
+    id: "booking-deposit",
+    category: "booking",
+    question: "Do I need to pay a deposit to secure my booking?",
     answer:
-      "Quotes are based on the distance between postcodes, volume of items, required van size, number of helpers needed, and access specifics (e.g. flights of stairs). Fill in our quote form or call 07405 328 674 for a bespoke price.",
+      "A booking deposit policy applies to confirm vehicle and crew allocation [TODO: confirm deposit requirements e.g. whether a deposit is required, amount or percentage, and refund conditions].",
   },
   {
-    id: "furniture-protection",
+    id: "service-inclusions",
     category: "services",
-    question: "How do you protect furniture during transit?",
+    question: "What is included with your removals and man and van service?",
     answer:
-      "We use protective transit blankets, mattress protectors, and heavy-duty tie-down ratchet straps inside the van to ensure your possessions remain secure throughout the journey.",
+      "Every booking includes a clean, fully equipped 3.5t Luton box van with hydraulic tail lift, a professional driver/porter who assists with loading, quilted transit blankets, and heavy-duty tie-down straps. Additional helpers can be added to your booking as required.",
   },
   {
-    id: "dismantling-service",
-    category: "services",
-    question: "Can you dismantle and assemble beds and wardrobes?",
-    answer:
-      "Yes. Our Furniture Dismantling and Assembly service covers bed frames, wardrobes, desks, and dining sets. Please mention this requirement when requesting your quote.",
-  },
-  {
-    id: "payment-methods",
+    id: "minimum-hours",
     category: "pricing",
-    question: "What payment methods are accepted?",
+    question: "Is there a minimum booking time for hourly bookings?",
     answer:
-      "[TODO: confirm accepted payment methods e.g. bank transfer, card, cash upon completion].",
+      "For hourly hire jobs, a minimum booking window applies [TODO: confirm minimum booking hours e.g. 2 hours minimum], after which time is calculated in clear increments.",
   },
   {
-    id: "insurance-coverage",
+    id: "cancellation-policy",
+    category: "booking",
+    question: "What happens if I need to cancel or reschedule my move?",
+    answer:
+      "We understand that moving dates can shift due to delayed property completion or tenancy changes. Notice periods and fee terms apply for cancellations or date changes [TODO: confirm cancellation policy and notice window e.g. 48 hours notice for full refund].",
+  },
+  {
+    id: "items-moved",
+    category: "services",
+    question: "What items can you move, and are there any prohibited items?",
+    answer:
+      "We transport domestic and commercial furniture, boxed possessions, appliances, mattresses, and shop stock. We strictly cannot transport hazardous items including open containers of petrol, gas canisters, paint thinners, illegal substances, or livestock [TODO: confirm full restricted items list].",
+  },
+  {
+    id: "specialist-items",
+    category: "services",
+    question:
+      "Can you move heavy specialist items like pianos or gym equipment?",
+    answer:
+      "Yes. We transport upright pianos, multi-gym equipment, and commercial appliances using tail lifts, heavy-duty dollies, and piano straps. Please inform us during quotation so we allocate suitable equipment and team size.",
+  },
+  {
+    id: "waste-clearance",
+    category: "services",
+    question: "Do you offer property clearances and rubbish removal?",
+    answer:
+      "Yes. Our waste removal and property clearance service clears unwanted furniture, appliances, and non-hazardous junk from houses, garages, sheds, and commercial premises.",
+  },
+  {
+    id: "waste-duty-of-care",
+    category: "services",
+    question: "How do you ensure waste is disposed of legally and responsibly?",
+    answer:
+      "We strictly adhere to UK waste regulations and hold an Environment Agency waste carrier registration [TODO: confirm Environment Agency licence number]. Goods are sorted, reusable items are donated where possible, and non-reusable waste is tipped only at authorized commercial recycling facilities.",
+  },
+  {
+    id: "transit-insurance",
     category: "general",
-    question: "Are my items insured during transport?",
+    question: "Are my items covered by insurance while in transit?",
     answer:
-      "[TODO: confirm exact Goods in Transit and Public Liability policy limits].",
+      "All goods professionally handled and secured within our vehicles are protected by Goods in Transit insurance and Public Liability indemnity [TODO: confirm goods in transit and public liability coverage limits e.g. £50,000 Goods in Transit, £1,000,000 Public Liability, and excess terms].",
+  },
+  {
+    id: "parking-responsibility",
+    category: "general",
+    question: "Who is responsible for parking permits and loading bay access?",
+    answer:
+      "Customers are responsible for providing legal parking or arranging temporary parking bay suspensions with their local council outside both pickup and destination addresses. Any unavoidable parking penalty charges incurred due to lack of arranged parking will be charged to the customer [TODO: confirm parking penalty terms].",
+  },
+  {
+    id: "toll-congestion-charges",
+    category: "pricing",
+    question:
+      "Are toll roads, London Congestion Charge, and Clean Air Zones included in the quote?",
+    answer:
+      "Our vehicles are compliant with standard clean air and ULEZ regulations. Road tolls (such as the Dartford Crossing or M6 Toll) and the London Congestion Charge are addressed in your quote [TODO: confirm whether ULEZ and Congestion Charge are billed additionally or bundled into fixed quotes].",
   },
 ];

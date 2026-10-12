@@ -23,8 +23,12 @@ This document tracks all unconfirmed business details, regulatory accreditations
 
 ## 4. Pricing, Rates & Payment Terms
 - [ ] **Pricing Structure**: Hourly rates, fixed quote policy, minimum booking hours, and congestion/ULEZ handling in `src/content/services.ts` and `src/app/(marketing)/pricing/page.tsx`.
+- [ ] **Booking Deposit Policy**: Whether deposit is mandatory, amount/percentage, and refund conditions in `src/content/faqs.ts`.
+- [ ] **Minimum Booking Duration**: Confirmation of minimum hourly hire window (e.g. 2 hours) in `src/content/faqs.ts`.
+- [ ] **Cancellation & Rescheduling Notice Window**: Exact notice hours (e.g. 48h) and fee policy in `src/content/faqs.ts` and `src/app/(legal)/terms/page.tsx`.
+- [ ] **Tolls, ULEZ & Congestion Surcharges**: Confirmation of whether congestion charges and tolls are billed to client or included in fixed quotes in `src/content/faqs.ts`.
+- [ ] **Parking Penalty Policy**: Terms for council tickets incurred due to lack of customer-provided parking in `src/content/faqs.ts`.
 - [ ] **Accepted Payment Methods**: Credit/debit card, bank transfer, cash, invoice terms in `src/content/faqs.ts`.
-- [ ] **Cancellation & Rescheduling Policy**: Notice periods and cancellation fee terms for `src/app/(legal)/terms/page.tsx`.
 
 ## 5. Coverage Areas & Scope
 - [ ] **Primary & Extended Coverage Areas**: Full list of UK postcodes and counties served in `src/content/areas.ts`.
