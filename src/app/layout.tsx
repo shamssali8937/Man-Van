@@ -23,9 +23,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en-GB"
+      suppressHydrationWarning
       className={`h-full scroll-smooth ${fontDisplay.variable} ${fontSans.variable}`}
     >
-      <body className="min-h-full flex flex-col font-sans antialiased text-brand-navy bg-brand-paper selection:bg-brand-red selection:text-white pb-16 md:pb-0">
+      <body
+        suppressHydrationWarning
+        className="min-h-full flex flex-col font-sans antialiased text-brand-navy bg-brand-paper selection:bg-brand-red selection:text-white pb-16 md:pb-0"
+      >
         <Suspense>
           <Header />
         </Suspense>

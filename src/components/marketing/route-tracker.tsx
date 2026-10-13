@@ -233,7 +233,7 @@ export function RouteTracker() {
                     }`}
                   >
                     {isActive && (
-                      <span className="w-1 h-1 rounded-full bg-white animate-ping" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-white" />
                     )}
                   </span>
 

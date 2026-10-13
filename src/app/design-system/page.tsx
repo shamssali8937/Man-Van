@@ -676,7 +676,6 @@ export default function DesignSystemPage() {
             {/* Docket Top Banner */}
             <div className="bg-brand-navy text-white px-5 py-3 flex items-center justify-between border-b-2 border-brand-navy-950">
               <div className="flex items-center gap-3">
-                <span className="w-2.5 h-2.5 rounded-full bg-brand-red animate-pulse" />
                 <span className="font-display italic font-black uppercase text-sm tracking-wider">
                   UK LOGISTICS WAYBILL #84920
                 </span>

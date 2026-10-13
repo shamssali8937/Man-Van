@@ -89,6 +89,17 @@ export function CookieConsentBanner() {
     } catch (_e) {
       setIsOpen(true);
     }
+
+    const handleOpenPreferences = () => {
+      setIsOpen(true);
+      setIsManageOpen(true);
+    };
+    window.addEventListener("open-cookie-preferences", handleOpenPreferences);
+    return () =>
+      window.removeEventListener(
+        "open-cookie-preferences",
+        handleOpenPreferences,
+      );
   }, []);
 
   const saveConsent = (analytics: boolean, marketing: boolean) => {

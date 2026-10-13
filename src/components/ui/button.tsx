@@ -25,7 +25,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseClasses =
-    "inline-flex items-center justify-center gap-2 font-display uppercase tracking-wider italic font-black transition-transform duration-100 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 select-none cursor-pointer";
+    "inline-flex items-center justify-center gap-2 font-display uppercase tracking-wider italic font-black transition-all duration-200 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 select-none cursor-pointer";
 
   const sizeClasses = {
     sm: "h-9 px-3.5 text-xs rounded-sm",

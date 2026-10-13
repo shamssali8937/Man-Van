@@ -16,6 +16,8 @@ interface Props {
   params: Promise<{ city: string; service: string }>;
 }
 
+export const instant = false;
+
 export async function generateStaticParams() {
   return getValidAreaServicePairs();
 }

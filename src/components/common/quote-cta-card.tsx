@@ -38,7 +38,6 @@ export function QuoteCtaCard({
 
       <div className="relative z-10 mx-auto max-w-3xl text-center">
         <span className="inline-flex items-center gap-1.5 rounded-full bg-red-500/20 px-3.5 py-1 text-xs font-semibold text-red-300 ring-1 ring-red-500/30 mb-4">
-          <span className="h-1.5 w-1.5 rounded-full bg-red-400 animate-pulse" />
           The Reliable Removal Route{" "}
           {cityName ? `• ${cityName}` : "• Nationwide UK"}
         </span>

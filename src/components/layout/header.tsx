@@ -91,7 +91,6 @@ export function Header() {
       <div className="bg-brand-navy text-white text-[0.6875rem] font-mono border-b border-brand-navy-950 py-1.5 px-4 hidden sm:block select-none">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <span className="inline-block w-2 h-2 rounded-full bg-brand-red" />
             <span className="font-bold tracking-wider text-brand-paper-light">
               THE ROUTE: NATIONWIDE UK LOGISTICS &amp; REMOVALS
             </span>

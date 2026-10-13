@@ -414,15 +414,6 @@ export function LutonVanLoadSvg({
       <div className="w-full max-w-md mt-2 space-y-1">
         <div className="flex justify-between items-center text-xs font-mono font-bold">
           <span className="text-brand-navy flex items-center gap-1.5">
-            <span
-              className={`w-2 h-2 rounded-full ${
-                isOverloaded
-                  ? "bg-brand-red animate-pulse"
-                  : clampedFill > 80
-                    ? "bg-brand-tan"
-                    : "bg-brand-navy"
-              }`}
-            />
             ESTIMATED VAN FILL:
           </span>
           <span

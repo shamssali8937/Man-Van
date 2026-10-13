@@ -252,7 +252,6 @@ export function QuoteForm({ plannerSummary, className = "" }: QuoteFormProps) {
             className="p-4 sm:p-5 bg-brand-red/10 border-2 border-brand-red rounded-xs space-y-3"
           >
             <div className="flex items-center gap-2 text-brand-red font-display font-black text-lg uppercase">
-              <span className="w-2.5 h-2.5 rounded-full bg-brand-red animate-ping" />
               ONLINE DISPATCH TEMPORARILY UNAVAILABLE
             </div>
 
@@ -393,7 +392,6 @@ export function QuoteForm({ plannerSummary, className = "" }: QuoteFormProps) {
           <div className="bg-brand-paper-rule p-4 border-2 border-brand-navy/30 rounded-xs space-y-2">
             <div className="flex items-center justify-between">
               <span className="font-mono text-xs font-bold text-brand-navy uppercase flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-brand-navy" />
                 ATTACHED CARGO ESTIMATE:
               </span>
               <span className="font-mono text-xs font-black text-brand-navy">

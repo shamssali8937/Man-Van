@@ -17,6 +17,8 @@ interface Props {
   params: Promise<{ city: string }>;
 }
 
+export const instant = false;
+
 export async function generateStaticParams() {
   return areas.map((area) => ({
     city: area.slug,

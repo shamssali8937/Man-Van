@@ -244,7 +244,6 @@ export function LoadPlanner({
               {/* Recommended Crew Configuration */}
               <div className="bg-brand-navy-950/5 border-2 border-brand-navy p-3.5 rounded-xs">
                 <div className="flex items-center gap-1.5 mb-1">
-                  <span className="w-2 h-2 rounded-full bg-brand-red" />
                   <span className="font-mono text-[0.6875rem] font-bold text-brand-navy uppercase tracking-wider">
                     RECOMMENDED CREW
                   </span>

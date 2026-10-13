@@ -205,10 +205,7 @@ export default function HomePage() {
 
                 {/* Industrial Manifest Tag beneath photo */}
                 <div className="pt-2.5 flex items-center justify-between font-mono text-xs font-bold text-brand-navy/80">
-                  <span className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
-                    MERCEDES-BENZ SPRINTER LUTON
-                  </span>
+                  <span>MERCEDES-BENZ SPRINTER LUTON</span>
                   <span className="text-brand-navy">500KG TAIL LIFT</span>
                 </div>
               </div>
