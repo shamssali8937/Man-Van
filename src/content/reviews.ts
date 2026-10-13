@@ -1,10 +1,8 @@
 import type { Review } from "@/types";
 
 /**
- * Customer reviews for AB Removals.
- * Per project principles, no fake reviews or placeholder star ratings are invented.
- * Real verified customer testimonials will be populated once provided by the client.
+ * Customer reviews for AB Removals – Man and Van.
+ * Per strict project principles, zero artificial, fake, or synthetic reviews are invented.
+ * Genuine client reviews will be populated here once verified from Google Business Profile or Trustpilot.
  */
-export const reviews: Review[] = [
-  // [TODO: confirm genuine customer reviews and ratings from Google / Trustpilot / direct feedback]
-];
+export const reviews: Review[] = [];

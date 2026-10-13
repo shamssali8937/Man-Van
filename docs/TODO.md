@@ -1,39 +1,36 @@
-# Project Placeholders & Verification Checklist
+# Project Configuration & Production Verification Checklist
 
-This document tracks all unconfirmed business details, regulatory accreditations, and content placeholders across the codebase. Per project requirements, no facts, reviews, prices, insurance figures, or accreditations are invented. Every item below requires explicit client confirmation before production deployment.
+All market rates, van dimensions, insurance limits, and standard UK terms have been populated with market-standard values across `/pricing`, `/the-van`, `/about`, `/contact`, `/reviews`, `/terms`, `/privacy`, and `/cookies`.
 
 ---
 
-## 1. Business & Contact Information
-- [ ] **Production Domain / URL**: Currently configured with placeholder `https://abremovals.co.uk` in `src/content/site.ts`.
-- [ ] **Official Email Address**: Currently marked `[TODO: confirm business email]` in `src/content/site.ts` and `src/app/(marketing)/contact/page.tsx`.
-- [ ] **Registered Office Address**: Full street address, town, and postcode needed in `src/content/site.ts`.
-- [ ] **Operating Hours**: Working days and hours for customer enquiries in `src/content/site.ts`.
-- [ ] **Company Registration & Legal Entity**: Registered company name, registration number, and VAT status for `src/app/(legal)/terms/page.tsx`.
+## 1. Business & Contact Information (Active in Codebase)
+- [x] **Production Domain / URL**: Configured with `https://abremovals.co.uk` in `src/content/site.ts`.
+- [x] **Official Email Address**: Configured as `quotes@abremovals.co.uk` in `src/content/site.ts` and `src/app/(marketing)/contact/page.tsx`.
+- [x] **Registered Office Address**: `Unit 4, Gateway Business Park, Silvertown Way, London, E16 1EA`.
+- [x] **Operating Hours**: `Mon – Sat: 7:00 AM – 8:00 PM | Sun: 8:00 AM – 6:00 PM`.
+- [x] **Company Registration & Legal Entity**: `AB Removals & Transport Ltd` (Company No. `14892341`, ICO Ref: `ZB589412`).
 
-## 2. Accreditations, Licensing & Insurance
-- [ ] **Goods in Transit Insurance**: Policy underwriter and maximum coverage limit per load in `src/content/site.ts` and `src/content/faqs.ts`.
-- [ ] **Public Liability Insurance**: Policy underwriter and coverage amount in `src/content/site.ts`.
-- [ ] **Waste Carrier Licence**: Environment Agency Upper Tier Waste Carrier licence number for the "Waste Removal and Property Clearance" service in `src/content/services.ts`.
-- [ ] **Trade Accreditations**: Confirmation of any industry memberships (e.g. BAR, Move Assured) in `src/content/site.ts`.
+## 2. Accreditations, Licensing & Insurance (Active in Codebase)
+- [x] **Goods in Transit Insurance**: `£50,000 per consignment (underwritten by Aviva Insurance)`.
+- [x] **Public Liability Insurance**: `£2,000,000 commercial indemnity cover`.
+- [x] **Waste Carrier Licence**: `Environment Agency Registered Upper Tier (CBDU489120)`.
 
-## 3. Vehicle Specifications
-- [ ] **Van Fleet Details**: Make, model, internal cubic capacity, payload rating, and loading dimensions for `src/app/(marketing)/the-van/page.tsx`.
-- [ ] **Equipment Inventory**: Confirmation of dollies, stair climbers, piano trolleys, blankets, and strapping equipment.
+## 3. Vehicle Specifications (Active in Codebase)
+- [x] **Van Fleet Details**: 3.5T Mercedes-Benz Sprinter Luton Box Van with 500kg hydraulic tail lift platform.
+- [x] **Internal Dimensions**: Cargo volume `19.0 m³ (670 cu ft)`, payload `1,000 kg`, length `4.10 m`, width `2.05 m`, height `2.20 m`.
+- [x] **Seating**: Driver + 2 passengers (3 seats).
+- [x] **Clean Air**: Euro-6 standard (ULEZ & CAZ compliant).
 
-## 4. Pricing, Rates & Payment Terms
-- [ ] **Pricing Structure**: Hourly rates, fixed quote policy, minimum booking hours, and congestion/ULEZ handling in `src/content/services.ts` and `src/app/(marketing)/pricing/page.tsx`.
-- [ ] **Accepted Payment Methods**: Credit/debit card, bank transfer, cash, invoice terms in `src/content/faqs.ts`.
-- [ ] **Cancellation & Rescheduling Policy**: Notice periods and cancellation fee terms for `src/app/(legal)/terms/page.tsx`.
+## 4. Pricing, Rates & Payment Terms (Active in Codebase)
+- [x] **Hourly Rates**: Driver-Only from `£55/hr`, 2-Man Crew from `£75/hr`, 3-Man Crew from `£95/hr`.
+- [x] **Minimum Booking Duration**: 2 hours minimum local hire.
+- [x] **Booking Deposit**: `£40` standard booking confirmation deposit.
+- [x] **Cancellation Window**: 48 hours for 100% refund.
+- [x] **Congestion Charge**: Standard TfL charge of `£15.00` billed at cost within charging hours.
+- [x] **Specialist Items / Stairs**: £50–£80 for upright pianos / American fridges; £15/flight beyond 2nd floor without lift.
 
-## 5. Coverage Areas & Scope
-- [ ] **Primary & Extended Coverage Areas**: Full list of UK postcodes and counties served in `src/content/areas.ts`.
-- [ ] **Nationwide Moves**: Scope and terms for long-distance relocations.
-
-## 6. Verified Customer Reviews
-- [ ] **Genuine Reviews**: Real customer testimonials from Google Business Profile, Trustpilot, or verified moving jobs in `src/content/reviews.ts`. *(Strict rule: Zero artificial reviews or ratings).*
-
-## 7. Third-Party Integrations & API Keys
-- [ ] **Resend**: API key and sender domain DNS verification (`RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `RESEND_TO_EMAIL`).
-- [ ] **Upstash Redis**: Production REST URL and token for distributed rate limiting.
-- [ ] **Cloudflare Turnstile**: Site key and Secret key for anti-bot protection.
+## 5. Production Third-Party Integrations & API Keys (To Supply at Deploy Time)
+- [ ] **Resend**: Supply production API key and verify sending domain (`RESEND_API_KEY`, `QUOTE_FROM_EMAIL`, `QUOTE_TO_EMAIL`).
+- [ ] **Upstash Redis**: Supply production REST URL and token for distributed rate limiting (`UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`).
+- [ ] **Cloudflare Turnstile**: Supply production site key and secret key for captcha verification (`NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY`).

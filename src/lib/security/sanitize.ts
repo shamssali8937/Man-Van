@@ -5,6 +5,29 @@ export function sanitizeString(input: string): string {
   return input.replace(/<[^>]*>?/gm, "").trim();
 }
 
+export const sanitizeText = sanitizeString;
+
+/**
+ * HTML escaping utility to prevent XSS / HTML injection in templates.
+ */
+export function escapeHtml(unsafe: string): string {
+  if (!unsafe) return "";
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+/**
+ * Strips Carriage Return and Line Feed to prevent SMTP / Header Injection.
+ */
+export function sanitizeHeader(input: string): string {
+  if (!input) return "";
+  return input.replace(/[\r\n]/g, "").trim();
+}
+
 /**
  * Sanitizes all string fields within an object recursively.
  */

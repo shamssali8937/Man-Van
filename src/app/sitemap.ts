@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { areas } from "@/content/areas";
 import { services } from "@/content/services";
 import { siteConfig } from "@/content/site";
+import { getValidAreaServicePairs } from "@/lib/seo/area-service-content";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
@@ -42,5 +43,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...serviceRoutes, ...areaRoutes];
+  const areaServicePairs = getValidAreaServicePairs();
+  const areaServiceRoutes: MetadataRoute.Sitemap = areaServicePairs.map(
+    ({ city, service }) => ({
+      url: `${baseUrl}/areas/${city}/${service}`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    }),
+  );
+
+  return [
+    ...staticRoutes,
+    ...serviceRoutes,
+    ...areaRoutes,
+    ...areaServiceRoutes,
+  ];
 }

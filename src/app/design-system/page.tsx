@@ -101,9 +101,9 @@ export default function DesignSystemPage() {
             </div>
 
             {/* Logo Display Container */}
-            <div className="bg-white p-6 border-2 border-brand-navy shadow-cargo max-w-sm rounded-xs flex flex-col items-center">
+            <div className="bg-brand-paper p-6 border-2 border-brand-navy shadow-cargo max-w-sm rounded-xs flex flex-col items-center">
               <span className="font-mono text-[0.625rem] font-bold tracking-widest text-brand-navy/60 uppercase mb-3 self-start">
-                BRAND ASSET: public/brand/logo.svg
+                BRAND ASSET: public/brand/logo.svg (Transparent)
               </span>
               <div className="relative w-64 h-56">
                 <Image
@@ -676,7 +676,6 @@ export default function DesignSystemPage() {
             {/* Docket Top Banner */}
             <div className="bg-brand-navy text-white px-5 py-3 flex items-center justify-between border-b-2 border-brand-navy-950">
               <div className="flex items-center gap-3">
-                <span className="w-2.5 h-2.5 rounded-full bg-brand-red animate-pulse" />
                 <span className="font-display italic font-black uppercase text-sm tracking-wider">
                   UK LOGISTICS WAYBILL #84920
                 </span>
