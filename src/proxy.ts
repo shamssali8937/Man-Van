@@ -4,10 +4,8 @@ export function proxy(request: NextRequest) {
   // Generate cryptographically secure per-request nonce
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
 
-  const isDev = process.env.NODE_ENV !== "production";
-  const scriptSrcDirective = isDev
-    ? `script-src 'self' 'unsafe-eval' 'nonce-${nonce}' 'strict-dynamic' https://challenges.cloudflare.com https://www.googletagmanager.com;`
-    : `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://challenges.cloudflare.com https://www.googletagmanager.com;`;
+  const scriptSrcDirective =
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://www.googletagmanager.com;";
 
   // Strict Content-Security-Policy:
   // Allows only self, per-request nonce, Cloudflare Turnstile, and Google Tag Manager

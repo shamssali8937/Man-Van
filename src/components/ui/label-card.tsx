@@ -111,6 +111,7 @@ export function LabelCard({
 
   return (
     <div
+      suppressHydrationWarning
       className={twMerge(
         clsx(
           "relative flex flex-col rounded-sm overflow-hidden",
