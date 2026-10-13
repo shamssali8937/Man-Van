@@ -16,8 +16,6 @@ interface Props {
   params: Promise<{ service: string }>;
 }
 
-export const instant = false;
-
 export async function generateStaticParams() {
   return services.map((service) => ({
     service: service.slug,

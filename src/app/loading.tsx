@@ -5,7 +5,7 @@ export default function Loading() {
         {/* Animated outer ring in brand ink navy */}
         <div className="h-14 w-14 rounded-full border-4 border-slate-200 border-t-red-600 animate-spin" />
         {/* Brand center marker */}
-        <span className="absolute h-3 w-3 rounded-full bg-[#0B2152] animate-ping" />
+        <span className="absolute h-3 w-3 rounded-full bg-[#0B2152]" />
       </div>
 
       <p className="mt-4 text-xs font-bold uppercase tracking-wider text-slate-500">

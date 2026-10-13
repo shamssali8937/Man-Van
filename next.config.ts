@@ -4,8 +4,6 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   compress: true,
-  cacheComponents: true,
-  partialPrefetching: true,
   images: {
     formats: ["image/avif", "image/webp"],
   },
