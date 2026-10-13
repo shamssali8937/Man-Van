@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { type ReactNode, Suspense } from "react";
 import "@/styles/globals.css";
+import { CookieConsentBanner } from "@/components/common/cookie-consent";
 import { Footer, Header, MobileActionBar } from "@/components/layout";
 import { siteConfig } from "@/content/site";
 import { constructMetadata } from "@/lib/seo/metadata";
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </div>
         <Footer />
         <MobileActionBar />
+        <CookieConsentBanner />
       </body>
     </html>
   );

@@ -7,6 +7,7 @@ import { siteConfig } from "./site";
 
 export * from "./areas";
 export * from "./faqs";
+export * from "./load-planner";
 export * from "./reviews";
 export * from "./services";
 export * from "./site";
@@ -53,6 +54,31 @@ export function getGeneralFaqs(): FAQ[] {
  */
 export function getReviews(): Review[] {
   return reviews;
+}
+
+/**
+ * Retrieve nearby or regionally adjacent coverage areas.
+ */
+export function getNearbyAreas(currentSlug: string, limit = 4): Area[] {
+  const currentArea = areas.find((a) => a.slug === currentSlug);
+  if (!currentArea) return [];
+
+  const regionalMatches = areas.filter(
+    (a) =>
+      a.slug !== currentSlug &&
+      (a.region === currentArea.region || a.county === currentArea.county),
+  );
+
+  if (regionalMatches.length >= limit) {
+    return regionalMatches.slice(0, limit);
+  }
+
+  const remaining = areas.filter(
+    (a) =>
+      a.slug !== currentSlug && !regionalMatches.some((m) => m.slug === a.slug),
+  );
+
+  return [...regionalMatches, ...remaining].slice(0, limit);
 }
 
 export { siteConfig };

@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  poweredByHeader: false,
+  reactStrictMode: true,
+  compress: true,
   cacheComponents: true,
   partialPrefetching: true,
   images: {
@@ -14,6 +16,20 @@ const nextConfig: NextConfig = {
         as: "*.css",
       },
     },
+  },
+  async headers() {
+    return [
+      {
+        // Cache static assets (images, fonts) for 1 year immutable
+        source: "/:all*(svg|jpg|jpeg|png|webp|avif|woff|woff2|ico)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+    ];
   },
 };
 

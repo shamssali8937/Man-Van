@@ -7,18 +7,27 @@ interface TurnstileVerifyResponse {
   hostname?: string;
 }
 
+/**
+ * Server-side verification of Cloudflare Turnstile token.
+ * If Turnstile is omitted / unconfigured in environment, gracefully returns true.
+ */
 export async function verifyTurnstileToken(
   token: string,
   remoteIp?: string,
 ): Promise<boolean> {
-  // If turnstile secret is not set (e.g. in local development / test), bypass verification
-  if (!env.CLOUDFLARE_TURNSTILE_SECRET_KEY) {
+  // If no secret key is configured, bypass Turnstile verification
+  if (!env.TURNSTILE_SECRET_KEY) {
     return true;
+  }
+
+  // If token is missing when secret key IS required, fail verification
+  if (!token) {
+    return false;
   }
 
   try {
     const formData = new URLSearchParams();
-    formData.append("secret", env.CLOUDFLARE_TURNSTILE_SECRET_KEY);
+    formData.append("secret", env.TURNSTILE_SECRET_KEY);
     formData.append("response", token);
     if (remoteIp) {
       formData.append("remoteip", remoteIp);
@@ -38,7 +47,7 @@ export async function verifyTurnstileToken(
     const data = (await response.json()) as TurnstileVerifyResponse;
     return Boolean(data.success);
   } catch (error) {
-    console.error("Cloudflare Turnstile verification error:", error);
+    console.error("Cloudflare Turnstile verification network error:", error);
     return false;
   }
 }
