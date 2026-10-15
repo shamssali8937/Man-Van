@@ -117,21 +117,21 @@ export function VanSelector({
                 </div>
 
                 {/* Specs Box */}
-                <div className="space-y-1.5 pt-2 border-t border-brand-navy/10 text-[11px] font-mono text-brand-navy/80">
+                <div className="space-y-1.5 pt-2 border-t border-brand-navy/10 text-[11px] font-mono text-brand-navy/85">
                   <div className="flex justify-between">
-                    <span className="text-brand-navy/60">Payload:</span>
+                    <span className="text-brand-navy/85">Payload:</span>
                     <span className="font-bold text-brand-navy">
                       {van.payload}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-brand-navy/60">Dimensions:</span>
+                    <span className="text-brand-navy/85">Dimensions:</span>
                     <span className="font-bold text-brand-navy">
                       {van.dimensions}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-brand-navy/60">Recommended:</span>
+                    <span className="text-brand-navy/85">Recommended:</span>
                     <span className="font-bold text-brand-navy">
                       {van.recommendedCrew}
                     </span>
@@ -139,7 +139,7 @@ export function VanSelector({
                 </div>
 
                 {/* Suitability Note */}
-                <p className="mt-3 pt-2 border-t border-brand-navy/10 text-xs font-sans text-brand-navy/75 leading-relaxed">
+                <p className="mt-3 pt-2 border-t border-brand-navy/10 text-xs font-sans text-brand-navy/90 leading-relaxed">
                   {van.description}
                 </p>
 

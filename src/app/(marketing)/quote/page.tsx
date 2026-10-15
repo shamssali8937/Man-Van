@@ -13,7 +13,7 @@ export const metadata: Metadata = constructMetadata({
 
 export default function QuotePage() {
   return (
-    <main className="bg-route-grid bg-brand-paper min-h-screen pb-20">
+    <div className="bg-route-grid bg-brand-paper min-h-screen pb-20">
       {/* Top Warning Caution Stripe */}
       <TapeDivider
         size="sm"
@@ -109,6 +109,6 @@ export default function QuotePage() {
           </div>
         </Container>
       </section>
-    </main>
+    </div>
   );
 }

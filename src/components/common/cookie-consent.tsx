@@ -159,7 +159,7 @@ export function CookieConsentBanner() {
               Privacy &amp; Cookie Preferences
             </h2>
           </div>
-          <span className="font-mono text-[0.625rem] text-brand-navy/60 uppercase">
+          <span className="font-mono text-[0.625rem] text-brand-navy/85 font-semibold uppercase">
             REGULATORY NOTICE
           </span>
         </div>
@@ -251,7 +251,7 @@ export function CookieConsentBanner() {
 
         {/* Bottom Actions Row: Accept, Reject, Manage */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
-          <div className="text-[0.6875rem] font-sans text-brand-navy/75">
+          <div className="text-[0.6875rem] font-sans text-brand-navy/90">
             Read our full{" "}
             <Link
               href="/privacy"

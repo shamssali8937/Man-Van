@@ -133,6 +133,7 @@ export function Header() {
                   src="/brand/logo.svg"
                   alt="AB Removals – Man and Van"
                   fill
+                  sizes="(max-width: 640px) 144px, 176px"
                   className="object-contain object-left"
                   priority
                 />

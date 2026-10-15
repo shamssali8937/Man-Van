@@ -106,14 +106,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Suspense>
           <Header />
         </Suspense>
-        <div
+        <main
           id="main-content"
           tabIndex={-1}
           suppressHydrationWarning
           className="flex-1 flex flex-col focus:outline-none"
         >
           {children}
-        </div>
+        </main>
         <Footer />
         <MobileActionBar />
         <FloatingWhatsApp />

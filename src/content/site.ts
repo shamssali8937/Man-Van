@@ -21,7 +21,8 @@ export const siteConfig = {
   telephone: "07405 328 674",
   telHref: "tel:+447405328674",
   whatsappNumber: "+447405328674",
-  whatsappHref: "https://wa.me/447405328674",
+  whatsappHref:
+    "https://wa.me/447405328674?text=Hello%20AB%20Removals%2C%20I%20would%20like%20to%20get%20a%20free%20quote%20for%20a%20move.%20Please%20let%20me%20know%20your%20availability%20and%20rates.",
   email: "quotes@abremovals.co.uk",
 
   // Address & Operating Details

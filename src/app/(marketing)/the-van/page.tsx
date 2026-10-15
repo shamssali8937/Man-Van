@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { Breadcrumbs } from "@/components/common/breadcrumbs";
 import { QuoteCtaCard } from "@/components/common/quote-cta-card";
@@ -10,7 +11,24 @@ import {
   Stamp,
   TapeDivider,
 } from "@/components/ui";
-import { VanGallery, type VanImage } from "@/components/van/van-gallery";
+import type { VanImage } from "@/components/van/van-gallery";
+
+const VanGallery = dynamic(
+  () => import("@/components/van/van-gallery").then((mod) => mod.VanGallery),
+  {
+    loading: () => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-pulse">
+        {[1, 2, 3, 4, 5, 6].map((n) => (
+          <div
+            key={n}
+            className="aspect-4/3 bg-brand-paper-light rounded-xs border-2 border-brand-navy/20"
+          />
+        ))}
+      </div>
+    ),
+  },
+);
+
 import {
   constructMetadata,
   formatSeoDescription,
@@ -314,7 +332,7 @@ export default function TheVanPage() {
         </Container>
       </div>
 
-      <main className="py-10 md:py-16">
+      <div className="py-10 md:py-16">
         <Container>
           {/* Hero Section */}
           <div className="max-w-4xl space-y-4 mb-12 md:mb-16">
@@ -407,7 +425,7 @@ export default function TheVanPage() {
                         src={van.image}
                         alt={van.imageAlt}
                         fill
-                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                         className="object-cover"
                       />
                     </div>
@@ -416,7 +434,7 @@ export default function TheVanPage() {
                     <div className="p-4 sm:p-6 space-y-4">
                       <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 bg-brand-paper-light p-3 rounded-xs border border-brand-navy/20 font-mono text-xs">
                         <div>
-                          <span className="text-brand-navy/60 block text-[10px] uppercase font-bold">
+                          <span className="text-brand-navy/85 block text-[10px] uppercase font-bold">
                             CARGO VOLUME:
                           </span>
                           <span className="font-black text-brand-navy text-sm">
@@ -424,7 +442,7 @@ export default function TheVanPage() {
                           </span>
                         </div>
                         <div>
-                          <span className="text-brand-navy/60 block text-[10px] uppercase font-bold">
+                          <span className="text-brand-navy/85 block text-[10px] uppercase font-bold">
                             PAYLOAD CAPACITY:
                           </span>
                           <span className="font-black text-brand-red text-sm">
@@ -432,7 +450,7 @@ export default function TheVanPage() {
                           </span>
                         </div>
                         <div className="col-span-2 sm:col-span-1">
-                          <span className="text-brand-navy/60 block text-[10px] uppercase font-bold">
+                          <span className="text-brand-navy/85 block text-[10px] uppercase font-bold">
                             DIMENSIONS:
                           </span>
                           <span className="font-bold text-brand-navy text-xs">
@@ -444,7 +462,7 @@ export default function TheVanPage() {
                       {/* Best For & Capacity Scope */}
                       <div className="space-y-2 text-xs">
                         <div>
-                          <span className="font-mono font-bold uppercase text-brand-navy/70 block">
+                          <span className="font-mono font-bold uppercase text-brand-navy/85 block">
                             TYPICAL CAPACITY:
                           </span>
                           <p className="font-sans font-bold text-brand-navy mt-0.5">
@@ -837,7 +855,7 @@ export default function TheVanPage() {
             description="Select your vehicle size and get a guaranteed transparent price with zero stairs charges, zero hidden mileage fees, and fully insured UK transit."
           />
         </Container>
-      </main>
+      </div>
     </div>
   );
 }

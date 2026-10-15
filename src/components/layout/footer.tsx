@@ -33,6 +33,7 @@ export function Footer() {
                     src="/brand/logo-light.svg"
                     alt="AB Removals – Man and Van"
                     fill
+                    sizes="160px"
                     className="object-contain object-left"
                   />
                 </div>

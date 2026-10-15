@@ -103,7 +103,7 @@ export default function HomePage() {
   const top6Faqs = faqs.slice(0, 6);
 
   return (
-    <>
+    <div className="flex-1">
       {/* Top Utilitarian Road Tape Accent */}
       <TapeDivider
         size="sm"
@@ -960,6 +960,6 @@ export default function HomePage() {
           </Container>
         </div>
       </section>
-    </>
+    </div>
   );
 }

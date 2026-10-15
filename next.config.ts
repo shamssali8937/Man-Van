@@ -18,8 +18,26 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        // Cache static assets (images, fonts) for 1 year immutable
+        // Cache static assets (images, fonts, brand, icons) for 1 year immutable
         source: "/:all*(svg|jpg|jpeg|png|webp|avif|woff|woff2|ico)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/images/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/brand/:path*",
         headers: [
           {
             key: "Cache-Control",

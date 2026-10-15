@@ -67,16 +67,15 @@ export function VanGallery({ images }: VanGalleryProps) {
             type="button"
             onClick={() => setSelectedIndex(index)}
             className="group relative flex flex-col text-left overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-xs hover:shadow-md hover:border-red-300 transition-all focus:outline-hidden focus:ring-2 focus:ring-red-500 cursor-zoom-in"
-            aria-label={`View enlarged photo: ${img.caption}`}
           >
             <div className="relative aspect-4/3 w-full overflow-hidden bg-slate-100">
               <Image
                 src={img.src}
                 alt={img.alt}
                 fill
-                sizes="(max-width: 768px) 100vw, 33vw"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
-                priority={index === 0}
+                loading="lazy"
               />
               <span className="absolute top-3 left-3 rounded-full bg-slate-900/80 backdrop-blur-xs px-3 py-1 text-xs font-semibold text-white">
                 {img.badge}
@@ -202,6 +201,7 @@ export function VanGallery({ images }: VanGalleryProps) {
                 src={images[selectedIndex].src}
                 alt={images[selectedIndex].alt}
                 fill
+                sizes="(max-width: 1024px) 100vw, 1024px"
                 className="object-contain"
                 priority
               />
