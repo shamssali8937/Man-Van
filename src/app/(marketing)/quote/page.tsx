@@ -7,7 +7,7 @@ import { constructMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = constructMetadata({
   title: "Request a Free Moving Quote | Direct UK Removals & Man and Van",
   description:
-    "Calculate your cargo volume with our interactive 3.5t Luton van load planner and request a transparent, fixed quote. Dedicated UK-wide moves with zero hidden fees.",
+    "Select your van size, enter your UK collection and delivery postcodes, and request a transparent, fixed removals quote. Dedicated direct transit with zero hidden fees.",
   path: "/quote",
 });
 
@@ -42,11 +42,10 @@ export default function QuotePage() {
             </Heading>
 
             <p className="font-sans text-base sm:text-lg text-brand-navy/85 leading-relaxed max-w-3xl">
-              Use our interactive cargo planner to estimate your furniture
-              volume and recommended crew, or enter your transit specifications
-              directly. Every move includes dedicated 3.5t Luton box van
-              transport, 500kg hydraulic tail lift, and £50,000 Goods in Transit
-              insurance.
+              Select your vehicle size from our agile fleet — from compact
+              courier vans to our flagship 3.5-tonne Luton box vans equipped
+              with 500kg hydraulic tail lifts — and enter your route
+              specifications for an instant, transparent quotation.
             </p>
 
             {/* Trust highlights banner */}

@@ -32,7 +32,7 @@ export const siteConfig = {
     addressCountry: "GB",
     formatted: "Unit 4, Gateway Business Park, Silvertown Way, London, E16 1EA",
   },
-  openingHours: "Mon – Sat: 7:00 AM – 8:00 PM | Sun: 8:00 AM – 6:00 PM",
+  openingHours: "Open 24/7 (24 Hours, 7 Days a Week)",
   operatingAreas: "London, Midlands, and Nationwide UK Routes",
   insuranceDetails:
     "£50,000 Goods in Transit & £2,000,000 Public Liability Insurance",

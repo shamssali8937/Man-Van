@@ -176,3 +176,18 @@ details[open] summary ~ * {
     transform: translateY(0);
   }
 }
+
+/* Floating WhatsApp Button - Guaranteed Bottom-Right Positioning */
+.floating-whatsapp-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99999;
+}
+
+@media (max-width: 768px) {
+  .floating-whatsapp-container {
+    bottom: 84px;
+    right: 16px;
+  }
+}

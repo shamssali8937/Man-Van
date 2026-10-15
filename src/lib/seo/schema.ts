@@ -64,15 +64,10 @@ export function generateMovingCompanySchema() {
           "Thursday",
           "Friday",
           "Saturday",
+          "Sunday",
         ],
-        opens: "07:00",
-        closes: "20:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Sunday"],
-        opens: "08:00",
-        closes: "18:00",
+        opens: "00:00",
+        closes: "23:59",
       },
     ],
   };
