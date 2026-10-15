@@ -72,7 +72,11 @@ export const siteConfig = {
     { label: "Manchester Removals", href: "/areas/manchester" },
     { label: "Leeds Removals", href: "/areas/leeds" },
     { label: "Bristol Removals", href: "/areas/bristol" },
+    { label: "Liverpool Removals", href: "/areas/liverpool" },
+    { label: "Sheffield Removals", href: "/areas/sheffield" },
     { label: "Cardiff Removals", href: "/areas/cardiff" },
+    { label: "Glasgow Removals", href: "/areas/glasgow" },
+    { label: "Edinburgh Removals", href: "/areas/edinburgh" },
   ] as const satisfies readonly FooterLink[],
 
   // Legal Compliance Links

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/common/breadcrumbs";
 import { FaqAccordion } from "@/components/common/faq-accordion";
 import { QuoteCtaCard } from "@/components/common/quote-cta-card";
+import { JsonLd } from "@/components/seo/json-ld";
 import { areas } from "@/content/areas";
 import { services } from "@/content/services";
 import {
@@ -11,6 +12,7 @@ import {
   formatSeoDescription,
   formatSeoTitle,
 } from "@/lib/seo/metadata";
+import { generateServiceSchema } from "@/lib/seo/schema";
 
 interface Props {
   params: Promise<{ service: string }>;
@@ -57,6 +59,13 @@ export default async function ServiceDetailPage({ params }: Props) {
 
   return (
     <div className="bg-slate-50 min-h-screen">
+      <JsonLd
+        data={generateServiceSchema(
+          service.name,
+          service.shortDescription,
+          `/services/${service.slug}`,
+        )}
+      />
       {/* Top Banner & Breadcrumbs */}
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

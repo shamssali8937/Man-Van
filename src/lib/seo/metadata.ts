@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/content/site";
 
-interface MetadataProps {
+export interface MetadataProps {
   title?: string;
   exactTitle?: boolean;
   description?: string;
@@ -11,7 +11,7 @@ interface MetadataProps {
 }
 
 /**
- * Format an SEO title strictly under 60 characters.
+ * Format an SEO title strictly under 60 characters for optimal SERP display.
  */
 export function formatSeoTitle(
   title: string,
@@ -47,6 +47,10 @@ export function formatSeoDescription(desc: string, maxLen = 155): string {
   return `${truncated}...`;
 }
 
+/**
+ * Reusable typed metadata constructor for Next.js pages.
+ * Handles canonical URLs, en-GB hreflang alternates, Open Graph, Twitter cards, icons, and robots.
+ */
 export function constructMetadata({
   title,
   exactTitle = false,
@@ -55,7 +59,7 @@ export function constructMetadata({
   image = "/opengraph-image",
   noIndex = false,
 }: MetadataProps = {}): Metadata {
-  const fullTitle = title
+  const pageTitle = title
     ? exactTitle
       ? formatSeoTitle(title, "")
       : formatSeoTitle(title)
@@ -65,14 +69,22 @@ export function constructMetadata({
   const canonicalUrl = `${siteConfig.url}${path}`;
 
   return {
-    title: fullTitle,
-    description: finalDescription,
     metadataBase: new URL(siteConfig.url),
+    title: exactTitle
+      ? pageTitle
+      : {
+          default: pageTitle,
+          template: `%s | ${siteConfig.name}`,
+        },
+    description: finalDescription,
     alternates: {
       canonical: canonicalUrl,
+      languages: {
+        "en-GB": canonicalUrl,
+      },
     },
     openGraph: {
-      title: fullTitle,
+      title: pageTitle,
       description: finalDescription,
       url: canonicalUrl,
       siteName: siteConfig.name,
@@ -89,9 +101,18 @@ export function constructMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: fullTitle,
+      title: pageTitle,
       description: finalDescription,
       images: [image],
+    },
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "any" },
+        { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      ],
+      apple: [
+        { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      ],
     },
     robots: {
       index: !noIndex,

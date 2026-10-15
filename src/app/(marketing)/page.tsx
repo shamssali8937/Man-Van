@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { RouteTracker } from "@/components/marketing/route-tracker";
 import { UKRouteMap } from "@/components/marketing/uk-route-map";
 import {
   Badge,
@@ -105,9 +104,6 @@ export default function HomePage() {
 
   return (
     <>
-      {/* Desktop Waybill Section Tracker */}
-      <RouteTracker />
-
       {/* Top Utilitarian Road Tape Accent */}
       <TapeDivider
         size="sm"
@@ -355,11 +351,6 @@ export default function HomePage() {
                 <circle cx="650" cy="40" r="6" fill="#03234C" />
                 <circle cx="950" cy="60" r="6" fill="#03234C" />
               </svg>
-
-              {/* Scroll-Driven Traveling Van Icon along Desktop Arc */}
-              <div className="route-story-van-desktop absolute top-0 left-0 pointer-events-none -translate-x-1/2 -translate-y-1/2">
-                <LutonVanIcon className="w-12 h-8 drop-shadow-md" />
-              </div>
             </div>
 
             {/* 4 Story Steps Grid */}

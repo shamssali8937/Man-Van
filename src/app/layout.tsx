@@ -3,8 +3,13 @@ import { type ReactNode, Suspense } from "react";
 import "@/styles/globals.css";
 import { CookieConsentBanner } from "@/components/common/cookie-consent";
 import { Footer, Header, MobileActionBar } from "@/components/layout";
+import { JsonLd } from "@/components/seo/json-ld";
 import { siteConfig } from "@/content/site";
 import { constructMetadata } from "@/lib/seo/metadata";
+import {
+  generateMovingCompanySchema,
+  generateWebSiteSchema,
+} from "@/lib/seo/schema";
 import { fontDisplay, fontSans } from "@/styles/fonts";
 
 export const metadata: Metadata = constructMetadata({
@@ -30,6 +35,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         suppressHydrationWarning
         className="min-h-full flex flex-col font-sans antialiased text-brand-navy bg-brand-paper selection:bg-brand-red selection:text-white pb-16 md:pb-0"
       >
+        <JsonLd
+          data={[generateMovingCompanySchema(), generateWebSiteSchema()]}
+        />
         <Suspense>
           <Header />
         </Suspense>
