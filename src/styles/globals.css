@@ -122,16 +122,6 @@ details summary {
   list-style: none;
 }
 
-/* "The Route" Scroll-Driven Animations & Paths */
-@keyframes travelRouteArc {
-  from {
-    offset-distance: 0%;
-  }
-  to {
-    offset-distance: 100%;
-  }
-}
-
 @keyframes drawRouteDash {
   from {
     stroke-dashoffset: 1200;
@@ -141,35 +131,7 @@ details summary {
   }
 }
 
-/* Desktop Horizontal Story Arc */
-.route-story-van-desktop {
-  offset-path: path(
-    "M 40 60 C 260 10, 440 110, 640 40 C 780 -10, 880 90, 960 60"
-  );
-  offset-rotate: auto 0deg;
-  offset-distance: 0%;
-}
-
-/* Mobile Vertical Story Arc */
-.route-story-van-mobile {
-  offset-path: path("M 24 20 C 6 140, 42 260, 24 380 C 6 500, 42 620, 24 740");
-  offset-rotate: auto 90deg;
-  offset-distance: 0%;
-}
-
 @supports (animation-timeline: view()) {
-  .route-story-van-desktop {
-    animation: travelRouteArc linear both;
-    animation-timeline: view();
-    animation-range: entry 15% exit 85%;
-  }
-
-  .route-story-van-mobile {
-    animation: travelRouteArc linear both;
-    animation-timeline: view();
-    animation-range: entry 10% exit 85%;
-  }
-
   .route-story-dash-desktop,
   .route-story-dash-mobile {
     animation: drawRouteDash linear both;
@@ -180,12 +142,9 @@ details summary {
 
 /* Fallback & Accessibility for prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
-  .route-story-van-desktop,
-  .route-story-van-mobile,
   .route-story-dash-desktop,
   .route-story-dash-mobile {
     animation: none;
-    offset-distance: 100%;
     stroke-dashoffset: 0;
   }
 }
@@ -215,5 +174,20 @@ details[open] summary ~ * {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Floating WhatsApp Button - Guaranteed Bottom-Right Positioning */
+.floating-whatsapp-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99999;
+}
+
+@media (max-width: 768px) {
+  .floating-whatsapp-container {
+    bottom: 84px;
+    right: 16px;
   }
 }

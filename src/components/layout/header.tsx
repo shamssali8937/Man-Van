@@ -98,7 +98,7 @@ export function Header() {
 
           <div className="flex items-center gap-6">
             <span className="text-white/70">
-              OPERATING: {siteConfig.openingHours.split("[")[0]}
+              OPERATING: {siteConfig.openingHours}
             </span>
             <a
               href={siteConfig.telHref}
@@ -133,6 +133,7 @@ export function Header() {
                   src="/brand/logo.svg"
                   alt="AB Removals – Man and Van"
                   fill
+                  sizes="(max-width: 640px) 144px, 176px"
                   className="object-contain object-left"
                   priority
                 />
@@ -351,7 +352,7 @@ export function Header() {
               </a>
 
               <p className="text-[0.6875rem] font-mono text-center text-brand-navy/60">
-                {"UK LOGISTICS CORRIDOR — 7 DAYS A WEEK"}
+                {"UK LOGISTICS CORRIDOR — OPEN 24/7 (7 DAYS A WEEK)"}
               </p>
             </div>
           </div>

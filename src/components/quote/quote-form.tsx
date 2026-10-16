@@ -16,26 +16,47 @@ import {
 import { siteConfig } from "@/content/site";
 import {
   HELPER_OPTIONS,
-  type PlannerSummary,
   PROPERTY_TYPE_OPTIONS,
+  type QuoteFormInput,
   type QuoteFormValues,
   quoteFormSchema,
   SERVICE_TYPE_OPTIONS,
+  VAN_OPTIONS,
 } from "@/lib/validations/quote";
-import { TurnstileWidget } from "./turnstile-widget";
+import { PostcodeAutocomplete } from "./postcode-autocomplete";
+
+interface ExtraStop {
+  id: string;
+  postcode: string;
+  notes: string;
+}
 
 interface QuoteFormProps {
-  plannerSummary?: PlannerSummary;
+  vanType?: string;
+  onSelectVan?: (vanId: string) => void;
+  additionalVans?: string[];
+  onUpdateAdditionalVans?: (vans: string[]) => void;
   className?: string;
 }
 
 type SubmissionState = "idle" | "submitting" | "success" | "error";
 
-export function QuoteForm({ plannerSummary, className = "" }: QuoteFormProps) {
+export function QuoteForm({
+  vanType = "luton-tail-lift",
+  onSelectVan,
+  additionalVans = [],
+  onUpdateAdditionalVans,
+  className = "",
+}: QuoteFormProps) {
   const [submissionState, setSubmissionState] =
     useState<SubmissionState>("idle");
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [waybillReference, setWaybillReference] = useState<string>("");
+
+  // Extra Drop-off / Collection Stops along the route
+  const [showAdditionalStops, setShowAdditionalStops] =
+    useState<boolean>(false);
+  const [extraStops, setExtraStops] = useState<ExtraStop[]>([]);
 
   // Calculate today's minimum date in YYYY-MM-DD for native datepicker constraint
   const todayISO = new Date().toISOString().split("T")[0];
@@ -47,13 +68,19 @@ export function QuoteForm({ plannerSummary, className = "" }: QuoteFormProps) {
     watch,
     reset,
     formState: { errors },
-  } = useForm<QuoteFormValues>({
+  } = useForm<QuoteFormInput, unknown, QuoteFormValues>({
     resolver: zodResolver(quoteFormSchema),
     defaultValues: {
+      vanType: vanType,
+      hasAdditionalVan: additionalVans.length > 0,
+      additionalVans: additionalVans,
+      additionalVanDetails: "",
       serviceType: "house-removals",
       moveDate: todayISO,
       pickupPostcode: "",
       deliveryPostcode: "",
+      hasAdditionalStops: false,
+      additionalStops: "",
       helpers: "2_helpers",
       propertyType: "terraced",
       accessNotes: "",
@@ -67,12 +94,78 @@ export function QuoteForm({ plannerSummary, className = "" }: QuoteFormProps) {
     },
   });
 
-  // Keep plannerSummary in sync with form data
+  // Sync vanType and additionalVans props with form state
   useEffect(() => {
-    if (plannerSummary) {
-      setValue("plannerSummary", plannerSummary);
+    if (vanType) {
+      setValue("vanType", vanType);
     }
-  }, [plannerSummary, setValue]);
+    setValue("hasAdditionalVan", additionalVans.length > 0);
+    setValue("additionalVans", additionalVans);
+    if (additionalVans.length > 0) {
+      const details = additionalVans
+        .map((id, i) => {
+          const v = VAN_OPTIONS.find((opt) => opt.id === id);
+          return `Extra #${i + 1}: ${v?.name || id} (${v?.volume || ""})`;
+        })
+        .join("; ");
+      setValue("additionalVanDetails", details);
+    } else {
+      setValue("additionalVanDetails", "");
+    }
+  }, [vanType, additionalVans, setValue]);
+
+  // Keep additional stops synced with form data
+  useEffect(() => {
+    setValue("hasAdditionalStops", showAdditionalStops);
+    if (!showAdditionalStops || extraStops.length === 0) {
+      setValue("additionalStops", "");
+    } else {
+      const formatted = extraStops
+        .map(
+          (s, i) =>
+            `Via Stop ${i + 1}: ${s.postcode || "Pending postcode"}${
+              s.notes ? ` (Notes: ${s.notes})` : ""
+            }`,
+        )
+        .join("; ");
+      setValue("additionalStops", formatted);
+    }
+  }, [showAdditionalStops, extraStops, setValue]);
+
+  const handleToggleAdditionalStops = (enabled: boolean) => {
+    setShowAdditionalStops(enabled);
+    if (enabled && extraStops.length === 0) {
+      setExtraStops([{ id: "stop-1", postcode: "", notes: "" }]);
+    }
+  };
+
+  const handleAddStop = () => {
+    if (extraStops.length >= 3) return;
+    setExtraStops((prev) => [
+      ...prev,
+      { id: `stop-${Date.now()}`, postcode: "", notes: "" },
+    ]);
+  };
+
+  const handleRemoveStop = (id: string) => {
+    setExtraStops((prev) => {
+      const filtered = prev.filter((s) => s.id !== id);
+      if (filtered.length === 0) {
+        setShowAdditionalStops(false);
+      }
+      return filtered;
+    });
+  };
+
+  const handleUpdateStop = (
+    id: string,
+    field: "postcode" | "notes",
+    val: string,
+  ) => {
+    setExtraStops((prev) =>
+      prev.map((s) => (s.id === id ? { ...s, [field]: val } : s)),
+    );
+  };
 
   // Form submit handler
   const onSubmit = async (data: QuoteFormValues) => {
@@ -80,29 +173,21 @@ export function QuoteForm({ plannerSummary, className = "" }: QuoteFormProps) {
     setErrorMessage("");
 
     try {
-      // Ensure the latest plannerSummary is attached
-      const payload = {
-        ...data,
-        plannerSummary: plannerSummary || data.plannerSummary,
-      };
-
       const res = await fetch("/api/quote", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(data),
       });
 
       const json = await res.json().catch(() => ({}));
 
       if (res.ok) {
-        // Success state
         const ref = `AB-UK-${Math.floor(100000 + Math.random() * 900000)}`;
         setWaybillReference(ref);
         setSubmissionState("success");
       } else {
-        // Non-200 response (e.g. 501 stub or server error)
         setErrorMessage(
           json.error ||
             "The automated quote dispatch service returned an error. Please contact our direct line on 07405 328 674.",
@@ -119,9 +204,14 @@ export function QuoteForm({ plannerSummary, className = "" }: QuoteFormProps) {
 
   const handleResetForm = () => {
     reset();
+    setExtraStops([]);
+    setShowAdditionalStops(false);
     setSubmissionState("idle");
     setErrorMessage("");
   };
+
+  const selectedVanData =
+    VAN_OPTIONS.find((v) => v.id === watch("vanType")) || VAN_OPTIONS[0];
 
   // =========================================================================
   // SUCCESS SCREEN
@@ -152,52 +242,89 @@ export function QuoteForm({ plannerSummary, className = "" }: QuoteFormProps) {
         </h2>
 
         <p className="font-sans text-sm sm:text-base text-brand-navy/85 leading-relaxed mb-6">
-          Thank you for choosing {siteConfig.name}. Your consignment details
+          Thank you for choosing {siteConfig.name}. Your journey specifications
           have been routed to our transport dispatch desk. A dedicated
-          coordinator will review your route corridors, van capacity, and crew
-          requirements to provide your fixed, transparent quotation within 30
-          minutes.
+          coordinator will review your route corridors, allocated vehicle (
+          <strong>{selectedVanData.name}</strong>), and crew configuration to
+          provide your transparent, fixed quote within 30 minutes.
         </p>
 
-        {/* Dispatch Next Steps Card */}
-        <div className="bg-white border-2 border-brand-navy/20 p-5 rounded-xs space-y-3 mb-6 shadow-cargo-sm font-sans text-xs sm:text-sm">
-          <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-brand-navy">
-            WHAT HAPPENS NEXT:
-          </h3>
-          <ul className="space-y-2 text-brand-navy/80">
-            <li className="flex items-start gap-2">
-              <span className="font-bold text-brand-red">01.</span>
-              <span>
-                <strong>Route Verification:</strong> We calculate exact mileage
-                between collection and destination with zero return-trip
-                charges.
+        {/* Route Snapshot Manifest Box */}
+        <div className="bg-white border-2 border-brand-navy p-5 rounded-xs space-y-3 font-mono text-xs mb-6 shadow-cargo-sm">
+          <div className="flex justify-between border-b border-brand-navy/15 pb-2">
+            <span className="text-brand-navy/60 font-bold uppercase">
+              SELECTED FLEET:
+            </span>
+            <div className="text-right">
+              <span className="font-black text-brand-red uppercase block">
+                {selectedVanData.name}
               </span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="font-bold text-brand-red">02.</span>
-              <span>
-                <strong>Vehicle Allocation:</strong> Dedicated 3.5t Luton box
-                van reserved with tail lift and protective equipment.
+              {additionalVans.length > 0 && (
+                <span className="font-mono text-[11px] text-brand-navy block mt-0.5">
+                  + {additionalVans.length} Additional Van
+                  {additionalVans.length > 1 ? "s" : ""} (
+                  {additionalVans
+                    .map(
+                      (id) => VAN_OPTIONS.find((v) => v.id === id)?.shortName,
+                    )
+                    .join(", ")}
+                  )
+                </span>
+              )}
+            </div>
+          </div>
+
+          <div className="flex justify-between border-b border-brand-navy/15 pb-2">
+            <span className="text-brand-navy/60 font-bold uppercase">
+              TRANSIT CORRIDOR:
+            </span>
+            <span className="font-bold text-brand-navy">
+              {watch("pickupPostcode") || "UK Mainland"} →{" "}
+              {watch("deliveryPostcode") || "Destination"}
+            </span>
+          </div>
+
+          {showAdditionalStops && extraStops.length > 0 && (
+            <div className="border-b border-brand-navy/15 pb-2">
+              <span className="text-brand-navy/60 font-bold uppercase block mb-1">
+                ADDITIONAL VIA STOPS:
               </span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="font-bold text-brand-red">03.</span>
-              <span>
-                <strong>Direct Confirmation:</strong> We contact you directly on{" "}
-                <strong>{watch("phone") || siteConfig.telephone}</strong> with
-                your transparent quote.
-              </span>
-            </li>
-          </ul>
+              <ul className="list-disc pl-4 space-y-0.5 text-brand-navy">
+                {extraStops.map((s, i) => (
+                  <li key={s.id}>
+                    Stop {i + 1}: {s.postcode || "Specified postcode"}{" "}
+                    {s.notes && `(${s.notes})`}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <div className="flex justify-between border-b border-brand-navy/15 pb-2">
+            <span className="text-brand-navy/60 font-bold uppercase">
+              CREW CONFIGURATION:
+            </span>
+            <span className="font-bold text-brand-navy">
+              {HELPER_OPTIONS.find((h) => h.value === watch("helpers"))?.label}
+            </span>
+          </div>
+
+          <div className="flex justify-between">
+            <span className="text-brand-navy/60 font-bold uppercase">
+              SCHEDULED DATE:
+            </span>
+            <span className="font-bold text-brand-navy">
+              {watch("moveDate") || "Flexible / Pending"}
+            </span>
+          </div>
         </div>
 
-        {/* Direct contact action buttons */}
         <div className="flex flex-wrap items-center gap-3">
           <Button variant="primary" href={siteConfig.telHref}>
-            Call Direct: {siteConfig.telephone}
+            Call Hotline: {siteConfig.telephone}
           </Button>
           <Button variant="kraft" href={siteConfig.whatsappHref}>
-            WhatsApp Dispatch Desk
+            WhatsApp for Free Quote
           </Button>
           <Button variant="secondary" onClick={handleResetForm}>
             Submit Another Route Request
@@ -222,7 +349,7 @@ export function QuoteForm({ plannerSummary, className = "" }: QuoteFormProps) {
             STEP 02
           </Badge>
           <span className="font-mono text-xs uppercase tracking-wider text-brand-tan">
-            TRANSIT SPECIFICATION &amp; ACCESS
+            TRANSIT SPECIFICATION &amp; ROUTE DETAILS
           </span>
         </div>
         <h2
@@ -232,8 +359,8 @@ export function QuoteForm({ plannerSummary, className = "" }: QuoteFormProps) {
           Request Your Moving Quote
         </h2>
         <p className="font-sans text-xs sm:text-sm text-brand-paper/85 mt-1 leading-relaxed max-w-3xl">
-          Provide your route postcodes, moving date, and access specifications.
-          Zero hidden charges, zero co-loading, and full £50,000 Goods in
+          Enter your route postcodes, moving date, and access specifications.
+          Zero hidden stairs charges, zero co-loading, and full £50,000 Goods in
           Transit coverage.
         </p>
       </div>
@@ -269,7 +396,7 @@ export function QuoteForm({ plannerSummary, className = "" }: QuoteFormProps) {
                 Call Hotline: {siteConfig.telephone}
               </Button>
               <Button variant="kraft" size="sm" href={siteConfig.whatsappHref}>
-                WhatsApp Instant Quote
+                WhatsApp for Free Quote
               </Button>
               <button
                 type="button"
@@ -281,6 +408,79 @@ export function QuoteForm({ plannerSummary, className = "" }: QuoteFormProps) {
             </div>
           </div>
         )}
+
+        {/* =====================================================================
+            SECTION 0: SELECTED VEHICLE REVIEW
+            ===================================================================== */}
+        <div className="bg-brand-paper-rule p-4 border-2 border-brand-navy/30 rounded-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div>
+            <span className="font-mono text-[10px] font-bold text-brand-navy/70 uppercase tracking-widest block">
+              {additionalVans.length > 0
+                ? `ALLOCATED FLEET (${additionalVans.length + 1} VEHICLES):`
+                : "ALLOCATED VEHICLE FOR THIS QUOTE:"}
+            </span>
+            <div className="flex items-center gap-2 mt-0.5">
+              <span className="text-xl" aria-hidden="true">
+                🚚
+              </span>
+              <p className="font-display font-black text-lg text-brand-navy uppercase">
+                {selectedVanData.name}
+              </p>
+            </div>
+            {additionalVans.length > 0 ? (
+              <div className="mt-1 flex flex-wrap items-center gap-1.5">
+                <span className="font-mono text-xs font-bold text-brand-red uppercase">
+                  Additional Fleet:
+                </span>
+                {additionalVans.map((vanId, i) => {
+                  const extraVan = VAN_OPTIONS.find((v) => v.id === vanId);
+                  return (
+                    <span
+                      key={`review-extra-${i}-${vanId}`}
+                      className="inline-flex items-center gap-1 font-mono text-[11px] font-bold bg-white text-brand-navy px-2 py-0.5 rounded-xs border border-brand-navy/30"
+                    >
+                      + 1x {extraVan?.shortName || vanId}
+                      {onUpdateAdditionalVans && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const updated = [...additionalVans];
+                            updated.splice(i, 1);
+                            onUpdateAdditionalVans(updated);
+                          }}
+                          className="ml-1 text-brand-red hover:text-brand-navy cursor-pointer font-bold"
+                          title="Remove extra vehicle"
+                        >
+                          ✕
+                        </button>
+                      )}
+                    </span>
+                  );
+                })}
+              </div>
+            ) : (
+              <p className="font-mono text-xs text-brand-navy/70 mt-0.5">
+                {selectedVanData.volume} • Payload: {selectedVanData.payload} •{" "}
+                {selectedVanData.dimensions}
+              </p>
+            )}
+          </div>
+
+          <div className="flex items-center gap-2 shrink-0">
+            {onSelectVan && (
+              <button
+                type="button"
+                onClick={() => {
+                  const el = document.getElementById("van-selector-heading");
+                  el?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="font-mono text-xs font-bold underline text-brand-navy hover:text-brand-red uppercase"
+              >
+                Change Fleet ↑
+              </button>
+            )}
+          </div>
+        </div>
 
         {/* =====================================================================
             SECTION 1: ROUTE & SERVICE LOGISTICS
@@ -299,7 +499,6 @@ export function QuoteForm({ plannerSummary, className = "" }: QuoteFormProps) {
             {/* Service Type */}
             <Select
               label="Service Type"
-              required
               error={errors.serviceType?.message}
               options={SERVICE_TYPE_OPTIONS.map((s) => ({
                 value: s.value,
@@ -312,7 +511,6 @@ export function QuoteForm({ plannerSummary, className = "" }: QuoteFormProps) {
             <Input
               type="date"
               label="Moving Date"
-              required
               min={todayISO}
               hint="Select moving date (today or future)"
               error={errors.moveDate?.message}
@@ -321,51 +519,161 @@ export function QuoteForm({ plannerSummary, className = "" }: QuoteFormProps) {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* Collection Postcode */}
-            <Input
+            {/* Collection Postcode with Live Autocomplete Search */}
+            <PostcodeAutocomplete
+              name="pickupPostcode"
               label="Collection Postcode"
-              placeholder="e.g. SW1A 1AA or B1 1BB"
-              required
-              autoCapitalize="characters"
+              placeholder="e.g. SW1A 1AA or Westminster"
+              value={watch("pickupPostcode") || ""}
+              onChange={(val) =>
+                setValue("pickupPostcode", val, { shouldValidate: true })
+              }
               error={errors.pickupPostcode?.message}
-              hint="UK mainland collection address"
-              {...register("pickupPostcode")}
+              hint="Type UK postcode prefix or city name to search"
             />
 
-            {/* Delivery Postcode */}
-            <Input
+            {/* Delivery Postcode with Live Autocomplete Search */}
+            <PostcodeAutocomplete
+              name="deliveryPostcode"
               label="Delivery Postcode"
-              placeholder="e.g. M1 1AE or EH1 1YZ"
-              required
-              autoCapitalize="characters"
+              placeholder="e.g. M1 1AE or Manchester"
+              value={watch("deliveryPostcode") || ""}
+              onChange={(val) =>
+                setValue("deliveryPostcode", val, { shouldValidate: true })
+              }
               error={errors.deliveryPostcode?.message}
-              hint="UK mainland delivery destination"
-              {...register("deliveryPostcode")}
+              hint="Type UK delivery postcode or destination city"
             />
+          </div>
+
+          {/* =====================================================================
+              CHOOSEABLE ADDITIONAL DROP-OFF LOCATIONS
+              ===================================================================== */}
+          <div className="rounded-xs border-2 border-brand-navy/20 bg-brand-paper-light p-4 space-y-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <span className="font-display uppercase italic font-bold text-xs tracking-wider text-brand-navy block">
+                  Additional Drop-Off or Collection Stops?
+                </span>
+                <p className="font-sans text-xs text-brand-navy/70">
+                  Need to pick up or drop items at an extra flat, storage
+                  facility, or office along the route?
+                </p>
+              </div>
+
+              {/* Chooseable Yes / No Buttons */}
+              <div className="inline-flex rounded-xs border-2 border-brand-navy bg-white p-0.5 shadow-xs shrink-0">
+                <button
+                  type="button"
+                  onClick={() => handleToggleAdditionalStops(false)}
+                  className={`px-3 py-1 text-xs font-display font-black uppercase tracking-wider rounded-xs transition-colors ${
+                    !showAdditionalStops
+                      ? "bg-brand-navy text-white"
+                      : "text-brand-navy hover:bg-brand-paper"
+                  }`}
+                >
+                  Direct (No Stops)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleToggleAdditionalStops(true)}
+                  className={`px-3 py-1 text-xs font-display font-black uppercase tracking-wider rounded-xs transition-colors ${
+                    showAdditionalStops
+                      ? "bg-brand-red text-white"
+                      : "text-brand-navy hover:bg-brand-paper"
+                  }`}
+                >
+                  + Add Via Stops
+                </button>
+              </div>
+            </div>
+
+            {/* Expandable Additional Stops Section */}
+            {showAdditionalStops && (
+              <div className="pt-3 border-t border-brand-navy/15 space-y-4">
+                {extraStops.map((stop, index) => (
+                  <div
+                    key={stop.id}
+                    className="p-3.5 bg-white border border-brand-navy/30 rounded-xs shadow-xs space-y-3"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono text-xs font-bold text-brand-red uppercase">
+                        VIA STOP {index + 1}
+                      </span>
+                      {extraStops.length > 1 && (
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveStop(stop.id)}
+                          className="font-mono text-xs text-brand-red hover:underline font-bold uppercase cursor-pointer"
+                        >
+                          ✕ Remove Stop
+                        </button>
+                      )}
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <PostcodeAutocomplete
+                        name={`extraStop-${index}-postcode`}
+                        label={`Stop ${index + 1} Postcode`}
+                        placeholder="e.g. B1 1BB or Birmingham"
+                        value={stop.postcode}
+                        onChange={(val) =>
+                          handleUpdateStop(stop.id, "postcode", val)
+                        }
+                        hint="Address or postcode for this extra stop"
+                      />
+
+                      <div>
+                        <label
+                          htmlFor={`extraStop-${index}-notes`}
+                          className="block font-display uppercase italic font-bold text-xs tracking-wider text-brand-navy mb-1.5"
+                        >
+                          Stop Purpose / Instructions
+                        </label>
+                        <input
+                          id={`extraStop-${index}-notes`}
+                          type="text"
+                          value={stop.notes}
+                          onChange={(e) =>
+                            handleUpdateStop(stop.id, "notes", e.target.value)
+                          }
+                          placeholder="e.g. Pick up 4 boxes from Big Yellow Storage unit"
+                          className="w-full h-11 px-3.5 bg-white border-2 border-brand-navy/30 hover:border-brand-navy/60 text-brand-navy placeholder:text-brand-navy/40 font-sans text-sm rounded-xs transition-colors focus:outline-none focus:border-brand-navy focus:ring-2 focus:ring-brand-navy/15"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+
+                {extraStops.length < 3 && (
+                  <button
+                    type="button"
+                    onClick={handleAddStop}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-brand-paper border-2 border-dashed border-brand-navy text-brand-navy font-display font-black text-xs uppercase tracking-wider rounded-xs cursor-pointer transition-colors shadow-xs"
+                  >
+                    <span>+ Add Another Drop-Off Location</span>
+                  </button>
+                )}
+              </div>
+            )}
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Crew Helpers */}
             <Select
               label="Crew Configuration"
-              required
               error={errors.helpers?.message}
               options={HELPER_OPTIONS.map((h) => ({
                 value: h.value,
                 label: h.label,
               }))}
-              hint={
-                plannerSummary?.suggestedHelpers
-                  ? `Planner recommendation: ${plannerSummary.suggestedHelpers}`
-                  : "Choose driver-only for self-load, or multi-man crew for stairs/heavy items"
-              }
+              hint={`Allocated ${selectedVanData.shortName}: ${selectedVanData.recommendedCrew}`}
               {...register("helpers")}
             />
 
             {/* Property Type */}
             <Select
               label="Property / Premise Type"
-              required
               error={errors.propertyType?.message}
               options={PROPERTY_TYPE_OPTIONS.map((p) => ({
                 value: p.value,
@@ -386,27 +694,7 @@ export function QuoteForm({ plannerSummary, className = "" }: QuoteFormProps) {
         </div>
 
         {/* =====================================================================
-            SECTION 2: PLANNER INTEGRATION SUMMARY
-            ===================================================================== */}
-        {plannerSummary && plannerSummary.items.length > 0 && (
-          <div className="bg-brand-paper-rule p-4 border-2 border-brand-navy/30 rounded-xs space-y-2">
-            <div className="flex items-center justify-between">
-              <span className="font-mono text-xs font-bold text-brand-navy uppercase flex items-center gap-1.5">
-                ATTACHED CARGO ESTIMATE:
-              </span>
-              <span className="font-mono text-xs font-black text-brand-navy">
-                {plannerSummary.totalVolumeM3} m³ (~
-                {plannerSummary.vanFillPercentage}% Van Fill)
-              </span>
-            </div>
-            <p className="font-sans text-xs text-brand-navy/80 leading-relaxed">
-              {plannerSummary.summaryText}
-            </p>
-          </div>
-        )}
-
-        {/* =====================================================================
-            SECTION 3: CONTACT DETAILS
+            SECTION 2: CONTACT DETAILS
             ===================================================================== */}
         <div className="space-y-4 pt-2">
           <div className="border-b border-brand-navy/15 pb-2">
@@ -422,7 +710,6 @@ export function QuoteForm({ plannerSummary, className = "" }: QuoteFormProps) {
             <Input
               label="Full Name"
               placeholder="e.g. Jane Smith"
-              required
               error={errors.fullName?.message}
               {...register("fullName")}
             />
@@ -431,7 +718,6 @@ export function QuoteForm({ plannerSummary, className = "" }: QuoteFormProps) {
               type="tel"
               label="UK Telephone / Mobile"
               placeholder="e.g. 07405 328 674"
-              required
               error={errors.phone?.message}
               {...register("phone")}
             />
@@ -440,7 +726,6 @@ export function QuoteForm({ plannerSummary, className = "" }: QuoteFormProps) {
               type="email"
               label="Email Address"
               placeholder="e.g. jane@example.co.uk"
-              required
               error={errors.email?.message}
               {...register("email")}
             />
@@ -456,7 +741,7 @@ export function QuoteForm({ plannerSummary, className = "" }: QuoteFormProps) {
         </div>
 
         {/* =====================================================================
-            SECTION 4: COMPLIANCE, HONEYPOT & TURNSTILE
+            SECTION 3: COMPLIANCE & HONEYPOT (NO TURNSTILE)
             ===================================================================== */}
         <div className="space-y-4 pt-2 border-t border-brand-navy/15">
           {/* Hidden Honeypot Field (Spam Bot Protection) */}
@@ -473,12 +758,6 @@ export function QuoteForm({ plannerSummary, className = "" }: QuoteFormProps) {
               {...register("honeypot")}
             />
           </div>
-
-          {/* Cloudflare Turnstile Verification Widget */}
-          <TurnstileWidget
-            onVerify={(token) => setValue("turnstileToken", token)}
-            onError={() => setValue("turnstileToken", "client-verified")}
-          />
 
           {/* Consent Checkbox */}
           <div className="space-y-1">
@@ -527,15 +806,15 @@ export function QuoteForm({ plannerSummary, className = "" }: QuoteFormProps) {
             variant="primary"
             size="lg"
             disabled={submissionState === "submitting"}
-            className="w-full sm:w-auto px-8 py-3.5 text-base font-black tracking-wider cursor-pointer"
+            className="shadow-cargo-sm min-w-[200px]"
           >
             {submissionState === "submitting" ? (
               <span className="flex items-center gap-2">
-                <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                DISPATCHING ENQUIRY...
+                <span className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                TRANSMITTING ROUTE...
               </span>
             ) : (
-              "REQUEST FREE QUOTE NOW &rarr;"
+              "REQUEST FREE QUOTE"
             )}
           </Button>
         </div>

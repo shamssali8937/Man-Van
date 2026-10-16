@@ -132,7 +132,7 @@ export function ContactForm() {
             htmlFor="fullName"
             className="block text-xs font-bold text-slate-900 uppercase tracking-wider mb-1.5"
           >
-            Full Name <span className="text-red-500">*</span>
+            Full Name
           </label>
           <input
             id="fullName"
@@ -157,7 +157,7 @@ export function ContactForm() {
             htmlFor="email"
             className="block text-xs font-bold text-slate-900 uppercase tracking-wider mb-1.5"
           >
-            Email Address <span className="text-red-500">*</span>
+            Email Address
           </label>
           <input
             id="email"
@@ -184,7 +184,7 @@ export function ContactForm() {
             htmlFor="phone"
             className="block text-xs font-bold text-slate-900 uppercase tracking-wider mb-1.5"
           >
-            Telephone Number <span className="text-red-500">*</span>
+            Telephone Number
           </label>
           <input
             id="phone"
@@ -209,7 +209,7 @@ export function ContactForm() {
             htmlFor="subject"
             className="block text-xs font-bold text-slate-900 uppercase tracking-wider mb-1.5"
           >
-            Subject <span className="text-red-500">*</span>
+            Subject
           </label>
           <input
             id="subject"
@@ -235,7 +235,7 @@ export function ContactForm() {
           htmlFor="message"
           className="block text-xs font-bold text-slate-900 uppercase tracking-wider mb-1.5"
         >
-          Message <span className="text-red-500">*</span>
+          Message
         </label>
         <textarea
           id="message"

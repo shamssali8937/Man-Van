@@ -285,4 +285,35 @@ describe("Quote Form Zod Schema Validation", () => {
       expect(metrics.hasHeavyItems).toBe(true);
     });
   });
+
+  describe("Additional Van Fleet Options", () => {
+    it("validates quote with multi-vehicle additional vans configured", () => {
+      const multiVanData = {
+        vanType: "luton-tail-lift",
+        hasAdditionalVan: true,
+        additionalVans: ["luton-tail-lift", "lwb-van"],
+        additionalVanDetails:
+          "Extra #1: 3.5T Luton Box Van; Extra #2: Large High-Roof Panel Van",
+        serviceType: "house-removals",
+        moveDate: getFutureDateISO(10),
+        pickupPostcode: "SW1A 1AA",
+        deliveryPostcode: "M1 1AE",
+        helpers: "3_helpers" as const,
+        propertyType: "detached",
+        fullName: "Sarah Connor",
+        phone: "07405 328 674",
+        email: "sarah@example.com",
+        consent: true,
+      };
+
+      const result = quoteFormSchema.safeParse(multiVanData);
+      expect(result.success).toBe(true);
+      if (result.success) {
+        expect(result.data.hasAdditionalVan).toBe(true);
+        expect(result.data.additionalVans).toHaveLength(2);
+        expect(result.data.additionalVans).toContain("luton-tail-lift");
+        expect(result.data.additionalVans).toContain("lwb-van");
+      }
+    });
+  });
 });

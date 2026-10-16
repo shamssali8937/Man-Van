@@ -57,7 +57,7 @@ export function Stamp({
   }[size];
 
   const variantClasses = {
-    red: "border-brand-red text-brand-red bg-brand-red/5 [text-shadow:0_0_1px_rgba(220,1,9,0.3)]",
+    red: "border-brand-red-700 text-brand-red-700 bg-brand-red/5 [text-shadow:0_0_1px_rgba(185,0,8,0.3)]",
     navy: "border-brand-navy text-brand-navy bg-brand-navy/5 [text-shadow:0_0_1px_rgba(3,35,76,0.3)]",
     kraft:
       "border-brand-tan-800 text-brand-tan-800 bg-brand-tan/10 [text-shadow:0_0_1px_rgba(142,88,36,0.3)]",

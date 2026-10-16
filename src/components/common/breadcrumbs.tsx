@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { JsonLd } from "@/components/seo/json-ld";
 import { siteConfig } from "@/content/site";
 
 export interface BreadcrumbItem {
@@ -38,11 +39,7 @@ export function Breadcrumbs({ items, className = "" }: BreadcrumbsProps) {
       aria-label="Breadcrumbs"
       className={`py-3 text-xs md:text-sm font-medium text-slate-600 ${className}`}
     >
-      <script
-        type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: Valid JSON-LD structured data
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
       <ol className="flex flex-wrap items-center gap-1.5 md:gap-2">
         {fullItems.map((item, index) => {
           const isLast = index === fullItems.length - 1;

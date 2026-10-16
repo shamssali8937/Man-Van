@@ -1,3 +1,5 @@
+import { JsonLd } from "@/components/seo/json-ld";
+
 interface FAQItem {
   question: string;
   answer: string;
@@ -33,11 +35,7 @@ export function FaqAccordion({
 
   return (
     <section className={`w-full ${className}`}>
-      <script
-        type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: Valid JSON-LD structured data
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <JsonLd data={faqSchema} />
       {title && (
         <div className="mb-6 md:mb-8 text-center max-w-2xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-slate-900">

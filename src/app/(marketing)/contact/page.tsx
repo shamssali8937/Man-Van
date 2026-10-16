@@ -58,7 +58,7 @@ export default function ContactPage() {
                   </span>
                   <div>
                     <span className="block text-xs font-bold uppercase tracking-wider text-slate-500">
-                      Telephone Enquiries
+                      Call Us for Free Quote
                     </span>
                     <a
                       href={siteConfig.telHref}
@@ -86,7 +86,7 @@ export default function ContactPage() {
                       rel="noopener noreferrer"
                       className="font-bold text-emerald-700 hover:underline text-base"
                     >
-                      Chat on WhatsApp
+                      WhatsApp for Free Quote
                     </a>
                     <span className="block text-xs text-slate-500 mt-0.5">
                       Fast responses, photo & inventory checks
@@ -123,10 +123,11 @@ export default function ContactPage() {
                       Operating Hours
                     </span>
                     <span className="font-semibold text-slate-900 text-sm block">
-                      Mon – Sat: 7:00 AM – 8:00 PM | Sun: 8:00 AM – 6:00 PM
+                      Open 24/7 (24 Hours, 7 Days a Week)
                     </span>
                     <span className="text-xs text-slate-500 mt-0.5 block">
-                      Dispatch team available 7 days a week for nationwide moves
+                      Dispatch team available 24/7 for nationwide moves &amp;
+                      urgent bookings
                     </span>
                   </div>
                 </li>

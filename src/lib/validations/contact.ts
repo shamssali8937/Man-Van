@@ -4,28 +4,41 @@ export const contactFormSchema = z.object({
   fullName: z
     .string()
     .trim()
-    .min(2, "Please enter your name (at least 2 characters)")
-    .max(80, "Name must be under 80 characters"),
+    .max(80, "Name must be under 80 characters")
+    .optional()
+    .default(""),
   email: z
     .string()
     .trim()
-    .email("Please provide a valid email address")
-    .max(120, "Email must be under 120 characters"),
+    .max(120, "Email must be under 120 characters")
+    .optional()
+    .default("")
+    .refine(
+      (val) => !val || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val),
+      "Please provide a valid email address",
+    ),
   phone: z
     .string()
     .trim()
-    .min(7, "Please provide a valid telephone number")
-    .max(25, "Phone number is too long"),
+    .max(25, "Phone number is too long")
+    .optional()
+    .default("")
+    .refine(
+      (val) => !val || val.length >= 7,
+      "Please provide a valid telephone number",
+    ),
   subject: z
     .string()
     .trim()
-    .min(2, "Please provide a subject")
-    .max(120, "Subject must be under 120 characters"),
+    .max(120, "Subject must be under 120 characters")
+    .optional()
+    .default(""),
   message: z
     .string()
     .trim()
-    .min(10, "Please provide a message with at least 10 characters")
-    .max(2000, "Message must be under 2000 characters"),
+    .max(2000, "Message must be under 2000 characters")
+    .optional()
+    .default(""),
   honeypot: z.string().optional(),
 });
 

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { RouteTracker } from "@/components/marketing/route-tracker";
 import { UKRouteMap } from "@/components/marketing/uk-route-map";
 import {
   Badge,
@@ -104,10 +103,7 @@ export default function HomePage() {
   const top6Faqs = faqs.slice(0, 6);
 
   return (
-    <>
-      {/* Desktop Waybill Section Tracker */}
-      <RouteTracker />
-
+    <div className="flex-1">
       {/* Top Utilitarian Road Tape Accent */}
       <TapeDivider
         size="sm"
@@ -191,13 +187,11 @@ export default function HomePage() {
 
                 <div className="relative aspect-[960/718] w-full overflow-hidden bg-brand-navy/10 border border-brand-navy/20">
                   <Image
-                    src="/images/vans/van-2.jpeg"
-                    alt="White Mercedes-Benz Sprinter 3.5-tonne Luton box van with hydraulic tail lift parked outdoors at sunset"
+                    src="/images/vans/hero-van-branded.jpeg"
+                    alt="White Mercedes-Benz Sprinter 3.5-tonne Luton box van with AB Removals corporate logo livery decaled on the side and hydraulic tail lift"
                     width={960}
                     height={718}
                     priority
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAALABADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oADAMBAAIRAxEAPwBkEkcU/mL5Mbg5C7yAfz/xrRjv42H7z52A58vnB9KxpFUsCVGfXFTxfdB71EJXXmQpX0P/2Q=="
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                     className="w-full h-full object-cover"
                   />
@@ -355,11 +349,6 @@ export default function HomePage() {
                 <circle cx="650" cy="40" r="6" fill="#03234C" />
                 <circle cx="950" cy="60" r="6" fill="#03234C" />
               </svg>
-
-              {/* Scroll-Driven Traveling Van Icon along Desktop Arc */}
-              <div className="route-story-van-desktop absolute top-0 left-0 pointer-events-none -translate-x-1/2 -translate-y-1/2">
-                <LutonVanIcon className="w-12 h-8 drop-shadow-md" />
-              </div>
             </div>
 
             {/* 4 Story Steps Grid */}
@@ -971,6 +960,6 @@ export default function HomePage() {
           </Container>
         </div>
       </section>
-    </>
+    </div>
   );
 }

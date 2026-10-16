@@ -81,103 +81,174 @@ export const plannerSummarySchema = z.object({
   summaryText: z.string().optional(),
 });
 
+export interface VanOption {
+  id: string;
+  name: string;
+  shortName: string;
+  volume: string;
+  payload: string;
+  dimensions: string;
+  badge?: string;
+  description: string;
+  recommendedCrew: string;
+}
+
+export const VAN_OPTIONS: readonly VanOption[] = [
+  {
+    id: "luton-tail-lift",
+    name: "3.5T Luton Box Van (Hydraulic Tail Lift)",
+    shortName: "3.5T Luton Van",
+    volume: "19.0 m³ (670 cu ft)",
+    payload: "1,000 kg",
+    dimensions: "4.1m (L) x 2.0m (W) x 2.2m (H)",
+    badge: "Most Popular / Flagship",
+    description:
+      "Full Luton coachbuild with 500kg hydraulic tail lift and cab over-pod. Best for 2–3 bed houses, full flats, bulky furniture, and upright pianos.",
+    recommendedCrew: "Two-Man Crew (Full Service)",
+  },
+  {
+    id: "lwb-van",
+    name: "Long Wheelbase (LWB) High Roof Van",
+    shortName: "LWB Sprinter",
+    volume: "14.0 m³ (490 cu ft)",
+    payload: "1,200 kg",
+    dimensions: "3.7m (L) x 1.7m (W) x 1.9m (H)",
+    badge: "1–2 Bed Moves",
+    description:
+      "High-roof panel van with wide side-loading door. Best for 1–2 bedroom apartments, sofa sets, wardrobes, and commercial stock.",
+    recommendedCrew: "Driver + 1 Helper",
+  },
+  {
+    id: "mwb-van",
+    name: "Medium Wheelbase (MWB) Transit Van",
+    shortName: "MWB Custom",
+    volume: "8.5 m³ (300 cu ft)",
+    payload: "1,000 kg",
+    dimensions: "2.9m (L) x 1.7m (W) x 1.7m (H)",
+    badge: "Studio & Flat Moves",
+    description:
+      "Compact agile van for city street moves, studio flats, student rooms, sofa pickup, bed frame, and 20–25 medium boxes.",
+    recommendedCrew: "Driver Only or 1 Helper",
+  },
+  {
+    id: "small-van",
+    name: "Small Transit Connect / Cargo Van",
+    shortName: "Small Cargo Van",
+    volume: "3.5 m³ (120 cu ft)",
+    payload: "600–800 kg",
+    dimensions: "1.8m (L) x 1.4m (W) x 1.2m (H)",
+    badge: "Single Item / Luggage",
+    description:
+      "Fast courier transport for single bulky items, store pickups, washing machines, suitcases, student trunks, and 10–15 boxes.",
+    recommendedCrew: "Driver Only (Self-loading)",
+  },
+] as const;
+
 export const quoteFormSchema = z.object({
+  // 0. Selected Vehicle & Fleet Sizing
+  vanType: z.string().default("luton-tail-lift"),
+  hasAdditionalVan: z.boolean().default(false),
+  additionalVans: z.array(z.string()).default([]),
+  additionalVanDetails: z.string().default(""),
+
   // 1. Move Logistics
-  serviceType: z
-    .string({ required_error: "Please select a removals service" })
-    .min(1, "Please select a removals service"),
+  serviceType: z.string().default("house-removals"),
 
   moveDate: z
-    .string({ required_error: "Please choose your moving date" })
-    .min(1, "Please choose your moving date")
+    .string()
+    .default("")
     .refine(
-      (val) => isDateTodayOrFuture(val),
+      (val) => !val || isDateTodayOrFuture(val),
       "Moving date cannot be in the past",
     ),
 
   pickupPostcode: z
-    .string({ required_error: "Please enter collection postcode" })
+    .string()
     .trim()
     .toUpperCase()
-    .regex(
-      UK_POSTCODE_REGEX,
+    .default("")
+    .refine(
+      (val) => !val || UK_POSTCODE_REGEX.test(val),
       "Please enter a valid UK collection postcode (e.g. SW1A 1AA)",
     ),
 
   deliveryPostcode: z
-    .string({ required_error: "Please enter destination postcode" })
+    .string()
     .trim()
     .toUpperCase()
-    .regex(
-      UK_POSTCODE_REGEX,
+    .default("")
+    .refine(
+      (val) => !val || UK_POSTCODE_REGEX.test(val),
       "Please enter a valid UK delivery postcode (e.g. M1 1AE)",
     ),
 
-  helpers: z.enum(["driver_only", "1_helper", "2_helpers", "3_helpers"], {
-    errorMap: () => ({
-      message: "Please select your required crew configuration",
-    }),
-  }),
+  // Additional Drop-Off / Via Stops
+  hasAdditionalStops: z.boolean().default(false),
+  additionalStops: z.string().default(""),
 
-  propertyType: z
-    .string({ required_error: "Please select your property type" })
-    .min(1, "Please select your property type"),
+  helpers: z
+    .enum(["driver_only", "1_helper", "2_helpers", "3_helpers"])
+    .default("2_helpers"),
+
+  propertyType: z.string().default("terraced"),
 
   accessNotes: z
     .string()
     .trim()
     .max(1000, "Access notes cannot exceed 1000 characters")
-    .optional()
-    .or(z.literal("")),
+    .default(""),
 
   // 2. Contact Details
   fullName: z
-    .string({ required_error: "Please enter your full name" })
+    .string()
     .trim()
-    .min(2, "Full name must be at least 2 characters")
-    .max(100, "Full name cannot exceed 100 characters"),
+    .max(100, "Full name cannot exceed 100 characters")
+    .default(""),
 
   phone: z
-    .string({ required_error: "Please enter your contact phone number" })
+    .string()
     .trim()
-    .regex(
-      UK_PHONE_REGEX,
+    .default("")
+    .refine(
+      (val) => !val || UK_PHONE_REGEX.test(val),
       "Please enter a valid UK telephone number (e.g. 07405 328 674)",
     ),
 
   email: z
-    .string({ required_error: "Please enter your email address" })
+    .string()
     .trim()
-    .email("Please enter a valid email address")
-    .max(255, "Email address is too long"),
+    .max(255, "Email address is too long")
+    .default("")
+    .refine(
+      (val) => !val || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val),
+      "Please enter a valid email address",
+    ),
 
   notes: z
     .string()
     .trim()
     .max(2000, "Additional notes cannot exceed 2000 characters")
-    .optional()
-    .or(z.literal("")),
+    .default(""),
 
-  // 3. Consent to Privacy Policy
-  consent: z.literal(true, {
-    errorMap: () => ({
-      message: "You must consent to our privacy policy to request a quote",
-    }),
-  }),
+  // 3. Consent to Privacy Policy (Defaults to true)
+  consent: z
+    .boolean()
+    .refine(
+      (val) => val === true,
+      "You must consent to our privacy policy to request a quote",
+    )
+    .default(true),
 
   // 4. Load Planner Data (Included when configured via planner)
   plannerSummary: plannerSummarySchema.optional(),
 
   // 5. Anti-Spam Honeypot (Must remain empty; bots fill it)
-  honeypot: z
-    .string()
-    .max(0, "Spam submission detected")
-    .optional()
-    .or(z.literal("")),
+  honeypot: z.string().max(0, "Spam submission detected").default(""),
 
   // 6. Cloudflare Turnstile Verification Token
-  turnstileToken: z.string().optional(),
+  turnstileToken: z.string().optional().default(""),
 });
 
-export type QuoteFormValues = z.infer<typeof quoteFormSchema>;
+export type QuoteFormInput = z.input<typeof quoteFormSchema>;
+export type QuoteFormValues = z.output<typeof quoteFormSchema>;
 export type PlannerSummary = z.infer<typeof plannerSummarySchema>;

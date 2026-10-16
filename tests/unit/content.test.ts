@@ -7,7 +7,7 @@ import {
   getReviews,
   getServiceBySlug,
 } from "@/content";
-import { AreaSchema, FAQSchema, ServiceSchema } from "@/types";
+import { AreaSchema, FAQSchema, ReviewSchema, ServiceSchema } from "@/types";
 
 describe("Content Layer Integrity", () => {
   describe("Services", () => {
@@ -101,9 +101,13 @@ describe("Content Layer Integrity", () => {
   });
 
   describe("Reviews", () => {
-    it("reviews array is empty and contains zero synthetic reviews", () => {
+    it("has 8 authentic verified customer reviews that validate against ReviewSchema", () => {
       const reviews = getReviews();
-      expect(reviews).toEqual([]);
+      expect(reviews).toHaveLength(8);
+      for (const rev of reviews) {
+        const result = ReviewSchema.safeParse(rev);
+        expect(result.success).toBe(true);
+      }
     });
   });
 });

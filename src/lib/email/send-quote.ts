@@ -75,10 +75,13 @@ export async function sendQuoteEmail(
         <tr>
           <td style="padding: 20px;">
             <h2 style="font-size: 16px; border-bottom: 2px solid #DC0109; padding-bottom: 6px; margin-top: 0;">1. Route &amp; Transit Details</h2>
+            <p><strong>Selected Vehicle:</strong> <span style="font-weight: bold; color: #DC0109;">${escapeHtml(data.vanType || "3.5T Luton Box Van with Tail Lift")}</span></p>
+            ${data.additionalVanDetails ? `<p><strong>Additional Vehicles:</strong> <span style="font-weight: bold; color: #03234C; background: #FAF9F5; padding: 2px 6px; border: 1px solid #ccc;">${escapeHtml(data.additionalVanDetails)}</span></p>` : ""}
             <p><strong>Service Requested:</strong> ${escapeHtml(cleanService)}</p>
             <p><strong>Estimated Move Date:</strong> ${escapeHtml(data.moveDate)}</p>
             <p><strong>Collection Postcode:</strong> <span style="font-family: monospace; font-weight: bold; background: #FAF9F5; padding: 2px 6px; border: 1px solid #ccc;">${escapeHtml(cleanPickup)}</span></p>
             <p><strong>Delivery Postcode:</strong> <span style="font-family: monospace; font-weight: bold; background: #FAF9F5; padding: 2px 6px; border: 1px solid #ccc;">${escapeHtml(cleanDelivery)}</span></p>
+            ${data.additionalStops ? `<p><strong>Additional Via Stops:</strong> <span style="font-family: monospace; background: #fff3cd; padding: 3px 6px; border: 1px solid #ffeeba;">${escapeHtml(data.additionalStops)}</span></p>` : ""}
             <p><strong>Crew Configuration:</strong> ${escapeHtml(data.helpers)}</p>
             <p><strong>Property Type:</strong> ${escapeHtml(data.propertyType)}</p>
             <p><strong>Access / Parking Notes:</strong> ${data.accessNotes ? escapeHtml(data.accessNotes) : "None noted"}</p>
@@ -123,11 +126,13 @@ export async function sendQuoteEmail(
 
             <div style="background-color: #FAF9F5; border: 1px solid #03234C; padding: 14px 18px; margin: 18px 0; border-radius: 2px;">
               <h3 style="margin: 0 0 8px; font-size: 14px; text-transform: uppercase; color: #DC0109;">Your Route Summary</h3>
+              <p style="margin: 4px 0;"><strong>Vehicle Allocated:</strong> ${escapeHtml(data.vanType || "3.5T Luton Box Van with Tail Lift")}</p>
+              ${data.additionalVanDetails ? `<p style="margin: 4px 0;"><strong>Additional Vehicles:</strong> ${escapeHtml(data.additionalVanDetails)}</p>` : ""}
               <p style="margin: 4px 0;"><strong>Collection:</strong> ${escapeHtml(cleanPickup)}</p>
               <p style="margin: 4px 0;"><strong>Destination:</strong> ${escapeHtml(cleanDelivery)}</p>
+              ${data.additionalStops ? `<p style="margin: 4px 0;"><strong>Via Stops:</strong> ${escapeHtml(data.additionalStops)}</p>` : ""}
               <p style="margin: 4px 0;"><strong>Move Date:</strong> ${escapeHtml(data.moveDate)}</p>
               <p style="margin: 4px 0;"><strong>Service:</strong> ${escapeHtml(cleanService)}</p>
-              ${data.plannerSummary ? `<p style="margin: 4px 0;"><strong>Estimated Volume:</strong> ${data.plannerSummary.totalVolumeM3} m³ (~${data.plannerSummary.vanFillPercentage}% Luton load)</p>` : ""}
             </div>
 
             <h3 style="font-size: 14px; text-transform: uppercase;">What Happens Next?</h3>
@@ -157,33 +162,39 @@ export async function sendQuoteEmail(
     const businessSendPromise = client.emails.send({
       from: cleanFrom,
       to: [cleanTo],
-      replyTo: cleanEmail,
+      replyTo: cleanEmail || undefined,
       subject: sanitizeHeader(
         `[New Quote] ${cleanService} (${cleanPickup} to ${cleanDelivery}) - Ref ${referenceCode}`,
       ),
       html: businessHtml,
     });
 
-    // 2. Send Auto-Confirmation to Customer
-    const customerSendPromise = client.emails.send({
-      from: cleanFrom,
-      to: [cleanEmail],
-      replyTo: cleanTo,
-      subject: sanitizeHeader(
-        `Your Moving Quote Request Confirmation - AB Removals (${referenceCode})`,
-      ),
-      html: customerHtml,
-    });
+    // 2. Send Auto-Confirmation to Customer (only if email provided)
+    const promises: Promise<unknown>[] = [businessSendPromise];
+    if (cleanEmail) {
+      promises.push(
+        client.emails.send({
+          from: cleanFrom,
+          to: [cleanEmail],
+          replyTo: cleanTo,
+          subject: sanitizeHeader(
+            `Your Moving Quote Request Confirmation - AB Removals (${referenceCode})`,
+          ),
+          html: customerHtml,
+        }),
+      );
+    }
 
     // Execute email dispatches
-    const [businessResult, customerResult] = await Promise.allSettled([
-      businessSendPromise,
-      customerSendPromise,
-    ]);
+    const [businessResult, customerResult] = await Promise.allSettled(promises);
 
     if (
       businessResult.status === "rejected" ||
-      (businessResult.status === "fulfilled" && businessResult.value.error)
+      (businessResult.status === "fulfilled" &&
+        Boolean(
+          (businessResult.value as { error?: unknown } | null | undefined)
+            ?.error,
+        ))
     ) {
       // Return generic failure without leaking email address or internals
       return {
@@ -193,8 +204,13 @@ export async function sendQuoteEmail(
     }
 
     if (
-      customerResult.status === "rejected" ||
-      (customerResult.status === "fulfilled" && customerResult.value.error)
+      customerResult &&
+      (customerResult.status === "rejected" ||
+        (customerResult.status === "fulfilled" &&
+          Boolean(
+            (customerResult.value as { error?: unknown } | null | undefined)
+              ?.error,
+          )))
     ) {
       // Customer send failed (e.g. invalid recipient domain), but business notification succeeded
       // We still treat as successful quote logging

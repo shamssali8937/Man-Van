@@ -78,11 +78,15 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     }
 
     // 6. Sanitise all text inputs
-    const cleanName = sanitizeText(data.fullName);
-    const cleanEmail = sanitizeHeader(data.email.trim());
-    const cleanPhone = sanitizeText(data.phone);
-    const cleanSubject = sanitizeHeader(data.subject);
-    const cleanMessage = sanitizeText(data.message);
+    const cleanName = sanitizeText(data.fullName || "Website Visitor");
+    const cleanEmail = sanitizeHeader((data.email || "").trim());
+    const cleanPhone = sanitizeText(data.phone || "Not provided");
+    const cleanSubject = sanitizeHeader(
+      data.subject || "Website Removals Enquiry",
+    );
+    const cleanMessage = sanitizeText(
+      data.message || "No message body provided",
+    );
 
     // 7. Dispatch notification email to business via Resend
     if (env.RESEND_API_KEY) {

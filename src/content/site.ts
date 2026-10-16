@@ -21,7 +21,8 @@ export const siteConfig = {
   telephone: "07405 328 674",
   telHref: "tel:+447405328674",
   whatsappNumber: "+447405328674",
-  whatsappHref: "https://wa.me/447405328674",
+  whatsappHref:
+    "https://wa.me/447405328674?text=Hello%20AB%20Removals%2C%20I%20would%20like%20to%20get%20a%20free%20quote%20for%20a%20move.%20Please%20let%20me%20know%20your%20availability%20and%20rates.",
   email: "quotes@abremovals.co.uk",
 
   // Address & Operating Details
@@ -32,7 +33,7 @@ export const siteConfig = {
     addressCountry: "GB",
     formatted: "Unit 4, Gateway Business Park, Silvertown Way, London, E16 1EA",
   },
-  openingHours: "Mon – Sat: 7:00 AM – 8:00 PM | Sun: 8:00 AM – 6:00 PM",
+  openingHours: "Open 24/7 (24 Hours, 7 Days a Week)",
   operatingAreas: "London, Midlands, and Nationwide UK Routes",
   insuranceDetails:
     "£50,000 Goods in Transit & £2,000,000 Public Liability Insurance",
@@ -72,7 +73,11 @@ export const siteConfig = {
     { label: "Manchester Removals", href: "/areas/manchester" },
     { label: "Leeds Removals", href: "/areas/leeds" },
     { label: "Bristol Removals", href: "/areas/bristol" },
+    { label: "Liverpool Removals", href: "/areas/liverpool" },
+    { label: "Sheffield Removals", href: "/areas/sheffield" },
     { label: "Cardiff Removals", href: "/areas/cardiff" },
+    { label: "Glasgow Removals", href: "/areas/glasgow" },
+    { label: "Edinburgh Removals", href: "/areas/edinburgh" },
   ] as const satisfies readonly FooterLink[],
 
   // Legal Compliance Links

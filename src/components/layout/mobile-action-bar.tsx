@@ -24,7 +24,7 @@ export function MobileActionBar() {
           <span className="font-display italic font-black uppercase text-xs tracking-wider">
             CALL
           </span>
-          <span className="font-mono text-[0.5625rem] text-white/70 tracking-tight leading-none">
+          <span className="font-mono text-[0.5625rem] text-white font-semibold tracking-tight leading-none">
             DIRECT
           </span>
         </a>
@@ -34,7 +34,7 @@ export function MobileActionBar() {
           href={siteConfig.whatsappHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex flex-col items-center justify-center py-2 px-1 bg-[#25D366] text-white rounded-xs border-2 border-[#1EBE5D] shadow-xs hover:bg-[#1EBE5D] active:translate-y-0.5 transition-transform"
+          className="flex flex-col items-center justify-center py-2 px-1 bg-[#075E54] text-white rounded-xs border-2 border-[#054c44] shadow-xs hover:bg-[#128C7E] active:translate-y-0.5 transition-transform"
         >
           <svg
             className="w-4 h-4 text-white mb-0.5"
@@ -47,7 +47,7 @@ export function MobileActionBar() {
           <span className="font-display italic font-black uppercase text-xs tracking-wider">
             WHATSAPP
           </span>
-          <span className="font-mono text-[0.5625rem] text-white/80 tracking-tight leading-none">
+          <span className="font-mono text-[0.5625rem] text-white font-semibold tracking-tight leading-none">
             INSTANT
           </span>
         </a>
@@ -74,7 +74,7 @@ export function MobileActionBar() {
           <span className="font-display italic font-black uppercase text-xs tracking-wider">
             GET QUOTE
           </span>
-          <span className="font-mono text-[0.5625rem] text-white/80 tracking-tight leading-none">
+          <span className="font-mono text-[0.5625rem] text-white font-semibold tracking-tight leading-none">
             FREE &amp; FAST
           </span>
         </Link>
