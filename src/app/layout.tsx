@@ -30,6 +30,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html
       lang="en-GB"
       suppressHydrationWarning
+      data-scroll-behavior="smooth"
       className={`h-full scroll-smooth ${fontDisplay.variable} ${fontSans.variable}`}
     >
       <head>

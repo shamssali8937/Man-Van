@@ -18,37 +18,37 @@ export const metadata: Metadata = constructMetadata({
 
 const crewTiers = [
   {
-    name: "Driver Only (Self-Loading)",
+    name: "Van with Driver Assistance",
     hourlyRate: "From £55 / hr",
     description:
-      "Ideal for small studio moves, boxed goods, or customers who prefer to load items themselves.",
+      "Working driver assists with loading, stowing, and direct transport. Ideal for small moves and studio flats.",
     features: [
-      "Working driver assists with secure van stowage",
-      "Customer arranges assistance for bulky items",
-      "Lowest hourly commitment",
+      "Working driver assists with secure van loading and stowage",
+      "Customer assists with heavier, two-person bulky items",
+      "Lowest hourly commitment and rapid turnaround",
     ],
   },
   {
-    name: "Driver + 1 Helper (2-Man Team)",
+    name: "Van with Two-Person Moving Team",
     hourlyRate: "From £75 / hr",
     popular: true,
     description:
-      "Our most requested tier. Two experienced movers handle all lifting, carrying, and room placement.",
+      "Our most requested tier. Two experienced movers handle all heavy lifting, carrying, and room placement.",
     features: [
-      "Full two-man loading and unloading crew",
-      "Safe handling for heavy sofas, appliances & beds",
-      "Complete room-of-choice positioning",
+      "Full two-person loading and unloading removals team",
+      "Safe handling for heavy sofas, appliances, wardrobes & beds",
+      "Complete room-of-choice positioning and transit care",
     ],
   },
   {
-    name: "Driver + 2 Helpers (3-Man Team)",
+    name: "Van with Three-Person Moving Team (Complete Team)",
     hourlyRate: "From £95 / hr",
     description:
-      "Designed for full house removals, multi-floor walk-ups, or tight completion day time limits.",
+      "Full moving team designed for large house removals, multi-floor walk-ups, or strict completion day deadlines.",
     features: [
-      "Three dedicated professional movers",
-      "Accelerated loading and turnaround time",
-      "Ideal for 3+ bedroom properties or large commercial moves",
+      "Three dedicated professional movers (Complete Team)",
+      "Accelerated loading and minimum turnaround downtime",
+      "Ideal for multi-bedroom properties, heavy safes, or commercial offices",
     ],
   },
 ];
@@ -152,9 +152,9 @@ export default function PricingPage() {
                     <span className="text-2xl font-black font-mono text-slate-900 mt-1 block">
                       {tier.hourlyRate}
                     </span>
-                    <span className="text-[11px] text-amber-800 font-semibold mt-1 inline-block bg-amber-100/80 px-2 py-0.5 rounded-sm">
+                    {/* <span className="text-[11px] text-amber-800 font-semibold mt-1 inline-block bg-amber-100/80 px-2 py-0.5 rounded-sm">
                       Requires client confirmation
-                    </span>
+                    </span> */}
                   </div>
 
                   <ul className="space-y-2.5 text-xs text-slate-700">

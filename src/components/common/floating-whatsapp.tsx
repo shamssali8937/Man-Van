@@ -6,13 +6,7 @@ export function FloatingWhatsApp() {
   return (
     <aside
       aria-label="Instant WhatsApp Contact"
-      className="floating-whatsapp-container print:hidden select-none"
-      style={{
-        position: "fixed",
-        right: "24px",
-        bottom: "24px",
-        zIndex: 99999,
-      }}
+      className="fixed z-50 print:hidden select-none bottom-[calc(5.25rem+env(safe-area-inset-bottom,0px))] md:bottom-6 right-4 md:right-6"
     >
       <a
         href={siteConfig.whatsappHref}

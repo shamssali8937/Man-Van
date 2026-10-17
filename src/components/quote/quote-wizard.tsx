@@ -5,7 +5,7 @@ import { QuoteForm } from "./quote-form";
 import { VanSelector } from "./van-selector";
 
 export function QuoteWizard() {
-  const [selectedVanId, setSelectedVanId] = useState<string>("luton-tail-lift");
+  const [selectedVanId, setSelectedVanId] = useState<string>("luton");
   const [additionalVans, setAdditionalVans] = useState<string[]>([]);
 
   return (

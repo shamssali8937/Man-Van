@@ -34,3 +34,6 @@ All market rates, van dimensions, insurance limits, and standard UK terms have b
 - [ ] **Resend**: Supply production API key and verify sending domain (`RESEND_API_KEY`, `QUOTE_FROM_EMAIL`, `QUOTE_TO_EMAIL`).
 - [ ] **Upstash Redis**: Supply production REST URL and token for distributed rate limiting (`UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`).
 - [ ] **Cloudflare Turnstile**: Supply production site key and secret key for captcha verification (`NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY`).
+
+## 6. Marketing & Hero Trust Claims (Pre-Launch Verification)
+- [ ] Confirm the claims 'Experienced Team', 'Fully Insured' and 'On Time & Reliable' are accurate and evidenced before launch.

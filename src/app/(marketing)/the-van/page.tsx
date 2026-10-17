@@ -38,7 +38,7 @@ import {
 export const metadata: Metadata = constructMetadata({
   title: formatSeoTitle("Fleet & Van Specifications"),
   description: formatSeoDescription(
-    "Explore our full UK removals fleet: 3.5T Luton box vans with tail lift, large LWB high-roof vans, medium MWB panel vans, and small courier vans.",
+    "Explore our UK removals fleet: 3.5T Luton box vans with tail lift, Extra Long Wheelbase XLWB high-roof vans, and Large LWB panel vans.",
   ),
   path: "/the-van",
 });
@@ -51,23 +51,17 @@ const vanPhotos: VanImage[] = [
     badge: "Branded Flagship",
   },
   {
+    src: "/images/vans/van-xlwb-clean.jpeg",
+    alt: "Extra Long Wheelbase XLWB High-Roof commercial removals panel van",
+    caption: "Extra Long Wheelbase XLWB Van – 17.0 m³ Extended Cargo Space",
+    badge: "Extra Long XLWB",
+  },
+  {
     src: "/images/vans/van-lwb.jpeg",
     alt: "Clean white long-wheelbase high-roof Mercedes-Benz Sprinter panel removals van parked on a UK street",
     caption:
       "Large LWB High-Roof Panel Van – 14.0 m³ Capacity for 1–2 Bed Moves",
     badge: "Large LWB Van",
-  },
-  {
-    src: "/images/vans/van-mwb.jpeg",
-    alt: "Clean white medium-wheelbase panel van parked outside modern residential home in the UK",
-    caption: "Medium MWB Panel Van – 10.5 m³ Agile Urban Removals Vehicle",
-    badge: "Medium MWB Van",
-  },
-  {
-    src: "/images/vans/van-small.jpeg",
-    alt: "Clean white compact cargo courier van parked on a UK residential street curb",
-    caption: "Small Courier Cargo Van – Single Item & Student Luggage Transit",
-    badge: "Small Courier Van",
   },
   {
     src: "/images/vans/van-1.jpeg",
@@ -103,7 +97,7 @@ interface FleetVehicle {
 
 const fleetVehicles: FleetVehicle[] = [
   {
-    id: "luton-tail-lift",
+    id: "luton",
     name: "3.5T Luton Box Van (Hydraulic Tail Lift)",
     shortName: "3.5T Luton Box Van",
     category: "Flagship Removals Vehicle",
@@ -128,7 +122,31 @@ const fleetVehicles: FleetVehicle[] = [
     ],
   },
   {
-    id: "lwb-van",
+    id: "xlwb",
+    name: "Extra Long Wheelbase XLWB High-Roof Van",
+    shortName: "Extra Long XLWB Van",
+    category: "Extended Capacity Panel Transport",
+    badge: "Extra Long Wheelbase",
+    image: "/images/vans/van-xlwb-clean.jpeg",
+    imageAlt: "Extra Long Wheelbase high-roof commercial removals panel van",
+    volume: "17.0 m³ (600 cu ft)",
+    payload: "1,150 kg",
+    dimensions: "4.7m (L) x 1.78m (W) x 2.14m (H)",
+    loadingAccess: "270° Rear Twin Barn Doors + Wide Sliding Side Door",
+    recommendedCrew: "2 or 3 Movers",
+    capacityScope: "2–3 Bedroom Flat / Large Commercial Relocation",
+    bestFor:
+      "Extended furniture lines, oversized sofas, full office moves, commercial distribution, and long-distance UK relocations.",
+    features: [
+      "Extra long 4.7m cargo bay floor for lengthy items",
+      "Super high roof allowing upright standing clearance",
+      "Heavy 1,150kg payload rating for dense loads",
+      "Curbside sliding access door and wide rear barn doors",
+      "Reinforced floor tie-down rails & protective lashing straps",
+    ],
+  },
+  {
+    id: "lwb",
     name: "Large LWB High-Roof Panel Van (Long Wheelbase)",
     shortName: "Large LWB Van",
     category: "High-Volume Panel Transport",
@@ -150,56 +168,6 @@ const fleetVehicles: FleetVehicle[] = [
       "Full-height sliding side door for curbside loading",
       "270-degree opening rear doors for forklift pallet loading",
       "Fully ply-lined cargo hold with recessed anchor lashing points",
-    ],
-  },
-  {
-    id: "mwb-van",
-    name: "Medium MWB Panel Van (Medium Wheelbase)",
-    shortName: "Medium MWB Van",
-    category: "Agile Urban Transit",
-    badge: "Medium Wheelbase",
-    image: "/images/vans/van-mwb.jpeg",
-    imageAlt:
-      "Clean white medium wheelbase panel removals van parked on asphalt street",
-    volume: "10.5 m³ (370 cu ft)",
-    payload: "1,350 kg",
-    dimensions: "3.0m (L) x 1.78m (W) x 1.88m (H)",
-    loadingAccess: "180° Rear Barn Doors + Sliding Side Door",
-    recommendedCrew: "Driver Only or 1 Helper",
-    capacityScope: "Studio Flat / Student Room (Up to 25 Boxes + Sofa / Bed)",
-    bestFor:
-      "Studio flats, bedsits, shared student houses, single room moves, sofa deliveries, narrow terraced streets, and tight urban parking bays.",
-    features: [
-      "Compact turning circle ideal for tight cul-de-sacs and city streets",
-      "Highest payload rating in fleet (up to 1,350kg)",
-      "Standard driveway length parking footprint",
-      "Curbside sliding access door for rapid loading",
-      "Internal non-slip cargo floor with tie-down rings",
-    ],
-  },
-  {
-    id: "small-van",
-    name: "Small Transit Connect / Cargo Courier Van",
-    shortName: "Small Cargo Van",
-    category: "Fast Courier & Escort",
-    badge: "Single Item / Luggage",
-    image: "/images/vans/van-small.jpeg",
-    imageAlt:
-      "Clean white compact commercial cargo courier van parked on paved street curb",
-    volume: "3.5 m³ (125 cu ft)",
-    payload: "650–800 kg",
-    dimensions: "1.8m (L) x 1.4m (W) x 1.2m (H)",
-    loadingAccess: "Asymmetric Rear Doors + Side Sliding Door",
-    recommendedCrew: "Driver Only (Self-Loading Available)",
-    capacityScope: "Single Bulky Item, Washing Machine, or 10–15 Boxes",
-    bestFor:
-      "Marketplace collections (eBay, Gumtree, Facebook), store pickups (IKEA, B&Q), washing machines, student trunks, luggage, and urgent parcel consignments.",
-    features: [
-      "Under 2.0m vehicle height allows access to underground car parks",
-      "Fast agile courier transit across dense city zones",
-      "Fold-flat passenger seat for extra cargo pass-through length",
-      "Lowest fuel consumption and ultra-low transit footprint",
-      "Fully carpeted/ply-lined protective interior",
     ],
   },
 ];
@@ -353,16 +321,16 @@ export default function TheVanPage() {
             </Heading>
 
             <p className="font-sans text-base sm:text-lg text-brand-navy/85 max-w-3xl leading-relaxed">
-              Explore our complete UK removals fleet. From our flagship
-              3.5-tonne Luton box vans equipped with 500kg hydraulic tail lifts
-              to agile LWB, MWB, and compact courier vans, every vehicle comes
-              fully stocked with commercial protective blankets, heavy-duty
-              ratchet straps, and transit dollies.
+              Explore our dedicated UK removals fleet: 3.5-tonne Luton box vans
+              equipped with 500kg hydraulic tail lifts, Extra Long Wheelbase
+              (XLWB) high-roof vans, and Large Long Wheelbase (LWB) panel vans.
+              Every vehicle comes fully stocked with commercial protective
+              blankets, heavy-duty ratchet straps, and transit dollies.
             </p>
 
             <div className="pt-2 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono font-bold text-brand-navy">
               <div className="flex items-center gap-1.5">
-                <span className="text-brand-red">■</span> 4 Fleet Sizes
+                <span className="text-brand-red">■</span> 3 Fleet Sizes
               </div>
               <div className="flex items-center gap-1.5">
                 <span className="text-brand-red">■</span> 500kg Tail Lift
@@ -377,7 +345,7 @@ export default function TheVanPage() {
           </div>
 
           {/* ===================================================================
-              FLEET SHOWCASE: 4 VEHICLE CATEGORIES
+              FLEET SHOWCASE: 3 VEHICLE CATEGORIES
               =================================================================== */}
           <section aria-labelledby="fleet-showcase-heading" className="mb-16">
             <div className="border-b-2 border-brand-navy pb-3 mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
@@ -393,11 +361,11 @@ export default function TheVanPage() {
                 </h2>
               </div>
               <span className="font-mono text-xs font-bold text-brand-navy/70">
-                4 Specialized Removals Configurations
+                3 Specialized Removals Configurations
               </span>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {fleetVehicles.map((van) => (
                 <div
                   key={van.id}
@@ -547,7 +515,7 @@ export default function TheVanPage() {
                 </h2>
                 <p className="font-sans text-xs sm:text-sm text-brand-paper/85 mt-1 leading-relaxed">
                   Compare cargo capacities, load footprints, and handling access
-                  across our 4 removals vehicle classes.
+                  across our 3 removals vehicle classes.
                 </p>
               </div>
 

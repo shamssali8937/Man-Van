@@ -81,7 +81,7 @@ export function QuoteForm({
       deliveryPostcode: "",
       hasAdditionalStops: false,
       additionalStops: "",
-      helpers: "2_helpers",
+      helpers: "two_person",
       propertyType: "terraced",
       accessNotes: "",
       fullName: "",
@@ -460,8 +460,7 @@ export function QuoteForm({
               </div>
             ) : (
               <p className="font-mono text-xs text-brand-navy/70 mt-0.5">
-                {selectedVanData.volume} • Payload: {selectedVanData.payload} •{" "}
-                {selectedVanData.dimensions}
+                {selectedVanData.name}
               </p>
             )}
           </div>
@@ -667,7 +666,7 @@ export function QuoteForm({
                 value: h.value,
                 label: h.label,
               }))}
-              hint={`Allocated ${selectedVanData.shortName}: ${selectedVanData.recommendedCrew}`}
+              hint="Choose driver assistance, two-person team, or three-person complete team"
               {...register("helpers")}
             />
 
