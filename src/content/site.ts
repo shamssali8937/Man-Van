@@ -55,15 +55,28 @@ export const siteConfig = {
 
   // Highlighted Services for Header & Footer
   serviceLinks: [
-    { label: "House Removals", href: "/services/house-removals" },
+    { label: "House & Flat Removals", href: "/services/house-removals" },
     { label: "Man & Van Services", href: "/services/man-and-van" },
     {
-      label: "Furniture Collection & Delivery",
-      href: "/services/furniture-collection-and-delivery",
+      label: "Furniture Removals & Delivery",
+      href: "/services/furniture-removals-and-delivery",
     },
-    { label: "Office Relocations", href: "/services/office-relocations" },
-    { label: "Student Moves", href: "/services/student-moves" },
-    { label: "Single Item Transport", href: "/services/single-item-transport" },
+    {
+      label: "Office & Commercial Removals",
+      href: "/services/office-and-commercial-removals",
+    },
+    {
+      label: "Student & Small Moves",
+      href: "/services/student-and-small-moves",
+    },
+    {
+      label: "Store Collections & Deliveries",
+      href: "/services/store-collections-and-deliveries",
+    },
+    {
+      label: "Nationwide & Long-Distance",
+      href: "/services/nationwide-and-long-distance-removals",
+    },
   ] as const satisfies readonly FooterLink[],
 
   // Key UK Areas for Footer Directory

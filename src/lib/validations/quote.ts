@@ -7,10 +7,18 @@ export const UK_POSTCODE_REGEX = /^[A-Z]{1,2}[0-9][A-Z0-9]?\s?[0-9][A-Z]{2}$/i;
 export const UK_PHONE_REGEX = /^(?:(?:\+44\s?(?:\(0\)\s?)?)|0)(?:\s*\d){9,10}$/;
 
 export const HELPER_OPTIONS = [
-  { value: "driver_only", label: "Driver Only (Self-loading)" },
-  { value: "1_helper", label: "Driver + 1 Helper (Assisted Move)" },
-  { value: "2_helpers", label: "Two-Man Crew (Full Service Removals)" },
-  { value: "3_helpers", label: "Three-Man Crew (Heavy Lift / Large Move)" },
+  {
+    value: "driver_assistance",
+    label: "Van with Driver Assistance",
+  },
+  {
+    value: "two_person",
+    label: "Van with Two-Person Moving Team",
+  },
+  {
+    value: "three_person",
+    label: "Van with Three-Person Moving Team (Complete Team)",
+  },
 ] as const;
 
 export const PROPERTY_TYPE_OPTIONS = [
@@ -30,15 +38,47 @@ export const PROPERTY_TYPE_OPTIONS = [
 ] as const;
 
 export const SERVICE_TYPE_OPTIONS = [
-  { value: "house-removals", label: "House & Flat Removals" },
-  { value: "man-and-van", label: "Man and Van Transport" },
+  { value: "house-removals", label: "House Removals/Flat Removals" },
   {
-    value: "furniture-collection",
-    label: "Furniture Delivery & Store Pickups",
+    value: "office-and-commercial-removals",
+    label: "Office and Commercial Removals",
   },
-  { value: "office-commercial", label: "Office & Commercial Relocations" },
-  { value: "student-moves", label: "Student Moves & Storage Transit" },
-  { value: "waste-clearance", label: "Licensed Waste Removal & Clearance" },
+  {
+    value: "furniture-removals-and-delivery",
+    label: "Furniture Removals and Delivery",
+  },
+  { value: "man-and-van", label: "Man and Van Services" },
+  {
+    value: "furniture-assembly-and-dismantling",
+    label: "Furniture Assembly and Dismantling",
+  },
+  { value: "student-and-small-moves", label: "Student and Small Moves" },
+  {
+    value: "store-collections-and-deliveries",
+    label: "Store Collections and Deliveries",
+  },
+  { value: "appliance-removals", label: "Appliance Removals" },
+  {
+    value: "packing-and-moving-assistance",
+    label: "Packing and Moving Assistance",
+  },
+  { value: "storage-transportation", label: "Storage Transportation" },
+  {
+    value: "waste-removal-and-disposal",
+    label: "Waste Removal and Disposal",
+  },
+  {
+    value: "heavy-and-bulky-item-transportation",
+    label: "Heavy and Bulky Item Transportation",
+  },
+  {
+    value: "special-collections-and-deliveries",
+    label: "Special Collections and Deliveries",
+  },
+  {
+    value: "nationwide-and-long-distance-removals",
+    label: "Nationwide and Long-Distance Removals",
+  },
 ] as const;
 
 /**
@@ -85,68 +125,61 @@ export interface VanOption {
   id: string;
   name: string;
   shortName: string;
-  volume: string;
-  payload: string;
-  dimensions: string;
+  image: string;
+  imageAlt: string;
+  volume?: string;
+  payload?: string;
+  dimensions?: string;
   badge?: string;
-  description: string;
-  recommendedCrew: string;
+  description?: string;
+  recommendedCrew?: string;
 }
 
 export const VAN_OPTIONS: readonly VanOption[] = [
   {
-    id: "luton-tail-lift",
-    name: "3.5T Luton Box Van (Hydraulic Tail Lift)",
-    shortName: "3.5T Luton Van",
-    volume: "19.0 m³ (670 cu ft)",
+    id: "luton",
+    name: "Luton Van",
+    shortName: "Luton Van",
+    image: "/images/vans/hero-van-branded.jpeg",
+    imageAlt: "White 3.5T Luton Box Van with tail lift",
+    volume: "19.0 m³",
     payload: "1,000 kg",
     dimensions: "4.1m (L) x 2.0m (W) x 2.2m (H)",
-    badge: "Most Popular / Flagship",
-    description:
-      "Full Luton coachbuild with 500kg hydraulic tail lift and cab over-pod. Best for 2–3 bed houses, full flats, bulky furniture, and upright pianos.",
-    recommendedCrew: "Two-Man Crew (Full Service)",
+    badge: "Luton Box Van",
+    description: "Luton box van equipped with hydraulic tail lift.",
+    recommendedCrew: "Van with Two-Person Moving Team",
   },
   {
-    id: "lwb-van",
-    name: "Long Wheelbase (LWB) High Roof Van",
-    shortName: "LWB Sprinter",
-    volume: "14.0 m³ (490 cu ft)",
-    payload: "1,200 kg",
-    dimensions: "3.7m (L) x 1.7m (W) x 1.9m (H)",
-    badge: "1–2 Bed Moves",
-    description:
-      "High-roof panel van with wide side-loading door. Best for 1–2 bedroom apartments, sofa sets, wardrobes, and commercial stock.",
-    recommendedCrew: "Driver + 1 Helper",
+    id: "xlwb",
+    name: "XLWB Van",
+    shortName: "XLWB Van",
+    image: "/images/vans/van-xlwb-clean.jpeg",
+    imageAlt: "Extra Long Wheelbase (XLWB) high-roof removals van",
+    volume: "17.0 m³",
+    payload: "1,150 kg",
+    dimensions: "4.7m (L) x 1.78m (W) x 2.1m (H)",
+    badge: "XLWB High-Roof",
+    description: "Extra Long Wheelbase (XLWB) removals van.",
+    recommendedCrew: "Van with Two-Person Moving Team",
   },
   {
-    id: "mwb-van",
-    name: "Medium Wheelbase (MWB) Transit Van",
-    shortName: "MWB Custom",
-    volume: "8.5 m³ (300 cu ft)",
-    payload: "1,000 kg",
-    dimensions: "2.9m (L) x 1.7m (W) x 1.7m (H)",
-    badge: "Studio & Flat Moves",
-    description:
-      "Compact agile van for city street moves, studio flats, student rooms, sofa pickup, bed frame, and 20–25 medium boxes.",
-    recommendedCrew: "Driver Only or 1 Helper",
-  },
-  {
-    id: "small-van",
-    name: "Small Transit Connect / Cargo Van",
-    shortName: "Small Cargo Van",
-    volume: "3.5 m³ (120 cu ft)",
-    payload: "600–800 kg",
-    dimensions: "1.8m (L) x 1.4m (W) x 1.2m (H)",
-    badge: "Single Item / Luggage",
-    description:
-      "Fast courier transport for single bulky items, store pickups, washing machines, suitcases, student trunks, and 10–15 boxes.",
-    recommendedCrew: "Driver Only (Self-loading)",
+    id: "lwb",
+    name: "LWB Van",
+    shortName: "LWB Van",
+    image: "/images/vans/van-lwb.jpeg",
+    imageAlt: "Long Wheelbase (LWB) high-roof removals van",
+    volume: "14.0 m³",
+    payload: "1,250 kg",
+    dimensions: "4.3m (L) x 1.78m (W) x 1.94m (H)",
+    badge: "LWB High-Roof",
+    description: "Long Wheelbase (LWB) removals van.",
+    recommendedCrew: "Van with Driver Assistance",
   },
 ] as const;
 
 export const quoteFormSchema = z.object({
   // 0. Selected Vehicle & Fleet Sizing
-  vanType: z.string().default("luton-tail-lift"),
+  vanType: z.string().default("luton"),
   hasAdditionalVan: z.boolean().default(false),
   additionalVans: z.array(z.string()).default([]),
   additionalVanDetails: z.string().default(""),
@@ -162,33 +195,17 @@ export const quoteFormSchema = z.object({
       "Moving date cannot be in the past",
     ),
 
-  pickupPostcode: z
-    .string()
-    .trim()
-    .toUpperCase()
-    .default("")
-    .refine(
-      (val) => !val || UK_POSTCODE_REGEX.test(val),
-      "Please enter a valid UK collection postcode (e.g. SW1A 1AA)",
-    ),
+  pickupPostcode: z.string().trim().default(""),
 
-  deliveryPostcode: z
-    .string()
-    .trim()
-    .toUpperCase()
-    .default("")
-    .refine(
-      (val) => !val || UK_POSTCODE_REGEX.test(val),
-      "Please enter a valid UK delivery postcode (e.g. M1 1AE)",
-    ),
+  deliveryPostcode: z.string().trim().default(""),
 
   // Additional Drop-Off / Via Stops
   hasAdditionalStops: z.boolean().default(false),
   additionalStops: z.string().default(""),
 
   helpers: z
-    .enum(["driver_only", "1_helper", "2_helpers", "3_helpers"])
-    .default("2_helpers"),
+    .enum(["driver_assistance", "two_person", "three_person"])
+    .default("two_person"),
 
   propertyType: z.string().default("terraced"),
 

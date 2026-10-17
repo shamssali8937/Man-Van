@@ -33,12 +33,23 @@ export interface AreaServiceContent {
 }
 
 const serviceShortNames: Record<string, string> = {
-  "house-removals": "House Removals",
-  "man-and-van": "Man & Van",
-  "furniture-collection-and-delivery": "Furniture Delivery",
+  "house-removals": "House & Flat Removals",
   "office-and-commercial-removals": "Office Removals",
+  "furniture-removals-and-delivery": "Furniture Removals",
+  "furniture-collection-and-delivery": "Furniture Delivery",
+  "man-and-van": "Man & Van",
+  "furniture-assembly-and-dismantling": "Furniture Assembly",
   "furniture-dismantling-and-assembly": "Furniture Assembly",
+  "student-and-small-moves": "Student Moves",
+  "store-collections-and-deliveries": "Store Deliveries",
+  "appliance-removals": "Appliance Removals",
+  "packing-and-moving-assistance": "Packing Assistance",
+  "storage-transportation": "Storage Transport",
+  "waste-removal-and-disposal": "Waste Disposal",
   "waste-removal-and-property-clearance": "Waste Clearance",
+  "heavy-and-bulky-item-transportation": "Heavy Item Transport",
+  "special-collections-and-deliveries": "Special Deliveries",
+  "nationwide-and-long-distance-removals": "Long-Distance Removals",
 };
 
 /**
@@ -134,6 +145,7 @@ export function getAreaServiceContent(
       ];
       break;
 
+    case "furniture-removals-and-delivery":
     case "furniture-collection-and-delivery":
       leadParagraph = `Transporting bulky furniture across ${area.name} has never been simpler. From sofa collections at retail outlets and flat-pack pickups to purchases on Facebook Marketplace, Gumtree, or eBay, we provide prompt, protective delivery across postcodes ${postcodesFormatted}.`;
       serviceOverview = `Our furniture courier team provides door-to-door and room-of-choice delivery throughout ${area.name}. We wrap tables, sofas, mattresses, and wardrobes in heavy quilted removal pads and secure them with ratchet straps inside our tail-lift vans, guaranteeing zero transit abrasions.`;
@@ -178,6 +190,7 @@ export function getAreaServiceContent(
       ];
       break;
 
+    case "furniture-assembly-and-dismantling":
     case "furniture-dismantling-and-assembly":
       leadParagraph = `Oversized wardrobes, ottoman beds, and complex flat-pack furniture often cannot navigate through tight residential doorways or spiral stairs in ${area.name}. Our skilled dismantling and reassembly service provides the stress-free solution.`;
       serviceOverview = `Equipped with professional cordless drivers, hex kits, and torque tools, our technicians systematically take down large furniture items before transport and reconstruct them securely in your destination room in ${area.name}, ensuring level placement and solid joints.`;
@@ -200,6 +213,7 @@ export function getAreaServiceContent(
       ];
       break;
 
+    case "waste-removal-and-disposal":
     case "waste-removal-and-property-clearance":
       leadParagraph = `Looking for responsible, hassle-free waste removal or property clearance in ${area.name}? Skip the hassle of council skip permits and heavy lifting. Our licensed clearance teams clear unwanted household furniture, clutter, and office debris across ${postcodesFormatted}.`;
       serviceOverview = `We carry unwanted items directly from your garage, attic, upper-floor flat, or garden shed in ${area.name}, loading them straight into our clearance vans. All materials are transported to authorized commercial waste transfer stations and recycling facilities in compliance with UK waste duty of care.`;
@@ -223,7 +237,30 @@ export function getAreaServiceContent(
       break;
 
     default:
-      return null;
+      leadParagraph = `Need reliable ${service.name.toLowerCase()} in ${area.name}? Serving homes and businesses across postcodes ${postcodesFormatted} in ${area.county}, our professional removals crew delivers punctual loading, transparent fixed quotes, and careful door-to-door transport with dedicated Luton vans.`;
+      serviceOverview = `${service.description} In ${area.name}, our moving teams arrive fully equipped with hydraulic tail lifts, transit blankets, and heavy-duty load straps, ensuring your items are transported safely and positioned in your exact rooms of choice.`;
+      parkingContent = `Loading during ${service.name.toLowerCase()} in ${area.name} requires careful street coordination: ${area.localNotes.parking}. Our drivers plan vehicle positioning to ensure smooth access without obstructing local residential traffic.`;
+      accessContent = `Properties across ${area.name} feature varied architectural layouts: ${area.localNotes.access}. Our moving crew comes prepared with specialized lifting straps and floor runners to navigate multi-floor buildings safely.`;
+      transitContent = `For local moves in ${area.name} or nationwide transport, we utilize established arterial corridors: ${area.localNotes.typicalRoutes}. We ensure direct, dedicated haulage with zero depot delays.`;
+      localFaqs = [
+        {
+          question: `Do you provide ${service.name.toLowerCase()} throughout all parts of ${area.name}?`,
+          answer: `Yes, we cover all postcodes across ${area.name} (${postcodesFormatted}) as well as connecting transit to locations across the UK.`,
+        },
+        {
+          question: `How are parking and access managed in ${area.name}?`,
+          answer: `We coordinate van positioning with local street guidelines: ${area.localNotes.parking}. We advise on parking dispensations where required.`,
+        },
+        {
+          question: `What vehicle is used for ${service.name.toLowerCase()} in ${area.name}?`,
+          answer: `We operate dedicated Luton box vans equipped with 500kg hydraulic tail lifts, furniture blankets, and heavy-duty straps.`,
+        },
+        {
+          question: `How can I get a quote for ${service.name.toLowerCase()} in ${area.name}?`,
+          answer: `You can use our online quote form or call our direct line for a transparent, fixed-price removals quotation within 30 minutes.`,
+        },
+      ];
+      break;
   }
 
   // Double check minimum word count to guarantee high-quality unique copy

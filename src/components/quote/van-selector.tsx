@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Badge, Stamp } from "@/components/ui";
 import { VAN_OPTIONS } from "@/lib/validations/quote";
 
@@ -51,21 +52,20 @@ export function VanSelector({
           id="van-selector-heading"
           className="font-display font-black text-2xl sm:text-3xl uppercase tracking-wide text-white"
         >
-          Select Your Van Size
+          Select Your Van
         </h2>
         <p className="font-sans text-xs sm:text-sm text-brand-paper/85 mt-1 leading-relaxed max-w-3xl">
-          Choose the right vehicle for your move. From single-item courier
-          pickups to our flagship 3.5-tonne Luton box vans equipped with 500kg
-          hydraulic tail lifts and full protective equipment.
+          Choose from our dedicated removals fleet: Luton Van, XLWB Van, or LWB
+          Van.
         </p>
       </div>
 
-      {/* Grid of Interactive Van Cards */}
+      {/* Grid of Interactive Van Cards - Photo & Name Only */}
       <div className="p-4 sm:p-6 lg:p-8 space-y-6">
         <div
           role="radiogroup"
           aria-label="Select removals vehicle"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+          className="grid grid-cols-1 md:grid-cols-3 gap-5"
         >
           {VAN_OPTIONS.map((van) => {
             const isSelected = van.id === selectedVanId;
@@ -82,8 +82,8 @@ export function VanSelector({
                     : "bg-brand-paper-light border-brand-navy/20 hover:border-brand-navy/60 hover:bg-white hover:shadow-cargo-sm"
                 }`}
               >
-                {/* Header Badge */}
-                <div className="flex items-center justify-between gap-1 mb-3">
+                {/* Header Badge & Selected Stamp */}
+                <div className="flex items-center justify-between gap-1 mb-2">
                   <span
                     className={`font-mono text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-xs border ${
                       isSelected
@@ -91,7 +91,7 @@ export function VanSelector({
                         : "bg-brand-paper text-brand-navy/70 border-brand-navy/20"
                     }`}
                   >
-                    {van.badge || "Standard Van"}
+                    {van.badge || van.shortName}
                   </span>
 
                   {isSelected && (
@@ -101,47 +101,23 @@ export function VanSelector({
                   )}
                 </div>
 
-                {/* Van Schematic Graphic */}
-                <div className="my-2 py-3 px-2 bg-brand-paper/60 rounded-xs border border-brand-navy/10 flex items-center justify-center">
-                  <VanGraphic vanId={van.id} isSelected={isSelected} />
+                {/* Van Photograph (No schematic, real photograph) */}
+                <div className="relative w-full aspect-16/10 rounded-xs overflow-hidden border-2 border-brand-navy/20 my-2 bg-slate-100 shadow-xs">
+                  <Image
+                    src={van.image}
+                    alt={van.imageAlt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover object-center group-hover:scale-102 transition-transform duration-200"
+                  />
                 </div>
 
-                {/* Van Title & Dimensions */}
-                <div className="space-y-1 mb-3">
-                  <h3 className="font-display font-black text-lg text-brand-navy uppercase leading-tight group-hover:text-brand-red transition-colors">
-                    {van.shortName}
+                {/* Van Title Only (No Specifications) */}
+                <div className="mt-2 text-center">
+                  <h3 className="font-display font-black text-xl text-brand-navy uppercase leading-tight group-hover:text-brand-red transition-colors">
+                    {van.name}
                   </h3>
-                  <p className="font-mono text-xs font-bold text-brand-navy/70">
-                    {van.volume}
-                  </p>
                 </div>
-
-                {/* Specs Box */}
-                <div className="space-y-1.5 pt-2 border-t border-brand-navy/10 text-[11px] font-mono text-brand-navy/85">
-                  <div className="flex justify-between">
-                    <span className="text-brand-navy/85">Payload:</span>
-                    <span className="font-bold text-brand-navy">
-                      {van.payload}
-                    </span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-brand-navy/85">Dimensions:</span>
-                    <span className="font-bold text-brand-navy">
-                      {van.dimensions}
-                    </span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-brand-navy/85">Recommended:</span>
-                    <span className="font-bold text-brand-navy">
-                      {van.recommendedCrew}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Suitability Note */}
-                <p className="mt-3 pt-2 border-t border-brand-navy/10 text-xs font-sans text-brand-navy/90 leading-relaxed">
-                  {van.description}
-                </p>
 
                 {/* Select Button */}
                 <div className="mt-4 pt-2">
@@ -175,8 +151,8 @@ export function VanSelector({
                 </h3>
               </div>
               <p className="font-sans text-xs text-brand-navy/75 mt-0.5">
-                Moving a 3–5 bed house, large office, or need simultaneous
-                multi-point loading? Add extra vans to your fleet.
+                Moving a large house, office, or multi-point pickup? Add extra
+                vans to your fleet.
               </p>
             </div>
 
@@ -217,30 +193,36 @@ export function VanSelector({
                 <span className="font-mono text-xs font-bold uppercase text-brand-navy/80 block">
                   Add Vehicles to Your Fleet (Up to 3 additional vans):
                 </span>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   {VAN_OPTIONS.map((van) => (
                     <button
                       key={van.id}
                       type="button"
                       disabled={additionalVans.length >= 3}
                       onClick={() => handleAddAdditionalVan(van.id)}
-                      className={`p-2.5 rounded-xs border-2 text-left flex flex-col justify-between transition-all ${
+                      className={`p-2.5 rounded-xs border-2 text-left flex items-center gap-3 transition-all ${
                         additionalVans.length >= 3
                           ? "opacity-50 cursor-not-allowed bg-brand-paper border-brand-navy/20"
                           : "bg-white border-brand-navy hover:border-brand-red hover:shadow-cargo-xs cursor-pointer"
                       }`}
                     >
+                      <div className="relative w-14 h-11 shrink-0 rounded-xs overflow-hidden border border-brand-navy/15">
+                        <Image
+                          src={van.image}
+                          alt={van.imageAlt}
+                          fill
+                          sizes="60px"
+                          className="object-cover"
+                        />
+                      </div>
                       <div>
                         <span className="font-mono text-[10px] font-bold uppercase text-brand-red block">
                           + Add Vehicle
                         </span>
-                        <p className="font-display font-black text-xs text-brand-navy uppercase mt-0.5">
-                          {van.shortName}
+                        <p className="font-display font-black text-xs text-brand-navy uppercase">
+                          {van.name}
                         </p>
                       </div>
-                      <span className="font-mono text-[11px] text-brand-navy/70 mt-1 block">
-                        {van.volume} • {van.payload}
-                      </span>
                     </button>
                   ))}
                 </div>
@@ -267,13 +249,19 @@ export function VanSelector({
                           >
                             EXTRA #{idx + 1}
                           </span>
+                          <div className="relative w-12 h-9 shrink-0 rounded-xs overflow-hidden border border-brand-navy/15">
+                            <Image
+                              src={extraVan.image}
+                              alt={extraVan.imageAlt}
+                              fill
+                              sizes="50px"
+                              className="object-cover"
+                            />
+                          </div>
                           <div>
                             <p className="font-display font-black text-sm text-brand-navy uppercase">
                               {extraVan.name}
                             </p>
-                            <span className="font-mono text-xs text-brand-navy/70">
-                              {extraVan.volume} • {extraVan.payload} payload
-                            </span>
                           </div>
                         </div>
 
@@ -331,184 +319,14 @@ export function VanSelector({
             <Badge variant="tan" size="sm">
               {additionalVans.length > 0
                 ? `${additionalVans.length + 1} Vehicles`
-                : currentVan.volume}
+                : currentVan.name}
             </Badge>
             <Badge variant="red" size="sm">
-              {additionalVans.length > 0
-                ? "Multi-Van Team"
-                : `${currentVan.payload} MAX`}
+              {additionalVans.length > 0 ? "Multi-Van Team" : "Dedicated Fleet"}
             </Badge>
           </div>
         </div>
       </div>
     </section>
-  );
-}
-
-/**
- * Scalable schematic visual icon for each vehicle type.
- */
-function VanGraphic({
-  vanId,
-  isSelected,
-}: {
-  vanId: string;
-  isSelected: boolean;
-}) {
-  const strokeColor = isSelected ? "#DC0109" : "#03234C";
-
-  if (vanId === "small-van") {
-    return (
-      <svg
-        viewBox="0 0 160 80"
-        className="w-full h-16 max-w-[140px]"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        {/* Compact Cargo Van */}
-        <path
-          d="M20 55 H135 V32 C135 30 132 28 128 28 H95 L75 28 L55 38 H24 C20 38 18 42 18 46 V55 Z"
-          fill="#FAF9F5"
-          stroke={strokeColor}
-          strokeWidth="2.5"
-          strokeLinejoin="round"
-        />
-        {/* Cab Window */}
-        <path
-          d="M55 38 H75 L92 32 H78 L60 38 Z"
-          fill="#03234C"
-          opacity="0.15"
-        />
-        {/* Wheels */}
-        <circle cx="42" cy="55" r="9" fill="#03234C" />
-        <circle cx="42" cy="55" r="4" fill="#FFFFFF" />
-        <circle cx="112" cy="55" r="9" fill="#03234C" />
-        <circle cx="112" cy="55" r="4" fill="#FFFFFF" />
-      </svg>
-    );
-  }
-
-  if (vanId === "mwb-van") {
-    return (
-      <svg
-        viewBox="0 0 160 80"
-        className="w-full h-16 max-w-[140px]"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        {/* Medium Panel Van */}
-        <path
-          d="M15 55 H142 V26 C142 24 139 22 135 22 H85 L65 24 L42 36 H18 C15 36 14 40 14 45 V55 Z"
-          fill="#FAF9F5"
-          stroke={strokeColor}
-          strokeWidth="2.5"
-          strokeLinejoin="round"
-        />
-        {/* Side Sliding Door Line */}
-        <line
-          x1="85"
-          y1="23"
-          x2="85"
-          y2="55"
-          stroke={strokeColor}
-          strokeWidth="1.5"
-          strokeDasharray="3 2"
-        />
-        {/* Wheels */}
-        <circle cx="38" cy="55" r="10" fill="#03234C" />
-        <circle cx="38" cy="55" r="4" fill="#FFFFFF" />
-        <circle cx="118" cy="55" r="10" fill="#03234C" />
-        <circle cx="118" cy="55" r="4" fill="#FFFFFF" />
-      </svg>
-    );
-  }
-
-  if (vanId === "lwb-van") {
-    return (
-      <svg
-        viewBox="0 0 170 80"
-        className="w-full h-16 max-w-[150px]"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        {/* Long Wheelbase High Roof Van */}
-        <path
-          d="M12 55 H155 V20 C155 18 152 16 148 16 H80 L60 20 L38 34 H15 C12 34 10 38 10 43 V55 Z"
-          fill="#FAF9F5"
-          stroke={strokeColor}
-          strokeWidth="2.5"
-          strokeLinejoin="round"
-        />
-        {/* High Roof Outline */}
-        <line
-          x1="78"
-          y1="18"
-          x2="148"
-          y2="18"
-          stroke="#DC0109"
-          strokeWidth="2"
-        />
-        {/* Wheels */}
-        <circle cx="35" cy="55" r="10" fill="#03234C" />
-        <circle cx="35" cy="55" r="4" fill="#FFFFFF" />
-        <circle cx="132" cy="55" r="10" fill="#03234C" />
-        <circle cx="132" cy="55" r="4" fill="#FFFFFF" />
-      </svg>
-    );
-  }
-
-  // Flagship: 3.5T Luton Box Van with Tail Lift
-  return (
-    <svg
-      viewBox="0 0 170 80"
-      className="w-full h-16 max-w-[150px]"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      {/* Luton Box Body */}
-      <rect
-        x="55"
-        y="12"
-        width="100"
-        height="43"
-        fill="#FAF9F5"
-        stroke={strokeColor}
-        strokeWidth="2.5"
-        rx="1"
-      />
-      {/* Over-cab Luton Pod */}
-      <path
-        d="M55 12 H42 C38 12 35 15 35 19 V28 H55 V12 Z"
-        fill="#DC0109"
-        stroke={strokeColor}
-        strokeWidth="2"
-      />
-      {/* Driver Cab */}
-      <path
-        d="M55 28 H35 L20 40 H10 V55 H55 V28 Z"
-        fill="#03234C"
-        stroke={strokeColor}
-        strokeWidth="2"
-      />
-      {/* Rear Tail Lift Platform */}
-      <rect
-        x="156"
-        y="24"
-        width="4"
-        height="31"
-        fill="#DC0109"
-        stroke={strokeColor}
-        strokeWidth="1"
-      />
-      {/* Wheels */}
-      <circle cx="32" cy="55" r="10" fill="#03234C" />
-      <circle cx="32" cy="55" r="4" fill="#FFFFFF" />
-      <circle cx="130" cy="55" r="10" fill="#03234C" />
-      <circle cx="130" cy="55" r="4" fill="#FFFFFF" />
-    </svg>
   );
 }

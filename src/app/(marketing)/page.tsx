@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { UKRouteMap } from "@/components/marketing/uk-route-map";
+import { Hero } from "@/components/sections/hero";
 import {
   Badge,
   Button,
@@ -101,112 +101,19 @@ function LutonVanIcon({
 export default function HomePage() {
   const top10Areas = areas.slice(0, 10);
   const top6Faqs = faqs.slice(0, 6);
+  const top4Services = services.slice(0, 4);
 
   return (
     <div className="flex-1">
-      {/* Top Utilitarian Road Tape Accent */}
+      {/* Logistics Hazard Waybill Tape Above Hero Section */}
       <TapeDivider
-        size="sm"
+        size="md"
         variant="standard"
-        label="UK LOGISTICS /// DEDICATED 3.5T LUTON FLEET /// DOOR-TO-DOOR TRANSIT"
-        repeatLabel
+        label="DEDICATED 3.5T LUTON, XLWB & LWB FLEET • NATIONWIDE UK DIRECT TRANSIT • FULLY INSURED • ZERO HIDDEN FEES"
       />
 
-      {/* =========================================================================
-          SECTION 1: HERO
-          Strong headline about moving across the UK (Single h1), short subheading,
-          Primary CTA "Get a Free Quote", Secondary CTA "Call 07405 328 674",
-          the van photo (next/image with priority, blurDataURL), Stamp badges.
-          ========================================================================= */}
-      <section
-        id="hero"
-        aria-label="Direct UK Removals Overview"
-        className="relative bg-brand-paper py-12 md:py-16 lg:py-20 border-b border-brand-navy/15 bg-route-grid"
-      >
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left Content Column */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="flex items-center gap-2.5 flex-wrap">
-                <Badge variant="navy" dot>
-                  THE ROUTE
-                </Badge>
-                <Badge variant="outline">UK MAINLAND TRANSIT</Badge>
-                <Stamp variant="red" size="sm" rotation="-2">
-                  DIRECT DISPATCH
-                </Stamp>
-              </div>
-
-              {/* Exact Single <h1> on Page */}
-              <Heading as="h1" size="display-2xl" withRoadLine>
-                DIRECT MOVES &amp; CARGO TRANSIT ACROSS THE UK
-              </Heading>
-
-              <p className="font-sans text-base sm:text-lg lg:text-xl text-brand-navy/85 max-w-2xl leading-relaxed">
-                Dedicated Luton van transport, experienced two-man crews, and
-                transparent quotes. Direct point-to-point transit with zero
-                depots, zero co-loading, and no hidden mileage fees from
-                collection to delivery.
-              </p>
-
-              {/* Primary & Secondary Call to Actions */}
-              <div className="flex flex-wrap items-center gap-4 pt-2">
-                <Button variant="primary" size="lg" href="/quote">
-                  Get a Free Quote
-                </Button>
-                <Button variant="secondary" size="lg" href={siteConfig.telHref}>
-                  Call {siteConfig.telephone}
-                </Button>
-                <Button variant="ghost" size="lg" href="#services-grid">
-                  Explore Services
-                </Button>
-              </div>
-
-              {/* Stamp Badges (Verified & Placeholder, no unverified claims) */}
-              <div className="pt-4 flex items-center gap-4 flex-wrap border-t border-brand-navy/15">
-                <Stamp variant="navy" size="sm" rotation="-2">
-                  3.5T LUTON BOX
-                </Stamp>
-                <Stamp variant="red" size="sm" rotation="2">
-                  TAIL LIFT EQUIPPED
-                </Stamp>
-                <Stamp variant="kraft" size="sm" rotation="-1">
-                  GOODS IN TRANSIT
-                </Stamp>
-              </div>
-            </div>
-
-            {/* Right Hero Van Image Column with next/image */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative border-2 border-brand-navy bg-brand-paper shadow-cargo-lg p-2 rounded-xs">
-                {/* Waybill Eyebrow Header */}
-                <div className="flex items-center justify-between pb-2 mb-2 border-b border-brand-navy/20 font-mono text-[10px] sm:text-xs font-bold text-brand-navy uppercase tracking-wider">
-                  <span>CONSIGNMENT: #UK-DIRECT</span>
-                  <span className="text-brand-red">LIVE VEHICLE</span>
-                </div>
-
-                <div className="relative aspect-[960/718] w-full overflow-hidden bg-brand-navy/10 border border-brand-navy/20">
-                  <Image
-                    src="/images/vans/hero-van-branded.jpeg"
-                    alt="White Mercedes-Benz Sprinter 3.5-tonne Luton box van with AB Removals corporate logo livery decaled on the side and hydraulic tail lift"
-                    width={960}
-                    height={718}
-                    priority
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                {/* Industrial Manifest Tag beneath photo */}
-                <div className="pt-2.5 flex items-center justify-between font-mono text-xs font-bold text-brand-navy/80">
-                  <span>MERCEDES-BENZ SPRINTER LUTON</span>
-                  <span className="text-brand-navy">500KG TAIL LIFT</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
+      {/* Rebuilt Full-Width Hero Section */}
+      <Hero />
 
       {/* =========================================================================
           SECTION 2: TRUST STRIP
@@ -516,26 +423,38 @@ export default function HomePage() {
         className="bg-brand-paper py-16 md:py-24 border-b border-brand-navy/15"
       >
         <Container>
-          <div className="max-w-3xl mb-12">
-            <div className="flex items-center gap-2 mb-3">
-              <Badge variant="navy" dot>
-                CARGO MANIFEST
-              </Badge>
-              <span className="font-mono text-xs text-brand-navy/70 uppercase">
-                6 SPECIALIZED SERVICES
-              </span>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+            <div className="max-w-2xl">
+              <div className="flex items-center gap-2 mb-3">
+                <Badge variant="navy" dot>
+                  CARGO MANIFEST
+                </Badge>
+                <span className="font-mono text-xs text-brand-navy/70 uppercase">
+                  CORE MOVING SERVICES
+                </span>
+              </div>
+              <Heading as="h2" size="display-lg">
+                Our Removals &amp; Transport Services
+              </Heading>
+              <p className="font-sans text-base sm:text-lg text-brand-navy/80 mt-2 leading-relaxed">
+                Dedicated Luton, XLWB and LWB removals vans equipped with tail
+                lifts, protective blankets, and professional moving crews across
+                the UK.
+              </p>
             </div>
-            <Heading as="h2" size="display-lg">
-              Our Removals &amp; Transport Services
-            </Heading>
-            <p className="font-sans text-base sm:text-lg text-brand-navy/80 mt-2 leading-relaxed">
-              Every transport category is handled with dedicated 3.5t Luton
-              vans, tail lifts, and trained moving teams across the UK.
-            </p>
+
+            <Button
+              variant="secondary"
+              size="md"
+              href="/services"
+              className="shrink-0 hidden md:inline-flex"
+            >
+              Explore All 14 Services →
+            </Button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => {
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {top4Services.map((service, index) => {
               const consignmentNo = `SRV-0${index + 1}-${service.slug.substring(0, 4).toUpperCase()}`;
               return (
                 <div key={service.id} className="h-full flex flex-col">
@@ -552,7 +471,7 @@ export default function HomePage() {
                     <div className="flex-1 flex flex-col">
                       {/* Uniform Title Height so multi-line and single-line titles align */}
                       <div className="min-h-[3.75rem] flex items-start mb-2">
-                        <h3 className="font-display italic font-black text-xl lg:text-2xl uppercase text-brand-navy leading-tight">
+                        <h3 className="font-display italic font-black text-lg lg:text-xl uppercase text-brand-navy leading-tight">
                           {service.name}
                         </h3>
                       </div>
@@ -580,13 +499,13 @@ export default function HomePage() {
                       </div>
 
                       {/* Action buttons pinned to exact bottom baseline with mt-auto */}
-                      <div className="mt-auto pt-4 border-t border-brand-navy/20 flex items-center justify-between gap-3">
+                      <div className="mt-auto pt-4 border-t border-brand-navy/20 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
                         <Button
                           variant="secondary"
                           size="sm"
                           href={`/services/${service.slug}`}
                         >
-                          Service Details
+                          Details
                         </Button>
                         <Button
                           variant="primary"
@@ -601,6 +520,26 @@ export default function HomePage() {
                 </div>
               );
             })}
+          </div>
+
+          {/* Bottom Navigation CTA to full services directory */}
+          <div className="mt-12 text-center pt-8 border-t border-brand-navy/15 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button
+              variant="primary"
+              size="lg"
+              href="/services"
+              className="w-full sm:w-auto"
+            >
+              View All 14 Removals Services →
+            </Button>
+            <Button
+              variant="secondary"
+              size="lg"
+              href="/quote"
+              className="w-full sm:w-auto"
+            >
+              Get Instant Moving Quote
+            </Button>
           </div>
         </Container>
       </section>
