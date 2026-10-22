@@ -12,7 +12,11 @@ import {
   formatSeoDescription,
   formatSeoTitle,
 } from "@/lib/seo/metadata";
-import { generateServiceSchema } from "@/lib/seo/schema";
+import {
+  generateBreadcrumbSchema,
+  generateFaqPageSchema,
+  generateServiceSchema,
+} from "@/lib/seo/schema";
 
 interface Props {
   params: Promise<{ service: string }>;
@@ -57,15 +61,21 @@ export default async function ServiceDetailPage({ params }: Props) {
   // Popular cities for this service
   const popularAreas = areas.slice(0, 10);
 
+  const serviceSchema = generateServiceSchema(
+    service.name,
+    service.shortDescription,
+    `/services/${service.slug}`,
+  );
+  const faqSchema = generateFaqPageSchema(service.faqs);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Services", url: "/services" },
+    { name: service.name, url: `/services/${service.slug}` },
+  ]);
+
   return (
     <div className="bg-slate-50 min-h-screen">
-      <JsonLd
-        data={generateServiceSchema(
-          service.name,
-          service.shortDescription,
-          `/services/${service.slug}`,
-        )}
-      />
+      <JsonLd data={[serviceSchema, faqSchema, breadcrumbSchema]} />
       {/* Top Banner & Breadcrumbs */}
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

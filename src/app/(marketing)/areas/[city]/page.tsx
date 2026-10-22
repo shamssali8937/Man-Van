@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/common/breadcrumbs";
 import { FaqAccordion } from "@/components/common/faq-accordion";
 import { QuoteCtaCard } from "@/components/common/quote-cta-card";
+import { JsonLd } from "@/components/seo/json-ld";
 import { getNearbyAreas } from "@/content";
 import { areas } from "@/content/areas";
 import { services } from "@/content/services";
@@ -12,6 +13,11 @@ import {
   formatSeoDescription,
   formatSeoTitle,
 } from "@/lib/seo/metadata";
+import {
+  generateBreadcrumbSchema,
+  generateFaqPageSchema,
+  generateServiceSchema,
+} from "@/lib/seo/schema";
 
 interface Props {
   params: Promise<{ city: string }>;
@@ -34,9 +40,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // Guaranteed strictly < 60 chars title and < 160 chars description
   return constructMetadata({
     title: formatSeoTitle(`Removals in ${area.name}`),
-    description: formatSeoDescription(
-      `Professional removals and man and van services in ${area.name} (${area.postcodePrefixes.join(", ")}). Clean Luton vans, experienced crew, clear pricing.`,
-    ),
+    exactTitle: true,
+    description:
+      area.metaDescription ||
+      formatSeoDescription(
+        `Professional removals in ${area.name} (${area.postcodePrefixes.join(", ")}). Dedicated Luton vans with tail lifts, punctual service and upfront fixed quotes.`,
+      ),
     path: `/areas/${area.slug}`,
   });
 }
@@ -51,8 +60,22 @@ export default async function AreaCityPage({ params }: Props) {
 
   const nearbyAreas = getNearbyAreas(area.slug, 4);
 
+  const localServiceSchema = generateServiceSchema(
+    "Removals & Man and Van",
+    area.intro,
+    `/areas/${area.slug}`,
+    area.name,
+  );
+  const faqSchema = generateFaqPageSchema(area.faqs);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Coverage Areas", url: "/areas" },
+    { name: area.name, url: `/areas/${area.slug}` },
+  ]);
+
   return (
     <div className="bg-slate-50 min-h-screen">
+      <JsonLd data={[localServiceSchema, faqSchema, breadcrumbSchema]} />
       {/* Top Banner & Breadcrumbs */}
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

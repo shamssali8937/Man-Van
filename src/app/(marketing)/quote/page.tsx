@@ -1,19 +1,32 @@
 import type { Metadata } from "next";
 import { QuoteWizard } from "@/components/quote";
+import { JsonLd } from "@/components/seo/json-ld";
 import { Badge, Container, Heading, Stamp, TapeDivider } from "@/components/ui";
 import { siteConfig } from "@/content/site";
-import { constructMetadata } from "@/lib/seo/metadata";
+import {
+  constructMetadata,
+  formatSeoDescription,
+  formatSeoTitle,
+} from "@/lib/seo/metadata";
+import { generateBreadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Request a Free Moving Quote | Direct UK Removals & Man and Van",
-  description:
-    "Select your van size, enter your UK collection and delivery postcodes, and request a transparent, fixed removals quote. Dedicated direct transit with zero hidden fees.",
+  title: formatSeoTitle("Free Removals Quote | Man and Van UK"),
+  description: formatSeoDescription(
+    "Request a fast, free UK removals and man and van quote. Select your Luton van, choose helper options, and lock in transparent fixed pricing today.",
+  ),
   path: "/quote",
 });
 
 export default function QuotePage() {
+  const breadcrumbsSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Get a Quote", url: "/quote" },
+  ]);
+
   return (
     <div className="bg-route-grid bg-brand-paper min-h-screen pb-20">
+      <JsonLd data={[breadcrumbsSchema]} />
       {/* Top Warning Caution Stripe */}
       <TapeDivider
         size="sm"

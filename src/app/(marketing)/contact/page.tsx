@@ -1,24 +1,32 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/common/breadcrumbs";
 import { ContactForm } from "@/components/contact/contact-form";
+import { JsonLd } from "@/components/seo/json-ld";
 import { siteConfig } from "@/content/site";
 import {
   constructMetadata,
   formatSeoDescription,
   formatSeoTitle,
 } from "@/lib/seo/metadata";
+import { generateBreadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = constructMetadata({
-  title: formatSeoTitle("Contact Us"),
+  title: formatSeoTitle("Contact Us | AB Removals UK"),
   description: formatSeoDescription(
-    "Get in touch with AB Removals. Call 07405 328 674 or send an enquiry. Friendly team, prompt answers, nationwide removals.",
+    "Get in touch with AB Removals. Call 07405 328 674 or send an enquiry. Friendly team, prompt answers, nationwide removals across the UK.",
   ),
   path: "/contact",
 });
 
 export default function ContactPage() {
+  const breadcrumbsSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Contact", url: "/contact" },
+  ]);
+
   return (
     <div className="bg-slate-50 min-h-screen">
+      <JsonLd data={[breadcrumbsSchema]} />
       {/* Breadcrumbs */}
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

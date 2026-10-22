@@ -87,4 +87,34 @@ export const faqs: FAQ[] = [
     answer:
       "Our modern Euro-6 Luton fleet is fully compliant with all UK Clean Air Zones and London's ULEZ with zero daily charges. Road tolls (such as the Dartford Crossing or M6 Toll) and the London Congestion Charge (£15) are quoted transparently upfront and itemized on your booking confirmation.",
   },
+  {
+    id: "near-me-coverage",
+    category: "general",
+    question: "Do you have a man and van near me available across the UK?",
+    answer:
+      "Yes. AB Removals operates a mobile UK-wide removals fleet covering 30 primary regional hubs across England, Scotland, and Wales, including London, Birmingham, Manchester, Leeds, Bristol, and Glasgow. Our vans are coordinated dynamically to offer local collection and nationwide transit.",
+  },
+  {
+    id: "single-item-moves",
+    category: "services",
+    question:
+      "Can I book a man and van for moving just one item like a sofa or wardrobe?",
+    answer:
+      "Yes. Our furniture collection and delivery service is ideal for single items, eBay or Facebook Marketplace purchases, and store pickups. You receive the same 2-man loading care and blanket protection as a full house move.",
+  },
+  {
+    id: "furniture-dismantling-faq",
+    category: "services",
+    question: "Do your removal crews dismantle and reassemble large furniture?",
+    answer:
+      "Yes. We offer skilled furniture dismantling and reassembly for IKEA PAX wardrobes, ottoman storage beds, and modular tables. Our team carries complete cordless toolsets and hardware pouches.",
+  },
+  {
+    id: "removals-vs-man-and-van",
+    category: "general",
+    question:
+      "What is the difference between a full house removal and a man and van service?",
+    answer:
+      "A house removal typically involves a full two-man or three-man crew managing an entire domestic property move with scheduled completion times and full room placement. A man and van service offers flexible hourly options (driver-only or driver with helper) tailored for smaller flat moves, student relocations, and urgent transport.",
+  },
 ];

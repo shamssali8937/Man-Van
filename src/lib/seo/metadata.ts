@@ -17,18 +17,24 @@ export function formatSeoTitle(
   title: string,
   brand: string = siteConfig.shortName,
 ): string {
-  const clean = title.trim();
+  let clean = title.trim();
+  if (clean.length > 59 && clean.includes(" and ")) {
+    clean = clean.replace(/ and /g, " & ");
+  }
   if (!brand || clean.includes(brand) || clean.includes(siteConfig.name)) {
-    return clean.length <= 58 ? clean : `${clean.slice(0, 55).trim()}...`;
+    return clean.length <= 59 ? clean : `${clean.slice(0, 56).trim()}...`;
   }
 
   const withBrand = `${clean} | ${brand}`;
-  if (withBrand.length <= 58) {
+  if (withBrand.length <= 59) {
     return withBrand;
   }
 
-  const maxBase = 58 - (brand.length + 3);
-  return `${clean.slice(0, Math.max(10, maxBase - 1)).trim()}… | ${brand}`;
+  if (clean.length <= 59) {
+    return clean;
+  }
+
+  return `${clean.slice(0, 56).trim()}...`;
 }
 
 /**
@@ -71,10 +77,10 @@ export function constructMetadata({
   return {
     metadataBase: new URL(siteConfig.url),
     title: exactTitle
-      ? pageTitle
+      ? { absolute: pageTitle }
       : {
           default: pageTitle,
-          template: `%s | ${siteConfig.name}`,
+          template: `%s | ${siteConfig.shortName}`,
         },
     description: finalDescription,
     alternates: {

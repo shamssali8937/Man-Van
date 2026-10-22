@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/common/breadcrumbs";
 import { QuoteCtaCard } from "@/components/common/quote-cta-card";
+import { JsonLd } from "@/components/seo/json-ld";
 import { areas } from "@/content/areas";
 import { services } from "@/content/services";
 import {
@@ -9,11 +10,12 @@ import {
   formatSeoDescription,
   formatSeoTitle,
 } from "@/lib/seo/metadata";
+import { generateBreadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = constructMetadata({
-  title: formatSeoTitle("UK Coverage Areas"),
+  title: formatSeoTitle("UK Removals Coverage Areas | 30 Cities"),
   description: formatSeoDescription(
-    "Explore our 30 major UK removal coverage areas. Direct nationwide door-to-door transit, London, Birmingham, Manchester, Leeds, Bristol and Scotland.",
+    "Explore our 30 major UK removal coverage areas. Direct nationwide door-to-door transit across London, Birmingham, Manchester, Leeds, Bristol and Scotland.",
   ),
   path: "/areas",
 });
@@ -34,8 +36,14 @@ export default function AreasHubPage() {
 
   const regionNames = Object.keys(regionsMap).sort();
 
+  const breadcrumbsSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Coverage Areas", url: "/areas" },
+  ]);
+
   return (
     <div className="bg-slate-50 min-h-screen">
+      <JsonLd data={[breadcrumbsSchema]} />
       {/* Top Banner & Breadcrumbs */}
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

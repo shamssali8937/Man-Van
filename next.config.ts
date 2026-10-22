@@ -48,6 +48,40 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: "/services/furniture-collection-and-delivery",
+        destination: "/services/furniture-removals-and-delivery",
+        permanent: true,
+      },
+      {
+        source: "/services/furniture-dismantling-and-assembly",
+        destination: "/services/furniture-assembly-and-dismantling",
+        permanent: true,
+      },
+      {
+        source: "/services/waste-removal-and-property-clearance",
+        destination: "/services/waste-removal-and-disposal",
+        permanent: true,
+      },
+      {
+        source: "/areas/:city/furniture-collection-and-delivery",
+        destination: "/areas/:city/furniture-removals-and-delivery",
+        permanent: true,
+      },
+      {
+        source: "/areas/:city/furniture-dismantling-and-assembly",
+        destination: "/areas/:city/furniture-assembly-and-dismantling",
+        permanent: true,
+      },
+      {
+        source: "/areas/:city/waste-removal-and-property-clearance",
+        destination: "/areas/:city/waste-removal-and-disposal",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

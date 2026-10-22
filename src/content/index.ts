@@ -7,6 +7,7 @@ import { siteConfig } from "./site";
 
 export * from "./areas";
 export * from "./faqs";
+export * from "./keywords";
 export * from "./load-planner";
 export * from "./reviews";
 export * from "./services";

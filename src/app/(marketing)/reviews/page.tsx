@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/common/breadcrumbs";
 import { QuoteCtaCard } from "@/components/common/quote-cta-card";
+import { JsonLd } from "@/components/seo/json-ld";
 import { reviews } from "@/content/reviews";
 import {
   constructMetadata,
   formatSeoDescription,
   formatSeoTitle,
 } from "@/lib/seo/metadata";
+import { generateBreadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = constructMetadata({
-  title: formatSeoTitle("Customer Reviews"),
+  title: formatSeoTitle("Customer Reviews | Verified Feedback"),
   description: formatSeoDescription(
     "Verified customer reviews for AB Removals. Read honest feedback from residential, student, and commercial moves across the UK.",
   ),
@@ -19,8 +21,14 @@ export const metadata: Metadata = constructMetadata({
 export default function ReviewsPage() {
   const hasReviews = reviews && reviews.length > 0;
 
+  const breadcrumbsSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Customer Reviews", url: "/reviews" },
+  ]);
+
   return (
     <div className="bg-slate-50 min-h-screen">
+      <JsonLd data={[breadcrumbsSchema]} />
       {/* Breadcrumbs */}
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

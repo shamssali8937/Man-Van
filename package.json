@@ -17,6 +17,7 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "audit": "pnpm audit",
+    "seo:audit": "tsx scripts/seo-audit.ts",
     "prepare": "husky"
   },
   "dependencies": {
@@ -46,6 +47,7 @@
     "lint-staged": "^15.4.3",
     "playwright": "^1.50.1",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5",
     "vitest": "^3.0.5"
   },

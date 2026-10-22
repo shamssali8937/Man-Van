@@ -29,11 +29,13 @@ const VanGallery = dynamic(
   },
 );
 
+import { JsonLd } from "@/components/seo/json-ld";
 import {
   constructMetadata,
   formatSeoDescription,
   formatSeoTitle,
 } from "@/lib/seo/metadata";
+import { generateBreadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = constructMetadata({
   title: formatSeoTitle("Fleet & Van Specifications"),
@@ -286,8 +288,14 @@ const protectiveEquipment = [
 ];
 
 export default function TheVanPage() {
+  const breadcrumbsSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Fleet & Van Specifications", url: "/the-van" },
+  ]);
+
   return (
     <div className="bg-brand-paper min-h-screen">
+      <JsonLd data={[breadcrumbsSchema]} />
       {/* Waybill Tape Divider */}
       <TapeDivider label="AB REMOVALS • FLEET SPECIFICATIONS • 3.5T LUTON & COMMERCIAL VANS • EURO-6 ULEZ" />
 
