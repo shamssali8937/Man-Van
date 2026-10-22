@@ -1,3 +1,4 @@
+import { areas } from "@/content/areas";
 import { reviews } from "@/content/reviews";
 import { siteConfig } from "@/content/site";
 
@@ -20,6 +21,12 @@ export function generateMovingCompanySchema() {
     "@type": ["MovingCompany", "LocalBusiness"],
     "@id": `${siteConfig.url}/#movingcompany`,
     name: siteConfig.name,
+    alternateName: [
+      siteConfig.shortName,
+      "AB Man and Van",
+      "AB Removals and Transport",
+      "AB Removals & Transport Ltd",
+    ],
     legalName: "AB Removals & Transport Ltd",
     url: siteConfig.url,
     telephone: siteConfig.telephone,
@@ -29,6 +36,7 @@ export function generateMovingCompanySchema() {
     priceRange: "££",
     currenciesAccepted: "GBP",
     paymentAccepted: "Cash, Credit Card, Debit Card, Bank Transfer",
+    sameAs: [siteConfig.whatsappHref],
     address: {
       "@type": "PostalAddress",
       streetAddress: siteConfig.address.streetAddress,
@@ -41,18 +49,10 @@ export function generateMovingCompanySchema() {
         "@type": "Country",
         name: "United Kingdom",
       },
-      {
-        "@type": "AdministrativeArea",
-        name: "Greater London",
-      },
-      {
-        "@type": "AdministrativeArea",
-        name: "West Midlands",
-      },
-      {
-        "@type": "AdministrativeArea",
-        name: "Greater Manchester",
-      },
+      ...areas.map((a) => ({
+        "@type": "City",
+        name: a.name,
+      })),
     ],
     openingHoursSpecification: [
       {
@@ -66,8 +66,8 @@ export function generateMovingCompanySchema() {
           "Saturday",
           "Sunday",
         ],
-        opens: "00:00",
-        closes: "23:59",
+        opens: "07:00",
+        closes: "20:00",
       },
     ],
   };
@@ -118,6 +118,7 @@ export function generateWebSiteSchema() {
     "@id": `${siteConfig.url}/#website`,
     url: siteConfig.url,
     name: siteConfig.name,
+    alternateName: ["AB Removals", "AB Man and Van"],
     description: siteConfig.description,
     inLanguage: "en-GB",
     publisher: {

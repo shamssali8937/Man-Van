@@ -4,6 +4,8 @@ import { services } from "@/content/services";
 import { siteConfig } from "@/content/site";
 import { getValidAreaServicePairs } from "@/lib/seo/area-service-content";
 
+import { isTier1City } from "@/lib/seo/tiers";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
   const currentDate = new Date().toISOString();
@@ -43,7 +45,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const areaServicePairs = getValidAreaServicePairs();
+  // Only Tier 1 conurbations are indexed in the sitemap; Tier 2+ are kept out until verified
+  const areaServicePairs = getValidAreaServicePairs().filter(({ city }) =>
+    isTier1City(city),
+  );
   const areaServiceRoutes: MetadataRoute.Sitemap = areaServicePairs.map(
     ({ city, service }) => ({
       url: `${baseUrl}/areas/${city}/${service}`,

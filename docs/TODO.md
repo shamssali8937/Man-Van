@@ -37,3 +37,15 @@ All market rates, van dimensions, insurance limits, and standard UK terms have b
 
 ## 6. Marketing & Hero Trust Claims (Pre-Launch Verification)
 - [ ] Confirm the claims 'Experienced Team', 'Fully Insured' and 'On Time & Reliable' are accurate and evidenced before launch.
+
+---
+
+## 7. SEO Data & Real-World Claims To Confirm [TODO: confirm]
+- [ ] **Google Keyword Planner / Search Console Volumes**: Populate the `volume` column in `docs/seo/keyword-map.md` with true 12-month search volumes from Google Keyword Planner or Google Search Console after 30 days of live traffic.
+- [ ] **Real Fleet & Crew Photography**: Replace any stock/rendered van and crew imagery with genuine high-resolution photos of the actual 3.5T Luton van, equipment (tail lift, blankets, straps, dollies), and crew in uniform.
+- [ ] **Google Business Profile (GBP) Verification**: Create, verify, and link the Google Business Profile for AB Removals (primary category: "Moving company") with phone number matching `07405 328 674` and real operational address.
+- [ ] **Bing Places & Apple Business Connect**: Complete secondary search engine map verifications with identical NAP details.
+- [ ] **UK Citation Directory Listings**: Confirm business listings on Yell.com, Checkatrade, Trustpilot, Thomson Local, and Scoot.
+- [ ] **Waste Carrier Registration (CBDU489120)**: Verify renewal dates on the Environment Agency public register.
+- [ ] **Goods in Transit (£50,000) & Public Liability (£2,000,000)**: Verify active certificate renewal dates and policy documents.
+

@@ -2,16 +2,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/common/breadcrumbs";
 import { QuoteCtaCard } from "@/components/common/quote-cta-card";
+import { JsonLd } from "@/components/seo/json-ld";
 import {
   constructMetadata,
   formatSeoDescription,
   formatSeoTitle,
 } from "@/lib/seo/metadata";
+import { generateBreadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = constructMetadata({
-  title: formatSeoTitle("Pricing & Rates"),
+  title: formatSeoTitle("Removals Pricing & Man and Van Rates"),
   description: formatSeoDescription(
-    "Transparent pricing structure for removals and man & van services. Clear hourly or fixed rates with no hidden extras.",
+    "Transparent UK removals pricing and man and van rates. Clear hourly rates from £55/hr, 2-man teams, and guaranteed fixed quotes. No hidden fees.",
   ),
   path: "/pricing",
 });
@@ -87,8 +89,14 @@ const pricingFactors = [
 ];
 
 export default function PricingPage() {
+  const breadcrumbsSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Pricing & Rates", url: "/pricing" },
+  ]);
+
   return (
     <div className="bg-slate-50 min-h-screen">
+      <JsonLd data={[breadcrumbsSchema]} />
       {/* Breadcrumbs */}
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

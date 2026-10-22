@@ -12,7 +12,12 @@ import {
   getValidAreaServicePairs,
 } from "@/lib/seo/area-service-content";
 import { constructMetadata } from "@/lib/seo/metadata";
-import { generateServiceSchema } from "@/lib/seo/schema";
+import {
+  generateBreadcrumbSchema,
+  generateFaqPageSchema,
+  generateServiceSchema,
+} from "@/lib/seo/schema";
+import { isTier1City } from "@/lib/seo/tiers";
 
 interface Props {
   params: Promise<{ city: string; service: string }>;
@@ -30,11 +35,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return constructMetadata({ title: "Page Not Found" });
   }
 
+  const isTier1 = isTier1City(citySlug);
+
   return constructMetadata({
     title: combo.seoTitle,
     exactTitle: true,
     description: combo.seoDescription,
     path: `/areas/${combo.citySlug}/${combo.serviceSlug}`,
+    noIndex: !isTier1,
   });
 }
 
@@ -50,16 +58,26 @@ export default async function AreaServiceDetailPage({ params }: Props) {
   const nearbyAreas = getNearbyAreas(area.slug, 4);
   const otherServices = services.filter((s) => s.slug !== service.slug);
 
+  const serviceSchema = generateServiceSchema(
+    service.name,
+    combo.leadParagraph,
+    `/areas/${area.slug}/${service.slug}`,
+    area.name,
+  );
+  const faqSchema = generateFaqPageSchema(combo.localFaqs);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Coverage Areas", url: "/areas" },
+    { name: area.name, url: `/areas/${area.slug}` },
+    {
+      name: service.name,
+      url: `/areas/${area.slug}/${service.slug}`,
+    },
+  ]);
+
   return (
     <div className="bg-slate-50 min-h-screen">
-      <JsonLd
-        data={generateServiceSchema(
-          service.name,
-          combo.leadParagraph,
-          `/areas/${area.slug}/${service.slug}`,
-          area.name,
-        )}
-      />
+      <JsonLd data={[serviceSchema, faqSchema, breadcrumbSchema]} />
       {/* Top Banner & Breadcrumbs */}
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

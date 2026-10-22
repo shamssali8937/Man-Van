@@ -2,14 +2,21 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/common/breadcrumbs";
 import { QuoteCtaCard } from "@/components/common/quote-cta-card";
+import { JsonLd } from "@/components/seo/json-ld";
 import { areas } from "@/content/areas";
 import { services } from "@/content/services";
-import { constructMetadata } from "@/lib/seo/metadata";
+import {
+  constructMetadata,
+  formatSeoDescription,
+  formatSeoTitle,
+} from "@/lib/seo/metadata";
+import { generateBreadcrumbSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Our Removal Services",
-  description:
-    "Explore our professional house removals, man and van, and delivery services across the UK. Modern Luton vans, 2-man crews, and transparent fixed quotes.",
+  title: formatSeoTitle("Removals & Man and Van Services UK"),
+  description: formatSeoDescription(
+    "Explore our professional house removals, man and van hire, and furniture delivery services across the UK. Luton vans with tail lifts and transparent quotes. Book today.",
+  ),
   path: "/services",
 });
 
@@ -43,8 +50,15 @@ const howItWorksSteps = [
 export default function ServicesHubPage() {
   const popularAreas = areas.slice(0, 12);
 
+  const breadcrumbsSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Services", url: "/services" },
+  ]);
+
   return (
     <div className="bg-slate-50 min-h-screen">
+      <JsonLd data={[breadcrumbsSchema]} />
+
       {/* Top Banner & Breadcrumbs */}
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,13 +73,13 @@ export default function ServicesHubPage() {
             UK Moving & Transport Solutions
           </span>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-900 leading-tight">
-            Professional Removals & Transport Services
+            Removals & Man and Van Services
           </h1>
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
             Reliable, insured removals powered by modern 3.5-tonne Luton box
             vans with hydraulic tail lifts. From full domestic homes and student
             lets to commercial offices and marketplace deliveries, we handle
-            every haul with precision.
+            every haul with precision across the UK.
           </p>
         </div>
 
@@ -123,7 +137,7 @@ export default function ServicesHubPage() {
                     href={`/services/${service.slug}`}
                     className="text-sm font-semibold text-slate-900 hover:text-red-600 transition-colors inline-flex items-center gap-1"
                   >
-                    Service details
+                    Explore service
                     <span aria-hidden="true">&rarr;</span>
                   </Link>
 
@@ -136,6 +150,88 @@ export default function ServicesHubPage() {
                 </div>
               </article>
             ))}
+          </div>
+        </section>
+
+        {/* Moving Terms Explained / Service Distinction */}
+        <section
+          aria-labelledby="terms-overview-heading"
+          className="rounded-3xl bg-white border border-slate-200 p-8 md:p-12 mb-16 md:mb-20 shadow-xs"
+        >
+          <div className="max-w-3xl mb-8">
+            <span className="text-xs font-bold text-red-600 uppercase tracking-widest">
+              Moving Guide
+            </span>
+            <h2
+              id="terms-overview-heading"
+              className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1"
+            >
+              Moving Terms Explained: Which Service Do You Need?
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600 mt-2">
+              British moving terminology can sometimes be confusing. Here is a
+              practical breakdown of the differences to help you select the
+              right moving service.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-slate-700">
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100">
+              <h3 className="font-bold text-slate-900 mb-2">
+                1. Man and Van (Small Removals)
+              </h3>
+              <p className="leading-relaxed">
+                Also searched as <em>man with a van</em>,{" "}
+                <em>van and driver</em>, or <em>two men and a van</em>. This is
+                our most flexible, hourly option. Perfect for studio moves,
+                student relocations, room moves, and individual bulky items
+                where you need a working driver and vehicle without full
+                household coordination.
+              </p>
+              <Link
+                href="/services/man-and-van"
+                className="mt-3 inline-block font-semibold text-red-600 hover:underline text-xs"
+              >
+                Learn about man and van hire &rarr;
+              </Link>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100">
+              <h3 className="font-bold text-slate-900 mb-2">
+                2. House Removals (Domestic Relocation)
+              </h3>
+              <p className="leading-relaxed">
+                Commonly called <em>home removals</em> or <em>house moves</em>.
+                This service deploys a dedicated 2-man or 3-man crew to manage
+                entire flats or houses. We coordinate closely around property
+                completion schedules, handle all heavy lifting, and place goods
+                directly into designated rooms.
+              </p>
+              <Link
+                href="/services/house-removals"
+                className="mt-3 inline-block font-semibold text-red-600 hover:underline text-xs"
+              >
+                Learn about house removals &rarr;
+              </Link>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100">
+              <h3 className="font-bold text-slate-900 mb-2">
+                3. Specialized Furniture & Clearance
+              </h3>
+              <p className="leading-relaxed">
+                Whether you need flat-pack IKEA assembly, single-item sofa
+                collection from retail stores, or ethical property clearance,
+                our specialized teams arrive with tail lifts, cordless tools,
+                and Environment Agency waste carrier licensing.
+              </p>
+              <Link
+                href="/services/furniture-removals-and-delivery"
+                className="mt-3 inline-block font-semibold text-red-600 hover:underline text-xs"
+              >
+                View furniture courier services &rarr;
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -200,7 +296,7 @@ export default function ServicesHubPage() {
                 href={`/areas/${area.slug}`}
                 className="rounded-lg bg-white p-3 text-center text-xs font-semibold text-slate-800 hover:text-red-600 hover:border-red-300 border border-slate-200 transition-all truncate"
               >
-                {area.name}
+                {area.name} Removals
               </Link>
             ))}
           </div>

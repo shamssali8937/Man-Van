@@ -1,0 +1,544 @@
+========================================================================================================================
+AB REMOVALS – FULL TECHNICAL SEO AUDIT REPORT
+Generated: 2026-10-22T13:15:48.228Z
+========================================================================================================================
+
+1. PAGE SCALE & INDEXATION REPORT
+------------------------------------------------------------------------------------------------------------------------
+- Total Pages Audited: 465
+- Indexable Pages: 185
+  * 1 Homepage
+  * 14 Canonical Service Pages
+  * 30 Major City Hubs
+  * 140 Tier 1 Conurbation City x Service Pages (10 Tier 1 Cities x 14 Services)
+- Noindex Pages: 280
+  * 280 Tier 2+ City x Service Pages (20 Tier 2+ Cities x 14 Services, excluded from sitemap.xml)
+- Total Canonical Services: 14
+- Total Cities: 30
+- Tier 1 Cities (10): london, birmingham, manchester, leeds, glasgow, liverpool, bristol, sheffield, edinburgh, cardiff
+- Tier 2+ Cities (20): newcastle-upon-tyne, nottingham, leicester, southampton, portsmouth, coventry, reading, milton-keynes, brighton, northampton, derby, plymouth, stoke-on-trent, wolverhampton, swansea, oxford, cambridge, norwich, exeter, york
+
+2. AUDIT RULES & PASS CRITERIA (Strict Enforcement)
+------------------------------------------------------------------------------------------------------------------------
+[✓] Primary keyword appears in Title, H1, first 100 words, and at least 3 times in body.
+[✓] Keyword density strictly between 0.5% and 1.5% (fails below 0.5% and above 1.5%).
+[✓] Word counts (unique words, excluding boilerplate): Home 600+, Service 400+, City 400+, City x Service 350+.
+[✓] Meta descriptions unique across site; fail if two pages share > 50% text.
+[✓] Zero unconfirmed claims in meta descriptions ("clean", "experienced", "fully insured").
+[✓] Exactly one H1; valid JSON-LD schema; canonical tag present; clean URLs.
+
+3. TOP 10 LOWEST SCORING PAGES
+------------------------------------------------------------------------------------------------------------------------
+1. [Score: 100/100] / (HOME) - PASS
+   Title (48 chars): "UK Removals & Man and Van Services | AB Removals"
+   Words: 610 | Density: 0.82% | Kw Occurrences: 5
+
+2. [Score: 100/100] /services/house-removals (SERVICE) - PASS
+   Title (31 chars): "House Removals UK | AB Removals"
+   Words: 641 | Density: 0.62% | Kw Occurrences: 4
+
+3. [Score: 100/100] /services/office-and-commercial-removals (SERVICE) - PASS
+   Title (47 chars): "Office and Commercial Removals UK | AB Removals"
+   Words: 535 | Density: 0.56% | Kw Occurrences: 3
+
+4. [Score: 100/100] /services/furniture-removals-and-delivery (SERVICE) - PASS
+   Title (48 chars): "Furniture Removals and Delivery UK | AB Removals"
+   Words: 535 | Density: 0.56% | Kw Occurrences: 3
+
+5. [Score: 100/100] /services/man-and-van (SERVICE) - PASS
+   Title (28 chars): "Man and Van UK | AB Removals"
+   Words: 559 | Density: 1.07% | Kw Occurrences: 6
+
+6. [Score: 100/100] /services/furniture-assembly-and-dismantling (SERVICE) - PASS
+   Title (51 chars): "Furniture Assembly and Dismantling UK | AB Removals"
+   Words: 508 | Density: 0.59% | Kw Occurrences: 3
+
+7. [Score: 100/100] /services/student-and-small-moves (SERVICE) - PASS
+   Title (40 chars): "Student and Small Moves UK | AB Removals"
+   Words: 467 | Density: 0.64% | Kw Occurrences: 3
+
+8. [Score: 100/100] /services/store-collections-and-deliveries (SERVICE) - PASS
+   Title (49 chars): "Store Collections and Deliveries UK | AB Removals"
+   Words: 474 | Density: 0.63% | Kw Occurrences: 3
+
+9. [Score: 100/100] /services/appliance-removals (SERVICE) - PASS
+   Title (35 chars): "Appliance Removals UK | AB Removals"
+   Words: 467 | Density: 0.64% | Kw Occurrences: 3
+
+10. [Score: 100/100] /services/packing-and-moving-assistance (SERVICE) - PASS
+   Title (46 chars): "Packing and Moving Assistance UK | AB Removals"
+   Words: 462 | Density: 0.65% | Kw Occurrences: 3
+
+4. DUPLICATE SIMILARITY PAIRS (> 50% Text Overlap)
+------------------------------------------------------------------------------------------------------------------------
+Zero pairs share > 50% text across all 107880 page comparisons!
+
+5. FULL RESULTS TABLE (465 PAGES)
+------------------------------------------------------------------------------------------------------------------------
+URL                                                    TYPE          INDEX   WORDS   DENSITY   TITLE   H1    100W  STATUS  ISSUES
+----------------------------------------------------------------------------------------------------------------------------------
+/                                                      home          index   610     0.82%     ✓       ✓     ✓     PASS    None
+/services/house-removals                               service       index   641     0.62%     ✓       ✓     ✓     PASS    None
+/services/office-and-commercial-removals               service       index   535     0.56%     ✓       ✓     ✓     PASS    None
+/services/furniture-removals-and-delivery              service       index   535     0.56%     ✓       ✓     ✓     PASS    None
+/services/man-and-van                                  service       index   559     1.07%     ✓       ✓     ✓     PASS    None
+/services/furniture-assembly-and-dismantling           service       index   508     0.59%     ✓       ✓     ✓     PASS    None
+/services/student-and-small-moves                      service       index   467     0.64%     ✓       ✓     ✓     PASS    None
+/services/store-collections-and-deliveries             service       index   474     0.63%     ✓       ✓     ✓     PASS    None
+/services/appliance-removals                           service       index   467     0.64%     ✓       ✓     ✓     PASS    None
+/services/packing-and-moving-assistance                service       index   462     0.65%     ✓       ✓     ✓     PASS    None
+/services/storage-transportation                       service       index   475     0.63%     ✓       ✓     ✓     PASS    None
+/services/waste-removal-and-disposal                   service       index   477     0.63%     ✓       ✓     ✓     PASS    None
+/services/heavy-and-bulky-item-transportation          service       index   483     0.62%     ✓       ✓     ✓     PASS    None
+/services/special-collections-and-deliveries           service       index   467     0.64%     ✓       ✓     ✓     PASS    None
+/services/nationwide-and-long-distance-removals        service       index   486     0.62%     ✓       ✓     ✓     PASS    None
+/areas/london                                          city          index   496     0.60%     ✓       ✓     ✓     PASS    None
+/areas/birmingham                                      city          index   441     0.68%     ✓       ✓     ✓     PASS    None
+/areas/manchester                                      city          index   434     0.69%     ✓       ✓     ✓     PASS    None
+/areas/leeds                                           city          index   427     0.70%     ✓       ✓     ✓     PASS    None
+/areas/glasgow                                         city          index   430     0.70%     ✓       ✓     ✓     PASS    None
+/areas/liverpool                                       city          index   405     0.74%     ✓       ✓     ✓     PASS    None
+/areas/bristol                                         city          index   418     0.72%     ✓       ✓     ✓     PASS    None
+/areas/sheffield                                       city          index   419     0.72%     ✓       ✓     ✓     PASS    None
+/areas/edinburgh                                       city          index   425     0.71%     ✓       ✓     ✓     PASS    None
+/areas/cardiff                                         city          index   411     0.73%     ✓       ✓     ✓     PASS    None
+/areas/newcastle-upon-tyne                             city          index   427     0.70%     ✓       ✓     ✓     PASS    None
+/areas/nottingham                                      city          index   415     0.72%     ✓       ✓     ✓     PASS    None
+/areas/leicester                                       city          index   417     0.96%     ✓       ✓     ✓     PASS    None
+/areas/southampton                                     city          index   401     0.75%     ✓       ✓     ✓     PASS    None
+/areas/portsmouth                                      city          index   410     0.73%     ✓       ✓     ✓     PASS    None
+/areas/coventry                                        city          index   421     0.71%     ✓       ✓     ✓     PASS    None
+/areas/reading                                         city          index   414     0.72%     ✓       ✓     ✓     PASS    None
+/areas/milton-keynes                                   city          index   420     0.71%     ✓       ✓     ✓     PASS    None
+/areas/brighton                                        city          index   418     0.96%     ✓       ✓     ✓     PASS    None
+/areas/northampton                                     city          index   407     0.74%     ✓       ✓     ✓     PASS    None
+/areas/derby                                           city          index   423     0.71%     ✓       ✓     ✓     PASS    None
+/areas/plymouth                                        city          index   409     0.73%     ✓       ✓     ✓     PASS    None
+/areas/stoke-on-trent                                  city          index   404     0.74%     ✓       ✓     ✓     PASS    None
+/areas/wolverhampton                                   city          index   420     0.71%     ✓       ✓     ✓     PASS    None
+/areas/swansea                                         city          index   403     0.74%     ✓       ✓     ✓     PASS    None
+/areas/oxford                                          city          index   422     0.71%     ✓       ✓     ✓     PASS    None
+/areas/cambridge                                       city          index   414     0.72%     ✓       ✓     ✓     PASS    None
+/areas/norwich                                         city          index   420     0.71%     ✓       ✓     ✓     PASS    None
+/areas/exeter                                          city          index   413     0.73%     ✓       ✓     ✓     PASS    None
+/areas/york                                            city          index   423     0.71%     ✓       ✓     ✓     PASS    None
+/areas/london/house-removals                           city-service  index   622     0.64%     ✓       ✓     ✓     PASS    None
+/areas/london/office-and-commercial-removals           city-service  index   629     0.64%     ✓       ✓     ✓     PASS    None
+/areas/london/furniture-removals-and-delivery          city-service  index   631     0.63%     ✓       ✓     ✓     PASS    None
+/areas/london/man-and-van                              city-service  index   629     0.64%     ✓       ✓     ✓     PASS    None
+/areas/london/furniture-assembly-and-dismantling       city-service  index   629     0.64%     ✓       ✓     ✓     PASS    None
+/areas/london/student-and-small-moves                  city-service  index   627     0.64%     ✓       ✓     ✓     PASS    None
+/areas/london/store-collections-and-deliveries         city-service  index   630     0.63%     ✓       ✓     ✓     PASS    None
+/areas/london/appliance-removals                       city-service  index   618     0.65%     ✓       ✓     ✓     PASS    None
+/areas/london/packing-and-moving-assistance            city-service  index   631     0.63%     ✓       ✓     ✓     PASS    None
+/areas/london/storage-transportation                   city-service  index   619     0.65%     ✓       ✓     ✓     PASS    None
+/areas/london/waste-removal-and-disposal               city-service  index   627     0.64%     ✓       ✓     ✓     PASS    None
+/areas/london/heavy-and-bulky-item-transportation      city-service  index   633     0.63%     ✓       ✓     ✓     PASS    None
+/areas/london/special-collections-and-deliveries       city-service  index   628     0.64%     ✓       ✓     ✓     PASS    None
+/areas/london/nationwide-and-long-distance-removals    city-service  index   628     0.64%     ✓       ✓     ✓     PASS    None
+/areas/birmingham/house-removals                       city-service  index   604     0.66%     ✓       ✓     ✓     PASS    None
+/areas/birmingham/office-and-commercial-removals       city-service  index   611     0.65%     ✓       ✓     ✓     PASS    None
+/areas/birmingham/furniture-removals-and-delivery      city-service  index   613     0.65%     ✓       ✓     ✓     PASS    None
+/areas/birmingham/man-and-van                          city-service  index   611     0.65%     ✓       ✓     ✓     PASS    None
+/areas/birmingham/furniture-assembly-and-dismantling   city-service  index   611     0.65%     ✓       ✓     ✓     PASS    None
+/areas/birmingham/student-and-small-moves              city-service  index   609     0.66%     ✓       ✓     ✓     PASS    None
+/areas/birmingham/store-collections-and-deliveries     city-service  index   612     0.65%     ✓       ✓     ✓     PASS    None
+/areas/birmingham/appliance-removals                   city-service  index   600     0.67%     ✓       ✓     ✓     PASS    None
+/areas/birmingham/packing-and-moving-assistance        city-service  index   613     0.65%     ✓       ✓     ✓     PASS    None
+/areas/birmingham/storage-transportation               city-service  index   601     0.67%     ✓       ✓     ✓     PASS    None
+/areas/birmingham/waste-removal-and-disposal           city-service  index   609     0.66%     ✓       ✓     ✓     PASS    None
+/areas/birmingham/heavy-and-bulky-item-transportation  city-service  index   615     0.65%     ✓       ✓     ✓     PASS    None
+/areas/birmingham/special-collections-and-deliveries   city-service  index   610     0.66%     ✓       ✓     ✓     PASS    None
+/areas/birmingham/nationwide-and-long-distance-removalscity-service  index   610     0.66%     ✓       ✓     ✓     PASS    None
+/areas/manchester/house-removals                       city-service  index   594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/manchester/office-and-commercial-removals       city-service  index   601     0.67%     ✓       ✓     ✓     PASS    None
+/areas/manchester/furniture-removals-and-delivery      city-service  index   603     0.66%     ✓       ✓     ✓     PASS    None
+/areas/manchester/man-and-van                          city-service  index   601     0.67%     ✓       ✓     ✓     PASS    None
+/areas/manchester/furniture-assembly-and-dismantling   city-service  index   601     0.67%     ✓       ✓     ✓     PASS    None
+/areas/manchester/student-and-small-moves              city-service  index   599     0.67%     ✓       ✓     ✓     PASS    None
+/areas/manchester/store-collections-and-deliveries     city-service  index   602     0.66%     ✓       ✓     ✓     PASS    None
+/areas/manchester/appliance-removals                   city-service  index   590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/manchester/packing-and-moving-assistance        city-service  index   603     0.66%     ✓       ✓     ✓     PASS    None
+/areas/manchester/storage-transportation               city-service  index   591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/manchester/waste-removal-and-disposal           city-service  index   599     0.67%     ✓       ✓     ✓     PASS    None
+/areas/manchester/heavy-and-bulky-item-transportation  city-service  index   605     0.66%     ✓       ✓     ✓     PASS    None
+/areas/manchester/special-collections-and-deliveries   city-service  index   600     0.67%     ✓       ✓     ✓     PASS    None
+/areas/manchester/nationwide-and-long-distance-removalscity-service  index   600     0.67%     ✓       ✓     ✓     PASS    None
+/areas/leeds/house-removals                            city-service  index   600     0.67%     ✓       ✓     ✓     PASS    None
+/areas/leeds/office-and-commercial-removals            city-service  index   607     0.66%     ✓       ✓     ✓     PASS    None
+/areas/leeds/furniture-removals-and-delivery           city-service  index   609     0.66%     ✓       ✓     ✓     PASS    None
+/areas/leeds/man-and-van                               city-service  index   607     0.66%     ✓       ✓     ✓     PASS    None
+/areas/leeds/furniture-assembly-and-dismantling        city-service  index   607     0.66%     ✓       ✓     ✓     PASS    None
+/areas/leeds/student-and-small-moves                   city-service  index   605     0.66%     ✓       ✓     ✓     PASS    None
+/areas/leeds/store-collections-and-deliveries          city-service  index   608     0.66%     ✓       ✓     ✓     PASS    None
+/areas/leeds/appliance-removals                        city-service  index   596     0.67%     ✓       ✓     ✓     PASS    None
+/areas/leeds/packing-and-moving-assistance             city-service  index   609     0.66%     ✓       ✓     ✓     PASS    None
+/areas/leeds/storage-transportation                    city-service  index   597     0.67%     ✓       ✓     ✓     PASS    None
+/areas/leeds/waste-removal-and-disposal                city-service  index   605     0.66%     ✓       ✓     ✓     PASS    None
+/areas/leeds/heavy-and-bulky-item-transportation       city-service  index   611     0.65%     ✓       ✓     ✓     PASS    None
+/areas/leeds/special-collections-and-deliveries        city-service  index   606     0.66%     ✓       ✓     ✓     PASS    None
+/areas/leeds/nationwide-and-long-distance-removals     city-service  index   606     0.66%     ✓       ✓     ✓     PASS    None
+/areas/glasgow/house-removals                          city-service  index   603     0.66%     ✓       ✓     ✓     PASS    None
+/areas/glasgow/office-and-commercial-removals          city-service  index   610     0.66%     ✓       ✓     ✓     PASS    None
+/areas/glasgow/furniture-removals-and-delivery         city-service  index   612     0.65%     ✓       ✓     ✓     PASS    None
+/areas/glasgow/man-and-van                             city-service  index   610     0.66%     ✓       ✓     ✓     PASS    None
+/areas/glasgow/furniture-assembly-and-dismantling      city-service  index   610     0.66%     ✓       ✓     ✓     PASS    None
+/areas/glasgow/student-and-small-moves                 city-service  index   608     0.66%     ✓       ✓     ✓     PASS    None
+/areas/glasgow/store-collections-and-deliveries        city-service  index   611     0.65%     ✓       ✓     ✓     PASS    None
+/areas/glasgow/appliance-removals                      city-service  index   599     0.67%     ✓       ✓     ✓     PASS    None
+/areas/glasgow/packing-and-moving-assistance           city-service  index   612     0.65%     ✓       ✓     ✓     PASS    None
+/areas/glasgow/storage-transportation                  city-service  index   600     0.67%     ✓       ✓     ✓     PASS    None
+/areas/glasgow/waste-removal-and-disposal              city-service  index   608     0.66%     ✓       ✓     ✓     PASS    None
+/areas/glasgow/heavy-and-bulky-item-transportation     city-service  index   614     0.65%     ✓       ✓     ✓     PASS    None
+/areas/glasgow/special-collections-and-deliveries      city-service  index   609     0.66%     ✓       ✓     ✓     PASS    None
+/areas/glasgow/nationwide-and-long-distance-removals   city-service  index   609     0.66%     ✓       ✓     ✓     PASS    None
+/areas/liverpool/house-removals                        city-service  index   579     0.69%     ✓       ✓     ✓     PASS    None
+/areas/liverpool/office-and-commercial-removals        city-service  index   586     0.68%     ✓       ✓     ✓     PASS    None
+/areas/liverpool/furniture-removals-and-delivery       city-service  index   588     0.68%     ✓       ✓     ✓     PASS    None
+/areas/liverpool/man-and-van                           city-service  index   586     0.68%     ✓       ✓     ✓     PASS    None
+/areas/liverpool/furniture-assembly-and-dismantling    city-service  index   586     0.68%     ✓       ✓     ✓     PASS    None
+/areas/liverpool/student-and-small-moves               city-service  index   584     0.68%     ✓       ✓     ✓     PASS    None
+/areas/liverpool/store-collections-and-deliveries      city-service  index   587     0.68%     ✓       ✓     ✓     PASS    None
+/areas/liverpool/appliance-removals                    city-service  index   575     0.70%     ✓       ✓     ✓     PASS    None
+/areas/liverpool/packing-and-moving-assistance         city-service  index   588     0.68%     ✓       ✓     ✓     PASS    None
+/areas/liverpool/storage-transportation                city-service  index   576     0.69%     ✓       ✓     ✓     PASS    None
+/areas/liverpool/waste-removal-and-disposal            city-service  index   584     0.68%     ✓       ✓     ✓     PASS    None
+/areas/liverpool/heavy-and-bulky-item-transportation   city-service  index   590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/liverpool/special-collections-and-deliveries    city-service  index   585     0.68%     ✓       ✓     ✓     PASS    None
+/areas/liverpool/nationwide-and-long-distance-removals city-service  index   585     0.68%     ✓       ✓     ✓     PASS    None
+/areas/bristol/house-removals                          city-service  index   592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/bristol/office-and-commercial-removals          city-service  index   599     0.67%     ✓       ✓     ✓     PASS    None
+/areas/bristol/furniture-removals-and-delivery         city-service  index   601     0.67%     ✓       ✓     ✓     PASS    None
+/areas/bristol/man-and-van                             city-service  index   599     0.67%     ✓       ✓     ✓     PASS    None
+/areas/bristol/furniture-assembly-and-dismantling      city-service  index   599     0.67%     ✓       ✓     ✓     PASS    None
+/areas/bristol/student-and-small-moves                 city-service  index   597     0.67%     ✓       ✓     ✓     PASS    None
+/areas/bristol/store-collections-and-deliveries        city-service  index   600     0.67%     ✓       ✓     ✓     PASS    None
+/areas/bristol/appliance-removals                      city-service  index   588     0.68%     ✓       ✓     ✓     PASS    None
+/areas/bristol/packing-and-moving-assistance           city-service  index   601     0.67%     ✓       ✓     ✓     PASS    None
+/areas/bristol/storage-transportation                  city-service  index   589     0.68%     ✓       ✓     ✓     PASS    None
+/areas/bristol/waste-removal-and-disposal              city-service  index   597     0.67%     ✓       ✓     ✓     PASS    None
+/areas/bristol/heavy-and-bulky-item-transportation     city-service  index   603     0.66%     ✓       ✓     ✓     PASS    None
+/areas/bristol/special-collections-and-deliveries      city-service  index   598     0.67%     ✓       ✓     ✓     PASS    None
+/areas/bristol/nationwide-and-long-distance-removals   city-service  index   598     0.67%     ✓       ✓     ✓     PASS    None
+/areas/sheffield/house-removals                        city-service  index   597     0.67%     ✓       ✓     ✓     PASS    None
+/areas/sheffield/office-and-commercial-removals        city-service  index   604     0.66%     ✓       ✓     ✓     PASS    None
+/areas/sheffield/furniture-removals-and-delivery       city-service  index   606     0.66%     ✓       ✓     ✓     PASS    None
+/areas/sheffield/man-and-van                           city-service  index   604     0.66%     ✓       ✓     ✓     PASS    None
+/areas/sheffield/furniture-assembly-and-dismantling    city-service  index   604     0.66%     ✓       ✓     ✓     PASS    None
+/areas/sheffield/student-and-small-moves               city-service  index   602     0.66%     ✓       ✓     ✓     PASS    None
+/areas/sheffield/store-collections-and-deliveries      city-service  index   605     0.66%     ✓       ✓     ✓     PASS    None
+/areas/sheffield/appliance-removals                    city-service  index   593     0.67%     ✓       ✓     ✓     PASS    None
+/areas/sheffield/packing-and-moving-assistance         city-service  index   606     0.66%     ✓       ✓     ✓     PASS    None
+/areas/sheffield/storage-transportation                city-service  index   594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/sheffield/waste-removal-and-disposal            city-service  index   602     0.66%     ✓       ✓     ✓     PASS    None
+/areas/sheffield/heavy-and-bulky-item-transportation   city-service  index   608     0.66%     ✓       ✓     ✓     PASS    None
+/areas/sheffield/special-collections-and-deliveries    city-service  index   603     0.66%     ✓       ✓     ✓     PASS    None
+/areas/sheffield/nationwide-and-long-distance-removals city-service  index   603     0.66%     ✓       ✓     ✓     PASS    None
+/areas/edinburgh/house-removals                        city-service  index   598     0.67%     ✓       ✓     ✓     PASS    None
+/areas/edinburgh/office-and-commercial-removals        city-service  index   605     0.66%     ✓       ✓     ✓     PASS    None
+/areas/edinburgh/furniture-removals-and-delivery       city-service  index   607     0.66%     ✓       ✓     ✓     PASS    None
+/areas/edinburgh/man-and-van                           city-service  index   605     0.66%     ✓       ✓     ✓     PASS    None
+/areas/edinburgh/furniture-assembly-and-dismantling    city-service  index   605     0.66%     ✓       ✓     ✓     PASS    None
+/areas/edinburgh/student-and-small-moves               city-service  index   603     0.66%     ✓       ✓     ✓     PASS    None
+/areas/edinburgh/store-collections-and-deliveries      city-service  index   606     0.66%     ✓       ✓     ✓     PASS    None
+/areas/edinburgh/appliance-removals                    city-service  index   594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/edinburgh/packing-and-moving-assistance         city-service  index   607     0.66%     ✓       ✓     ✓     PASS    None
+/areas/edinburgh/storage-transportation                city-service  index   595     0.67%     ✓       ✓     ✓     PASS    None
+/areas/edinburgh/waste-removal-and-disposal            city-service  index   603     0.66%     ✓       ✓     ✓     PASS    None
+/areas/edinburgh/heavy-and-bulky-item-transportation   city-service  index   609     0.66%     ✓       ✓     ✓     PASS    None
+/areas/edinburgh/special-collections-and-deliveries    city-service  index   604     0.66%     ✓       ✓     ✓     PASS    None
+/areas/edinburgh/nationwide-and-long-distance-removals city-service  index   604     0.66%     ✓       ✓     ✓     PASS    None
+/areas/cardiff/house-removals                          city-service  index   583     0.69%     ✓       ✓     ✓     PASS    None
+/areas/cardiff/office-and-commercial-removals          city-service  index   590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/cardiff/furniture-removals-and-delivery         city-service  index   592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/cardiff/man-and-van                             city-service  index   590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/cardiff/furniture-assembly-and-dismantling      city-service  index   590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/cardiff/student-and-small-moves                 city-service  index   588     0.68%     ✓       ✓     ✓     PASS    None
+/areas/cardiff/store-collections-and-deliveries        city-service  index   591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/cardiff/appliance-removals                      city-service  index   579     0.69%     ✓       ✓     ✓     PASS    None
+/areas/cardiff/packing-and-moving-assistance           city-service  index   592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/cardiff/storage-transportation                  city-service  index   580     0.69%     ✓       ✓     ✓     PASS    None
+/areas/cardiff/waste-removal-and-disposal              city-service  index   588     0.68%     ✓       ✓     ✓     PASS    None
+/areas/cardiff/heavy-and-bulky-item-transportation     city-service  index   594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/cardiff/special-collections-and-deliveries      city-service  index   589     0.68%     ✓       ✓     ✓     PASS    None
+/areas/cardiff/nationwide-and-long-distance-removals   city-service  index   589     0.68%     ✓       ✓     ✓     PASS    None
+/areas/newcastle-upon-tyne/house-removals              city-service  noindex 598     0.67%     ✓       ✓     ✓     PASS    None
+/areas/newcastle-upon-tyne/office-and-commercial-removalscity-service  noindex 605     0.66%     ✓       ✓     ✓     PASS    None
+/areas/newcastle-upon-tyne/furniture-removals-and-deliverycity-service  noindex 607     0.66%     ✓       ✓     ✓     PASS    None
+/areas/newcastle-upon-tyne/man-and-van                 city-service  noindex 605     0.66%     ✓       ✓     ✓     PASS    None
+/areas/newcastle-upon-tyne/furniture-assembly-and-dismantlingcity-service  noindex 605     0.66%     ✓       ✓     ✓     PASS    None
+/areas/newcastle-upon-tyne/student-and-small-moves     city-service  noindex 603     0.66%     ✓       ✓     ✓     PASS    None
+/areas/newcastle-upon-tyne/store-collections-and-deliveriescity-service  noindex 606     0.66%     ✓       ✓     ✓     PASS    None
+/areas/newcastle-upon-tyne/appliance-removals          city-service  noindex 594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/newcastle-upon-tyne/packing-and-moving-assistancecity-service  noindex 607     0.66%     ✓       ✓     ✓     PASS    None
+/areas/newcastle-upon-tyne/storage-transportation      city-service  noindex 595     0.67%     ✓       ✓     ✓     PASS    None
+/areas/newcastle-upon-tyne/waste-removal-and-disposal  city-service  noindex 603     0.66%     ✓       ✓     ✓     PASS    None
+/areas/newcastle-upon-tyne/heavy-and-bulky-item-transportationcity-service  noindex 609     0.66%     ✓       ✓     ✓     PASS    None
+/areas/newcastle-upon-tyne/special-collections-and-deliveriescity-service  noindex 604     0.66%     ✓       ✓     ✓     PASS    None
+/areas/newcastle-upon-tyne/nationwide-and-long-distance-removalscity-service  noindex 604     0.66%     ✓       ✓     ✓     PASS    None
+/areas/nottingham/house-removals                       city-service  noindex 591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/nottingham/office-and-commercial-removals       city-service  noindex 598     0.67%     ✓       ✓     ✓     PASS    None
+/areas/nottingham/furniture-removals-and-delivery      city-service  noindex 600     0.67%     ✓       ✓     ✓     PASS    None
+/areas/nottingham/man-and-van                          city-service  noindex 598     0.67%     ✓       ✓     ✓     PASS    None
+/areas/nottingham/furniture-assembly-and-dismantling   city-service  noindex 598     0.67%     ✓       ✓     ✓     PASS    None
+/areas/nottingham/student-and-small-moves              city-service  noindex 596     0.67%     ✓       ✓     ✓     PASS    None
+/areas/nottingham/store-collections-and-deliveries     city-service  noindex 599     0.67%     ✓       ✓     ✓     PASS    None
+/areas/nottingham/appliance-removals                   city-service  noindex 587     0.68%     ✓       ✓     ✓     PASS    None
+/areas/nottingham/packing-and-moving-assistance        city-service  noindex 600     0.67%     ✓       ✓     ✓     PASS    None
+/areas/nottingham/storage-transportation               city-service  noindex 588     0.68%     ✓       ✓     ✓     PASS    None
+/areas/nottingham/waste-removal-and-disposal           city-service  noindex 596     0.67%     ✓       ✓     ✓     PASS    None
+/areas/nottingham/heavy-and-bulky-item-transportation  city-service  noindex 602     0.66%     ✓       ✓     ✓     PASS    None
+/areas/nottingham/special-collections-and-deliveries   city-service  noindex 597     0.67%     ✓       ✓     ✓     PASS    None
+/areas/nottingham/nationwide-and-long-distance-removalscity-service  noindex 597     0.67%     ✓       ✓     ✓     PASS    None
+/areas/leicester/house-removals                        city-service  noindex 585     0.68%     ✓       ✓     ✓     PASS    None
+/areas/leicester/office-and-commercial-removals        city-service  noindex 592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/leicester/furniture-removals-and-delivery       city-service  noindex 594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/leicester/man-and-van                           city-service  noindex 592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/leicester/furniture-assembly-and-dismantling    city-service  noindex 592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/leicester/student-and-small-moves               city-service  noindex 590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/leicester/store-collections-and-deliveries      city-service  noindex 593     0.67%     ✓       ✓     ✓     PASS    None
+/areas/leicester/appliance-removals                    city-service  noindex 581     0.69%     ✓       ✓     ✓     PASS    None
+/areas/leicester/packing-and-moving-assistance         city-service  noindex 594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/leicester/storage-transportation                city-service  noindex 582     0.69%     ✓       ✓     ✓     PASS    None
+/areas/leicester/waste-removal-and-disposal            city-service  noindex 590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/leicester/heavy-and-bulky-item-transportation   city-service  noindex 596     0.67%     ✓       ✓     ✓     PASS    None
+/areas/leicester/special-collections-and-deliveries    city-service  noindex 591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/leicester/nationwide-and-long-distance-removals city-service  noindex 591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/southampton/house-removals                      city-service  noindex 583     0.69%     ✓       ✓     ✓     PASS    None
+/areas/southampton/office-and-commercial-removals      city-service  noindex 590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/southampton/furniture-removals-and-delivery     city-service  noindex 592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/southampton/man-and-van                         city-service  noindex 590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/southampton/furniture-assembly-and-dismantling  city-service  noindex 590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/southampton/student-and-small-moves             city-service  noindex 588     0.68%     ✓       ✓     ✓     PASS    None
+/areas/southampton/store-collections-and-deliveries    city-service  noindex 591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/southampton/appliance-removals                  city-service  noindex 579     0.69%     ✓       ✓     ✓     PASS    None
+/areas/southampton/packing-and-moving-assistance       city-service  noindex 592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/southampton/storage-transportation              city-service  noindex 580     0.69%     ✓       ✓     ✓     PASS    None
+/areas/southampton/waste-removal-and-disposal          city-service  noindex 588     0.68%     ✓       ✓     ✓     PASS    None
+/areas/southampton/heavy-and-bulky-item-transportation city-service  noindex 594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/southampton/special-collections-and-deliveries  city-service  noindex 589     0.68%     ✓       ✓     ✓     PASS    None
+/areas/southampton/nationwide-and-long-distance-removalscity-service  noindex 589     0.68%     ✓       ✓     ✓     PASS    None
+/areas/portsmouth/house-removals                       city-service  noindex 582     0.69%     ✓       ✓     ✓     PASS    None
+/areas/portsmouth/office-and-commercial-removals       city-service  noindex 589     0.68%     ✓       ✓     ✓     PASS    None
+/areas/portsmouth/furniture-removals-and-delivery      city-service  noindex 591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/portsmouth/man-and-van                          city-service  noindex 589     0.68%     ✓       ✓     ✓     PASS    None
+/areas/portsmouth/furniture-assembly-and-dismantling   city-service  noindex 589     0.68%     ✓       ✓     ✓     PASS    None
+/areas/portsmouth/student-and-small-moves              city-service  noindex 587     0.68%     ✓       ✓     ✓     PASS    None
+/areas/portsmouth/store-collections-and-deliveries     city-service  noindex 590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/portsmouth/appliance-removals                   city-service  noindex 578     0.69%     ✓       ✓     ✓     PASS    None
+/areas/portsmouth/packing-and-moving-assistance        city-service  noindex 591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/portsmouth/storage-transportation               city-service  noindex 579     0.69%     ✓       ✓     ✓     PASS    None
+/areas/portsmouth/waste-removal-and-disposal           city-service  noindex 587     0.68%     ✓       ✓     ✓     PASS    None
+/areas/portsmouth/heavy-and-bulky-item-transportation  city-service  noindex 593     0.67%     ✓       ✓     ✓     PASS    None
+/areas/portsmouth/special-collections-and-deliveries   city-service  noindex 588     0.68%     ✓       ✓     ✓     PASS    None
+/areas/portsmouth/nationwide-and-long-distance-removalscity-service  noindex 588     0.68%     ✓       ✓     ✓     PASS    None
+/areas/coventry/house-removals                         city-service  noindex 588     0.68%     ✓       ✓     ✓     PASS    None
+/areas/coventry/office-and-commercial-removals         city-service  noindex 595     0.67%     ✓       ✓     ✓     PASS    None
+/areas/coventry/furniture-removals-and-delivery        city-service  noindex 597     0.67%     ✓       ✓     ✓     PASS    None
+/areas/coventry/man-and-van                            city-service  noindex 595     0.67%     ✓       ✓     ✓     PASS    None
+/areas/coventry/furniture-assembly-and-dismantling     city-service  noindex 595     0.67%     ✓       ✓     ✓     PASS    None
+/areas/coventry/student-and-small-moves                city-service  noindex 593     0.67%     ✓       ✓     ✓     PASS    None
+/areas/coventry/store-collections-and-deliveries       city-service  noindex 596     0.67%     ✓       ✓     ✓     PASS    None
+/areas/coventry/appliance-removals                     city-service  noindex 584     0.68%     ✓       ✓     ✓     PASS    None
+/areas/coventry/packing-and-moving-assistance          city-service  noindex 597     0.67%     ✓       ✓     ✓     PASS    None
+/areas/coventry/storage-transportation                 city-service  noindex 585     0.68%     ✓       ✓     ✓     PASS    None
+/areas/coventry/waste-removal-and-disposal             city-service  noindex 593     0.67%     ✓       ✓     ✓     PASS    None
+/areas/coventry/heavy-and-bulky-item-transportation    city-service  noindex 599     0.67%     ✓       ✓     ✓     PASS    None
+/areas/coventry/special-collections-and-deliveries     city-service  noindex 594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/coventry/nationwide-and-long-distance-removals  city-service  noindex 594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/reading/house-removals                          city-service  noindex 586     0.68%     ✓       ✓     ✓     PASS    None
+/areas/reading/office-and-commercial-removals          city-service  noindex 593     0.67%     ✓       ✓     ✓     PASS    None
+/areas/reading/furniture-removals-and-delivery         city-service  noindex 595     0.67%     ✓       ✓     ✓     PASS    None
+/areas/reading/man-and-van                             city-service  noindex 593     0.67%     ✓       ✓     ✓     PASS    None
+/areas/reading/furniture-assembly-and-dismantling      city-service  noindex 593     0.67%     ✓       ✓     ✓     PASS    None
+/areas/reading/student-and-small-moves                 city-service  noindex 591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/reading/store-collections-and-deliveries        city-service  noindex 594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/reading/appliance-removals                      city-service  noindex 582     0.69%     ✓       ✓     ✓     PASS    None
+/areas/reading/packing-and-moving-assistance           city-service  noindex 595     0.67%     ✓       ✓     ✓     PASS    None
+/areas/reading/storage-transportation                  city-service  noindex 583     0.69%     ✓       ✓     ✓     PASS    None
+/areas/reading/waste-removal-and-disposal              city-service  noindex 591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/reading/heavy-and-bulky-item-transportation     city-service  noindex 597     0.67%     ✓       ✓     ✓     PASS    None
+/areas/reading/special-collections-and-deliveries      city-service  noindex 592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/reading/nationwide-and-long-distance-removals   city-service  noindex 592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/milton-keynes/house-removals                    city-service  noindex 593     0.67%     ✓       ✓     ✓     PASS    None
+/areas/milton-keynes/office-and-commercial-removals    city-service  noindex 600     0.67%     ✓       ✓     ✓     PASS    None
+/areas/milton-keynes/furniture-removals-and-delivery   city-service  noindex 602     0.66%     ✓       ✓     ✓     PASS    None
+/areas/milton-keynes/man-and-van                       city-service  noindex 600     0.67%     ✓       ✓     ✓     PASS    None
+/areas/milton-keynes/furniture-assembly-and-dismantlingcity-service  noindex 600     0.67%     ✓       ✓     ✓     PASS    None
+/areas/milton-keynes/student-and-small-moves           city-service  noindex 598     0.67%     ✓       ✓     ✓     PASS    None
+/areas/milton-keynes/store-collections-and-deliveries  city-service  noindex 601     0.67%     ✓       ✓     ✓     PASS    None
+/areas/milton-keynes/appliance-removals                city-service  noindex 589     0.68%     ✓       ✓     ✓     PASS    None
+/areas/milton-keynes/packing-and-moving-assistance     city-service  noindex 602     0.66%     ✓       ✓     ✓     PASS    None
+/areas/milton-keynes/storage-transportation            city-service  noindex 590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/milton-keynes/waste-removal-and-disposal        city-service  noindex 598     0.67%     ✓       ✓     ✓     PASS    None
+/areas/milton-keynes/heavy-and-bulky-item-transportationcity-service  noindex 604     0.66%     ✓       ✓     ✓     PASS    None
+/areas/milton-keynes/special-collections-and-deliveriescity-service  noindex 599     0.67%     ✓       ✓     ✓     PASS    None
+/areas/milton-keynes/nationwide-and-long-distance-removalscity-service  noindex 599     0.67%     ✓       ✓     ✓     PASS    None
+/areas/brighton/house-removals                         city-service  noindex 586     0.68%     ✓       ✓     ✓     PASS    None
+/areas/brighton/office-and-commercial-removals         city-service  noindex 593     0.67%     ✓       ✓     ✓     PASS    None
+/areas/brighton/furniture-removals-and-delivery        city-service  noindex 595     0.67%     ✓       ✓     ✓     PASS    None
+/areas/brighton/man-and-van                            city-service  noindex 593     0.67%     ✓       ✓     ✓     PASS    None
+/areas/brighton/furniture-assembly-and-dismantling     city-service  noindex 593     0.67%     ✓       ✓     ✓     PASS    None
+/areas/brighton/student-and-small-moves                city-service  noindex 591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/brighton/store-collections-and-deliveries       city-service  noindex 594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/brighton/appliance-removals                     city-service  noindex 582     0.69%     ✓       ✓     ✓     PASS    None
+/areas/brighton/packing-and-moving-assistance          city-service  noindex 595     0.67%     ✓       ✓     ✓     PASS    None
+/areas/brighton/storage-transportation                 city-service  noindex 583     0.69%     ✓       ✓     ✓     PASS    None
+/areas/brighton/waste-removal-and-disposal             city-service  noindex 591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/brighton/heavy-and-bulky-item-transportation    city-service  noindex 597     0.67%     ✓       ✓     ✓     PASS    None
+/areas/brighton/special-collections-and-deliveries     city-service  noindex 592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/brighton/nationwide-and-long-distance-removals  city-service  noindex 592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/northampton/house-removals                      city-service  noindex 586     0.68%     ✓       ✓     ✓     PASS    None
+/areas/northampton/office-and-commercial-removals      city-service  noindex 593     0.67%     ✓       ✓     ✓     PASS    None
+/areas/northampton/furniture-removals-and-delivery     city-service  noindex 595     0.67%     ✓       ✓     ✓     PASS    None
+/areas/northampton/man-and-van                         city-service  noindex 593     0.67%     ✓       ✓     ✓     PASS    None
+/areas/northampton/furniture-assembly-and-dismantling  city-service  noindex 593     0.67%     ✓       ✓     ✓     PASS    None
+/areas/northampton/student-and-small-moves             city-service  noindex 591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/northampton/store-collections-and-deliveries    city-service  noindex 594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/northampton/appliance-removals                  city-service  noindex 582     0.69%     ✓       ✓     ✓     PASS    None
+/areas/northampton/packing-and-moving-assistance       city-service  noindex 595     0.67%     ✓       ✓     ✓     PASS    None
+/areas/northampton/storage-transportation              city-service  noindex 583     0.69%     ✓       ✓     ✓     PASS    None
+/areas/northampton/waste-removal-and-disposal          city-service  noindex 591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/northampton/heavy-and-bulky-item-transportation city-service  noindex 597     0.67%     ✓       ✓     ✓     PASS    None
+/areas/northampton/special-collections-and-deliveries  city-service  noindex 592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/northampton/nationwide-and-long-distance-removalscity-service  noindex 592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/derby/house-removals                            city-service  noindex 602     0.66%     ✓       ✓     ✓     PASS    None
+/areas/derby/office-and-commercial-removals            city-service  noindex 609     0.66%     ✓       ✓     ✓     PASS    None
+/areas/derby/furniture-removals-and-delivery           city-service  noindex 611     0.65%     ✓       ✓     ✓     PASS    None
+/areas/derby/man-and-van                               city-service  noindex 609     0.66%     ✓       ✓     ✓     PASS    None
+/areas/derby/furniture-assembly-and-dismantling        city-service  noindex 609     0.66%     ✓       ✓     ✓     PASS    None
+/areas/derby/student-and-small-moves                   city-service  noindex 607     0.66%     ✓       ✓     ✓     PASS    None
+/areas/derby/store-collections-and-deliveries          city-service  noindex 610     0.66%     ✓       ✓     ✓     PASS    None
+/areas/derby/appliance-removals                        city-service  noindex 598     0.67%     ✓       ✓     ✓     PASS    None
+/areas/derby/packing-and-moving-assistance             city-service  noindex 611     0.65%     ✓       ✓     ✓     PASS    None
+/areas/derby/storage-transportation                    city-service  noindex 599     0.67%     ✓       ✓     ✓     PASS    None
+/areas/derby/waste-removal-and-disposal                city-service  noindex 607     0.66%     ✓       ✓     ✓     PASS    None
+/areas/derby/heavy-and-bulky-item-transportation       city-service  noindex 613     0.65%     ✓       ✓     ✓     PASS    None
+/areas/derby/special-collections-and-deliveries        city-service  noindex 608     0.66%     ✓       ✓     ✓     PASS    None
+/areas/derby/nationwide-and-long-distance-removals     city-service  noindex 608     0.66%     ✓       ✓     ✓     PASS    None
+/areas/plymouth/house-removals                         city-service  noindex 582     0.69%     ✓       ✓     ✓     PASS    None
+/areas/plymouth/office-and-commercial-removals         city-service  noindex 589     0.68%     ✓       ✓     ✓     PASS    None
+/areas/plymouth/furniture-removals-and-delivery        city-service  noindex 591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/plymouth/man-and-van                            city-service  noindex 589     0.68%     ✓       ✓     ✓     PASS    None
+/areas/plymouth/furniture-assembly-and-dismantling     city-service  noindex 589     0.68%     ✓       ✓     ✓     PASS    None
+/areas/plymouth/student-and-small-moves                city-service  noindex 587     0.68%     ✓       ✓     ✓     PASS    None
+/areas/plymouth/store-collections-and-deliveries       city-service  noindex 590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/plymouth/appliance-removals                     city-service  noindex 578     0.69%     ✓       ✓     ✓     PASS    None
+/areas/plymouth/packing-and-moving-assistance          city-service  noindex 591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/plymouth/storage-transportation                 city-service  noindex 579     0.69%     ✓       ✓     ✓     PASS    None
+/areas/plymouth/waste-removal-and-disposal             city-service  noindex 587     0.68%     ✓       ✓     ✓     PASS    None
+/areas/plymouth/heavy-and-bulky-item-transportation    city-service  noindex 593     0.67%     ✓       ✓     ✓     PASS    None
+/areas/plymouth/special-collections-and-deliveries     city-service  noindex 588     0.68%     ✓       ✓     ✓     PASS    None
+/areas/plymouth/nationwide-and-long-distance-removals  city-service  noindex 588     0.68%     ✓       ✓     ✓     PASS    None
+/areas/stoke-on-trent/house-removals                   city-service  noindex 589     0.68%     ✓       ✓     ✓     PASS    None
+/areas/stoke-on-trent/office-and-commercial-removals   city-service  noindex 596     0.67%     ✓       ✓     ✓     PASS    None
+/areas/stoke-on-trent/furniture-removals-and-delivery  city-service  noindex 598     0.67%     ✓       ✓     ✓     PASS    None
+/areas/stoke-on-trent/man-and-van                      city-service  noindex 596     0.67%     ✓       ✓     ✓     PASS    None
+/areas/stoke-on-trent/furniture-assembly-and-dismantlingcity-service  noindex 596     0.67%     ✓       ✓     ✓     PASS    None
+/areas/stoke-on-trent/student-and-small-moves          city-service  noindex 594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/stoke-on-trent/store-collections-and-deliveries city-service  noindex 597     0.67%     ✓       ✓     ✓     PASS    None
+/areas/stoke-on-trent/appliance-removals               city-service  noindex 585     0.68%     ✓       ✓     ✓     PASS    None
+/areas/stoke-on-trent/packing-and-moving-assistance    city-service  noindex 598     0.67%     ✓       ✓     ✓     PASS    None
+/areas/stoke-on-trent/storage-transportation           city-service  noindex 586     0.68%     ✓       ✓     ✓     PASS    None
+/areas/stoke-on-trent/waste-removal-and-disposal       city-service  noindex 594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/stoke-on-trent/heavy-and-bulky-item-transportationcity-service  noindex 600     0.67%     ✓       ✓     ✓     PASS    None
+/areas/stoke-on-trent/special-collections-and-deliveriescity-service  noindex 595     0.67%     ✓       ✓     ✓     PASS    None
+/areas/stoke-on-trent/nationwide-and-long-distance-removalscity-service  noindex 595     0.67%     ✓       ✓     ✓     PASS    None
+/areas/wolverhampton/house-removals                    city-service  noindex 597     0.67%     ✓       ✓     ✓     PASS    None
+/areas/wolverhampton/office-and-commercial-removals    city-service  noindex 604     0.66%     ✓       ✓     ✓     PASS    None
+/areas/wolverhampton/furniture-removals-and-delivery   city-service  noindex 606     0.66%     ✓       ✓     ✓     PASS    None
+/areas/wolverhampton/man-and-van                       city-service  noindex 604     0.66%     ✓       ✓     ✓     PASS    None
+/areas/wolverhampton/furniture-assembly-and-dismantlingcity-service  noindex 604     0.66%     ✓       ✓     ✓     PASS    None
+/areas/wolverhampton/student-and-small-moves           city-service  noindex 602     0.66%     ✓       ✓     ✓     PASS    None
+/areas/wolverhampton/store-collections-and-deliveries  city-service  noindex 605     0.66%     ✓       ✓     ✓     PASS    None
+/areas/wolverhampton/appliance-removals                city-service  noindex 593     0.67%     ✓       ✓     ✓     PASS    None
+/areas/wolverhampton/packing-and-moving-assistance     city-service  noindex 606     0.66%     ✓       ✓     ✓     PASS    None
+/areas/wolverhampton/storage-transportation            city-service  noindex 594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/wolverhampton/waste-removal-and-disposal        city-service  noindex 602     0.66%     ✓       ✓     ✓     PASS    None
+/areas/wolverhampton/heavy-and-bulky-item-transportationcity-service  noindex 608     0.66%     ✓       ✓     ✓     PASS    None
+/areas/wolverhampton/special-collections-and-deliveriescity-service  noindex 603     0.66%     ✓       ✓     ✓     PASS    None
+/areas/wolverhampton/nationwide-and-long-distance-removalscity-service  noindex 603     0.66%     ✓       ✓     ✓     PASS    None
+/areas/swansea/house-removals                          city-service  noindex 583     0.69%     ✓       ✓     ✓     PASS    None
+/areas/swansea/office-and-commercial-removals          city-service  noindex 590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/swansea/furniture-removals-and-delivery         city-service  noindex 592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/swansea/man-and-van                             city-service  noindex 590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/swansea/furniture-assembly-and-dismantling      city-service  noindex 590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/swansea/student-and-small-moves                 city-service  noindex 588     0.68%     ✓       ✓     ✓     PASS    None
+/areas/swansea/store-collections-and-deliveries        city-service  noindex 591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/swansea/appliance-removals                      city-service  noindex 579     0.69%     ✓       ✓     ✓     PASS    None
+/areas/swansea/packing-and-moving-assistance           city-service  noindex 592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/swansea/storage-transportation                  city-service  noindex 580     0.69%     ✓       ✓     ✓     PASS    None
+/areas/swansea/waste-removal-and-disposal              city-service  noindex 588     0.68%     ✓       ✓     ✓     PASS    None
+/areas/swansea/heavy-and-bulky-item-transportation     city-service  noindex 594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/swansea/special-collections-and-deliveries      city-service  noindex 589     0.68%     ✓       ✓     ✓     PASS    None
+/areas/swansea/nationwide-and-long-distance-removals   city-service  noindex 589     0.68%     ✓       ✓     ✓     PASS    None
+/areas/oxford/house-removals                           city-service  noindex 594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/oxford/office-and-commercial-removals           city-service  noindex 601     0.67%     ✓       ✓     ✓     PASS    None
+/areas/oxford/furniture-removals-and-delivery          city-service  noindex 603     0.66%     ✓       ✓     ✓     PASS    None
+/areas/oxford/man-and-van                              city-service  noindex 601     0.67%     ✓       ✓     ✓     PASS    None
+/areas/oxford/furniture-assembly-and-dismantling       city-service  noindex 601     0.67%     ✓       ✓     ✓     PASS    None
+/areas/oxford/student-and-small-moves                  city-service  noindex 599     0.67%     ✓       ✓     ✓     PASS    None
+/areas/oxford/store-collections-and-deliveries         city-service  noindex 602     0.66%     ✓       ✓     ✓     PASS    None
+/areas/oxford/appliance-removals                       city-service  noindex 590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/oxford/packing-and-moving-assistance            city-service  noindex 603     0.66%     ✓       ✓     ✓     PASS    None
+/areas/oxford/storage-transportation                   city-service  noindex 591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/oxford/waste-removal-and-disposal               city-service  noindex 599     0.67%     ✓       ✓     ✓     PASS    None
+/areas/oxford/heavy-and-bulky-item-transportation      city-service  noindex 605     0.66%     ✓       ✓     ✓     PASS    None
+/areas/oxford/special-collections-and-deliveries       city-service  noindex 600     0.67%     ✓       ✓     ✓     PASS    None
+/areas/oxford/nationwide-and-long-distance-removals    city-service  noindex 600     0.67%     ✓       ✓     ✓     PASS    None
+/areas/cambridge/house-removals                        city-service  noindex 586     0.68%     ✓       ✓     ✓     PASS    None
+/areas/cambridge/office-and-commercial-removals        city-service  noindex 593     0.67%     ✓       ✓     ✓     PASS    None
+/areas/cambridge/furniture-removals-and-delivery       city-service  noindex 595     0.67%     ✓       ✓     ✓     PASS    None
+/areas/cambridge/man-and-van                           city-service  noindex 593     0.67%     ✓       ✓     ✓     PASS    None
+/areas/cambridge/furniture-assembly-and-dismantling    city-service  noindex 593     0.67%     ✓       ✓     ✓     PASS    None
+/areas/cambridge/student-and-small-moves               city-service  noindex 591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/cambridge/store-collections-and-deliveries      city-service  noindex 594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/cambridge/appliance-removals                    city-service  noindex 582     0.69%     ✓       ✓     ✓     PASS    None
+/areas/cambridge/packing-and-moving-assistance         city-service  noindex 595     0.67%     ✓       ✓     ✓     PASS    None
+/areas/cambridge/storage-transportation                city-service  noindex 583     0.69%     ✓       ✓     ✓     PASS    None
+/areas/cambridge/waste-removal-and-disposal            city-service  noindex 591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/cambridge/heavy-and-bulky-item-transportation   city-service  noindex 597     0.67%     ✓       ✓     ✓     PASS    None
+/areas/cambridge/special-collections-and-deliveries    city-service  noindex 592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/cambridge/nationwide-and-long-distance-removals city-service  noindex 592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/norwich/house-removals                          city-service  noindex 585     0.68%     ✓       ✓     ✓     PASS    None
+/areas/norwich/office-and-commercial-removals          city-service  noindex 592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/norwich/furniture-removals-and-delivery         city-service  noindex 594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/norwich/man-and-van                             city-service  noindex 592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/norwich/furniture-assembly-and-dismantling      city-service  noindex 592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/norwich/student-and-small-moves                 city-service  noindex 590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/norwich/store-collections-and-deliveries        city-service  noindex 593     0.67%     ✓       ✓     ✓     PASS    None
+/areas/norwich/appliance-removals                      city-service  noindex 581     0.69%     ✓       ✓     ✓     PASS    None
+/areas/norwich/packing-and-moving-assistance           city-service  noindex 594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/norwich/storage-transportation                  city-service  noindex 582     0.69%     ✓       ✓     ✓     PASS    None
+/areas/norwich/waste-removal-and-disposal              city-service  noindex 590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/norwich/heavy-and-bulky-item-transportation     city-service  noindex 596     0.67%     ✓       ✓     ✓     PASS    None
+/areas/norwich/special-collections-and-deliveries      city-service  noindex 591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/norwich/nationwide-and-long-distance-removals   city-service  noindex 591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/exeter/house-removals                           city-service  noindex 583     0.69%     ✓       ✓     ✓     PASS    None
+/areas/exeter/office-and-commercial-removals           city-service  noindex 590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/exeter/furniture-removals-and-delivery          city-service  noindex 592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/exeter/man-and-van                              city-service  noindex 590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/exeter/furniture-assembly-and-dismantling       city-service  noindex 590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/exeter/student-and-small-moves                  city-service  noindex 588     0.68%     ✓       ✓     ✓     PASS    None
+/areas/exeter/store-collections-and-deliveries         city-service  noindex 591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/exeter/appliance-removals                       city-service  noindex 579     0.69%     ✓       ✓     ✓     PASS    None
+/areas/exeter/packing-and-moving-assistance            city-service  noindex 592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/exeter/storage-transportation                   city-service  noindex 580     0.69%     ✓       ✓     ✓     PASS    None
+/areas/exeter/waste-removal-and-disposal               city-service  noindex 588     0.68%     ✓       ✓     ✓     PASS    None
+/areas/exeter/heavy-and-bulky-item-transportation      city-service  noindex 594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/exeter/special-collections-and-deliveries       city-service  noindex 589     0.68%     ✓       ✓     ✓     PASS    None
+/areas/exeter/nationwide-and-long-distance-removals    city-service  noindex 589     0.68%     ✓       ✓     ✓     PASS    None
+/areas/york/house-removals                             city-service  noindex 585     0.68%     ✓       ✓     ✓     PASS    None
+/areas/york/office-and-commercial-removals             city-service  noindex 592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/york/furniture-removals-and-delivery            city-service  noindex 594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/york/man-and-van                                city-service  noindex 592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/york/furniture-assembly-and-dismantling         city-service  noindex 592     0.68%     ✓       ✓     ✓     PASS    None
+/areas/york/student-and-small-moves                    city-service  noindex 590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/york/store-collections-and-deliveries           city-service  noindex 593     0.67%     ✓       ✓     ✓     PASS    None
+/areas/york/appliance-removals                         city-service  noindex 581     0.69%     ✓       ✓     ✓     PASS    None
+/areas/york/packing-and-moving-assistance              city-service  noindex 594     0.67%     ✓       ✓     ✓     PASS    None
+/areas/york/storage-transportation                     city-service  noindex 582     0.69%     ✓       ✓     ✓     PASS    None
+/areas/york/waste-removal-and-disposal                 city-service  noindex 590     0.68%     ✓       ✓     ✓     PASS    None
+/areas/york/heavy-and-bulky-item-transportation        city-service  noindex 596     0.67%     ✓       ✓     ✓     PASS    None
+/areas/york/special-collections-and-deliveries         city-service  noindex 591     0.68%     ✓       ✓     ✓     PASS    None
+/areas/york/nationwide-and-long-distance-removals      city-service  noindex 591     0.68%     ✓       ✓     ✓     PASS    None

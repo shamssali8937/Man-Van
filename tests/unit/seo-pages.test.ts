@@ -92,19 +92,19 @@ describe("Dynamic SEO Pages & Content Layer", () => {
 
     it("generates genuinely unique copy for all valid combinations", () => {
       const validPairs = getValidAreaServicePairs();
-      expect(validPairs.length).toBe(180); // 30 cities x 6 services
+      expect(validPairs.length).toBe(420); // 30 cities x 14 services
 
       // Inspect a sample of combinations across different services and cities
       const sample = [
         { city: "london", service: "house-removals" },
         { city: "birmingham", service: "man-and-van" },
-        { city: "manchester", service: "furniture-collection-and-delivery" },
+        { city: "manchester", service: "furniture-removals-and-delivery" },
         { city: "leeds", service: "office-and-commercial-removals" },
         {
           city: "newcastle-upon-tyne",
-          service: "furniture-dismantling-and-assembly",
+          service: "furniture-assembly-and-dismantling",
         },
-        { city: "bristol", service: "waste-removal-and-property-clearance" },
+        { city: "bristol", service: "waste-removal-and-disposal" },
       ];
 
       for (const { city, service } of sample) {
@@ -143,7 +143,7 @@ describe("Dynamic SEO Pages & Content Layer", () => {
       }
     });
 
-    it("every single combination across all 180 pairs satisfies SEO title (<60) and description (<160) limits", () => {
+    it("every single combination across all 420 pairs satisfies SEO title (<60) and description (<160) limits", () => {
       const validPairs = getValidAreaServicePairs();
       for (const { city, service } of validPairs) {
         const content = getAreaServiceContent(city, service);

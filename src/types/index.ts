@@ -44,6 +44,7 @@ export const AreaSchema = z.object({
   description: z.string().min(1),
   localNotes: AreaNotesSchema,
   faqs: z.array(ServiceFAQSchema).min(3),
+  metaDescription: z.string().optional(),
 });
 export type Area = z.infer<typeof AreaSchema>;
 

@@ -18,7 +18,8 @@ import { siteConfig } from "@/content/site";
 import { constructMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = constructMetadata({
-  title: `${siteConfig.name} | UK Removals & Man and Van`,
+  title: "UK Removals & Man and Van Services | AB Removals",
+  exactTitle: true,
   description: siteConfig.description,
 });
 

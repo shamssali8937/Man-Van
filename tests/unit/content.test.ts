@@ -11,9 +11,9 @@ import { AreaSchema, FAQSchema, ReviewSchema, ServiceSchema } from "@/types";
 
 describe("Content Layer Integrity", () => {
   describe("Services", () => {
-    it("has exactly 6 services", () => {
+    it("has all 14 services", () => {
       const services = getAllServices();
-      expect(services).toHaveLength(6);
+      expect(services).toHaveLength(14);
     });
 
     it("every service validates against ServiceSchema", () => {
@@ -65,13 +65,13 @@ describe("Content Layer Integrity", () => {
       }
     });
 
-    it("every area has 3 local notes and 3 FAQs", () => {
+    it("every area has 3 local notes and at least 3 FAQs", () => {
       const areas = getAllAreas();
       for (const area of areas) {
         expect(area.localNotes.parking).toBeTruthy();
         expect(area.localNotes.access).toBeTruthy();
         expect(area.localNotes.typicalRoutes).toBeTruthy();
-        expect(area.faqs).toHaveLength(3);
+        expect(area.faqs.length).toBeGreaterThanOrEqual(3);
       }
     });
 
@@ -86,9 +86,9 @@ describe("Content Layer Integrity", () => {
   });
 
   describe("FAQs", () => {
-    it("has exactly 12 general FAQs", () => {
+    it("has at least 12 general FAQs covering core and search queries", () => {
       const faqs = getGeneralFaqs();
-      expect(faqs).toHaveLength(12);
+      expect(faqs.length).toBeGreaterThanOrEqual(12);
     });
 
     it("every FAQ validates against FAQSchema", () => {

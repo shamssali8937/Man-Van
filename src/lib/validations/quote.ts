@@ -195,16 +195,40 @@ export const quoteFormSchema = z.object({
       "Moving date cannot be in the past",
     ),
 
-  pickupPostcode: z.string().trim().default(""),
+  pickupPostcode: z
+    .string()
+    .trim()
+    .toUpperCase()
+    .default("")
+    .refine(
+      (val) => !val || UK_POSTCODE_REGEX.test(val),
+      "Please enter a valid UK collection postcode (e.g. SW1A 1AA)",
+    ),
 
-  deliveryPostcode: z.string().trim().default(""),
+  deliveryPostcode: z
+    .string()
+    .trim()
+    .toUpperCase()
+    .default("")
+    .refine(
+      (val) => !val || UK_POSTCODE_REGEX.test(val),
+      "Please enter a valid UK delivery postcode (e.g. M1 1AE)",
+    ),
 
   // Additional Drop-Off / Via Stops
   hasAdditionalStops: z.boolean().default(false),
   additionalStops: z.string().default(""),
 
   helpers: z
-    .enum(["driver_assistance", "two_person", "three_person"])
+    .enum([
+      "driver_only",
+      "1_helper",
+      "2_helpers",
+      "3_helpers",
+      "driver_assistance",
+      "two_person",
+      "three_person",
+    ])
     .default("two_person"),
 
   propertyType: z.string().default("terraced"),
