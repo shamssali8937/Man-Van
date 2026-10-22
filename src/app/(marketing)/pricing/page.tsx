@@ -147,7 +147,7 @@ export default function PricingPage() {
 
                   <div className="my-6 p-4 rounded-xl bg-slate-50 border border-slate-100 text-center">
                     <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block">
-                      Standard Hourly Rate
+                      Standard Hourly Rates
                     </span>
                     <span className="text-2xl font-black font-mono text-slate-900 mt-1 block">
                       {tier.hourlyRate}
