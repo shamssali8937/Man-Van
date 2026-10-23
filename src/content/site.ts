@@ -8,13 +8,30 @@ export interface FooterLink {
   href: string;
 }
 
+const rawUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  process.env.SITE_URL ||
+  "https://abremovals.co.uk";
+
+const siteUrl = (
+  rawUrl.startsWith("http://") || rawUrl.startsWith("https://")
+    ? rawUrl
+    : `https://${rawUrl}`
+).replace(/\/$/, "");
+
+const siteEmail =
+  process.env.NEXT_PUBLIC_CONTACT_EMAIL ||
+  process.env.NEXT_PUBLIC_SITE_EMAIL ||
+  process.env.QUOTE_TO_EMAIL ||
+  "quotes@abremovals.co.uk";
+
 export const siteConfig = {
   name: "AB Removals – Man and Van",
   shortName: "AB Removals",
   tagline: "Professional Removals and Man & Van Services across the UK",
   description:
     "Reliable removals, man and van, and furniture collection services. Professional handling, punctual service, and transparent quotes.",
-  url: "https://abremovals.co.uk",
+  url: siteUrl,
   concept: "The Route",
 
   // Direct Communication Channels
@@ -23,7 +40,7 @@ export const siteConfig = {
   whatsappNumber: "+447405328674",
   whatsappHref:
     "https://wa.me/447405328674?text=Hello%20AB%20Removals%2C%20I%20would%20like%20to%20get%20a%20free%20quote%20for%20a%20move.%20Please%20let%20me%20know%20your%20availability%20and%20rates.",
-  email: "quotes@abremovals.co.uk",
+  email: siteEmail,
 
   // Address & Operating Details
   address: {
