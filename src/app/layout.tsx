@@ -41,24 +41,77 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               (function() {
                 if (typeof window === 'undefined') return;
 
-                // 1. Filter out known harmless browser extension hydration mismatch errors
+                // 1. Intercept and completely shield Next.js dev overlay from third-party browser extension errors
                 try {
-                  var origError = console.error;
-                  console.error = function() {
-                    var fullText = '';
-                    for (var i = 0; i < arguments.length; i++) {
-                      var arg = arguments[i];
-                      if (typeof arg === 'string') {
-                        fullText += arg + ' ';
-                      } else if (arg && arg.message) {
-                        fullText += arg.message + ' ';
-                      }
+                  var isExtError = function(target) {
+                    if (!target) return false;
+                    var text = '';
+                    if (typeof target === 'string') text = target;
+                    else {
+                      if (target.message) text += target.message + ' ';
+                      if (target.stack) text += target.stack + ' ';
+                      if (target.filename) text += target.filename + ' ';
                     }
-                    if (fullText.indexOf('bis_skin_checked') !== -1 || fullText.indexOf('bis_register') !== -1) {
-                      return;
-                    }
-                    return origError.apply(console, arguments);
+                    return (
+                      text.indexOf('chrome-extension://') !== -1 ||
+                      text.indexOf('moz-extension://') !== -1 ||
+                      text.indexOf('M_ID') !== -1 ||
+                      text.indexOf('bis_skin_checked') !== -1 ||
+                      text.indexOf('bis_register') !== -1
+                    );
                   };
+
+                  // Wrap addEventListener so Next.js dev-tools error handlers never see extension errors
+                  var origAddEventListener = window.addEventListener;
+                  window.addEventListener = function(type, listener, options) {
+                    if ((type === 'error' || type === 'unhandledrejection') && typeof listener === 'function') {
+                      var safeListener = function(event) {
+                        var err = event.error || event.reason;
+                        var filename = event.filename || '';
+                        var message = event.message || '';
+                        if (isExtError(err) || isExtError(filename) || isExtError(message)) {
+                          if (event.stopImmediatePropagation) event.stopImmediatePropagation();
+                          if (event.stopPropagation) event.stopPropagation();
+                          if (event.preventDefault) event.preventDefault();
+                          return true;
+                        }
+                        return listener.apply(this, arguments);
+                      };
+                      return origAddEventListener.call(this, type, safeListener, options);
+                    }
+                    return origAddEventListener.apply(this, arguments);
+                  };
+
+                  // Wrap window.onerror
+                  var origOnError = window.onerror;
+                  window.onerror = function(msg, url, line, col, err) {
+                    if (isExtError(msg) || isExtError(url) || isExtError(err)) {
+                      return true; // suppress standard browser & dev overlay reporting
+                    }
+                    if (origOnError) return origOnError.apply(this, arguments);
+                    return false;
+                  };
+
+                  // Protect console.error with defineProperty so dev overlay reassignments stay filtered
+                  var activeConsoleError = console.error;
+                  var safeConsoleError = function() {
+                    for (var i = 0; i < arguments.length; i++) {
+                      if (isExtError(arguments[i])) return;
+                    }
+                    return activeConsoleError.apply(console, arguments);
+                  };
+                  try {
+                    Object.defineProperty(console, 'error', {
+                      configurable: true,
+                      enumerable: true,
+                      get: function() { return safeConsoleError; },
+                      set: function(fn) {
+                        activeConsoleError = fn;
+                      }
+                    });
+                  } catch (e) {
+                    console.error = safeConsoleError;
+                  }
                 } catch(e) {}
 
                 // 2. Observe and immediately strip extension attributes injected into the DOM

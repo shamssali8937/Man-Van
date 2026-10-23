@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/common/breadcrumbs";
 import { QuoteCtaCard } from "@/components/common/quote-cta-card";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -89,6 +90,8 @@ const pricingFactors = [
 ];
 
 export default function PricingPage() {
+  notFound();
+
   const breadcrumbsSchema = generateBreadcrumbSchema([
     { name: "Home", url: "/" },
     { name: "Pricing & Rates", url: "/pricing" },

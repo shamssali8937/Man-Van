@@ -47,7 +47,6 @@ export const siteConfig = {
     { label: "Services", href: "/services" },
     { label: "Areas", href: "/areas" },
     { label: "The Van", href: "/the-van" },
-    { label: "Pricing", href: "/pricing" },
     { label: "FAQ", href: "/faq" },
     { label: "Reviews", href: "/reviews" },
     { label: "Contact", href: "/contact" },

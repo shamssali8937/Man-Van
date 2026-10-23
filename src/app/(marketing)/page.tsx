@@ -465,7 +465,6 @@ export default function HomePage() {
                     destinationCode="UK-WIDE"
                     routeCode="MAINLAND"
                     priority="DIRECT"
-                    hasBarcode
                     hasEyelet
                     className="h-full flex flex-col"
                   >

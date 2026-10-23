@@ -47,10 +47,10 @@ export default function NotFound() {
             The Luton Van
           </Link>
           <Link
-            href="/pricing"
+            href="/faq"
             className="rounded-xl bg-white p-3 border border-slate-200 text-slate-900 hover:border-red-300 hover:text-red-600 transition-colors shadow-2xs"
           >
-            Pricing & Rates
+            Frequently Asked Questions
           </Link>
           <Link
             href="/quote"
