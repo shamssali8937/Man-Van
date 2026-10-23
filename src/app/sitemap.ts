@@ -7,7 +7,13 @@ import { getValidAreaServicePairs } from "@/lib/seo/area-service-content";
 import { isTier1City } from "@/lib/seo/tiers";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = siteConfig.url;
+  const rawUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || siteConfig.url;
+  const baseUrl = (
+    rawUrl.startsWith("http://") || rawUrl.startsWith("https://")
+      ? rawUrl
+      : `https://${rawUrl}`
+  ).replace(/\/$/, "");
   const currentDate = new Date().toISOString();
 
   const staticRoutes: MetadataRoute.Sitemap = [
