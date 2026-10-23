@@ -28,12 +28,12 @@ export function Footer() {
                 className="inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-paper"
                 aria-label="AB Removals – Return to homepage"
               >
-                <div className="relative w-40 h-14">
+                <div className="relative w-52 h-18 sm:w-64 sm:h-22">
                   <Image
                     src="/brand/logo-light.svg"
                     alt="AB Removals – Man and Van"
                     fill
-                    sizes="160px"
+                    sizes="(max-width: 640px) 208px, 256px"
                     className="object-contain object-left"
                   />
                 </div>

@@ -121,19 +121,19 @@ export function Header() {
       {/* Main Sticky Header */}
       <header className="sticky top-0 z-30 bg-brand-paper/95 backdrop-blur-md border-b-2 border-brand-navy shadow-sm transition-[padding,box-shadow] duration-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 sm:h-20 gap-4">
+          <div className="flex items-center justify-between h-20 sm:h-24 md:h-28 gap-4">
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center gap-2 group shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy"
+              className="flex items-center gap-2 group shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy py-1"
               aria-label="AB Removals – Return to homepage"
             >
-              <div className="relative w-36 h-12 sm:w-44 sm:h-14 transition-transform group-hover:scale-[1.02]">
+              <div className="relative w-44 h-16 sm:w-56 sm:h-20 md:w-64 md:h-24 transition-transform group-hover:scale-[1.02]">
                 <Image
                   src="/brand/logo.svg"
                   alt="AB Removals – Man and Van"
                   fill
-                  sizes="(max-width: 640px) 144px, 176px"
+                  sizes="(max-width: 640px) 176px, (max-width: 768px) 224px, 256px"
                   className="object-contain object-left"
                   priority
                 />
