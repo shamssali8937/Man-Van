@@ -23,7 +23,7 @@ const siteEmail =
   process.env.NEXT_PUBLIC_CONTACT_EMAIL ||
   process.env.NEXT_PUBLIC_SITE_EMAIL ||
   process.env.QUOTE_TO_EMAIL ||
-  "quotes@abremovals.co.uk";
+  "Infoabremovalsmanandvan@gmail.com";
 
 export const siteConfig = {
   name: "AB Removals – Man and Van",
