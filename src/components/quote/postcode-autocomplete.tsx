@@ -100,7 +100,7 @@ export function PostcodeAutocomplete({
       if (selected) {
         handleSelect(selected);
       }
-    } else if (e.key === "Escape") {
+    } else if (e.key === "Escape" || e.key === "Tab") {
       setIsOpen(false);
     }
   };

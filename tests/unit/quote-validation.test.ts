@@ -99,9 +99,71 @@ describe("Quote Form Zod Schema Validation", () => {
     });
   });
 
-  describe("UK Postcode validation", () => {
-    it("accepts valid UK postcodes in various standard formats", () => {
-      const validPostcodes = [
+  describe("Contact details validation (at least one contact method required)", () => {
+    it("rejects submission if both phone and email are empty", () => {
+      const noContactData = {
+        pickupPostcode: "SW1",
+        deliveryPostcode: "M1",
+        phone: "",
+        email: "",
+      };
+
+      const result = quoteFormSchema.safeParse(noContactData);
+      expect(result.success).toBe(false);
+      if (!result.success) {
+        expect(result.error.flatten().fieldErrors.phone).toContain(
+          "Please provide either a telephone number or an email address so we can contact you with your quote.",
+        );
+        expect(result.error.flatten().fieldErrors.email).toContain(
+          "Please provide either a telephone number or an email address so we can contact you with your quote.",
+        );
+      }
+    });
+
+    it("accepts quote submission when only phone is provided (all other fields blank)", () => {
+      const phoneOnlyData = {
+        pickupPostcode: "",
+        deliveryPostcode: "",
+        fullName: "",
+        phone: "07405 328 674",
+        email: "",
+        notes: "",
+        accessNotes: "",
+      };
+
+      const result = quoteFormSchema.safeParse(phoneOnlyData);
+      expect(result.success).toBe(true);
+      if (result.success) {
+        expect(result.data.phone).toBe("07405 328 674");
+        expect(result.data.email).toBe("");
+        expect(result.data.vanType).toBe("luton");
+        expect(result.data.serviceType).toBe("house-removals");
+      }
+    });
+
+    it("accepts quote submission when only email is provided (all other fields blank)", () => {
+      const emailOnlyData = {
+        pickupPostcode: "",
+        deliveryPostcode: "",
+        fullName: "",
+        phone: "",
+        email: "customer@example.co.uk",
+        notes: "",
+        accessNotes: "",
+      };
+
+      const result = quoteFormSchema.safeParse(emailOnlyData);
+      expect(result.success).toBe(true);
+      if (result.success) {
+        expect(result.data.phone).toBe("");
+        expect(result.data.email).toBe("customer@example.co.uk");
+      }
+    });
+  });
+
+  describe("UK Postcode & Location validation", () => {
+    it("accepts full UK postcodes, partial postcodes, and city names", () => {
+      const flexibleLocations = [
         "SW1A 1AA",
         "W1D 4FA",
         "M1 1AE",
@@ -110,13 +172,19 @@ describe("Quote Form Zod Schema Validation", () => {
         "EH1 1YZ",
         "CF10 1EP",
         "sw1a1aa", // lowercase without space
+        "SW1", // partial postcode
+        "E16", // outward code
+        "London", // city name
+        "Manchester",
+        "Birmingham City Centre",
+        "", // optional / empty
       ];
 
-      for (const postcode of validPostcodes) {
+      for (const loc of flexibleLocations) {
         const data = {
           serviceType: "house-removals",
           moveDate: getFutureDateISO(5),
-          pickupPostcode: postcode,
+          pickupPostcode: loc,
           deliveryPostcode: "M1 1AE",
           helpers: "2_helpers",
           propertyType: "terraced",
@@ -127,40 +195,15 @@ describe("Quote Form Zod Schema Validation", () => {
         };
 
         const result = quoteFormSchema.safeParse(data);
-        expect(result.success, `Failed on valid postcode: ${postcode}`).toBe(
+        expect(result.success, `Failed on location/postcode: ${loc}`).toBe(
           true,
         );
       }
     });
-
-    it("rejects invalid UK postcodes", () => {
-      const invalidPostcodes = ["12345", "INVALID", "SW1A", "AA1 1A", "1A 1AA"];
-
-      for (const postcode of invalidPostcodes) {
-        const data = {
-          serviceType: "house-removals",
-          moveDate: getFutureDateISO(5),
-          pickupPostcode: postcode,
-          deliveryPostcode: "M1 1AE",
-          helpers: "2_helpers",
-          propertyType: "terraced",
-          fullName: "Test User",
-          phone: "07405 328 674",
-          email: "user@example.co.uk",
-          consent: true,
-        };
-
-        const result = quoteFormSchema.safeParse(data);
-        expect(
-          result.success,
-          `Should reject invalid postcode: ${postcode}`,
-        ).toBe(false);
-      }
-    });
   });
 
-  describe("UK Phone Number validation", () => {
-    it("accepts valid UK mobile and landline formats", () => {
+  describe("Phone Number validation", () => {
+    it("accepts UK numbers, flexible formats, and empty optional phones", () => {
       const validPhones = [
         "07405 328 674",
         "+447405328674",
@@ -168,6 +211,8 @@ describe("Quote Form Zod Schema Validation", () => {
         "020 7946 0912",
         "0121 496 0123",
         "07123456789",
+        "07405", // short / partial number
+        "", // optional empty
       ];
 
       for (const phone of validPhones) {
@@ -185,29 +230,7 @@ describe("Quote Form Zod Schema Validation", () => {
         };
 
         const result = quoteFormSchema.safeParse(data);
-        expect(result.success, `Failed on valid phone: ${phone}`).toBe(true);
-      }
-    });
-
-    it("rejects invalid phone numbers", () => {
-      const invalidPhones = ["123", "07405", "not-a-phone", "12345678901234"];
-
-      for (const phone of invalidPhones) {
-        const data = {
-          serviceType: "house-removals",
-          moveDate: getFutureDateISO(5),
-          pickupPostcode: "SW1A 1AA",
-          deliveryPostcode: "M1 1AE",
-          helpers: "1_helper",
-          propertyType: "semi_detached",
-          fullName: "Invalid Phone",
-          phone: phone,
-          email: "valid@example.co.uk",
-          consent: true,
-        };
-
-        const result = quoteFormSchema.safeParse(data);
-        expect(result.success, `Should reject phone: ${phone}`).toBe(false);
+        expect(result.success, `Failed on phone: ${phone}`).toBe(true);
       }
     });
   });
@@ -237,25 +260,22 @@ describe("Quote Form Zod Schema Validation", () => {
   });
 
   describe("Consent Checkbox", () => {
-    it("rejects submission if consent is false or missing", () => {
+    it("allows submission even if consent is true, false, or omitted", () => {
       const noConsentData = {
         serviceType: "house-removals",
         moveDate: getFutureDateISO(5),
-        pickupPostcode: "SW1A 1AA",
-        deliveryPostcode: "M1 1AE",
+        pickupPostcode: "SW1",
+        deliveryPostcode: "M1",
         helpers: "2_helpers",
         propertyType: "terraced",
-        fullName: "No Consent",
+        fullName: "Customer",
         phone: "07405 328 674",
         email: "user@example.co.uk",
         consent: false,
       };
 
       const result = quoteFormSchema.safeParse(noConsentData);
-      expect(result.success).toBe(false);
-      if (!result.success) {
-        expect(result.error.flatten().fieldErrors.consent).toBeDefined();
-      }
+      expect(result.success).toBe(true);
     });
   });
 

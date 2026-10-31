@@ -140,7 +140,7 @@ export const VAN_OPTIONS: readonly VanOption[] = [
     id: "luton",
     name: "Luton Van",
     shortName: "Luton Van",
-    image: "/images/vans/hero-van-branded.jpeg",
+    image: "/images/vans/luton-van-quote.jpg",
     imageAlt: "White 3.5T Luton Box Van with tail lift",
     volume: "19.0 m³",
     payload: "1,000 kg",
@@ -177,118 +177,129 @@ export const VAN_OPTIONS: readonly VanOption[] = [
   },
 ] as const;
 
-export const quoteFormSchema = z.object({
-  // 0. Selected Vehicle & Fleet Sizing
-  vanType: z.string().default("luton"),
-  hasAdditionalVan: z.boolean().default(false),
-  additionalVans: z.array(z.string()).default([]),
-  additionalVanDetails: z.string().default(""),
+export const quoteFormSchema = z
+  .object({
+    // 0. Selected Vehicle & Fleet Sizing
+    vanType: z.string().default("luton"),
+    hasAdditionalVan: z.boolean().default(false),
+    additionalVans: z.array(z.string()).default([]),
+    additionalVanDetails: z.string().default(""),
 
-  // 1. Move Logistics
-  serviceType: z.string().default("house-removals"),
+    // 1. Move Logistics
+    serviceType: z.string().default("house-removals"),
 
-  moveDate: z
-    .string()
-    .default("")
-    .refine(
-      (val) => !val || isDateTodayOrFuture(val),
-      "Moving date cannot be in the past",
-    ),
+    moveDate: z
+      .string()
+      .default("")
+      .refine(
+        (val) => !val || isDateTodayOrFuture(val),
+        "Moving date cannot be in the past",
+      ),
 
-  pickupPostcode: z
-    .string()
-    .trim()
-    .toUpperCase()
-    .default("")
-    .refine(
-      (val) => !val || UK_POSTCODE_REGEX.test(val),
-      "Please enter a valid UK collection postcode (e.g. SW1A 1AA)",
-    ),
+    pickupPostcode: z.string().trim().default(""),
 
-  deliveryPostcode: z
-    .string()
-    .trim()
-    .toUpperCase()
-    .default("")
-    .refine(
-      (val) => !val || UK_POSTCODE_REGEX.test(val),
-      "Please enter a valid UK delivery postcode (e.g. M1 1AE)",
-    ),
+    deliveryPostcode: z.string().trim().default(""),
 
-  // Additional Drop-Off / Via Stops
-  hasAdditionalStops: z.boolean().default(false),
-  additionalStops: z.string().default(""),
+    // Additional Drop-Off / Via Stops
+    hasAdditionalStops: z.boolean().default(false),
+    additionalStops: z.string().default(""),
 
-  helpers: z
-    .enum([
-      "driver_only",
-      "1_helper",
-      "2_helpers",
-      "3_helpers",
-      "driver_assistance",
-      "two_person",
-      "three_person",
-    ])
-    .default("two_person"),
+    helpers: z
+      .enum([
+        "driver_only",
+        "1_helper",
+        "2_helpers",
+        "3_helpers",
+        "driver_assistance",
+        "two_person",
+        "three_person",
+      ])
+      .default("two_person"),
 
-  propertyType: z.string().default("terraced"),
+    propertyType: z.string().default("terraced"),
 
-  accessNotes: z
-    .string()
-    .trim()
-    .max(1000, "Access notes cannot exceed 1000 characters")
-    .default(""),
+    accessNotes: z
+      .string()
+      .trim()
+      .max(1000, "Access notes cannot exceed 1000 characters")
+      .default(""),
 
-  // 2. Contact Details
-  fullName: z
-    .string()
-    .trim()
-    .max(100, "Full name cannot exceed 100 characters")
-    .default(""),
+    // 2. Contact Details (At least one of phone or email required)
+    fullName: z
+      .string()
+      .trim()
+      .max(100, "Full name cannot exceed 100 characters")
+      .default(""),
 
-  phone: z
-    .string()
-    .trim()
-    .default("")
-    .refine(
-      (val) => !val || UK_PHONE_REGEX.test(val),
-      "Please enter a valid UK telephone number (e.g. 07405 328 674)",
-    ),
+    phone: z.string().trim().default(""),
 
-  email: z
-    .string()
-    .trim()
-    .max(255, "Email address is too long")
-    .default("")
-    .refine(
-      (val) => !val || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val),
-      "Please enter a valid email address",
-    ),
+    email: z
+      .string()
+      .trim()
+      .max(255, "Email address is too long")
+      .default("")
+      .refine(
+        (val) => !val || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val),
+        "Please enter a valid email address",
+      ),
 
-  notes: z
-    .string()
-    .trim()
-    .max(2000, "Additional notes cannot exceed 2000 characters")
-    .default(""),
+    notes: z
+      .string()
+      .trim()
+      .max(2000, "Additional notes cannot exceed 2000 characters")
+      .default(""),
 
-  // 3. Consent to Privacy Policy (Defaults to true)
-  consent: z
-    .boolean()
-    .refine(
-      (val) => val === true,
-      "You must consent to our privacy policy to request a quote",
-    )
-    .default(true),
+    // 3. Consent to Privacy Policy (Optional / Defaults to true)
+    consent: z.boolean().optional().default(true),
 
-  // 4. Load Planner Data (Included when configured via planner)
-  plannerSummary: plannerSummarySchema.optional(),
+    // 4. Load Planner Data (Included when configured via planner)
+    plannerSummary: plannerSummarySchema.optional(),
 
-  // 5. Anti-Spam Honeypot (Must remain empty; bots fill it)
-  honeypot: z.string().max(0, "Spam submission detected").default(""),
+    // 5. Anti-Spam Honeypot (Must remain empty; bots fill it)
+    honeypot: z.string().max(0, "Spam submission detected").default(""),
 
-  // 6. Cloudflare Turnstile Verification Token
-  turnstileToken: z.string().optional().default(""),
-});
+    // 6. Cloudflare Turnstile Verification Token
+    turnstileToken: z.string().optional().default(""),
+  })
+  .superRefine((data, ctx) => {
+    const hasPhone = Boolean(data.phone && data.phone.trim().length > 0);
+    const hasEmail = Boolean(data.email && data.email.trim().length > 0);
+
+    if (!hasPhone && !hasEmail) {
+      const message =
+        "Please provide either a telephone number or an email address so we can contact you with your quote.";
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message,
+        path: ["phone"],
+      });
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message,
+        path: ["email"],
+      });
+    }
+  });
+
+export function getServiceLabel(value: string): string {
+  const match = SERVICE_TYPE_OPTIONS.find((s) => s.value === value);
+  return match?.label || value || "House Removals/Flat Removals";
+}
+
+export function getHelperLabel(value: string): string {
+  const match = HELPER_OPTIONS.find((h) => h.value === value);
+  return match?.label || value || "Van with Two-Person Moving Team";
+}
+
+export function getPropertyTypeLabel(value: string): string {
+  const match = PROPERTY_TYPE_OPTIONS.find((p) => p.value === value);
+  return match?.label || value || "Terraced House";
+}
+
+export function getVanLabel(value: string): string {
+  const match = VAN_OPTIONS.find((v) => v.id === value);
+  return match?.name || value || "Luton Van";
+}
 
 export type QuoteFormInput = z.input<typeof quoteFormSchema>;
 export type QuoteFormValues = z.output<typeof quoteFormSchema>;

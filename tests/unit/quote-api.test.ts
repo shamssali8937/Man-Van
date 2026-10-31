@@ -74,10 +74,9 @@ describe("POST /api/quote Route Handler Security & Validation", () => {
   it("2. Returns 400 Bad Request with field errors on invalid submission data", async () => {
     const invalidPayload = {
       ...getValidPayload(),
-      pickupPostcode: "INVALID_POSTCODE",
       moveDate: "2020-01-01", // Past date
-      phone: "123", // Invalid phone
-      consent: false, // Must be true
+      accessNotes: "x".repeat(1500), // Exceeds 1000 limit
+      notes: "y".repeat(2500), // Exceeds 2000 limit
     };
 
     const req = new NextRequest("http://localhost:3000/api/quote", {
@@ -95,12 +94,67 @@ describe("POST /api/quote Route Handler Security & Validation", () => {
     const json = await res.json();
     expect(json.error).toBe("Invalid submission data.");
     expect(json.details).toBeDefined();
-    expect(json.details.pickupPostcode).toBeDefined();
     expect(json.details.moveDate).toBeDefined();
-    expect(json.details.phone).toBeDefined();
-    expect(json.details.consent).toBeDefined();
+    expect(json.details.accessNotes).toBeDefined();
+    expect(json.details.notes).toBeDefined();
 
     // Verify email service was NOT invoked
+    expect(emailModule.sendQuoteEmail).not.toHaveBeenCalled();
+  });
+
+  it("2b. Successfully processes quote submission when optional fields are blank but contact is provided", async () => {
+    const blankPayload = {
+      pickupPostcode: "",
+      deliveryPostcode: "",
+      fullName: "",
+      phone: "07405 328 674",
+      email: "",
+      moveDate: "",
+      notes: "",
+    };
+
+    const req = new NextRequest("http://localhost:3000/api/quote", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-forwarded-for": "192.168.1.55",
+      },
+      body: JSON.stringify(blankPayload),
+    });
+
+    const res = await POST(req);
+    expect(res.status).toBe(200);
+
+    const json = await res.json();
+    expect(json.success).toBe(true);
+    expect(emailModule.sendQuoteEmail).toHaveBeenCalled();
+  });
+
+  it("2c. Returns 400 Bad Request when both phone and email are missing", async () => {
+    const noContactPayload = {
+      pickupPostcode: "SW1",
+      deliveryPostcode: "M1",
+      fullName: "Jane",
+      phone: "",
+      email: "",
+    };
+
+    const req = new NextRequest("http://localhost:3000/api/quote", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-forwarded-for": "192.168.1.56",
+      },
+      body: JSON.stringify(noContactPayload),
+    });
+
+    const res = await POST(req);
+    expect(res.status).toBe(400);
+
+    const json = await res.json();
+    expect(json.error).toBe("Invalid submission data.");
+    expect(json.details.phone).toBeDefined();
+    expect(json.details.email).toBeDefined();
     expect(emailModule.sendQuoteEmail).not.toHaveBeenCalled();
   });
 
