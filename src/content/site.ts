@@ -59,6 +59,16 @@ export const siteConfig = {
   locale: "en-GB",
   copyrightYear: 2026,
 
+  // Search Engine & Webmaster Verification
+  verification: {
+    google:
+      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ||
+      "google3982eeacc1f69b60",
+    bing:
+      process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION ||
+      "756FCC7EBA192C626D875EAE52DB180F",
+  },
+
   // Main Navigation Items
   navigation: [
     { label: "Services", href: "/services" },

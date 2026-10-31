@@ -120,6 +120,15 @@ export function constructMetadata({
         { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
       ],
     },
+    verification: {
+      google: [
+        siteConfig.verification.google,
+        `${siteConfig.verification.google}.html`,
+      ],
+      other: {
+        "msvalidate.01": siteConfig.verification.bing,
+      },
+    },
     robots: {
       index: !noIndex,
       follow: !noIndex,
