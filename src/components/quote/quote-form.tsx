@@ -276,11 +276,22 @@ export function QuoteForm({
 
           <div className="flex justify-between border-b border-brand-navy/15 pb-2">
             <span className="text-brand-navy/60 font-bold uppercase">
+              SERVICE:
+            </span>
+            <span className="font-bold text-brand-navy">
+              {SERVICE_TYPE_OPTIONS.find(
+                (s) => s.value === watch("serviceType"),
+              )?.label || watch("serviceType")}
+            </span>
+          </div>
+
+          <div className="flex justify-between border-b border-brand-navy/15 pb-2">
+            <span className="text-brand-navy/60 font-bold uppercase">
               TRANSIT CORRIDOR:
             </span>
             <span className="font-bold text-brand-navy">
-              {watch("pickupPostcode") || "UK Mainland"} →{" "}
-              {watch("deliveryPostcode") || "Destination"}
+              {watch("pickupPostcode") || "UK Mainland / Flexible"} →{" "}
+              {watch("deliveryPostcode") || "UK Destination / Flexible"}
             </span>
           </div>
 
@@ -309,12 +320,32 @@ export function QuoteForm({
             </span>
           </div>
 
-          <div className="flex justify-between">
+          <div className="flex justify-between border-b border-brand-navy/15 pb-2">
+            <span className="text-brand-navy/60 font-bold uppercase">
+              PROPERTY TYPE:
+            </span>
+            <span className="font-bold text-brand-navy">
+              {PROPERTY_TYPE_OPTIONS.find(
+                (p) => p.value === watch("propertyType"),
+              )?.label || watch("propertyType")}
+            </span>
+          </div>
+
+          <div className="flex justify-between border-b border-brand-navy/15 pb-2">
             <span className="text-brand-navy/60 font-bold uppercase">
               SCHEDULED DATE:
             </span>
             <span className="font-bold text-brand-navy">
               {watch("moveDate") || "Flexible / Pending"}
+            </span>
+          </div>
+
+          <div className="flex justify-between">
+            <span className="text-brand-navy/60 font-bold uppercase">
+              CONTACT DISPATCH VIA:
+            </span>
+            <span className="font-bold text-brand-navy">
+              {watch("phone") || watch("email") || "Direct Customer Line"}
             </span>
           </div>
         </div>
@@ -366,7 +397,9 @@ export function QuoteForm({
       </div>
 
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(onSubmit, (formErrors) => {
+          console.warn("[Quote Form Validation Warning]:", formErrors);
+        })}
         noValidate
         className="p-4 sm:p-6 lg:p-8 space-y-6 text-left"
       >
@@ -521,27 +554,27 @@ export function QuoteForm({
             {/* Collection Postcode with Live Autocomplete Search */}
             <PostcodeAutocomplete
               name="pickupPostcode"
-              label="Collection Postcode"
-              placeholder="e.g. SW1A 1AA or Westminster"
+              label="Collection Location / Postcode"
+              placeholder="e.g. SW1, E16, London or full postcode"
               value={watch("pickupPostcode") || ""}
               onChange={(val) =>
                 setValue("pickupPostcode", val, { shouldValidate: true })
               }
               error={errors.pickupPostcode?.message}
-              hint="Type UK postcode prefix or city name to search"
+              hint="Type UK postcode prefix, area, or city name"
             />
 
             {/* Delivery Postcode with Live Autocomplete Search */}
             <PostcodeAutocomplete
               name="deliveryPostcode"
-              label="Delivery Postcode"
-              placeholder="e.g. M1 1AE or Manchester"
+              label="Delivery Location / Postcode"
+              placeholder="e.g. M1, Birmingham, Manchester or full postcode"
               value={watch("deliveryPostcode") || ""}
               onChange={(val) =>
                 setValue("deliveryPostcode", val, { shouldValidate: true })
               }
               error={errors.deliveryPostcode?.message}
-              hint="Type UK delivery postcode or destination city"
+              hint="Type UK delivery postcode, area, or destination city"
             />
           </div>
 
@@ -684,7 +717,7 @@ export function QuoteForm({
 
           {/* Access Notes */}
           <Textarea
-            label="Property Access &amp; Parking Notes (Optional)"
+            label="Property Access &amp; Parking Notes"
             placeholder="e.g. 2nd floor flat with no lift; tight staircase; parking permit arranged; red route loading restrictions outside property."
             rows={2}
             error={errors.accessNotes?.message}
@@ -700,9 +733,14 @@ export function QuoteForm({
             <span className="font-mono text-[0.6875rem] font-bold text-brand-red uppercase tracking-widest block">
               02 / CONTACT &amp; DISPATCH
             </span>
-            <span className="font-display font-black text-lg text-brand-navy uppercase">
-              Your Contact Information
-            </span>
+            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+              <span className="font-display font-black text-lg text-brand-navy uppercase">
+                Your Contact Information
+              </span>
+              <span className="font-mono text-[11px] text-brand-navy/70">
+                Provide at least phone or email for quote delivery
+              </span>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -715,7 +753,7 @@ export function QuoteForm({
 
             <Input
               type="tel"
-              label="UK Telephone / Mobile"
+              label="Telephone / Mobile"
               placeholder="e.g. 07405 328 674"
               error={errors.phone?.message}
               {...register("phone")}

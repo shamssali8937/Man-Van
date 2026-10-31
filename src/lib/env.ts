@@ -10,8 +10,14 @@ export const env = createEnv({
       .string()
       .min(1)
       .default("re_4QNja9uK_8opcdi2xmrMHwqkZc9dmhXww"),
-    QUOTE_TO_EMAIL: z.string().email().default("quotes@abremovals.co.uk"),
-    QUOTE_FROM_EMAIL: z.string().email().default("onboarding@resend.dev"),
+    QUOTE_TO_EMAIL: z
+      .string()
+      .email()
+      .default("infoabremovalsmanvan@gmail.com"),
+    QUOTE_FROM_EMAIL: z
+      .string()
+      .email()
+      .default("quotes@abremovalsmanandvan.co.uk"),
     TURNSTILE_SECRET_KEY: z.string().min(1).optional(),
     UPSTASH_REDIS_REST_URL: z.string().url().optional(),
     UPSTASH_REDIS_REST_TOKEN: z.string().min(1).optional(),
@@ -29,11 +35,11 @@ export const env = createEnv({
       process.env.QUOTE_TO_EMAIL ||
       process.env.RESEND_TO_EMAIL ||
       process.env.NEXT_PUBLIC_CONTACT_EMAIL ||
-      "quotes@abremovals.co.uk",
+      "infoabremovalsmanvan@gmail.com",
     QUOTE_FROM_EMAIL:
       process.env.QUOTE_FROM_EMAIL ||
       process.env.RESEND_FROM_EMAIL ||
-      "onboarding@resend.dev",
+      "quotes@abremovalsmanandvan.co.uk",
     TURNSTILE_SECRET_KEY:
       process.env.TURNSTILE_SECRET_KEY ||
       process.env.CLOUDFLARE_TURNSTILE_SECRET_KEY,
