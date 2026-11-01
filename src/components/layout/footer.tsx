@@ -62,9 +62,9 @@ export function Footer() {
 
             {/* Column 2: Removals Services */}
             <div>
-              <h3 className="font-display italic font-black uppercase text-base text-brand-paper-light tracking-wider mb-4 border-l-2 border-brand-red pl-2.5">
+              <p className="font-display italic font-black uppercase text-base text-brand-paper-light tracking-wider mb-4 border-l-2 border-brand-red pl-2.5">
                 SERVICES IN TRANSIT
-              </h3>
+              </p>
               <ul className="space-y-2.5 text-sm font-sans">
                 {siteConfig.serviceLinks.map((service) => (
                   <li key={service.href}>
@@ -84,9 +84,9 @@ export function Footer() {
 
             {/* Column 3: Coverage Areas */}
             <div>
-              <h3 className="font-display italic font-black uppercase text-base text-brand-paper-light tracking-wider mb-4 border-l-2 border-brand-red pl-2.5">
+              <p className="font-display italic font-black uppercase text-base text-brand-paper-light tracking-wider mb-4 border-l-2 border-brand-red pl-2.5">
                 PRIMARY ROUTE HUBS
-              </h3>
+              </p>
               <ul className="space-y-2.5 text-sm font-sans">
                 {siteConfig.keyAreaLinks.map((area) => (
                   <li key={area.href}>
@@ -114,9 +114,9 @@ export function Footer() {
 
             {/* Column 4: Direct Dispatch & Contact Details */}
             <div className="space-y-3">
-              <h3 className="font-display italic font-black uppercase text-base text-brand-paper-light tracking-wider mb-4 border-l-2 border-brand-red pl-2.5">
+              <p className="font-display italic font-black uppercase text-base text-brand-paper-light tracking-wider mb-4 border-l-2 border-brand-red pl-2.5">
                 DIRECT DISPATCH
-              </h3>
+              </p>
 
               {/* Telephone */}
               <div>

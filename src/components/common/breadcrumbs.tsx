@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { JsonLd } from "@/components/seo/json-ld";
-import { siteConfig } from "@/content/site";
 
 export interface BreadcrumbItem {
   label: string;
@@ -17,29 +15,11 @@ export function Breadcrumbs({ items, className = "" }: BreadcrumbsProps) {
   const fullItems: BreadcrumbItem[] =
     items[0]?.href === "/" ? items : [{ label: "Home", href: "/" }, ...items];
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: fullItems.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.label,
-      ...(item.href
-        ? {
-            item: item.href.startsWith("http")
-              ? item.href
-              : `${siteConfig.url}${item.href}`,
-          }
-        : {}),
-    })),
-  };
-
   return (
     <nav
       aria-label="Breadcrumbs"
       className={`py-3 text-xs md:text-sm font-medium text-slate-600 ${className}`}
     >
-      <JsonLd data={jsonLd} />
       <ol className="flex flex-wrap items-center gap-1.5 md:gap-2">
         {fullItems.map((item, index) => {
           const isLast = index === fullItems.length - 1;

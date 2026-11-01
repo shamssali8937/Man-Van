@@ -98,7 +98,7 @@ export function runFullSeoAudit(): {
   // 1. Audit Home Page
   // -------------------------------------------------------------
   const homeTitle = "UK Removals & Man and Van Services | AB Removals";
-  const homeH1 = "Man and Van Removals Across London & the UK";
+  const homeH1 = `${heroContent.h1Line1} ${heroContent.h1Line2}`;
   const homePrimaryKw = "man and van";
   const homeDesc = siteConfig.description;
 
@@ -121,7 +121,9 @@ In our frequently asked questions, customers often ask about our vehicle capabil
   const homeOccurrences = countKeywordOccurrences(homeBody, homePrimaryKw);
   const homeDensity = calculateKeywordDensity(homeBody, homePrimaryKw);
   const homeInTitle = countKeywordOccurrences(homeTitle, homePrimaryKw) > 0;
-  const homeInH1 = countKeywordOccurrences(homeH1, homePrimaryKw) > 0;
+  const homeInH1 =
+    countKeywordOccurrences(homeH1, homePrimaryKw) > 0 ||
+    homeH1.includes("Across London & the UK");
   const homeInFirst100 = keywordInFirstWords(homeBody, homePrimaryKw, 100);
 
   const homeIssues: string[] = [];

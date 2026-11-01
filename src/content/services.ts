@@ -60,7 +60,7 @@ export const services: Service[] = [
     seo: {
       title: "House Removals UK | AB Removals",
       description:
-        "Professional house and flat removals across the UK. Dedicated 2-man and 3-man crews, Luton vans with tail lifts, and full transit care. Get your...",
+        "Professional house and flat removals across the UK. Dedicated 2-man and 3-man crews, Luton vans with tail lifts, and full transit care for your move.",
     },
   },
   {
@@ -120,7 +120,7 @@ export const services: Service[] = [
     seo: {
       title: "Office and Commercial Removals UK | AB Removals",
       description:
-        "Seamless office removals across the UK. Weekend relocations, IT transport, crate hire, and zero business downtime. Request an itemized corporate...",
+        "Seamless office removals across the UK. Weekend relocations, IT transport, crate hire, and zero business downtime. Request an itemized corporate quote.",
     },
   },
   {
@@ -182,7 +182,7 @@ export const services: Service[] = [
     seo: {
       title: "Furniture Removals and Delivery UK | AB Removals",
       description:
-        "Reliable furniture collection and delivery across the UK. Retail store pickups, eBay & marketplace items delivered to your room of choice. Get a...",
+        "Reliable furniture collection and delivery across the UK. Retail store pickups, eBay and marketplace items delivered to your room of choice safely.",
     },
   },
   {
@@ -243,7 +243,7 @@ export const services: Service[] = [
     seo: {
       title: "Man and Van Services UK | AB Removals",
       description:
-        "Affordable man and van hire across the UK. Professional drivers, working loading crew, 3.5t Luton vans with tail lifts, and transparent rates. Book...",
+        "Affordable man and van hire across the UK. Professional drivers, working loading crew, 3.5t Luton vans with tail lifts, and transparent rates. Book online.",
     },
   },
   {

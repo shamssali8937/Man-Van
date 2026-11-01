@@ -1,5 +1,4 @@
 import { areas } from "@/content/areas";
-import { reviews } from "@/content/reviews";
 import { siteConfig } from "@/content/site";
 
 /**
@@ -16,6 +15,10 @@ export function safeJsonLd(data: unknown): string {
  * Reviews and AggregateRating are only included if verified reviews exist in reviews.ts.
  */
 export function generateMovingCompanySchema() {
+  const validSameAs = (siteConfig.sameAs || []).filter(
+    (url) => Boolean(url) && !url.includes("TODO") && url.startsWith("http"),
+  );
+
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": ["MovingCompany", "LocalBusiness"],
@@ -29,14 +32,14 @@ export function generateMovingCompanySchema() {
     ],
     legalName: "AB Removals & Transport Ltd",
     url: siteConfig.url,
-    telephone: siteConfig.telephone,
+    telephone: siteConfig.schemaTelephone || "+447405328674",
     email: siteConfig.email,
     logo: `${siteConfig.url}/brand/logo.svg`,
     image: `${siteConfig.url}/opengraph-image`,
     priceRange: "££",
     currenciesAccepted: "GBP",
     paymentAccepted: "Cash, Credit Card, Debit Card, Bank Transfer",
-    sameAs: [siteConfig.whatsappHref],
+    ...(validSameAs.length > 0 ? { sameAs: validSameAs } : {}),
     address: {
       "@type": "PostalAddress",
       streetAddress: siteConfig.address.streetAddress,
@@ -46,13 +49,19 @@ export function generateMovingCompanySchema() {
     },
     areaServed: [
       {
+        "@type": "City",
+        name: "London",
+      },
+      ...areas
+        .filter((a) => a.name !== "London")
+        .map((a) => ({
+          "@type": "City",
+          name: a.name,
+        })),
+      {
         "@type": "Country",
         name: "United Kingdom",
       },
-      ...areas.map((a) => ({
-        "@type": "City",
-        name: a.name,
-      })),
     ],
     openingHoursSpecification: [
       {
@@ -66,44 +75,11 @@ export function generateMovingCompanySchema() {
           "Saturday",
           "Sunday",
         ],
-        opens: "07:00",
-        closes: "20:00",
+        opens: "00:00",
+        closes: "23:59",
       },
     ],
   };
-
-  // Only add AggregateRating and Review if real verified reviews exist
-  const ratedReviews = reviews.filter(
-    (r): r is typeof r & { rating: number } => typeof r.rating === "number",
-  );
-  if (ratedReviews.length > 0) {
-    const totalRating = ratedReviews.reduce((sum, r) => sum + r.rating, 0);
-    const avgRating = (totalRating / ratedReviews.length).toFixed(1);
-
-    schema.aggregateRating = {
-      "@type": "AggregateRating",
-      ratingValue: avgRating,
-      reviewCount: ratedReviews.length,
-      bestRating: "5",
-      worstRating: "1",
-    };
-
-    schema.review = ratedReviews.map((r) => ({
-      "@type": "Review",
-      author: {
-        "@type": "Person",
-        name: r.author,
-      },
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: r.rating,
-        bestRating: "5",
-        worstRating: "1",
-      },
-      reviewBody: r.comment,
-      datePublished: r.date,
-    }));
-  }
 
   return schema;
 }
@@ -150,7 +126,7 @@ export function generateServiceSchema(
     provider: {
       "@type": "MovingCompany",
       name: siteConfig.name,
-      telephone: siteConfig.telephone,
+      telephone: siteConfig.schemaTelephone || "+447405328674",
       url: siteConfig.url,
     },
     areaServed: areaName

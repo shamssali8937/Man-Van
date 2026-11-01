@@ -3,6 +3,14 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { POST } from "@/app/api/contact/route";
 import { resetRateLimitStore } from "@/lib/security/rate-limit";
 
+vi.mock("resend", () => ({
+  Resend: vi.fn().mockImplementation(() => ({
+    emails: {
+      send: vi.fn().mockResolvedValue({ id: "mock-id" }),
+    },
+  })),
+}));
+
 describe("POST /api/contact Route Handler Security & Validation", () => {
   const getValidPayload = () => ({
     fullName: "Jane Doe",

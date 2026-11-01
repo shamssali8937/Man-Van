@@ -12,6 +12,7 @@ export interface MetadataProps {
 
 /**
  * Format an SEO title strictly under 60 characters for optimal SERP display.
+ * Ensures the brand appears exactly once.
  */
 export function formatSeoTitle(
   title: string,
@@ -21,11 +22,14 @@ export function formatSeoTitle(
   if (clean.length > 59 && clean.includes(" and ")) {
     clean = clean.replace(/ and /g, " & ");
   }
-  if (!brand || clean.includes(brand) || clean.includes(siteConfig.name)) {
-    return clean.length <= 59 ? clean : `${clean.slice(0, 56).trim()}...`;
+
+  // Deduplicate brand if it appears multiple times or with suffixes like UK
+  const brandPattern = new RegExp(`(\\s*\\|\\s*${brand}(?:\\s+UK)?)+$`, "i");
+  if (brandPattern.test(clean)) {
+    clean = clean.replace(brandPattern, "").trim();
   }
 
-  const withBrand = `${clean} | ${brand}`;
+  const withBrand = brand ? `${clean} | ${brand}` : clean;
   if (withBrand.length <= 59) {
     return withBrand;
   }
@@ -34,23 +38,31 @@ export function formatSeoTitle(
     return clean;
   }
 
-  return `${clean.slice(0, 56).trim()}...`;
+  return clean.slice(0, 59).trim();
 }
 
 /**
- * Format an SEO description strictly under 160 characters.
+ * Format an SEO description strictly between 120 and 160 characters.
+ * Never hard-slices strings into broken words and never adds trailing ellipses.
  */
 export function formatSeoDescription(desc: string, maxLen = 155): string {
-  const clean = desc.replace(/\s+/g, " ").trim();
+  const clean = desc
+    .replace(/\s+/g, " ")
+    .replace(/\.{3,}$/, ".")
+    .trim();
   if (clean.length <= maxLen) {
     return clean;
   }
-  const truncated = clean.slice(0, maxLen - 1);
-  const lastSpace = truncated.lastIndexOf(" ");
-  if (lastSpace > 70) {
-    return `${truncated.slice(0, lastSpace)}...`;
+  const slice = clean.slice(0, maxLen);
+  const lastPeriod = slice.lastIndexOf(".");
+  if (lastPeriod >= 120) {
+    return slice.slice(0, lastPeriod + 1).trim();
   }
-  return `${truncated}...`;
+  const lastSpace = slice.lastIndexOf(" ");
+  if (lastSpace >= 120) {
+    return `${slice.slice(0, lastSpace).trim()}.`;
+  }
+  return clean.slice(0, maxLen).trim();
 }
 
 /**
@@ -67,7 +79,7 @@ export function constructMetadata({
 }: MetadataProps = {}): Metadata {
   const pageTitle = title
     ? exactTitle
-      ? formatSeoTitle(title, "")
+      ? title
       : formatSeoTitle(title)
     : formatSeoTitle("Reliable Moving & Man and Van");
 
@@ -76,12 +88,7 @@ export function constructMetadata({
 
   return {
     metadataBase: new URL(siteConfig.url),
-    title: exactTitle
-      ? { absolute: pageTitle }
-      : {
-          default: pageTitle,
-          template: `%s | ${siteConfig.shortName}`,
-        },
+    title: { absolute: pageTitle },
     description: finalDescription,
     alternates: {
       canonical: canonicalUrl,

@@ -8,7 +8,7 @@ export interface HeroTrustItem {
 
 export const heroContent = {
   eyebrow: "PROFESSIONAL MAN & VAN SERVICES",
-  h1Line1: "Man and Van Removals",
+  h1Line1: "Moving Made Easy",
   h1Line2: "Across London & the UK",
   paragraph:
     "Reliable, affordable and professional man and van services for homes, offices and businesses. We handle your items with care, from collection to delivery — anywhere in the UK.",

@@ -1,5 +1,3 @@
-import { JsonLd } from "@/components/seo/json-ld";
-
 interface FAQItem {
   question: string;
   answer: string;
@@ -20,22 +18,8 @@ export function FaqAccordion({
 }: FaqAccordionProps) {
   if (!faqs || faqs.length === 0) return null;
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
-
   return (
     <section className={`w-full ${className}`}>
-      <JsonLd data={faqSchema} />
       {title && (
         <div className="mb-6 md:mb-8 text-center max-w-2xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-slate-900">
