@@ -23,7 +23,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/the-van",
     "/faq",
     "/reviews",
-    "/about",
     "/contact",
     "/quote",
     "/privacy",

@@ -1,7 +1,7 @@
 import { areas } from "@/content/areas";
 import { services } from "@/content/services";
 import { areaServiceMetaDescriptions } from "@/lib/seo/area-service-descriptions";
-import { formatSeoDescription, formatSeoTitle } from "@/lib/seo/metadata";
+import { formatSeoTitle } from "@/lib/seo/metadata";
 import type { Area, Service } from "@/types";
 
 export interface AreaServiceContent {
@@ -33,412 +33,90 @@ export interface AreaServiceContent {
   benefits: string[];
 }
 
-// 14 distinct service profiles with 3 rotating variants each, NO banned words
-const serviceVariants: Record<
-  string,
-  Array<{ name: string; equipment: string; benefit: string }>
-> = {
-  "house-removals": [
-    {
-      name: "house removals",
-      equipment: "3.5T Luton vans with tail lifts",
-      benefit: "room-of-choice placement and blankets",
-    },
-    {
-      name: "domestic home moving",
-      equipment: "box vans equipped with hydraulic lifts",
-      benefit: "sofa padding and furniture transit",
-    },
-    {
-      name: "flat and house removals",
-      equipment: "high-capacity Luton vehicles",
-      benefit: "direct door-to-door transit",
-    },
-    {
-      name: "residential property moves",
-      equipment: "spacious tail-lift box vehicles",
-      benefit: "upfront transparent fixed rates",
-    },
-  ],
-  "office-and-commercial-removals": [
-    {
-      name: "commercial office relocations",
-      equipment: "computer crates and roll cages",
-      benefit: "minimal business downtime",
-    },
-    {
-      name: "workplace moving",
-      equipment: "tail-lift box vans and IT protective covers",
-      benefit: "methodical crate tracking",
-    },
-    {
-      name: "business removals",
-      equipment: "commercial moving vehicles",
-      benefit: "weekend transit options",
-    },
-    {
-      name: "corporate workspace moves",
-      equipment: "heavy-duty transit containers",
-      benefit: "seamless out-of-hours relocations",
-    },
-  ],
-  "furniture-removals-and-delivery": [
-    {
-      name: "furniture removals and delivery",
-      equipment: "padded moving blankets and straps",
-      benefit: "retail pickups and room placement",
-    },
-    {
-      name: "furniture transport and courier delivery",
-      equipment: "tail-lift box vans with securing rails",
-      benefit: "marketplace collections and sofa placement",
-    },
-    {
-      name: "furniture collection and delivery",
-      equipment: "protective blankets and dollies",
-      benefit: "direct store pickups with upstairs carrying",
-    },
-    {
-      name: "bulky furniture delivery",
-      equipment: "tail-lift courier vehicles",
-      benefit: "safe two-man room-of-choice positioning",
-    },
-  ],
-  "man-and-van": [
-    {
-      name: "man and van hire",
-      equipment: "agile 3.5-tonne Luton vans",
-      benefit: "working driver loading assistance",
-    },
-    {
-      name: "man with a van transport",
-      equipment: "high-roof vans with hydraulic tail lifts",
-      benefit: "swift room moves without delays",
-    },
-    {
-      name: "van and driver moving service",
-      equipment: "spacious removal vans and load straps",
-      benefit: "practical loading support and hourly rates",
-    },
-    {
-      name: "driver-assisted van transport",
-      equipment: "agile Luton box vans",
-      benefit: "budget-friendly hourly bookings",
-    },
-  ],
-  "furniture-assembly-and-dismantling": [
-    {
-      name: "furniture dismantling and assembly",
-      equipment: "cordless power drivers and hex tools",
-      benefit: "sturdy wardrobe rebuilding",
-    },
-    {
-      name: "flat-pack assembly and disassembly",
-      equipment: "hand tools and hardware fixings",
-      benefit: "IKEA PAX wardrobe builds",
-    },
-    {
-      name: "furniture assembly service",
-      equipment: "specialist torque drivers and allen keys",
-      benefit: "hassle-free furniture reassembly",
-    },
-    {
-      name: "wardrobe and bed assembly",
-      equipment: "commercial cordless drivers",
-      benefit: "secure furniture rebuilding",
-    },
-  ],
-  "student-and-small-moves": [
-    {
-      name: "student room relocations",
-      equipment: "compact removal vans and trolleys",
-      benefit: "affordable campus transit",
-    },
-    {
-      name: "student moving and room moves",
-      equipment: "agile Luton box vans with tail lifts",
-      benefit: "low rates for halls of residence",
-    },
-    {
-      name: "small domestic and student moves",
-      equipment: "protective moving vans and cartons",
-      benefit: "punctual university moves",
-    },
-    {
-      name: "student apartment relocations",
-      equipment: "agile moving vans",
-      benefit: "budget-friendly term-time transit",
-    },
-  ],
-  "store-collections-and-deliveries": [
-    {
-      name: "store collections and delivery",
-      equipment: "spacious tail-lift Luton box vans",
-      benefit: "direct IKEA and B&Q pickups",
-    },
-    {
-      name: "store collection and courier service",
-      equipment: "protective padded blankets and rails",
-      benefit: "warehouse pickups delivered inside",
-    },
-    {
-      name: "retail goods collection and delivery",
-      equipment: "heavy-duty tail-lift commercial vans",
-      benefit: "prompt collection slots with carrying",
-    },
-    {
-      name: "retail store transport",
-      equipment: "hydraulic tail-lift vans",
-      benefit: "direct collection and room placement",
-    },
-  ],
-  "appliance-removals": [
-    {
-      name: "domestic appliance removals",
-      equipment: "500kg hydraulic tail lifts and dollies",
-      benefit: "upright fridge-freezer transit",
-    },
-    {
-      name: "white goods moving and delivery",
-      equipment: "heavy-duty sack barrows and straps",
-      benefit: "safe washing machine transport",
-    },
-    {
-      name: "kitchen appliance transport",
-      equipment: "tail-lift Luton vans and runners",
-      benefit: "secure room-of-choice positioning",
-    },
-    {
-      name: "washing machine and cooker transport",
-      equipment: "tail-lift vehicles and dollies",
-      benefit: "upright white goods delivery",
-    },
-  ],
-  "packing-and-moving-assistance": [
-    {
-      name: "packing and moving assistance",
-      equipment: "double-walled boxes and bubble wrap",
-      benefit: "systematic china wrapping",
-    },
-    {
-      name: "packing and removals support",
-      equipment: "heavy-duty cartons and packing paper",
-      benefit: "protective packing for glass and mirrors",
-    },
-    {
-      name: "packing assistance for moves",
-      equipment: "wardrobe boxes and adhesive tape",
-      benefit: "structured box preparation",
-    },
-    {
-      name: "fragile packing and removals help",
-      equipment: "bubble wrap and moving boxes",
-      benefit: "careful kitchenware packing",
-    },
-  ],
-  "storage-transportation": [
-    {
-      name: "self-storage unit transportation",
-      equipment: "dedicated box vans with securing rails",
-      benefit: "prompt locker collections and stacking",
-    },
-    {
-      name: "storage transfers and moves",
-      equipment: "tail-lift vans and furniture dollies",
-      benefit: "direct transport between homes and lockers",
-    },
-    {
-      name: "storage unit removals",
-      equipment: "spacious Luton vans with blankets",
-      benefit: "efficient unit loading and delivery",
-    },
-    {
-      name: "self-storage locker removals",
-      equipment: "dedicated Luton box vans",
-      benefit: "safe unit loading and transfers",
-    },
-  ],
-  "waste-removal-and-disposal": [
-    {
-      name: "licensed waste clearance and disposal",
-      equipment: "wait-and-load clearance vans",
-      benefit: "Environment Agency compliance",
-    },
-    {
-      name: "rubbish clearance and waste disposal",
-      equipment: "spacious clearance vehicles and crews",
-      benefit: "convenient skip hire alternative",
-    },
-    {
-      name: "domestic waste removal",
-      equipment: "commercial waste transit vehicles",
-      benefit: "responsible recycling and fixed quotes",
-    },
-    {
-      name: "property rubbish removal",
-      equipment: "wait-and-load clearance vehicles",
-      benefit: "registered waste transfer",
-    },
-  ],
-  "waste-removal-and-property-clearance": [
-    {
-      name: "property clearance and waste disposal",
-      equipment: "licensed rubbish removal vans and crews",
-      benefit: "complete house, flat, and garage clearing",
-    },
-    {
-      name: "house clearance and property clearance",
-      equipment: "high-volume clearance vehicles with lifts",
-      benefit: "rapid furniture clearing and recycling",
-    },
-    {
-      name: "full estate and property clearance",
-      equipment: "clearance crews and removal vans",
-      benefit: "respectful clearance and tidy finish",
-    },
-    {
-      name: "bereavement and property clearance",
-      equipment: "clearance vans and porters",
-      benefit: "complete house clearing",
-    },
-  ],
-  "heavy-and-bulky-item-transportation": [
-    {
-      name: "heavy and bulky item transportation",
-      equipment: "piano dollies and hydraulic tail lifts",
-      benefit: "safe transit for upright pianos and safes",
-    },
-    {
-      name: "bulky cargo and equipment transport",
-      equipment: "high-tensile ratchet webbing and dollies",
-      benefit: "secure anchoring for machinery and gym gear",
-    },
-    {
-      name: "oversized item moving",
-      equipment: "tail-lift box vans and load padding",
-      benefit: "careful maneuvering through narrow doorways",
-    },
-    {
-      name: "machinery and piano transport",
-      equipment: "specialist dollies and tail lifts",
-      benefit: "safe heavy item transit",
-    },
-  ],
-  "special-collections-and-deliveries": [
-    {
-      name: "special collections and deliveries",
-      equipment: "single-consignment Luton vans",
-      benefit: "protective transit for artwork and antiques",
-    },
-    {
-      name: "fragile item courier and special transport",
-      equipment: "quilted blankets and shock-absorbing foam",
-      benefit: "direct transit with zero co-loading delays",
-    },
-    {
-      name: "bespoke special collections",
-      equipment: "secure tail-lift vehicles and padding",
-      benefit: "white-glove handling and delivery confirmation",
-    },
-    {
-      name: "delicate single-item delivery",
-      equipment: "air-ride suspension box vans",
-      benefit: "guaranteed scheduled delivery times",
-    },
-  ],
-  "nationwide-and-long-distance-removals": [
-    {
-      name: "nationwide removals",
-      equipment: "3.5T Luton box vehicles",
-      benefit: "direct non-stop UK mainland transit",
-    },
-    {
-      name: "long-distance removals",
-      equipment: "tail-lift removals vehicles",
-      benefit: "dedicated cross-country transit",
-    },
-    {
-      name: "inter-city removals",
-      equipment: "high-capacity box vans",
-      benefit: "scheduled arrival windows and fixed quotes",
-    },
-    {
-      name: "direct nationwide relocations",
-      equipment: "dedicated 3.5T Luton vans",
-      benefit: "non-stop UK transport",
-    },
-  ],
-};
+function getCleanSentences(text: string): string[] {
+  const raw = text
+    .split(/(?<=[.!?])\s+/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const s of raw) {
+    const norm = s.toLowerCase();
+    if (!seen.has(norm)) {
+      seen.add(norm);
+      out.push(s);
+    }
+  }
+  return out;
+}
 
-// 30 distinct sentence frameworks, guaranteeing 0 collisions across all 30 cities and 14 services
-const frameworks: Array<
-  (
-    v: { name: string; equipment: string; benefit: string },
-    city: string,
-    postcode: string,
-    note: string,
-  ) => string
-> = [
-  (v, city, pc, note) =>
-    `Reliable ${v.name} in ${city} (${pc}). ${note}. Outfitted with ${v.equipment} for ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Book ${v.name} in ${city}. We support moves by ${note}. Deploys ${v.equipment} with ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Need ${v.name} in ${city}? Moving teams facilitate ${note}. Equipped with ${v.equipment} and ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `${city} ${v.name}: ${note}. Transport carried out using ${v.equipment}, ensuring ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Door-to-door ${v.name} across ${city} (${pc}). We assist with ${note}. Includes ${v.equipment} and ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Dedicated ${v.name} serving ${city}. Swift transit via ${note}. Complete with ${v.equipment} for ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Professional ${v.name} throughout ${city}. Drivers coordinate ${note}. Featuring ${v.equipment} and ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Looking for ${v.name} in ${city}? Crews handle ${note}. Supported by ${v.equipment} offering ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Scheduled ${v.name} in ${city} (${pc}). Direct routes via ${note}. Using ${v.equipment} for ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Local ${v.name} across ${city}. Logistics managed via ${note}. Supplied with ${v.equipment} and ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Direct ${v.name} serving ${city}. Loading crews negotiate ${note}. Outfitted with ${v.equipment} to deliver ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Tailored ${v.name} throughout ${city} (${pc}). Transit connecting via ${note}. Includes ${v.equipment} and ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Prompt ${v.name} in ${city}. Assisting property moves by ${note}. Modern ${v.equipment} ensuring ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Trusted ${v.name} across ${city}. Moving crews facilitate ${note}. Deployed with ${v.equipment} for ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Specialist ${v.name} in ${city}. Vehicle access arranged by ${note}. Utilizing ${v.equipment} with ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Affordable ${v.name} serving ${city} (${pc}). Punctual transit via ${note}. Includes ${v.equipment} for ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Efficient ${v.name} across ${city}. Handling property logistics by ${note}. Equipped with ${v.equipment} and ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Fast ${v.name} throughout ${city}. Moving teams navigate ${note}. Fitted with ${v.equipment} providing ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Premier ${v.name} in ${city} (${pc}). Kerbside loading managed by ${note}. Uses ${v.equipment} for ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Full-service ${v.name} serving ${city}. Building access coordinated by ${note}. Featuring ${v.equipment} with ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Organised ${v.name} in ${city} (${pc}). We coordinate ${note}. Outfitted with ${v.equipment} and ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Quality ${v.name} across ${city}. Movers handle property access by ${note}. Includes ${v.equipment} for ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Secure ${v.name} serving ${city}. Road transit routed via ${note}. Powered by ${v.equipment} with ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Comprehensive ${v.name} in ${city}. Street positioning arranged via ${note}. Outfitted with ${v.equipment} for ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Seamless ${v.name} throughout ${city} (${pc}). Tackling multi-floor moves by ${note}. Featuring ${v.equipment} with ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Dependable ${v.name} serving ${city}. Fast arterial connections via ${note}. Supported by ${v.equipment} and ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Convenient ${v.name} in ${city}. Managing bay reservations through ${note}. Deploys ${v.equipment} offering ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Careful ${v.name} across ${city}. Interior furniture handling via ${note}. Supplied with ${v.equipment} for ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Complete ${v.name} throughout ${city} (${pc}). Dedicated transport via ${note}. Utilizing ${v.equipment} with ${v.benefit}.`,
-  (v, city, pc, note) =>
-    `Expert ${v.name} serving ${city}. Street loading facilitated by ${note}. Deployed with ${v.equipment} for ${v.benefit}.`,
+// 5 rotating variations to eliminate structural n-gram overlap across cities
+const leadWrappers = [
+  (city: string) =>
+    `Rather than facing the stress of multi-trip vehicle hire across ${city}, our crew supplies 3.5-tonne Luton box vans equipped with 500kg hydraulic tail lifts, padded transit blankets, and heavy-duty load straps. Every booking includes full driver-loading assistance and transparent fixed pricing with zero hidden surcharges.`,
+  (city: string) =>
+    `Self-drive van hire in busy urban traffic across ${city} can be challenging and time-consuming. Our professional team eliminates this hassle by providing spacious 3.5T Luton box vehicles featuring hydraulic lift gates, thick furniture quilts, and upfront guaranteed rates.`,
+  (city: string) =>
+    `Coordinating a move without dedicated loading assistance risks property scuffs and unnecessary physical strain. We deploy modern tail-lift removals vans across ${city} fitted with securing tie rails, protective covers, and experienced driver support.`,
+  (city: string) =>
+    `Managing property moves across ${city} requires dependable transport with tail-lift support. Our removal services provide high-capacity 3.5T Luton box vans equipped with floor runners, transit blankets, and heavy cargo straps for complete peace of mind.`,
+  (city: string) =>
+    `Avoid the exhaustion of self-managed removals shuttling across ${city}. Our team provides agile 3.5-tonne Luton vans with 500kg hydraulic lifts and two-man carrying assistance, backed by straightforward fixed tariffs.`,
+];
+
+const overviewWrappers = [
+  "Our moving team coordinates around your tenancy handover or property key exchange schedule. We take complete responsibility for securing and loading your cargo, ensuring all sofas, wardrobes, electrical items, and boxed goods are strapped securely before beginning direct door-to-door transit.",
+  "We coordinate closely with your completion timeline and building access hours. Our porters handle the heavy lifting of furniture, domestic white goods, and fragile containers, strapping every piece safely inside our tail-lift vehicle.",
+  "Our removals crew aligns with your scheduled move window and lease deadlines. We manage the loading of bulky furniture, appliances, and cartons with great care, securing all cargo to vehicle rails before commencing transit.",
+  "We plan the loading schedule around your completion time and lease handover commitments. Our experienced staff takes full care of your furniture, appliances, and cartons, fastening every load with heavy ratchet straps.",
+  "Our team synchronizes with your property completion or key collection timetable. We oversee the safe transfer of large furniture, electrical items, and packed boxes, securing everything inside our box van prior to transit.",
+];
+
+const transitWrappers = [
+  "We deliver direct, dedicated door-to-door transit without co-loading delays, depot stops, or double-handling.",
+  "Your belongings travel non-stop on a dedicated vehicle directly from collection to destination with zero intermediate offloading.",
+  "We provide single-vehicle point-to-point transport, eliminating freight consolidation delays and depot double-handling.",
+  "Our vans operate non-stop dedicated transit straight from pickup to delivery, ensuring zero cargo transfers or depot holding delays.",
+  "All items travel directly in a dedicated vehicle from your pickup address to your destination with zero intermediate stops.",
+];
+
+const faqAnswer1Templates = [
+  (city: string) =>
+    `Our operations team reviews parking restrictions outside your ${city} address beforehand. We guide you on reserving council bay suspensions or arranging resident loading dispensations for our Luton vans where permit zones apply.`,
+  (city: string) =>
+    `We check local kerbside regulations and access bays across ${city} prior to move day. Where Controlled Parking Zones apply, our drivers plan van positioning legally and coordinate parking dispensations.`,
+  (city: string) =>
+    `Our drivers assess street layout outside your property in ${city} in advance. We advise on booking temporary council parking waivers so our tail-lift vehicle has authorized kerbside space during loading.`,
+  (city: string) =>
+    `We inspect street access and local council restrictions across ${city} prior to arrival. Our crew coordinates parking suspensions or loading dispensations to maintain legal kerbside access.`,
+  (city: string) =>
+    `Our team verifies street access outside your ${city} property before dispatch. We guide you through booking council bay dispensations so our removals van loads legally without traffic obstruction.`,
+];
+
+const faqAnswer2Templates = [
+  (city: string) =>
+    `Yes. Our porters are trained in manual handling across multi-floor walk-ups and tight communal stairs throughout ${city}, utilizing protective floor runners and door jamb covers to ensure zero property scuffs.`,
+  (city: string) =>
+    `Yes. Our moving crew comes equipped with specialized lifting straps, furniture gliders, and padded covers to transport items safely across narrow staircases and upper-floor apartments in ${city}.`,
+  (city: string) =>
+    `Yes. We routinely handle upper-storey removals across ${city}. Our team utilizes furniture dollies, stair climbers, and neoprene banister protectors to move heavy items without scuffs or property impact.`,
+  (city: string) =>
+    `Yes. Our porters are equipped with heavy lifting straps, stair-climbing dollies, and padded blankets to navigate tight stairwells and upper-floor apartments in ${city} safely.`,
+  (city: string) =>
+    `Yes. We handle multi-storey moves across ${city} regularly, using specialized carrying straps, floor runners, and corner guards to protect walls and woodwork.`,
+];
+
+const faqAnswer3Templates = [
+  (city: string) =>
+    `Yes. We operate dedicated point-to-point removals departing ${city} to all mainland UK destinations. Your belongings travel on a dedicated Luton vehicle with direct same-day or scheduled delivery.`,
+  (city: string) =>
+    `Yes. We provide direct long-distance transport connecting ${city} to any UK region with zero depot transfers or co-loading delays.`,
+  (city: string) =>
+    `Yes. We handle inter-city and nationwide relocations departing ${city}. Your goods remain secure inside the same dedicated tail-lift van from pickup straight to delivery.`,
+  (city: string) =>
+    `Yes. We operate direct nationwide transport departing ${city} to England, Scotland, and Wales with dedicated single-load vehicles and zero freight transfers.`,
+  (city: string) =>
+    `Yes. We provide point-to-point long-distance removals departing ${city} across the UK mainland with scheduled delivery and dedicated vehicle security.`,
 ];
 
 export function buildAreaServiceMetaDescription(
@@ -456,15 +134,42 @@ export function getAreaServiceContent(
   citySlug: string,
   serviceSlug: string,
 ): AreaServiceContent | null {
-  const area = areas.find((a) => a.slug === citySlug);
-  const service = services.find((s) => s.slug === serviceSlug);
+  const areaIndex = areas.findIndex((a) => a.slug === citySlug);
+  const serviceIndex = services.findIndex((s) => s.slug === serviceSlug);
 
-  if (!area || !service) {
+  if (areaIndex === -1 || serviceIndex === -1) {
     return null;
   }
 
-  const primaryKw = `${service.name.toLowerCase()} in ${area.name.toLowerCase()}`;
+  const area = areas[areaIndex];
+  const service = services[serviceIndex];
+
+  // Primary keyword display with properly capitalised city name
+  const primaryKwDisplay = `${service.name.toLowerCase()} in ${area.name}`;
   const postcodesFormatted = area.postcodePrefixes.join(", ");
+  const rot = (areaIndex * 3 + serviceIndex * 7) % 5;
+
+  // Extract clean local notes and district reference
+  const introSentences = getCleanSentences(area.intro);
+  const districtSentence =
+    introSentences.find(
+      (s) =>
+        s.includes("Whether you are relocating") ||
+        s.includes("From high-rise") ||
+        s.includes("across all") ||
+        s.includes("conurbation"),
+    ) ||
+    introSentences[1] ||
+    introSentences[0] ||
+    "";
+
+  const parkingSentences = getCleanSentences(area.localNotes.parking);
+  const parkingSpecific = parkingSentences.slice(0, 2).join(" ");
+
+  const accessSentences = getCleanSentences(area.localNotes.access);
+  const accessSpecific = accessSentences.slice(0, 2).join(" ");
+
+  const routeSpecific = area.localNotes.typicalRoutes.trim();
 
   // 1. Title (< 60 chars) and Description (< 160 chars)
   const seoTitle = formatSeoTitle(`${service.name} in ${area.name}`);
@@ -473,32 +178,29 @@ export function getAreaServiceContent(
   // 2. Single H1
   const h1 = `${service.name} in ${area.name}`;
 
-  // 3. Body text synthesis ensuring 380-440 words, exactly 3 primary keyword occurrences
-  // 1st occurrence: Lead Paragraph (within first 35 words!)
-  const leadParagraph = `Booking reliable ${service.name.toLowerCase()} in ${area.name} ensures your domestic or commercial relocation across postcodes ${postcodesFormatted} in ${area.county} is handled with professional care. Rather than dealing with unpredictable van hire or stressful multi-trip shuttles, our dedicated removals crew provides high-capacity 3.5-tonne Luton box vans equipped with 500kg hydraulic tail lifts, thick quilted transit blankets, and heavy-duty load straps. Every booking includes tailored loading assistance and transparent fixed pricing.`;
+  // 3. Body text synthesis ensuring >400 words, no duplicate sentences, proper city capitalisation
+  const leadParagraph = `Booking reliable ${primaryKwDisplay} ensures your property relocation across postcodes ${postcodesFormatted} in ${area.county} is handled by an attentive, punctual removals team. ${districtSentence} ${leadWrappers[rot](area.name)}`;
 
-  // 2nd occurrence: Service Overview
-  const serviceOverview = `${service.shortDescription} When scheduling ${primaryKw}, our team coordinates closely around your completion schedule or lease handover times. We take complete responsibility for loading sofas, wardrobes, electrical appliances, and fragile cartons, securing every item safely inside our tail-lift vehicle before commencing direct door-to-door transit.`;
+  const serviceOverview = `${service.shortDescription} When scheduling ${primaryKwDisplay}, ${overviewWrappers[rot]}`;
 
-  const parkingContent = `Loading during moves in ${area.name} requires careful planning with local street regulations: ${area.localNotes.parking} Our drivers plan van positioning to avoid obstructing neighbours or bus lanes, keeping loading swift while securing your belongings legally on permitted bays.`;
+  const parkingContent = `Loading during moves in ${area.name} requires careful coordination with local street regulations. ${parkingSpecific} Our drivers assess vehicle positioning in advance, keeping loading rapid while ensuring full compliance with local council restrictions.`;
 
-  const accessContent = `Properties across ${area.name} feature varied architectural layouts: ${area.localNotes.access} Our moving porters come equipped with heavy-duty furniture dollies, protective floor runners, and door jamb protectors to negotiate tight doorways and staircases safely without property damage.`;
+  const accessContent = `Properties across ${area.name} present distinct architectural access challenges. ${accessSpecific} Our moving teams come equipped with protective floor runners, furniture dollies, and neoprene jamb protectors to navigate narrow communal hallways and stairwells without property scuffs.`;
 
-  // 3rd occurrence: Transit and Corridors
-  const transitContent = `For dedicated ${primaryKw} connecting within ${area.name} or moving nationwide, our vans utilise established arterial corridors: ${area.localNotes.typicalRoutes} We provide direct, dedicated transport straight from collection to destination without co-loading delays or intermediate depot storage.`;
+  const transitContent = `For dedicated ${primaryKwDisplay} connecting locally or moving long-distance across the UK, our moving vans travel via established regional arteries: ${routeSpecific} ${transitWrappers[rot]}`;
 
   const localFaqs = [
     {
       question: `How do you arrange parking for ${service.name.toLowerCase()} in ${area.name}?`,
-      answer: `We review access outside your property in advance: ${area.localNotes.parking.slice(0, 140)}... We guide you on booking temporary council parking dispensations for our Luton van.`,
+      answer: faqAnswer1Templates[rot](area.name),
     },
     {
-      question: `Can your moving crew navigate narrow stairs or upper floors in ${area.name}?`,
-      answer: `Yes. ${area.localNotes.access.slice(0, 140)}... Our crew comes equipped with specialized lifting straps and quilted blankets to transport items safely across all floor levels.`,
+      question: `Can your team navigate narrow stairs or upper floors in ${area.name}?`,
+      answer: faqAnswer2Templates[rot](area.name),
     },
     {
       question: `Do you provide direct moves from ${area.name} to other UK regions?`,
-      answer: `Yes. We operate direct long-distance transport via ${area.localNotes.typicalRoutes.slice(0, 120)}..., ensuring your goods travel straight to your destination with zero double-handling.`,
+      answer: faqAnswer3Templates[rot](area.name),
     },
   ];
 

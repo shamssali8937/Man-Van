@@ -16,6 +16,7 @@ export const metadata: Metadata = constructMetadata({
     "Learn about AB Removals. Built on 'The Route' concept: punctual direct van transit, experienced crews, and transparent removals across the UK.",
   ),
   path: "/about",
+  noIndex: true,
 });
 
 const coreValues = [

@@ -36,11 +36,30 @@ export const siteConfig = {
 
   // Direct Communication Channels
   telephone: "07405 328 674",
+  schemaTelephone: "+447405328674",
   telHref: "tel:+447405328674",
   whatsappNumber: "+447405328674",
   whatsappHref:
     "https://wa.me/447405328674?text=Hello%20AB%20Removals%2C%20I%20would%20like%20to%20get%20a%20free%20quote%20for%20a%20move.%20Please%20let%20me%20know%20your%20availability%20and%20rates.",
   email: siteEmail,
+
+  // Social & External Profile Links (sameAs structured data)
+  sameAs: [
+    // TODO: Add Google Business Profile URL once verified
+    "TODO_GOOGLE_BUSINESS_PROFILE",
+    // TODO: Add official Facebook business page URL
+    "TODO_FACEBOOK_PAGE",
+    // TODO: Add official Instagram profile URL
+    "TODO_INSTAGRAM_PROFILE",
+    // TODO: Add verified Checkatrade profile URL
+    "TODO_CHECKATRADE_PROFILE",
+  ],
+
+  // Google Business Profile & Google Maps Links
+  // TODO: Add live Google Business Profile URL once published (e.g. https://maps.app.goo.gl/...)
+  googleBusinessProfileUrl: process.env.NEXT_PUBLIC_GBP_URL || "",
+  // TODO: Add live Google Maps place or embed URL once published (e.g. https://www.google.com/maps?cid=...)
+  googleMapsUrl: process.env.NEXT_PUBLIC_GOOGLE_MAPS_URL || "",
 
   // Address & Operating Details
   address: {

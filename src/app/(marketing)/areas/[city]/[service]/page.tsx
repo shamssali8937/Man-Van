@@ -60,7 +60,7 @@ export default async function AreaServiceDetailPage({ params }: Props) {
 
   const serviceSchema = generateServiceSchema(
     service.name,
-    combo.leadParagraph,
+    combo.seoDescription,
     `/areas/${area.slug}/${service.slug}`,
     area.name,
   );
