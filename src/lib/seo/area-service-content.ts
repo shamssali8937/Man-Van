@@ -1,4 +1,5 @@
 import { areas } from "@/content/areas";
+import { getLondonServiceContent } from "@/content/london-services";
 import { services } from "@/content/services";
 import { areaServiceMetaDescriptions } from "@/lib/seo/area-service-descriptions";
 import { formatSeoTitle } from "@/lib/seo/metadata";
@@ -179,30 +180,45 @@ export function getAreaServiceContent(
   const h1 = `${service.name} in ${area.name}`;
 
   // 3. Body text synthesis ensuring >400 words, no duplicate sentences, proper city capitalisation
-  const leadParagraph = `Booking reliable ${primaryKwDisplay} ensures your property relocation across postcodes ${postcodesFormatted} in ${area.county} is handled by an attentive, punctual removals team. ${districtSentence} ${leadWrappers[rot](area.name)}`;
+  const londonSpecial =
+    citySlug === "london" ? getLondonServiceContent(serviceSlug) : undefined;
 
-  const serviceOverview = `${service.shortDescription} When scheduling ${primaryKwDisplay}, ${overviewWrappers[rot]}`;
+  const leadParagraph = londonSpecial
+    ? londonSpecial.leadParagraph
+    : `Booking reliable ${primaryKwDisplay} ensures your property relocation across postcodes ${postcodesFormatted} in ${area.county} is handled by an attentive, punctual removals team. ${districtSentence} ${leadWrappers[rot](area.name)}`;
 
-  const parkingContent = `Loading during moves in ${area.name} requires careful coordination with local street regulations. ${parkingSpecific} Our drivers assess vehicle positioning in advance, keeping loading rapid while ensuring full compliance with local council restrictions.`;
+  const serviceOverview = londonSpecial
+    ? londonSpecial.serviceOverview
+    : `${service.shortDescription} When scheduling ${primaryKwDisplay}, ${overviewWrappers[rot]}`;
 
-  const accessContent = `Properties across ${area.name} present distinct architectural access challenges. ${accessSpecific} Our moving teams come equipped with protective floor runners, furniture dollies, and neoprene jamb protectors to navigate narrow communal hallways and stairwells without property scuffs.`;
+  const parkingContent = londonSpecial
+    ? londonSpecial.parkingAndPermits
+    : `Loading during moves in ${area.name} requires careful coordination with local street regulations. ${parkingSpecific} Our drivers assess vehicle positioning in advance, keeping loading rapid while ensuring full compliance with local council restrictions.`;
 
-  const transitContent = `For dedicated ${primaryKwDisplay} connecting locally or moving long-distance across the UK, our moving vans travel via established regional arteries: ${routeSpecific} ${transitWrappers[rot]}`;
+  const accessContent = londonSpecial
+    ? londonSpecial.accessAndHandling
+    : `Properties across ${area.name} present distinct architectural access challenges. ${accessSpecific} Our moving teams come equipped with protective floor runners, furniture dollies, and neoprene jamb protectors to navigate narrow communal hallways and stairwells without property scuffs.`;
 
-  const localFaqs = [
-    {
-      question: `How do you arrange parking for ${service.name.toLowerCase()} in ${area.name}?`,
-      answer: faqAnswer1Templates[rot](area.name),
-    },
-    {
-      question: `Can your team navigate narrow stairs or upper floors in ${area.name}?`,
-      answer: faqAnswer2Templates[rot](area.name),
-    },
-    {
-      question: `Do you provide direct moves from ${area.name} to other UK regions?`,
-      answer: faqAnswer3Templates[rot](area.name),
-    },
-  ];
+  const transitContent = londonSpecial
+    ? londonSpecial.transitAndCorridors
+    : `For dedicated ${primaryKwDisplay} connecting locally or moving long-distance across the UK, our moving vans travel via established regional arteries: ${routeSpecific} ${transitWrappers[rot]}`;
+
+  const localFaqs = londonSpecial
+    ? londonSpecial.localFaqs
+    : [
+        {
+          question: `How do you arrange parking for ${service.name.toLowerCase()} in ${area.name}?`,
+          answer: faqAnswer1Templates[rot](area.name),
+        },
+        {
+          question: `Can your team navigate narrow stairs or upper floors in ${area.name}?`,
+          answer: faqAnswer2Templates[rot](area.name),
+        },
+        {
+          question: `Do you provide direct moves from ${area.name} to other UK regions?`,
+          answer: faqAnswer3Templates[rot](area.name),
+        },
+      ];
 
   return {
     area,

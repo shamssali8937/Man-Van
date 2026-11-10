@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { londonBoroughs } from "@/content/london-boroughs";
 import { siteConfig } from "@/content/site";
 import { Container } from "../ui/container";
 import { Stamp } from "../ui/stamp";
@@ -164,6 +165,81 @@ export function Footer() {
                 <p className="font-mono text-xs text-white/70 mt-0.5 leading-normal">
                   {siteConfig.address.formatted}
                 </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Greater London & Borough Coverage Directory */}
+          <div className="pt-8 pb-10 border-b border-white/20">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+              <div className="flex items-center gap-2">
+                <span className="inline-block w-2 h-2 rounded-full bg-brand-red" />
+                <p className="font-display italic font-black uppercase text-sm text-brand-paper-light tracking-wider">
+                  LONDON REMOVALS &amp; BOROUGH NETWORK
+                </p>
+              </div>
+              <Link
+                href="/areas/london"
+                className="text-xs font-mono font-bold text-brand-tan hover:text-white transition-colors"
+              >
+                VIEW ALL LONDON COVERAGE &amp; ULEZ GUIDE →
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 text-xs font-sans">
+              <div className="lg:col-span-5 space-y-2">
+                <span className="font-mono text-[0.625rem] text-brand-tan uppercase font-bold tracking-wider block">
+                  POPULAR LONDON SERVICE ROUTES
+                </span>
+                <div className="flex flex-wrap gap-x-4 gap-y-2 text-white/80">
+                  <Link
+                    href="/areas/london/man-and-van"
+                    className="hover:text-white hover:underline"
+                  >
+                    Man and Van London
+                  </Link>
+                  <Link
+                    href="/areas/london/house-removals"
+                    className="hover:text-white hover:underline"
+                  >
+                    House Removals London
+                  </Link>
+                  <Link
+                    href="/areas/london/office-and-commercial-removals"
+                    className="hover:text-white hover:underline"
+                  >
+                    Office Removals London
+                  </Link>
+                  <Link
+                    href="/areas/london/furniture-removals-and-delivery"
+                    className="hover:text-white hover:underline"
+                  >
+                    Furniture Delivery London
+                  </Link>
+                  <Link
+                    href="/areas/london/student-and-small-moves"
+                    className="hover:text-white hover:underline"
+                  >
+                    Student Moves London
+                  </Link>
+                </div>
+              </div>
+
+              <div className="lg:col-span-7 space-y-2">
+                <span className="font-mono text-[0.625rem] text-brand-tan uppercase font-bold tracking-wider block">
+                  LONDON BOROUGHS SERVICED
+                </span>
+                <div className="flex flex-wrap gap-x-3 gap-y-1.5 text-white/70">
+                  {londonBoroughs.map((borough) => (
+                    <Link
+                      key={borough.slug}
+                      href={`/areas/london/boroughs/${borough.slug}`}
+                      className="hover:text-white hover:underline"
+                    >
+                      {borough.name}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

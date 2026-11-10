@@ -1,20 +1,20 @@
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 import { areas } from "../src/content/areas";
 import { heroContent } from "../src/content/hero";
+import { londonBoroughs } from "../src/content/london-boroughs";
 import { services } from "../src/content/services";
 import { siteConfig } from "../src/content/site";
 import {
   getAreaServiceContent,
   getValidAreaServicePairs,
 } from "../src/lib/seo/area-service-content";
-import { formatSeoDescription, formatSeoTitle } from "../src/lib/seo/metadata";
-import { generateMovingCompanySchema } from "../src/lib/seo/schema";
+import { formatSeoTitle } from "../src/lib/seo/metadata";
 import { isTier1City, TIER_1_CITY_SLUGS } from "../src/lib/seo/tiers";
 
 export interface PageAuditResult {
   url: string;
-  pageType: "home" | "service" | "city" | "city-service";
+  pageType: "home" | "service" | "city" | "city-service" | "borough";
   isIndexable: boolean;
   title: string;
   titleLength: number;
@@ -365,7 +365,64 @@ In our frequently asked questions, customers often ask about our vehicle capabil
   }
 
   // -------------------------------------------------------------
-  // 5. Audit Pairwise Meta Description Uniqueness across ALL 465 pages
+  // 5. Audit All 12 London Borough Pages
+  // -------------------------------------------------------------
+  for (const b of londonBoroughs) {
+    const title = b.seoTitle;
+    const h1 = b.h1;
+    const primaryKw = `man and van in ${b.name.toLowerCase()}`;
+    const desc = b.seoDescription;
+
+    const bodyText = `${b.leadParagraph} ${b.propertyTypesContent} ${b.accessAndStairs} ${b.parkingPermitsContent} ${b.transportAndUlezContent} ${b.typicalRoutesContent} ${b.localMovingTips} ${b.faqs.map((f) => `${f.question} ${f.answer}`).join(" ")}`;
+    const words = bodyText.trim().split(/\s+/).length;
+    const occurrences = countKeywordOccurrences(bodyText, primaryKw);
+    const density = calculateKeywordDensity(bodyText, primaryKw);
+    const inTitle = countKeywordOccurrences(title, b.name) > 0;
+    const inH1 = countKeywordOccurrences(h1, b.name) > 0;
+    const inFirst100 = keywordInFirstWords(bodyText, b.name, 100);
+
+    const issues: string[] = [];
+    if (title.length > 60) issues.push(`Title > 60 chars (${title.length})`);
+    if (desc.length > 155)
+      issues.push(`Description > 155 chars (${desc.length})`);
+    if (desc.length < 140)
+      issues.push(`Description < 140 chars (${desc.length})`);
+    if (!inTitle) issues.push(`Borough name missing from title`);
+    if (!inH1) issues.push(`Borough name missing from H1`);
+    if (!inFirst100) issues.push(`Borough name missing from first 100 words`);
+    if (words < 700)
+      issues.push(`Word count ${words} < 700 (min 700 for borough)`);
+
+    for (const banned of bannedWords) {
+      if (new RegExp(`\\b${banned}\\b`, "i").test(desc)) {
+        issues.push(`Unconfirmed claim "${banned}" in meta description`);
+      }
+    }
+
+    pages.push({
+      url: `/areas/london/boroughs/${b.slug}`,
+      pageType: "borough",
+      isIndexable: true,
+      title,
+      titleLength: title.length,
+      description: desc,
+      descriptionLength: desc.length,
+      wordCount: words,
+      h1,
+      primaryKeyword: primaryKw,
+      keywordInTitle: inTitle,
+      keywordInH1: inH1,
+      keywordInFirst100: inFirst100,
+      keywordBodyOccurrences: occurrences,
+      keywordDensityPercent: Number(density.toFixed(2)),
+      score: Math.max(0, 100 - issues.length * 20),
+      passed: issues.length === 0,
+      issues,
+    });
+  }
+
+  // -------------------------------------------------------------
+  // 6. Audit Pairwise Meta Description & Body Uniqueness across ALL pages
   // -------------------------------------------------------------
   const duplicatePairs: Array<{
     pageA: string;
@@ -437,7 +494,7 @@ if (require.main === module || process.argv[1]?.includes("seo-audit")) {
   console.log(`Passed (100% Strict):  ${passedCount}`);
   console.log(`Failed:                ${failedCount}`);
   console.log(
-    `Indexable Pages:       ${indexableCount} (Home + 14 Services + 30 Cities + 140 Tier 1 City x Service)`,
+    `Indexable Pages:       ${indexableCount} (Home + 14 Services + 30 Cities + 12 London Boroughs + 140 Tier 1 City x Service)`,
   );
   console.log(
     `Noindex Pages:         ${noindexCount} (280 Tier 2+ City x Service)`,
@@ -519,7 +576,7 @@ if (require.main === module || process.argv[1]?.includes("seo-audit")) {
     `100W`.padEnd(6) +
     `STATUS`.padEnd(8) +
     `ISSUES\n`;
-  reportText += `-`.repeat(130) + `\n`;
+  reportText += `${"-".repeat(130)}\n`;
 
   for (const p of allPages) {
     const status = p.passed ? "PASS" : "FAIL";
