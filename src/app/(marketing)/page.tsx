@@ -780,6 +780,303 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================================
+          SECTION 6B: LONDON COVERAGE & BOROUGHS
+          High-priority London transit network, key services and borough units
+          ========================================================================= */}
+      <section
+        id="london-transit"
+        aria-label="Man and Van in London and Greater London Boroughs"
+        className="bg-white py-16 md:py-24 border-b border-brand-navy/15"
+      >
+        <Container>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div className="max-w-3xl">
+              <div className="flex items-center gap-2 mb-3">
+                <Badge variant="red" dot>
+                  CAPITAL FLEET
+                </Badge>
+                <span className="font-mono text-xs text-brand-navy/70 uppercase">
+                  GREATER LONDON TRANSIT CORRIDORS
+                </span>
+              </div>
+              <Heading as="h2" size="display-lg">
+                Man and Van in London
+              </Heading>
+              <p className="font-sans text-base sm:text-lg text-brand-navy/80 mt-2 leading-relaxed">
+                Dedicated Luton vans and experienced two-man crews operating
+                across Central London, Inner postcodes, and Outer commuter
+                belts. Fully ULEZ-compliant transit with hydraulic tail lifts
+                for flats, houses, student halls, and corporate offices.
+              </p>
+            </div>
+            <div className="shrink-0">
+              <Button variant="primary" size="md" href="/areas/london">
+                London Removals Hub →
+              </Button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            {/* Left: Top London Services (5 services) */}
+            <div className="lg:col-span-5 bg-brand-paper border-2 border-brand-navy p-6 shadow-cargo rounded-xs">
+              <div className="flex items-center justify-between pb-3 mb-4 border-b border-brand-navy/15">
+                <span className="font-mono text-xs font-bold uppercase text-brand-navy tracking-wider">
+                  KEY LONDON MOVING SERVICES
+                </span>
+                <span className="font-mono text-xs text-brand-red font-bold">
+                  2-HOUR MIN
+                </span>
+              </div>
+
+              <div className="space-y-3">
+                <Link
+                  href="/areas/london/man-and-van"
+                  className="group block p-3.5 bg-white border border-brand-navy/15 hover:border-brand-navy hover:shadow-cargo-sm transition-all rounded-xs"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-display font-black text-sm uppercase text-brand-navy group-hover:text-brand-red transition-colors">
+                      Man and Van in London
+                    </span>
+                    <span className="text-brand-red font-mono text-xs group-hover:translate-x-1 transition-transform">
+                      →
+                    </span>
+                  </div>
+                  <p className="font-sans text-xs text-brand-navy/75 mt-1 leading-snug">
+                    Agile Luton van hire with driver or working crew for fast
+                    flat and item transfers.
+                  </p>
+                </Link>
+
+                <Link
+                  href="/areas/london/house-removals"
+                  className="group block p-3.5 bg-white border border-brand-navy/15 hover:border-brand-navy hover:shadow-cargo-sm transition-all rounded-xs"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-display font-black text-sm uppercase text-brand-navy group-hover:text-brand-red transition-colors">
+                      House Removals in London
+                    </span>
+                    <span className="text-brand-red font-mono text-xs group-hover:translate-x-1 transition-transform">
+                      →
+                    </span>
+                  </div>
+                  <p className="font-sans text-xs text-brand-navy/75 mt-1 leading-snug">
+                    Full domestic relocations with furniture protection blankets
+                    and stair handling.
+                  </p>
+                </Link>
+
+                <Link
+                  href="/areas/london/furniture-removals-and-delivery"
+                  className="group block p-3.5 bg-white border border-brand-navy/15 hover:border-brand-navy hover:shadow-cargo-sm transition-all rounded-xs"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-display font-black text-sm uppercase text-brand-navy group-hover:text-brand-red transition-colors">
+                      Furniture Delivery in London
+                    </span>
+                    <span className="text-brand-red font-mono text-xs group-hover:translate-x-1 transition-transform">
+                      →
+                    </span>
+                  </div>
+                  <p className="font-sans text-xs text-brand-navy/75 mt-1 leading-snug">
+                    Single items, sofas, store collections, and bulky deliveries
+                    with tail-lift security.
+                  </p>
+                </Link>
+
+                <Link
+                  href="/areas/london/office-and-commercial-removals"
+                  className="group block p-3.5 bg-white border border-brand-navy/15 hover:border-brand-navy hover:shadow-cargo-sm transition-all rounded-xs"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-display font-black text-sm uppercase text-brand-navy group-hover:text-brand-red transition-colors">
+                      Office Removals in London
+                    </span>
+                    <span className="text-brand-red font-mono text-xs group-hover:translate-x-1 transition-transform">
+                      →
+                    </span>
+                  </div>
+                  <p className="font-sans text-xs text-brand-navy/75 mt-1 leading-snug">
+                    Business relocations, desks, IT crates, and out-of-hours
+                    commercial dispatch.
+                  </p>
+                </Link>
+
+                <Link
+                  href="/areas/london/student-and-small-moves"
+                  className="group block p-3.5 bg-white border border-brand-navy/15 hover:border-brand-navy hover:shadow-cargo-sm transition-all rounded-xs"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-display font-black text-sm uppercase text-brand-navy group-hover:text-brand-red transition-colors">
+                      Student Moves in London
+                    </span>
+                    <span className="text-brand-red font-mono text-xs group-hover:translate-x-1 transition-transform">
+                      →
+                    </span>
+                  </div>
+                  <p className="font-sans text-xs text-brand-navy/75 mt-1 leading-snug">
+                    Budget-friendly room moves to halls, shared houses, and
+                    self-storage units.
+                  </p>
+                </Link>
+              </div>
+            </div>
+
+            {/* Right: Borough Grid (8 key boroughs) */}
+            <div className="lg:col-span-7">
+              <div className="bg-brand-navy-50 border border-brand-navy/20 p-5 rounded-xs mb-4">
+                <span className="font-mono text-xs font-bold uppercase text-brand-navy tracking-wider block mb-1">
+                  BOROUGH TRANSIT HUBS
+                </span>
+                <p className="font-sans text-xs text-brand-navy/80 leading-relaxed">
+                  Direct local dispatch across key residential and commercial
+                  sectors. Experienced with Controlled Parking Zones (CPZs), red
+                  routes, and historic stairwells.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <Link
+                  href="/areas/london/boroughs/croydon"
+                  className="group p-4 bg-white border border-brand-navy/20 hover:border-brand-navy hover:bg-white shadow-cargo-sm transition-all flex items-center justify-between"
+                >
+                  <div>
+                    <span className="font-display font-black text-base uppercase text-brand-navy group-hover:text-brand-red transition-colors block">
+                      Man and Van in Croydon
+                    </span>
+                    <span className="font-mono text-[11px] text-brand-navy/70">
+                      CR0, CR2 • South London Hub
+                    </span>
+                  </div>
+                  <span className="text-brand-red font-bold text-sm group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
+                </Link>
+
+                <Link
+                  href="/areas/london/boroughs/camden"
+                  className="group p-4 bg-white border border-brand-navy/20 hover:border-brand-navy hover:bg-white shadow-cargo-sm transition-all flex items-center justify-between"
+                >
+                  <div>
+                    <span className="font-display font-black text-base uppercase text-brand-navy group-hover:text-brand-red transition-colors block">
+                      Man and Van in Camden
+                    </span>
+                    <span className="font-mono text-[11px] text-brand-navy/70">
+                      NW1, NW3, NW5 • North London
+                    </span>
+                  </div>
+                  <span className="text-brand-red font-bold text-sm group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
+                </Link>
+
+                <Link
+                  href="/areas/london/boroughs/islington"
+                  className="group p-4 bg-white border border-brand-navy/20 hover:border-brand-navy hover:bg-white shadow-cargo-sm transition-all flex items-center justify-between"
+                >
+                  <div>
+                    <span className="font-display font-black text-base uppercase text-brand-navy group-hover:text-brand-red transition-colors block">
+                      Man and Van in Islington
+                    </span>
+                    <span className="font-mono text-[11px] text-brand-navy/70">
+                      N1, N5, N7 • North London
+                    </span>
+                  </div>
+                  <span className="text-brand-red font-bold text-sm group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
+                </Link>
+
+                <Link
+                  href="/areas/london/boroughs/hackney"
+                  className="group p-4 bg-white border border-brand-navy/20 hover:border-brand-navy hover:bg-white shadow-cargo-sm transition-all flex items-center justify-between"
+                >
+                  <div>
+                    <span className="font-display font-black text-base uppercase text-brand-navy group-hover:text-brand-red transition-colors block">
+                      Man and Van in Hackney
+                    </span>
+                    <span className="font-mono text-[11px] text-brand-navy/70">
+                      E5, E8, E9, N16 • East London
+                    </span>
+                  </div>
+                  <span className="text-brand-red font-bold text-sm group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
+                </Link>
+
+                <Link
+                  href="/areas/london/boroughs/tower-hamlets"
+                  className="group p-4 bg-white border border-brand-navy/20 hover:border-brand-navy hover:bg-white shadow-cargo-sm transition-all flex items-center justify-between"
+                >
+                  <div>
+                    <span className="font-display font-black text-base uppercase text-brand-navy group-hover:text-brand-red transition-colors block">
+                      Man and Van in Tower Hamlets
+                    </span>
+                    <span className="font-mono text-[11px] text-brand-navy/70">
+                      E1, E14, E3 • Docklands &amp; East
+                    </span>
+                  </div>
+                  <span className="text-brand-red font-bold text-sm group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
+                </Link>
+
+                <Link
+                  href="/areas/london/boroughs/westminster"
+                  className="group p-4 bg-white border border-brand-navy/20 hover:border-brand-navy hover:bg-white shadow-cargo-sm transition-all flex items-center justify-between"
+                >
+                  <div>
+                    <span className="font-display font-black text-base uppercase text-brand-navy group-hover:text-brand-red transition-colors block">
+                      Man and Van in Westminster
+                    </span>
+                    <span className="font-mono text-[11px] text-brand-navy/70">
+                      SW1, W1, W2 • Central London CCZ
+                    </span>
+                  </div>
+                  <span className="text-brand-red font-bold text-sm group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
+                </Link>
+
+                <Link
+                  href="/areas/london/boroughs/southwark"
+                  className="group p-4 bg-white border border-brand-navy/20 hover:border-brand-navy hover:bg-white shadow-cargo-sm transition-all flex items-center justify-between"
+                >
+                  <div>
+                    <span className="font-display font-black text-base uppercase text-brand-navy group-hover:text-brand-red transition-colors block">
+                      Man and Van in Southwark
+                    </span>
+                    <span className="font-mono text-[11px] text-brand-navy/70">
+                      SE1, SE15, SE22 • South London
+                    </span>
+                  </div>
+                  <span className="text-brand-red font-bold text-sm group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
+                </Link>
+
+                <Link
+                  href="/areas/london/boroughs/lambeth"
+                  className="group p-4 bg-white border border-brand-navy/20 hover:border-brand-navy hover:bg-white shadow-cargo-sm transition-all flex items-center justify-between"
+                >
+                  <div>
+                    <span className="font-display font-black text-base uppercase text-brand-navy group-hover:text-brand-red transition-colors block">
+                      Man and Van in Lambeth
+                    </span>
+                    <span className="font-mono text-[11px] text-brand-navy/70">
+                      SE11, SW2, SW9 • South London
+                    </span>
+                  </div>
+                  <span className="text-brand-red font-bold text-sm group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* =========================================================================
           SECTION 7: FAQ
           6 questions with accessible accordion (native <details> or ARIA, no heavy library)
           ========================================================================= */}

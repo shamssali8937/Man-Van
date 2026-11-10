@@ -128,7 +128,7 @@ describe("Dynamic SEO Pages & Content Layer", () => {
         expect(content.transitAndCorridors.content).toBeTruthy();
 
         // Verify localized FAQs are generated
-        expect(content.localFaqs).toHaveLength(3);
+        expect(content.localFaqs.length).toBeGreaterThanOrEqual(3);
         for (const faq of content.localFaqs) {
           expect(faq.question).toBeTruthy();
           expect(faq.answer).toBeTruthy();

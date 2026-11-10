@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { areas } from "@/content/areas";
+import { londonBoroughs } from "@/content/london-boroughs";
 import { services } from "@/content/services";
 import {
   getAreaServiceContent,
@@ -77,6 +78,25 @@ describe("Build-Time SEO Quality Assurance", () => {
       }
     }
 
+    // 4. London Borough Pages
+    for (const borough of londonBoroughs) {
+      const desc = borough.seoDescription;
+      const url = `/areas/london/boroughs/${borough.slug}`;
+      if (desc.includes("...") || desc.includes("…")) {
+        failures.push(
+          `${url}: description ends with or contains ellipsis -> "${desc}"`,
+        );
+      }
+      if (desc.includes("  ")) {
+        failures.push(`${url}: description contains double space -> "${desc}"`);
+      }
+      if (desc.length < 120 || desc.length > 160) {
+        failures.push(
+          `${url}: description length (${desc.length}) outside 120-160 chars -> "${desc}"`,
+        );
+      }
+    }
+
     expect(failures).toEqual([]);
   });
 
@@ -123,7 +143,43 @@ describe("Build-Time SEO Quality Assurance", () => {
       }
     }
 
-    // 2. MovingCompany schema description
+    // 2. London Borough FAQs and Service Schemas
+    for (const borough of londonBoroughs) {
+      for (const faq of borough.faqs) {
+        if (faq.answer.includes("...") || faq.answer.includes("…")) {
+          failures.push(
+            `/areas/london/boroughs/${borough.slug} FAQ "${faq.question}": answer contains ellipsis`,
+          );
+        }
+        if (faq.answer.includes("  ")) {
+          failures.push(
+            `/areas/london/boroughs/${borough.slug} FAQ "${faq.question}": answer contains double spaces`,
+          );
+        }
+      }
+
+      const schema = generateServiceSchema(
+        "Man and Van",
+        borough.seoDescription,
+        `/areas/london/boroughs/${borough.slug}`,
+        `${borough.name}, London`,
+      );
+      if (
+        schema.description.includes("...") ||
+        schema.description.includes("…")
+      ) {
+        failures.push(
+          `/areas/london/boroughs/${borough.slug} schema description contains ellipsis`,
+        );
+      }
+      if (schema.description.includes("  ")) {
+        failures.push(
+          `/areas/london/boroughs/${borough.slug} schema description contains double spaces`,
+        );
+      }
+    }
+
+    // 3. MovingCompany schema description
     const companySchema = generateMovingCompanySchema();
     if (typeof companySchema.description === "string") {
       if (
@@ -195,6 +251,13 @@ describe("Build-Time SEO Quality Assurance", () => {
           });
         }
       }
+    }
+
+    for (const borough of londonBoroughs) {
+      titlesToCheck.push({
+        url: `/areas/london/boroughs/${borough.slug}`,
+        title: borough.seoTitle,
+      });
     }
 
     for (const { url, title } of titlesToCheck) {

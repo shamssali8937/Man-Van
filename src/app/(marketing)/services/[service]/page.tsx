@@ -247,6 +247,41 @@ export default async function ServiceDetailPage({ params }: Props) {
           </section>
         )}
 
+        {/* In London Dedicated Callout */}
+        <section className="max-w-4xl mx-auto rounded-3xl bg-slate-900 text-white p-8 md:p-10 border border-slate-800 shadow-sm mb-12 md:mb-16">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="space-y-3">
+              <span className="inline-block rounded-full bg-red-500/20 px-3.5 py-1 text-xs font-bold text-red-400 uppercase tracking-wider">
+                London Removals &amp; Logistics
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+                Looking for {service.name} in London?
+              </h2>
+              <p className="text-sm text-slate-300 max-w-2xl leading-relaxed">
+                Operating throughout Central London, Inner boroughs, and Outer
+                London. All Luton box vans are fully ULEZ-compliant with
+                hydraulic tail lifts and heavy-duty moving gear for apartments,
+                houses, student halls, and commercial premises across the
+                capital.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
+              <Link
+                href={`/areas/london/${service.slug}`}
+                className="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-red-600 text-white text-sm font-bold shadow-md hover:bg-red-700 transition-colors text-center"
+              >
+                {service.name} in London &rarr;
+              </Link>
+              <Link
+                href="/areas/london"
+                className="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold transition-colors text-center border border-slate-700"
+              >
+                London Removals Hub
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Local Area Links for this Service */}
         <section className="max-w-4xl mx-auto rounded-3xl bg-white p-6 md:p-8 border border-slate-200 mb-12 md:mb-16">
           <h2 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">

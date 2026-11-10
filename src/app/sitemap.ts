@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { areas } from "@/content/areas";
+import { londonBoroughs } from "@/content/london-boroughs";
 import { services } from "@/content/services";
 import { siteConfig } from "@/content/site";
 import { getValidAreaServicePairs } from "@/lib/seo/area-service-content";
@@ -62,10 +63,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
+  const londonBoroughRoutes: MetadataRoute.Sitemap = londonBoroughs.map(
+    (borough) => ({
+      url: `${baseUrl}/areas/london/boroughs/${borough.slug}`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    }),
+  );
+
   return [
     ...staticRoutes,
     ...serviceRoutes,
     ...areaRoutes,
+    ...londonBoroughRoutes,
     ...areaServiceRoutes,
   ];
 }

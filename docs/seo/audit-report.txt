@@ -1,12 +1,12 @@
 ========================================================================================================================
 AB REMOVALS – FULL TECHNICAL SEO AUDIT REPORT
-Generated: 2026-11-01T12:54:38.536Z
+Generated: 2026-11-10T16:46:55.101Z
 ========================================================================================================================
 
 1. PAGE SCALE & INDEXATION REPORT
 ------------------------------------------------------------------------------------------------------------------------
-- Total Pages Audited: 465
-- Indexable Pages: 185
+- Total Pages Audited: 477
+- Indexable Pages: 197
   * 1 Homepage
   * 14 Canonical Service Pages
   * 30 Major City Hubs
@@ -71,9 +71,9 @@ Generated: 2026-11-01T12:54:38.536Z
 
 4. DUPLICATE SIMILARITY PAIRS (> 50% Text Overlap)
 ------------------------------------------------------------------------------------------------------------------------
-Zero pairs share > 50% text across all 107880 page comparisons!
+Zero pairs share > 50% text across all 113526 page comparisons!
 
-5. FULL RESULTS TABLE (465 PAGES)
+5. FULL RESULTS TABLE (477 PAGES)
 ------------------------------------------------------------------------------------------------------------------------
 URL                                                    TYPE          INDEX   WORDS   DENSITY   TITLE   H1    100W  STATUS  ISSUES
 ----------------------------------------------------------------------------------------------------------------------------------
@@ -92,7 +92,7 @@ URL                                                    TYPE          INDEX   WOR
 /services/heavy-and-bulky-item-transportation          service       index   483     0.62%     ✓       ✓     ✓     PASS    None
 /services/special-collections-and-deliveries           service       index   467     0.64%     ✓       ✓     ✓     PASS    None
 /services/nationwide-and-long-distance-removals        service       index   486     0.62%     ✓       ✓     ✓     PASS    None
-/areas/london                                          city          index   496     0.60%     ✓       ✓     ✓     PASS    None
+/areas/london                                          city          index   462     0.87%     ✓       ✓     ✓     PASS    None
 /areas/birmingham                                      city          index   441     0.68%     ✓       ✓     ✓     PASS    None
 /areas/manchester                                      city          index   434     0.69%     ✓       ✓     ✓     PASS    None
 /areas/leeds                                           city          index   427     0.70%     ✓       ✓     ✓     PASS    None
@@ -122,20 +122,20 @@ URL                                                    TYPE          INDEX   WOR
 /areas/norwich                                         city          index   420     0.71%     ✓       ✓     ✓     PASS    None
 /areas/exeter                                          city          index   413     0.73%     ✓       ✓     ✓     PASS    None
 /areas/york                                            city          index   423     0.71%     ✓       ✓     ✓     PASS    None
-/areas/london/house-removals                           city-service  index   499     0.80%     ✓       ✓     ✓     PASS    None
-/areas/london/office-and-commercial-removals           city-service  index   480     0.83%     ✓       ✓     ✓     PASS    None
-/areas/london/furniture-removals-and-delivery          city-service  index   471     0.85%     ✓       ✓     ✓     PASS    None
-/areas/london/man-and-van                              city-service  index   482     0.83%     ✓       ✓     ✓     PASS    None
-/areas/london/furniture-assembly-and-dismantling       city-service  index   476     0.84%     ✓       ✓     ✓     PASS    None
-/areas/london/student-and-small-moves                  city-service  index   504     0.79%     ✓       ✓     ✓     PASS    None
-/areas/london/store-collections-and-deliveries         city-service  index   481     0.83%     ✓       ✓     ✓     PASS    None
-/areas/london/appliance-removals                       city-service  index   458     0.87%     ✓       ✓     ✓     PASS    None
-/areas/london/packing-and-moving-assistance            city-service  index   484     0.83%     ✓       ✓     ✓     PASS    None
-/areas/london/storage-transportation                   city-service  index   466     0.86%     ✓       ✓     ✓     PASS    None
-/areas/london/waste-removal-and-disposal               city-service  index   504     0.79%     ✓       ✓     ✓     PASS    None
-/areas/london/heavy-and-bulky-item-transportation      city-service  index   484     0.83%     ✓       ✓     ✓     PASS    None
-/areas/london/special-collections-and-deliveries       city-service  index   468     0.85%     ✓       ✓     ✓     PASS    None
-/areas/london/nationwide-and-long-distance-removals    city-service  index   481     0.83%     ✓       ✓     ✓     PASS    None
+/areas/london/house-removals                           city-service  index   546     0.55%     ✓       ✓     ✓     PASS    None
+/areas/london/office-and-commercial-removals           city-service  index   492     0.61%     ✓       ✓     ✓     PASS    None
+/areas/london/furniture-removals-and-delivery          city-service  index   531     0.56%     ✓       ✓     ✓     PASS    None
+/areas/london/man-and-van                              city-service  index   522     0.77%     ✓       ✓     ✓     PASS    None
+/areas/london/furniture-assembly-and-dismantling       city-service  index   541     0.55%     ✓       ✓     ✓     PASS    None
+/areas/london/student-and-small-moves                  city-service  index   532     0.56%     ✓       ✓     ✓     PASS    None
+/areas/london/store-collections-and-deliveries         city-service  index   514     0.58%     ✓       ✓     ✓     PASS    None
+/areas/london/appliance-removals                       city-service  index   527     0.57%     ✓       ✓     ✓     PASS    None
+/areas/london/packing-and-moving-assistance            city-service  index   527     0.57%     ✓       ✓     ✓     PASS    None
+/areas/london/storage-transportation                   city-service  index   520     0.58%     ✓       ✓     ✓     PASS    None
+/areas/london/waste-removal-and-disposal               city-service  index   528     0.57%     ✓       ✓     ✓     PASS    None
+/areas/london/heavy-and-bulky-item-transportation      city-service  index   528     0.57%     ✓       ✓     ✓     PASS    None
+/areas/london/special-collections-and-deliveries       city-service  index   532     0.56%     ✓       ✓     ✓     PASS    None
+/areas/london/nationwide-and-long-distance-removals    city-service  index   544     0.55%     ✓       ✓     ✓     PASS    None
 /areas/birmingham/house-removals                       city-service  index   449     0.89%     ✓       ✓     ✓     PASS    None
 /areas/birmingham/office-and-commercial-removals       city-service  index   486     0.82%     ✓       ✓     ✓     PASS    None
 /areas/birmingham/furniture-removals-and-delivery      city-service  index   462     0.87%     ✓       ✓     ✓     PASS    None
@@ -542,3 +542,15 @@ URL                                                    TYPE          INDEX   WOR
 /areas/york/heavy-and-bulky-item-transportation        city-service  noindex 453     0.88%     ✓       ✓     ✓     PASS    None
 /areas/york/special-collections-and-deliveries         city-service  noindex 461     0.87%     ✓       ✓     ✓     PASS    None
 /areas/york/nationwide-and-long-distance-removals      city-service  noindex 455     0.88%     ✓       ✓     ✓     PASS    None
+/areas/london/boroughs/newham                          borough       index   786     0.00%     ✓       ✓     ✓     PASS    None
+/areas/london/boroughs/tower-hamlets                   borough       index   785     0.00%     ✓       ✓     ✓     PASS    None
+/areas/london/boroughs/hackney                         borough       index   716     0.00%     ✓       ✓     ✓     PASS    None
+/areas/london/boroughs/greenwich                       borough       index   721     0.00%     ✓       ✓     ✓     PASS    None
+/areas/london/boroughs/croydon                         borough       index   709     0.00%     ✓       ✓     ✓     PASS    None
+/areas/london/boroughs/barnet                          borough       index   701     0.00%     ✓       ✓     ✓     PASS    None
+/areas/london/boroughs/lambeth                         borough       index   705     0.00%     ✓       ✓     ✓     PASS    None
+/areas/london/boroughs/southwark                       borough       index   701     0.00%     ✓       ✓     ✓     PASS    None
+/areas/london/boroughs/islington                       borough       index   709     0.00%     ✓       ✓     ✓     PASS    None
+/areas/london/boroughs/camden                          borough       index   703     0.00%     ✓       ✓     ✓     PASS    None
+/areas/london/boroughs/westminster                     borough       index   720     0.00%     ✓       ✓     ✓     PASS    None
+/areas/london/boroughs/ealing                          borough       index   722     0.00%     ✓       ✓     ✓     PASS    None
