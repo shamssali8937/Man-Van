@@ -115,12 +115,19 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 </body>
 </html>`;
 
-        await resend.emails.send({
+        const sendResult = await resend.emails.send({
           from: env.QUOTE_FROM_EMAIL || "AB Removals <onboarding@resend.dev>",
-          to: [env.QUOTE_TO_EMAIL || "quotes@abremovals.co.uk"],
+          to: [env.QUOTE_TO_EMAIL || "infoabremovalsmanvan@gmail.com"],
           subject: `Enquiry: ${cleanSubject}`,
           html: emailHtml,
         });
+
+        if (sendResult.error) {
+          console.error(
+            "Failed to dispatch contact notification email:",
+            sendResult.error,
+          );
+        }
       } catch (emailError) {
         // Never log PII, log generic internal status
         console.error(
