@@ -279,7 +279,7 @@ export async function sendQuoteEmail(
     }
 
     // Execute email dispatches
-    const [businessResult] = await Promise.allSettled(promises);
+    const [businessResult, customerResult] = await Promise.allSettled(promises);
 
     if (
       businessResult.status === "rejected" ||
@@ -289,8 +289,37 @@ export async function sendQuoteEmail(
             ?.error,
         ))
     ) {
+      const errDetails =
+        businessResult.status === "rejected"
+          ? businessResult.reason
+          : (businessResult.value as { error?: unknown })?.error;
+
       console.warn(
-        "[Quote Notification Note]: Email dispatch encountered a provider issue, lead logged safely:",
+        "[Quote Notification Note]: Email dispatch encountered a provider issue:",
+        errDetails,
+        "lead logged safely:",
+        referenceCode,
+      );
+    }
+
+    if (
+      customerResult &&
+      (customerResult.status === "rejected" ||
+        (customerResult.status === "fulfilled" &&
+          Boolean(
+            (customerResult.value as { error?: unknown } | null | undefined)
+              ?.error,
+          )))
+    ) {
+      const custErrDetails =
+        customerResult.status === "rejected"
+          ? customerResult.reason
+          : (customerResult.value as { error?: unknown })?.error;
+
+      console.warn(
+        "[Quote Confirmation Note]: Customer confirmation email failed:",
+        custErrDetails,
+        "ref:",
         referenceCode,
       );
     }
