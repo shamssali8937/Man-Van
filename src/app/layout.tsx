@@ -35,6 +35,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     >
       <head>
         <script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="ciGI4bB7p2igqtq18DMqyQ"
+          async
+        />
+        <script
           // biome-ignore lint/security/noDangerouslySetInnerHtml: static inline script intercepting extension DOM mutations
           dangerouslySetInnerHTML={{
             __html: `
