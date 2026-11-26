@@ -229,14 +229,14 @@ export function Footer() {
                 <span className="font-mono text-[0.625rem] text-brand-tan uppercase font-bold tracking-wider block">
                   LONDON BOROUGHS SERVICED
                 </span>
-                <div className="flex flex-wrap gap-x-3 gap-y-1.5 text-white/70">
+                <div className="flex flex-wrap gap-x-3 gap-y-1.5 text-white/75">
                   {londonBoroughs.map((borough) => (
                     <Link
                       key={borough.slug}
                       href={`/areas/london/boroughs/${borough.slug}`}
                       className="hover:text-white hover:underline"
                     >
-                      {borough.name}
+                      Man and Van in {borough.name}
                     </Link>
                   ))}
                 </div>

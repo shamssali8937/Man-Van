@@ -1,10 +1,11 @@
+import { eastLondonAreasPart1 } from "./east-london-areas-1";
+import { eastLondonAreasPart2 } from "./east-london-areas-2";
+
 /**
  * London Boroughs Data Architecture
  * Route structure: /areas/london/boroughs/[borough] (e.g. /areas/london/boroughs/croydon)
  *
- * Provides structured operational facts for 12 primary London boroughs:
- * Newham, Tower Hamlets, Hackney, Greenwich, Croydon, Barnet, Lambeth,
- * Southwark, Islington, Camden, Westminster, and Ealing.
+ * Provides structured operational facts for London boroughs and East London districts.
  */
 
 export interface LondonBoroughFaq {
@@ -1206,6 +1207,287 @@ export const londonBoroughs: LondonBorough[] = [
       },
     ],
   },
+  {
+    name: "Poplar",
+    slug: "poplar",
+    shortDescription:
+      "East London E14 district covering Blackwall, Chrisp Street, Aberfeldy Village, and the northern Canary Wharf approaches.",
+    postcodeDistricts: ["E14"],
+    neighbourhoods: [
+      "Poplar",
+      "Blackwall",
+      "Chrisp Street",
+      "Aberfeldy Village",
+      "All Saints",
+      "Langdon Park",
+      "East India",
+      "Leamouth",
+    ],
+    propertyTypes: [
+      "Modern high-rise apartment developments around Blackwall, East India, and Leamouth",
+      "Low-rise and mid-rise council and housing association blocks near Chrisp Street and Lansbury",
+      "Regeneration-era flats and townhouses in Aberfeldy Village",
+      "Small commercial units, studios, and ground-floor retail premises along Poplar High Street",
+    ],
+    parkingAndAccess: {
+      cpzOverview:
+        "Poplar falls within Tower Hamlets Controlled Parking Zones, with permit-only kerbside bays across residential streets and around DLR stations.",
+      suspensionProcess:
+        "Temporary bay suspensions or visitor permits can be arranged through Tower Hamlets Council parking services prior to move day.",
+      redRouteNotes:
+        "The A13 (East India Dock Road) and A1261 (Aspen Way) are major Red Route arteries where stopping outside marked bays is prohibited.",
+      accessChallenges:
+        "High-rise blocks near Blackwall and Leamouth often use concierge-managed loading bays and service lifts, while older estates may have barriered courtyards.",
+    },
+    transportAndRoads: {
+      congestionChargeZone: "none",
+      congestionChargeNotes:
+        "Poplar (E14) sits outside the central London Congestion Charge zone.",
+      ulezNotes:
+        "Poplar is inside the London Ultra Low Emission Zone (ULEZ). Our 3.5-tonne Luton vans are Euro 6 compliant with no ULEZ surcharge.",
+      keyCorridors: [
+        "A13 (East India Dock Road)",
+        "A12 (Blackwall Tunnel Northern Approach)",
+        "A1261 (Aspen Way)",
+        "A1206 (Cotton Street / Prestons Road)",
+      ],
+    },
+    neighbouringBoroughs: ["tower-hamlets", "newham", "bow", "mile-end"],
+    factsToConfirm: [
+      "Tower Hamlets Council parking bay suspension lead times and fees for E14 residential streets",
+      "Estate-specific service lift booking rules for Blackwall and Leamouth apartment blocks",
+    ],
+    seoTitle: "Man and Van Poplar | Removals Poplar | AB Removals",
+    seoDescription:
+      "24/7 man and van in Poplar (E14) for flats, houses, and offices. Tail-lift Luton vans, £55–£65/hr driver-only or £75–£90/hr two-man crew. Book online.",
+    h1: "Man and Van & Removals in Poplar",
+    leadParagraph:
+      "Looking for a dependable man and van in Poplar or full removals in Poplar (E14)? Operating 24/7 from our nearby Silvertown base in E16, AB Removals dispatches 3.5-tonne Luton box vans with 500kg hydraulic tail lifts across Blackwall, Chrisp Street, Aberfeldy Village, East India, and Leamouth. Whether you are moving a studio flat, relocating a family home, or transporting office equipment, we offer transparent published rates—£55–£65 per hour driver-only or £75–£90 per hour with a two-person crew, 2-hour minimum booking, and a £40 booking deposit.",
+    propertyTypesContent:
+      "Poplar combines established post-war residential estates around Lansbury and Chrisp Street with dense modern apartment towers along the Blackwall, East India, and Leamouth riverfront. Removals in Poplar therefore range from straightforward ground-floor flat clearances to multi-storey tower moves requiring lift coordination. Many newer developments along the Lea Valley and Docklands edge feature communal foyers, key-fob gates, and underground parking areas with low height limits, while older brick blocks often rely on external walkways and communal staircases.",
+    accessAndStairs:
+      "Standard 3.5-tonne Luton box vans stand around 3.2 metres tall, so they cannot enter low-clearance underground car parks in Blackwall or Leamouth developments. Our crews load from surface-level service bays, designated courtyard laybys, or the nearest legal kerbside point. For walk-up flats and maisonettes without lifts around All Saints and Langdon Park, our two-person team uses heavy-duty dollies, lifting straps, and quilted transit blankets to move wardrobes, sofas, and white goods safely down stairwells.",
+    parkingPermitsContent:
+      "Residential streets across Poplar are governed by Tower Hamlets Controlled Parking Zones. Securing legal kerbside space close to your entrance reduces carrying time and keeps hourly moves efficient. Where permit bays are tightly occupied, residents can request a temporary parking bay suspension through Tower Hamlets Council or provide valid visitor parking permits if permitted by the local zone. Avoid scheduling loading directly on the A13 East India Dock Road or Aspen Way, which are strictly enforced Red Routes.",
+    transportAndUlezContent:
+      "Poplar (E14) is located outside the central London Congestion Charge zone, so local E14 moves and journeys heading east toward Newham or Barking do not incur Congestion Charge fees. However, all of Poplar lies within London's Ultra Low Emission Zone (ULEZ). Every AB Removals 3.5-tonne Luton van meets Euro 6 emissions standards, meaning zero daily ULEZ charges are passed on to customers. If your move travels west into central London, check current Congestion Charge hours on the official TfL website.",
+    typicalRoutesContent:
+      "Positioned directly beside the A13 East India Dock Road and the A12 Blackwall Tunnel Northern Approach, Poplar connects rapidly to Canning Town and Stratford to the east, Bow and Hackney to the north, and Greenwich across the river. Because the Rotherhithe Tunnel enforces a strict 2-tonne weight limit and 2.0-metre height restriction, our 3.5-tonne Luton vans always route south of the river via the Blackwall Tunnel or Tower Bridge.",
+    localMovingTips:
+      "Before moving day in Poplar, check with your building concierge or housing office whether a service lift needs reserving or protective lift curtains fitted. Measure narrow apartment doorways and hallway turns for large items such as American-style fridge-freezers or corner sofas so our crew can bring tools for dismantling if required. Keep your £40 booking confirmation handy and ensure any visitor parking permits are activated before the van arrives.",
+    faqs: [
+      {
+        question: "How much does a man and van in Poplar cost?",
+        answer:
+          "Our published hourly rates for Poplar (E14) are £55–£65 per hour for a driver-only service and £75–£90 per hour for a two-person moving crew, with a 2-hour minimum booking and a £40 deposit to secure your slot.",
+      },
+      {
+        question: "Do you offer 24/7 removals in Poplar?",
+        answer:
+          "Yes. We operate 24 hours a day, 7 days a week across Poplar, Blackwall, East India, and Leamouth, including early mornings, late evenings, and weekends for residential and commercial moves.",
+      },
+      {
+        question: "Will a Poplar move incur ULEZ or Congestion Charge fees?",
+        answer:
+          "Poplar is inside the ULEZ, and our Euro 6 Luton vans are fully ULEZ compliant with no extra charge. Poplar is outside the central London Congestion Charge zone, so local E14 moves have no Congestion Charge fee.",
+      },
+      {
+        question:
+          "Can your Luton van enter underground car parks in Blackwall or Leamouth?",
+        answer:
+          "No. Our 3.5-tonne Luton box vans require approximately 3.2 metres of vertical clearance, so we load from surface-level service bays, concierge loading areas, or legal kerbside bays.",
+      },
+    ],
+  },
+  {
+    name: "Bow",
+    slug: "bow",
+    shortDescription:
+      "East London E3 neighbourhood spanning Roman Road, Bow Road, Victoria Park borders, and Fish Island.",
+    postcodeDistricts: ["E3"],
+    neighbourhoods: [
+      "Bow",
+      "Roman Road",
+      "Bow Church",
+      "Fish Island",
+      "Old Ford",
+      "Devons Road",
+      "Tredegar Square",
+      "Bromley-by-Bow",
+    ],
+    propertyTypes: [
+      "Victorian and Georgian terraced houses and converted flats around Tredegar Square and Roman Road",
+      "Converted warehouse lofts and modern canal-side apartments in Fish Island and Old Ford",
+      "Low-rise and mid-rise residential blocks near Bow Church and Devons Road",
+      "Independent shops, studios, and commercial workspaces along Roman Road and Bow Road",
+    ],
+    parkingAndAccess: {
+      cpzOverview:
+        "Bow (E3) is covered by Tower Hamlets Controlled Parking Zones, including busy residential permit bays near Roman Road Market and Bow Road station.",
+      suspensionProcess:
+        "Residents can arrange visitor parking permits or apply for a temporary parking bay suspension through Tower Hamlets Council ahead of moving day.",
+      redRouteNotes:
+        "Bow Road (A11) and the A12 (East Cross Route) are Transport for London Red Routes with strict no-stopping camera enforcement.",
+      accessChallenges:
+        "Narrow terraced streets near Victoria Park, market-day pedestrian and traffic restrictions on Roman Road, and gated canal-side courtyards in Fish Island.",
+    },
+    transportAndRoads: {
+      congestionChargeZone: "none",
+      congestionChargeNotes:
+        "Bow (E3) is outside the central London Congestion Charge zone.",
+      ulezNotes:
+        "Bow lies inside the London ULEZ. All AB Removals Luton vans are Euro 6 compliant, so no ULEZ charges apply.",
+      keyCorridors: [
+        "A11 (Bow Road / Mile End Road)",
+        "A12 (East Cross Route / Blackwall Tunnel Northern Approach)",
+        "A102 (Blackwall Tunnel Approach)",
+        "Roman Road / Old Ford Road",
+      ],
+    },
+    neighbouringBoroughs: [
+      "tower-hamlets",
+      "hackney",
+      "newham",
+      "poplar",
+      "mile-end",
+    ],
+    factsToConfirm: [
+      "Roman Road Market trading days and vehicle access restrictions for kerbside loading",
+      "Tower Hamlets Council bay suspension notice period for E3 streets",
+    ],
+    seoTitle: "Man and Van Bow | Removals Bow E3 | AB Removals",
+    seoDescription:
+      "Reliable removals in Bow (E3) and man and van hire 24/7. 3.5T Luton vans with tail lifts from £55–£65/hr, £40 deposit, no hidden fees. Get a quote.",
+    h1: "Man and Van & Removals in Bow",
+    leadParagraph:
+      "Need a reliable man and van in Bow or planned removals in Bow (E3)? AB Removals operates 24/7 across Roman Road, Fish Island, Old Ford, Tredegar Square, and Bromley-by-Bow. Our 3.5-tonne Luton box vans carry 500kg hydraulic tail lifts, quilted transit blankets, and ratchet straps to protect your furniture from doorstep to destination. Choose driver-only help at £55–£65 per hour or a two-person crew at £75–£90 per hour, with a 2-hour minimum booking and a £40 booking deposit.",
+    propertyTypesContent:
+      "Bow offers one of East London's richest mixes of housing and workspace stock. Around Tredegar Square, Old Ford, and Roman Road, moves frequently involve two- and three-storey Victorian terraced houses or split-level period conversions with tight front hallways and steep staircases. Over in Fish Island along the Lea Navigation canal, former industrial buildings have been converted into live-work lofts alongside contemporary apartment blocks, requiring careful planning around courtyard gates, loading bays, and freight lifts. We handle full flat and house removals in Bow as well as single-item furniture deliveries, student moves, and small office relocations.",
+    accessAndStairs:
+      "Period conversions in Bow often lack lifts and feature narrow turns at the top of staircases. Our two-person removal crews bring furniture dollies, protective covers, and basic dismantling tools to handle bed frames, wardrobes, and bulky sofas without scuffing walls or banisters. For Fish Island and Bromley-by-Bow apartment developments, we coordinate arrival times with building management or concierge teams where service bays or lift bookings are required. Every 3.5-tonne Luton van carries quilted blankets and ratchet tie-downs so items remain secure throughout loading and transit.",
+    parkingPermitsContent:
+      "Most residential streets in E3 fall under Tower Hamlets Controlled Parking Zones. If you live near Roman Road Market, Bow Church DLR, or Bow Road Underground, kerbside space can be tight during daytime hours. Arranging a visitor parking permit or a council bay suspension in advance helps us park close to your front door. Note that Bow Road (A11) and the A12 East Cross Route are TfL Red Routes where loading outside marked bays is not permitted. Sharing your exact street and floor level when booking allows our driver to plan the safest loading point.",
+    transportAndUlezContent:
+      "Bow (E3) sits outside the central London Congestion Charge zone, keeping local East London moves free from Congestion Charge fees. Like the rest of Greater London, Bow is inside the Ultra Low Emission Zone (ULEZ). All AB Removals 3.5-tonne Luton vans are Euro 6 compliant, so there are zero ULEZ surcharges for customers. Moves heading into central London during charging hours should factor in TfL Congestion Charge rules, which can be checked directly on the official Transport for London website.",
+    typicalRoutesContent:
+      "Bow sits at the junction of the A11 and A12, giving direct road access west toward Mile End and Whitechapel, north toward Hackney Wick and Homerton, east across the River Lea into Stratford, and south toward Poplar and the Blackwall Tunnel. Our drivers plan around peak-hour congestion at Bow Roundabout and avoid low bridges or weight-restricted local routes, including the Rotherhithe Tunnel which prohibits vehicles over 2 tonnes.",
+    localMovingTips:
+      "If your move is near Roman Road Market, let us know in advance so we can time arrival outside peak market hours and plan alternative side-street parking if needed. For Fish Island loft apartments, check whether any courtyard bollards or fob gates require concierge release. Clearing hallways and boxing smaller items before arrival helps keep your hourly booking efficient, whether you book driver-only or a two-person crew.",
+    faqs: [
+      {
+        question: "What are your rates for removals in Bow (E3)?",
+        answer:
+          "We publish clear hourly pricing: £55–£65 per hour for driver-only assistance and £75–£90 per hour for a two-person crew, with a 2-hour minimum booking and a £40 booking deposit.",
+      },
+      {
+        question:
+          "Can I book a man and van in Bow late at night or on weekends?",
+        answer:
+          "Yes. AB Removals operates 24/7 across Bow and East London, so you can book early-morning, evening, overnight, or weekend moves at your convenience.",
+      },
+      {
+        question: "Are your vans ULEZ compliant for Bow E3?",
+        answer:
+          "Yes. Every 3.5-tonne Luton van in our fleet meets Euro 6 ULEZ standards, and Bow is outside the central London Congestion Charge zone.",
+      },
+      {
+        question: "Do you handle Fish Island studio and office moves?",
+        answer:
+          "Yes. We move creative studios, offices, and live-work lofts in Fish Island and Bromley-by-Bow, using tail-lift Luton vans and protective transit blankets.",
+      },
+    ],
+  },
+  {
+    name: "Mile End",
+    slug: "mile-end",
+    shortDescription:
+      "Central-East London E1 and E3 corridor covering Mile End Road, Queen Mary University surrounds, and Regent's Canal.",
+    postcodeDistricts: ["E1", "E3"],
+    neighbourhoods: [
+      "Mile End",
+      "Globe Town",
+      "Stepney Green",
+      "Burdett Road",
+      "Mile End Park",
+      "Regent's Canal",
+    ],
+    propertyTypes: [
+      "Victorian terraced houses and period flat conversions off Mile End Road and Globe Town",
+      "Student halls and shared houses near Queen Mary University of London",
+      "Modern canal-side apartment blocks along Regent's Canal and Mile End Park",
+      "High-street commercial units and offices along Mile End Road (A11)",
+    ],
+    parkingAndAccess: {
+      cpzOverview:
+        "Mile End spans E1 and E3 under Tower Hamlets Controlled Parking Zones, with resident-permit bays along side streets off the A11.",
+      suspensionProcess:
+        "Temporary bay suspensions or visitor parking permits can be arranged with Tower Hamlets Council before moving day.",
+      redRouteNotes:
+        "Mile End Road (A11) is a Transport for London Red Route with strict parking and loading restrictions and bus lane enforcement.",
+      accessChallenges:
+        "Busy bus lanes along the A11, narrow residential side streets around Globe Town and Stepney Green, and term-time congestion near student accommodation.",
+    },
+    transportAndRoads: {
+      congestionChargeZone: "none",
+      congestionChargeNotes:
+        "Mile End (E1/E3) sits outside the central London Congestion Charge zone.",
+      ulezNotes:
+        "Mile End is inside the London ULEZ. Our Euro 6 Luton vans operate with zero ULEZ surcharge.",
+      keyCorridors: [
+        "A11 (Mile End Road)",
+        "A1205 (Burdett Road / Grove Road)",
+        "B120 (Stepney Green / Harford Street)",
+      ],
+    },
+    neighbouringBoroughs: ["tower-hamlets", "hackney", "bow", "poplar"],
+    factsToConfirm: [
+      "Queen Mary University halls loading bay drop-off rules during September/June student changeover",
+      "Tower Hamlets Council parking suspension lead times for E1/E3",
+    ],
+    seoTitle: "Man and Van Mile End | Removals Mile End | AB Removals",
+    seoDescription:
+      "Book man and van and removals in Mile End (E1, E3) any day, 24/7. Euro 6 Luton vans for flats, student moves, and offices. Transparent hourly rates.",
+    h1: "Man and Van & Removals in Mile End",
+    leadParagraph:
+      "Searching for a punctual man and van in Mile End or reliable removals in Mile End (E1 and E3)? AB Removals provides 24/7 moving services across Mile End Road, Globe Town, Stepney Green, and Burdett Road. Our 3.5-tonne Luton box vans feature 500kg hydraulic tail lifts, transit blankets, and strapping for flat moves, student relocations, furniture deliveries, and commercial moves. Published rates are £55–£65 per hour driver-only or £75–£90 per hour for a two-man team, with a 2-hour minimum and £40 booking deposit.",
+    propertyTypesContent:
+      "Mile End's housing ranges from classic Victorian terraces and Georgian-style townhouses around Stepney Green and Globe Town to modern canal-side flats bordering Mile End Park and Regent's Canal. Because the area sits right next to Queen Mary University of London, we also handle frequent student room moves, shared-house transitions, and term-time storage runs alongside full family house removals, single-item furniture deliveries, and small office relocations. Every 3.5-tonne Luton van is equipped with a 500kg hydraulic tail lift, quilted transit blankets, ratchet straps, and four-wheel dollies to protect appliances, sofas, and boxed belongings.",
+    accessAndStairs:
+      "Many properties off Mile End Road and Grove Road are walk-up flats or multi-storey terraced houses without lifts, often with narrow hallways and steep turns. Our two-person crews use heavy-duty sack trucks, furniture dollies, and lifting straps to carry appliances, beds, and boxed belongings safely up and down narrow staircases without scuffing walls or banisters. For modern canal-side blocks with concierge desks or security gates, we plan surface-level loading close to the main entrance or service lift, as 3.5-tonne Luton vans cannot enter low-clearance underground garages.",
+    parkingPermitsContent:
+      "Mile End Road (A11) is a busy Transport for London Red Route with active bus lanes and red-line restrictions, so loading directly on the main road is normally not possible unless a marked, in-hours loading bay is available. Most moves load from adjacent side streets, which are governed by Tower Hamlets Controlled Parking Zones. Arranging a visitor permit or council parking suspension in advance ensures smooth kerbside access and avoids unnecessary carrying distance.",
+    transportAndUlezContent:
+      "Mile End lies outside the central London Congestion Charge zone, so local moves within E1 and E3 do not incur Congestion Charge fees. However, moves heading west past Aldgate into central London enter the Congestion Charge zone during active hours. All of Mile End falls within the London Ultra Low Emission Zone (ULEZ), and our Euro 6 Luton vans are fully compliant with no daily ULEZ charge. Current Congestion Charge hours can be checked on the TfL website.",
+    typicalRoutesContent:
+      "From Mile End, our vans connect directly along the A11 east toward Bow and Stratford or west toward Whitechapel and Aldgate, and south along Burdett Road (A1205) toward Limehouse and Poplar. For cross-river moves to Southwark or Greenwich, we route via Tower Bridge or the Blackwall Tunnel rather than the weight-restricted Rotherhithe Tunnel, which enforces a 2-tonne gross weight limit.",
+    localMovingTips:
+      "If you are moving into or out of student accommodation near Queen Mary University during peak September or June changeover weekends, book early to secure your preferred 24/7 slot and confirm any campus loading bay rules. For flats off Mile End Road, let us know the nearest accessible side street and your floor level so our driver can plan kerbside parking and bring any needed dismantling tools. Having boxes taped, sealed, and clearly labelled by room keeps loading fast, safe, and predictable from start to finish.",
+    faqs: [
+      {
+        question: "How much is a man and van in Mile End?",
+        answer:
+          "Published pricing is £55–£65 per hour for driver-only help and £75–£90 per hour for a two-person crew, with a 2-hour minimum booking and a £40 booking deposit.",
+      },
+      {
+        question:
+          "Do you do student moves near Queen Mary University in Mile End?",
+        answer:
+          "Yes. We regularly handle student room moves, shared flat relocations, and storage transportation around Mile End Road and Stepney Green, 24/7.",
+      },
+      {
+        question: "Can you park on Mile End Road (A11) to load?",
+        answer:
+          "Mile End Road is a TfL Red Route with bus lanes, so loading usually takes place on the nearest legal side-street bay using a visitor permit or council bay suspension.",
+      },
+      {
+        question: "Are Mile End removals subject to ULEZ or Congestion Charge?",
+        answer:
+          "Mile End is inside ULEZ (our Euro 6 vans are compliant at no extra cost) and outside the central London Congestion Charge zone.",
+      },
+    ],
+  },
+  ...eastLondonAreasPart1,
+  ...eastLondonAreasPart2,
 ];
 
 export function getLondonBorough(slug: string): LondonBorough | undefined {

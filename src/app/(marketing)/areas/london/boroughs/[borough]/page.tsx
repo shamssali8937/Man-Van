@@ -655,7 +655,7 @@ export default async function LondonBoroughPage({ params }: Props) {
                     className="p-3.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 transition-colors"
                   >
                     <span className="text-sm font-bold text-slate-900 block mb-1">
-                      Man and Van {nb.name}
+                      Man and Van in {nb.name}
                     </span>
                     <span className="text-xs text-slate-600 line-clamp-2">
                       {nb.shortDescription}

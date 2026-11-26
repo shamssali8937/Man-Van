@@ -15,37 +15,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
       ? rawUrl
       : `https://${rawUrl}`
   ).replace(/\/$/, "");
-  const currentDate = new Date().toISOString();
+  const lastModified = "2026-11-26T00:00:00.000Z";
 
   const staticRoutes: MetadataRoute.Sitemap = [
     "",
     "/services",
     "/areas",
     "/the-van",
+    "/pricing",
     "/faq",
-    "/reviews",
     "/contact",
     "/quote",
-    "/privacy",
-    "/terms",
-    "/cookies",
   ].map((route) => ({
     url: `${baseUrl}${route}`,
-    lastModified: currentDate,
+    lastModified,
     changeFrequency: "monthly",
     priority: route === "" ? 1.0 : 0.8,
   }));
 
   const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({
     url: `${baseUrl}/services/${service.slug}`,
-    lastModified: currentDate,
+    lastModified,
     changeFrequency: "weekly",
     priority: 0.9,
   }));
 
   const areaRoutes: MetadataRoute.Sitemap = areas.map((area) => ({
     url: `${baseUrl}/areas/${area.slug}`,
-    lastModified: currentDate,
+    lastModified,
     changeFrequency: "weekly",
     priority: 0.8,
   }));
@@ -57,7 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const areaServiceRoutes: MetadataRoute.Sitemap = areaServicePairs.map(
     ({ city, service }) => ({
       url: `${baseUrl}/areas/${city}/${service}`,
-      lastModified: currentDate,
+      lastModified,
       changeFrequency: "weekly",
       priority: 0.7,
     }),
@@ -66,7 +63,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const londonBoroughRoutes: MetadataRoute.Sitemap = londonBoroughs.map(
     (borough) => ({
       url: `${baseUrl}/areas/london/boroughs/${borough.slug}`,
-      lastModified: currentDate,
+      lastModified,
       changeFrequency: "weekly",
       priority: 0.8,
     }),
