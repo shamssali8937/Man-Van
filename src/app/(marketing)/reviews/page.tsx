@@ -16,6 +16,7 @@ export const metadata: Metadata = constructMetadata({
     "Verified customer reviews for AB Removals. Read honest feedback from residential, student, and commercial moves across the UK.",
   ),
   path: "/reviews",
+  noIndex: reviews.length === 0,
 });
 
 export default function ReviewsPage() {

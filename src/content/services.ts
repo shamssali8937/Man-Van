@@ -182,7 +182,7 @@ export const services: Service[] = [
     seo: {
       title: "Furniture Removals and Delivery UK | AB Removals",
       description:
-        "Reliable furniture collection and delivery across the UK. Retail store pickups, eBay and marketplace items delivered to your room of choice safely.",
+        "Furniture removals and delivery across London & the UK 24/7. Tail-lift Luton vans, blankets & straps, room-of-choice placement. Free quote.",
     },
   },
   {
@@ -243,7 +243,7 @@ export const services: Service[] = [
     seo: {
       title: "Man and Van Services UK | AB Removals",
       description:
-        "Affordable man and van hire across the UK. Professional drivers, working loading crew, 3.5t Luton vans with tail lifts, and transparent rates. Book online.",
+        "Agile UK man and van hire for flat moves, student halls, and single items. Working driver or two-person crew with hydraulic lift vans. Get a quote.",
     },
   },
   {

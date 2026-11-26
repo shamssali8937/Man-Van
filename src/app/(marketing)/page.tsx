@@ -13,6 +13,7 @@ import {
 } from "@/components/ui";
 import { areas } from "@/content/areas";
 import { faqs } from "@/content/faqs";
+import { londonBoroughs } from "@/content/london-boroughs";
 import { services } from "@/content/services";
 import { siteConfig } from "@/content/site";
 import { constructMetadata } from "@/lib/seo/metadata";
@@ -1070,6 +1071,38 @@ export default function HomePage() {
                     →
                   </span>
                 </Link>
+              </div>
+
+              {/* East London & Additional Borough Links */}
+              <div className="mt-4 bg-white border border-brand-navy/20 p-4 rounded-xs">
+                <span className="font-mono text-[11px] font-bold uppercase text-brand-navy tracking-wider block mb-2">
+                  East London &amp; Additional Areas Covered
+                </span>
+                <div className="flex flex-wrap gap-x-3 gap-y-1.5 text-xs font-sans">
+                  {londonBoroughs
+                    .filter(
+                      (b) =>
+                        ![
+                          "croydon",
+                          "camden",
+                          "islington",
+                          "hackney",
+                          "tower-hamlets",
+                          "westminster",
+                          "southwark",
+                          "lambeth",
+                        ].includes(b.slug),
+                    )
+                    .map((b) => (
+                      <Link
+                        key={b.slug}
+                        href={`/areas/london/boroughs/${b.slug}`}
+                        className="text-brand-navy/85 hover:text-brand-red hover:underline font-medium"
+                      >
+                        Man and Van in {b.name}
+                      </Link>
+                    ))}
+                </div>
               </div>
             </div>
           </div>

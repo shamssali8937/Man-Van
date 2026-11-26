@@ -6,6 +6,7 @@ import { FaqAccordion } from "@/components/common/faq-accordion";
 import { QuoteCtaCard } from "@/components/common/quote-cta-card";
 import { JsonLd } from "@/components/seo/json-ld";
 import { areas } from "@/content/areas";
+import { londonBoroughs } from "@/content/london-boroughs";
 import { services } from "@/content/services";
 import {
   constructMetadata,
@@ -278,6 +279,23 @@ export default async function ServiceDetailPage({ params }: Props) {
               >
                 London Removals Hub
               </Link>
+            </div>
+          </div>
+
+          <div className="mt-6 pt-6 border-t border-slate-800">
+            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-3">
+              London &amp; East London Boroughs Covered
+            </span>
+            <div className="flex flex-wrap gap-2">
+              {londonBoroughs.map((borough) => (
+                <Link
+                  key={borough.slug}
+                  href={`/areas/london/boroughs/${borough.slug}`}
+                  className="rounded-lg bg-slate-800/80 hover:bg-slate-700 px-3 py-1.5 text-xs font-medium text-slate-200 hover:text-white border border-slate-700 transition-colors"
+                >
+                  Man and Van in {borough.name}
+                </Link>
+              ))}
             </div>
           </div>
         </section>
