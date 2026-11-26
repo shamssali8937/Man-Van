@@ -11,7 +11,7 @@ export interface FooterLink {
 const rawUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
   process.env.SITE_URL ||
-  "https://abremovals.co.uk";
+  "https://www.abremovalsmanandvan.co.uk";
 
 const siteUrl = (
   rawUrl.startsWith("http://") || rawUrl.startsWith("https://")

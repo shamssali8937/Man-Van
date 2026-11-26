@@ -4,7 +4,9 @@ import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/common/breadcrumbs";
 import { FaqAccordion } from "@/components/common/faq-accordion";
 import { QuoteCtaCard } from "@/components/common/quote-cta-card";
+import { QuoteForm } from "@/components/quote/quote-form";
 import { JsonLd } from "@/components/seo/json-ld";
+import { LondonServiceDetailsSection } from "@/components/seo/london-service-details";
 import { getNearbyAreas } from "@/content";
 import { londonBoroughs } from "@/content/london-boroughs";
 import {
@@ -307,6 +309,33 @@ export default async function AreaServiceDetailPage({ params }: Props) {
         )}
 
         {/* Published Pricing Section (London) */}
+        {area.slug === "london" && (
+          <LondonServiceDetailsSection
+            headingPrefix={`${service.name} in London`}
+          />
+        )}
+        {area.slug === "london" &&
+          service.slug === "office-and-commercial-removals" && (
+            <section
+              id="commercial-quote-form"
+              className="max-w-4xl mx-auto rounded-3xl bg-white p-8 md:p-10 border border-slate-200 shadow-xs mb-12 md:mb-16"
+            >
+              <div className="mb-6 pb-6 border-b border-slate-200">
+                <span className="text-xs font-bold text-red-600 uppercase tracking-wider block mb-1">
+                  Commercial Removals London • Out-of-Hours Moves
+                </span>
+                <h2 className="text-2xl font-bold text-slate-900">
+                  Request an Office Removals London Quote
+                </h2>
+                <p className="text-sm text-slate-600 mt-1">
+                  Available 24/7 for evening, overnight, and weekend commercial
+                  removals across London so your business stays operational with
+                  minimal downtime.
+                </p>
+              </div>
+              <QuoteForm />
+            </section>
+          )}
         {area.slug === "london" && (
           <section className="max-w-4xl mx-auto rounded-3xl bg-white p-8 md:p-10 border border-slate-200 shadow-xs mb-12 md:mb-16">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-200">

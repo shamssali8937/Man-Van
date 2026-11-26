@@ -5,11 +5,11 @@ export const areaServiceMetaDescriptions: Record<string, string> = {
   "london/house-removals":
     "Reliable house removals across London (E, EC, N, NW, SE, SW, W, WC). Our 3.5T Luton box vans feature 500kg tail lifts and protective blankets.",
   "london/office-and-commercial-removals":
-    "Commercial office removals across London (E, EC, N, NW, SE, SW, W, WC). Tail-lift Luton box vans and computer crates ensure minimal downtime.",
+    "Commercial removals London & office removals London 24/7. Out-of-hours moves, IT crates, tail-lift Luton vans from £55/hr. Request a quote.",
   "london/furniture-removals-and-delivery":
     "Prompt furniture removals and delivery across London (E, EC, N, NW, SE, SW, W, WC). Featuring Luton vans with protective furniture padding and dollies.",
   "london/man-and-van":
-    "Reliable man and van hire across London (E, EC, N, NW, SE, SW, W, WC). Spacious Luton vehicles with working driver help make moving effortless.",
+    "Man and van London 24/7 from £55–£65/hr (driver) or £75–£90/hr (two-man). ULEZ-compliant Luton vans with tail lifts, £40 deposit. Book online.",
   "london/furniture-assembly-and-dismantling":
     "Expert flat-pack assembly services throughout London. Our crew carries commercial torque drivers and hardware fixing kits. Book upfront transparent fees.",
   "london/student-and-small-moves":

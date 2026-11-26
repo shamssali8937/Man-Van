@@ -5,6 +5,7 @@ import { Breadcrumbs } from "@/components/common/breadcrumbs";
 import { FaqAccordion } from "@/components/common/faq-accordion";
 import { QuoteCtaCard } from "@/components/common/quote-cta-card";
 import { JsonLd } from "@/components/seo/json-ld";
+import { LondonServiceDetailsSection } from "@/components/seo/london-service-details";
 import { getNearbyAreas } from "@/content";
 import { areas } from "@/content/areas";
 import { londonBoroughs } from "@/content/london-boroughs";
@@ -240,7 +241,7 @@ export default async function AreaCityPage({ params }: Props) {
                     </p>
                   </div>
                   <span className="mt-3 text-xs font-semibold text-red-600 inline-flex items-center gap-1 group-hover:underline">
-                    Man and Van {b.name} &rarr;
+                    Man and Van in {b.name} &rarr;
                   </span>
                 </Link>
               ))}
@@ -291,6 +292,9 @@ export default async function AreaCityPage({ params }: Props) {
         )}
 
         {/* Published Pricing Section (London) */}
+        {area.slug === "london" && (
+          <LondonServiceDetailsSection headingPrefix="London Removals" />
+        )}
         {area.slug === "london" && (
           <section className="max-w-4xl mx-auto rounded-3xl bg-white p-8 md:p-10 border border-slate-200 shadow-xs mb-12 md:mb-16">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-200">

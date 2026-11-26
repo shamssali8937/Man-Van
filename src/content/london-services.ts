@@ -72,9 +72,9 @@ export const londonServicesContent: Record<string, LondonServiceContent> = {
   "office-and-commercial-removals": {
     serviceSlug: "office-and-commercial-removals",
     leadParagraph:
-      "Booking dependable office and commercial removals in london ensures your move is executed with punctuality, tailored equipment, and attentive handling across all thirty-two boroughs. Relocating an office or commercial workspace in London requires disciplined planning to minimize business downtime and protect valuable IT assets. AB Removals provides scheduled commercial removals across key business districts including the City of London, Canary Wharf, Shoreditch tech hubs, Westminster, and Midtown. We provide modern Luton vans fitted with hydraulic tail lifts, rolling computer crates, and experienced commercial movers capable of handling weekend and evening relocations.",
+      "Booking dependable office and commercial removals in London—covering both commercial removals London and office removals London—ensures your workspace move is executed 24/7 with punctuality, tailored equipment, and attentive handling across all thirty-two boroughs. Relocating an office or commercial premises in London requires disciplined planning to minimize business downtime and protect valuable IT assets. AB Removals provides scheduled office and commercial removals across key business districts including the City of London, Canary Wharf, Shoreditch tech hubs, Westminster, and Midtown. We provide 3.5-tonne Luton vans (18–20 cubic metres) fitted with 500kg hydraulic tail lifts, rolling computer crates, and commercial moving crews for evening and weekend relocations—at £55–£65/hr driver-only or £75–£90/hr for a two-person crew, 2-hour minimum, and £40 booking deposit.",
     serviceOverview:
-      "When coordinating office and commercial removals in london, our team synchronizes with your property completion or key collection timetable. Our commercial removal specialists coordinate around your company working hours to ensure smooth transitions without disrupting client operations. We handle desk systems, ergonomic chairs, filing cabinets, server equipment, and archive records. Each department is packed and tagged systematically, ensuring equipment arrives at the new premises mapped directly to designated floor plans and workstations.",
+      "When coordinating office and commercial removals in London, our team synchronizes with your lease handover or facilities timetable, operating 24/7 including out-of-hours evening and weekend slots so staff experience zero daytime disruption. We handle desk systems, ergonomic chairs, filing cabinets, server equipment, and archive records. Each department is packed and tagged systematically, ensuring equipment arrives at the new premises mapped directly to designated floor plans and workstations. Booking is straightforward: submit your inventory and postcodes in the quote form below, confirm your move window, and secure your van and crew with a £40 deposit.",
     parkingAndPermits:
       "Commercial moving in central London demands meticulous loading bay logistics. Office developments in Canary Wharf and the City enforce strict loading dock booking windows, vehicle height barriers, and security manifest requirements. Our operations team submits driver details and vehicle registrations in advance to secure loading bay clearances, while arranging on-street dispensations with local authorities where private loading bays are unavailable.",
     accessAndHandling:
@@ -102,9 +102,9 @@ export const londonServicesContent: Record<string, LondonServiceContent> = {
       },
       {
         question:
-          "Does an office move in central London incur the Congestion Charge?",
+          "How do booking, pricing, and the £40 deposit work for commercial removals London?",
         answer:
-          "Commercial moves within central London zones during charging hours incur the standard daily Congestion Charge, which is itemized clearly and transparently on your quote.",
+          "Published hourly rates are £55–£65/hr driver-only or £75–£90/hr for a two-person crew (2-hour minimum), or request a tailored fixed quote for multi-van out-of-hours office moves. A £40 booking deposit secures your 24/7 slot.",
       },
     ],
     factsToConfirm: [
@@ -160,7 +160,7 @@ export const londonServicesContent: Record<string, LondonServiceContent> = {
     leadParagraph:
       "Booking dependable man and van in london ensures your move is executed with punctuality, tailored equipment, and attentive handling across all thirty-two boroughs. Our London man and van service offers the ideal combination of flexibility, reliability, and value for small-to-medium relocations across the capital. Operating from our Silvertown operational base with rapid dispatch across inner and outer London postcodes, we supply spacious 3.5-tonne Luton box vans with driver-assisted loading. Whether moving a studio flat, a single room, or transporting bulky household goods, our man and van service provides a cost-effective alternative to full-scale removals.",
     serviceOverview:
-      "When coordinating man and van in london, our team synchronizes with your property completion or key collection timetable. Customers can select between a driver-only booking—where our driver actively packs, loads, and straps your goods inside the vehicle—or a full two-man crew for comprehensive lifting support. Our transparent hourly rates feature a straightforward two-hour minimum booking term, with zero hidden mileage fees within Greater London. Every vehicle arrives equipped with transit blankets, load-securing straps, and moving dollies. Our Luton vans have a substantial 18-cubic-metre capacity, accommodating up to 40 standard moving cartons, a double mattress, three-seater sofa, and domestic white goods in a single trip.",
+      "When coordinating man and van in london, our team synchronizes with your property completion or key collection timetable 24/7. Customers can select between a driver-only booking (£55–£65/hr)—where our driver actively loads and straps your goods inside the vehicle—or a full two-man crew (£75–£90/hr) for comprehensive carrying support. Our transparent hourly rates feature a straightforward 2-hour minimum booking term and a £40 booking deposit, with zero hidden mileage fees within Greater London. Every 3.5-tonne Luton van offers 18–20 cubic metres of load capacity (up to 4.1m length, 2.0m width, 2.2m height), accommodating up to 40 standard moving cartons, a double mattress, three-seater sofa, and domestic white goods in a single trip, equipped with transit blankets, ratchet straps, and moving dollies.",
     parkingAndPermits:
       "Parking regulations across London boroughs require practical on-the-day coordination. Our drivers know how to position vehicles legally in resident bays with visitor vouchers, use authorized pay-and-display bays, or coordinate quick kerbside loading where permitted. For larger moves, we advise booking temporary parking suspensions with the local borough council.",
     transitAndCorridors:
@@ -173,9 +173,9 @@ export const londonServicesContent: Record<string, LondonServiceContent> = {
       },
       {
         question:
-          "What is the minimum booking time for a man and van in London?",
+          "What is the minimum booking time and deposit for a man and van in London?",
         answer:
-          "Our standard booking term is a 2-hour minimum, followed by transparent half-hour increments. A nominal deposit secures your booking date and van allocation.",
+          "Our published rates are £55–£65/hr driver-only or £75–£90/hr for a two-person crew, with a 2-hour minimum booking term and a £40 booking deposit to secure your 24/7 slot.",
       },
       {
         question: "Can a passenger travel in the van cab during the move?",
@@ -411,7 +411,7 @@ export const londonServicesContent: Record<string, LondonServiceContent> = {
     leadParagraph:
       "Booking dependable storage transportation in london ensures your move is executed with punctuality, tailored equipment, and attentive handling across all thirty-two boroughs. Moving belongings into or out of self-storage requires punctual transport and methodical vehicle packing to maximize unit capacity. AB Removals provides dedicated storage transportation services connecting London homes and businesses with leading storage facilities across the capital, including Big Yellow, Safestore, Access Self Storage, and Shurgard. We operate 3.5-tonne Luton vans equipped with hydraulic tail lifts and protective blankets to ensure your goods stay safe during transit and storage.",
     serviceOverview:
-      "When coordinating storage transportation in london, our team synchronizes with your property completion or key collection timetable. Whether you are decluttering, bridging a gap between tenancy dates, or storing commercial stock, our team provides complete collection and delivery. Our movers pack items tightly and methodically inside your storage unit, placing heavy furniture at the bottom and positioning frequently needed cartons near the front for easy ongoing access. We also construct stable vertical tiers inside the storage room, ensuring heavy boxes provide a solid base so lighter cartons remain undamaged. Our crew carries moving blankets to drape over wooden furniture and mirrors inside the storage unit, preventing surface scuffs and dust accumulation.",
+      "When coordinating storage transportation in london, our team operates 24/7 and synchronizes with your property completion or storage facility access window. Whether you are decluttering, bridging a gap between tenancy dates, or storing commercial stock, our team provides complete collection and delivery at published rates of £55–£65/hr driver-only or £75–£90/hr for a two-person crew (2-hour minimum, £40 booking deposit). Each 3.5-tonne Luton van provides 18–20 cubic metres of enclosed load space—comparable to a 150–175 sq ft storage unit—with quilted blankets and straps to stack furniture and cartons safely inside your unit.",
     parkingAndPermits:
       "Most London self-storage facilities provide dedicated off-street customer unloading bays, making storage facility access relatively straightforward. For collection or delivery at your residential property, our drivers manage local Controlled Parking Zone regulations, utilizing visitor permits or arranging council bay suspensions where needed. We synchronize arrival times with your storage facility access hours, ensuring our van arrives with adequate time to complete unloading before facility gates close.",
     transitAndCorridors:
@@ -436,9 +436,9 @@ export const londonServicesContent: Record<string, LondonServiceContent> = {
       },
       {
         question:
-          "Can you collect items from storage and deliver them to multiple London addresses?",
+          "How much does storage transportation in London cost and how do I book?",
         answer:
-          "Yes, we can coordinate split deliveries from your storage unit, delivering items to multiple residential or commercial addresses across London.",
+          "Published rates are £55–£65/hr driver-only or £75–£90/hr for a two-person crew, with a 2-hour minimum booking and a £40 booking deposit. Book online or call 07405 328 674 any time, 24/7.",
       },
     ],
     factsToConfirm: [

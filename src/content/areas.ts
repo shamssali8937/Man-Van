@@ -48,7 +48,13 @@ export const areas: Area[] = [
         question:
           "What makes your removals in London service dependable on move day?",
         answer:
-          "We assign dedicated 3.5-tonne Luton vans with hydraulic tail lifts, skilled two-man loading assistance, and clear upfront pricing tailored to properties across London.",
+          "We assign dedicated 3.5-tonne Luton vans (18–20 m³ capacity) with 500kg hydraulic tail lifts, quilted blankets, ratchet straps, and transparent hourly rates (£55–£65/hr driver-only or £75–£90/hr two-person crew, 2-hour minimum, £40 booking deposit).",
+      },
+      {
+        question:
+          "Do you operate 24/7 across London and how does booking work?",
+        answer:
+          "Yes, we operate 24 hours a day, 7 days a week across all 32 London boroughs. Request a quote online or call 07405 328 674, confirm your time slot, and pay a £40 booking deposit to secure your van and crew.",
       },
     ],
     metaDescription:
